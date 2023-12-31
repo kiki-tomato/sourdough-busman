@@ -22,7 +22,7 @@ function App() {
     }
   });
 
-  return <div ref={mapRef} className="map"></div>;
+  return <div ref={mapRef} style={{ width: "400px", height: "400px" }}></div>;
 }
 
 export default App;
