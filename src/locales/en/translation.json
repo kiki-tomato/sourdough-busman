@@ -1,0 +1,11 @@
+{
+  "header": {
+    "title": "Sourdough Busan"
+  },
+
+  "sideBar": {
+    "filter": "Filter",
+    "open": "Open Now",
+    "distance": "Nearest"
+  }
+}

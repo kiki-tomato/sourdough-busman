@@ -1,0 +1,11 @@
+{
+  "header": {
+    "title": "사워도우 부산"
+  },
+
+  "sideBar": {
+    "filter": "필터",
+    "open": "영업중",
+    "distance": "거리순"
+  }
+}

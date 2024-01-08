@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
+  color: #222222;
 }
 
 code {
@@ -22,11 +23,13 @@ code {
 .header {
   grid-column: 1/3;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   z-index: 3;
   box-shadow: rgba(0, 0, 0, 0.12) 2px 0px 4px 0px;
-  background: #f3f3f3;
+  background: #fbfbfd;
+  color: #031930;
+  font-weight: bold;
 }
 
 .sidebar {
@@ -37,4 +40,55 @@ code {
 
 .map {
   z-index: 1;
+}
+
+.swtich-container {
+  display: flex;
+  cursor: pointer;
+}
+
+.toggle-switch {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.toggle-switch [type="checkbox"] {
+  position: relative;
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+
+.toggle-switch .slider {
+  display: inline-block;
+  position: relative;
+  width: 45px;
+  height: 25px;
+  background: grey;
+  border-radius: 100px;
+}
+
+.toggle-switch .slider:before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 19px;
+  height: 19px;
+  background: #fff;
+  border-radius: 100%;
+  transition: all 0.2s ease-in-out;
+}
+
+input:checked + .slider {
+  background: #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(-100%);
+  left: calc(100% - 3px);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
 }
