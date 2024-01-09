@@ -23,23 +23,22 @@ code {
 .header {
   grid-column: 1/3;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   z-index: 3;
   box-shadow: rgba(0, 0, 0, 0.12) 2px 0px 4px 0px;
   background: #fbfbfd;
   color: #031930;
   font-weight: bold;
+  padding: 0rem 3rem;
 }
 
-.sidebar {
-  background: linear-gradient(to top left, #ffb003, #ffcb03);
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px 0px;
-  z-index: 2;
+.header img {
+  width: 25px;
+  margin-right: 0.7rem;
 }
 
-.map {
-  z-index: 1;
+.title {
+  flex-grow: 1;
 }
 
 .swtich-container {
@@ -62,33 +61,82 @@ code {
 .toggle-switch .slider {
   display: inline-block;
   position: relative;
-  width: 45px;
+  width: 120px;
   height: 25px;
-  background: grey;
-  border-radius: 100px;
+  background: rgba(159, 159, 159, 0.3);
+  border-radius: 9999px;
+  box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 4px 0px;
+  font-size: 0.87rem;
 }
 
-.toggle-switch .slider:before {
-  content: "";
+.toggle-switch .slider:after {
+  content: "Korean";
   position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 19px;
-  height: 19px;
+  left: 0px;
+  right: 0px;
+  width: 65px;
+  height: 25px;
+  text-align: center;
+  color: #235cf3;
   background: #fff;
-  border-radius: 100%;
+  border-radius: 9999px;
   transition: all 0.2s ease-in-out;
 }
 
-input:checked + .slider {
-  background: #2196f3;
+.toggle-switch .slider:before {
+  content: "English";
+  float: right;
+  text-align: center;
 }
 
 input:checked + .slider:before {
+  content: "Korean";
+  float: left;
+}
+
+input:checked + .slider:after {
+  content: "English";
   transform: translateX(-100%);
-  left: calc(100% - 3px);
+  left: 100%;
 }
 
 input:focus + .slider {
   box-shadow: 0 0 1px #2196f3;
+}
+
+.sidebar {
+  background: rgba(239, 241, 254, 0.4);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px 0px;
+  z-index: 2;
+  padding-left: 3rem;
+}
+
+.sidebar ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  padding-left: 0;
+  color: #7e7d7d;
+}
+
+.sidebar ul li {
+  border: 1.2px solid #d6dae3;
+  border-radius: 9999px;
+  padding: 5px 10px 6px 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.sidebar ul li:hover {
+  background: rgba(214, 218, 227, 0.5);
+}
+
+.map {
+  z-index: 1;
+}
+
+.btn-color {
+  color: #235cf3;
+  border-color: #235cf3 !important;
+  background: rgba(35, 92, 243, 0.12);
 }

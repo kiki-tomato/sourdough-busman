@@ -1,24 +1,25 @@
 import i18n from "../locales/i18n";
+import { useTranslation } from "react-i18next";
+import bread from "../assets/Baguette Bread.svg";
 
 function Header() {
+  const { t } = useTranslation();
+
   const translateContent = function () {
-    if (i18n.language === "en") {
-      i18n.changeLanguage("kr");
-    } else if (i18n.language === "kr") {
-      i18n.changeLanguage("en");
-    }
+    i18n.language === "en"
+      ? i18n.changeLanguage("ko")
+      : i18n.changeLanguage("en");
   };
 
   return (
     <div className="header">
-      <div className="title">{i18n.t("header.title")}</div>
-      <label className="swtich-container" onClick={() => translateContent()}>
-        <div>KR</div>
+      <img src={bread} alt="bread emoji"></img>
+      <div className="title">{t("header.title")}</div>
+      <label className="swtich-container">
         <div className="toggle-switch">
-          <input type="checkbox"></input>
+          <input type="checkbox" onClick={translateContent}></input>
           <span className="slider"></span>
         </div>
-        <div>ENG</div>
       </label>
     </div>
   );

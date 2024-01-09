@@ -1,16 +1,16 @@
 import i18n from "i18next";
-// import { initReactI18next } from "react-i18next";
-import languageDetector from "i18next-browser-languagedetector";
-import translationKR from "./kr/translation";
+import { initReactI18next } from "react-i18next";
+import translationKO from "./kr/translation";
 import translateionEN from "./en/translation";
 
 const resources = {
   en: { translation: translateionEN },
-  kr: { translation: translationKR },
+  ko: { translation: translationKO },
 };
 
-i18n.use(languageDetector).init({
+i18n.use(initReactI18next).init({
   resources,
+  lng: "ko",
   debug: true,
   fallbackLng: "en",
   interpolation: {
