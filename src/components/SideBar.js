@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import Place from "./Place";
 
 function SideBar() {
   const { t } = useTranslation();
@@ -15,7 +16,7 @@ function SideBar() {
         <li onClick={btnColorChange}>{t("sideBar.open")}</li>
         <li onClick={btnColorChange}>{t("sideBar.distance")}</li>
       </ul>
-      <div></div>
+      <Place />
     </div>
   );
 }

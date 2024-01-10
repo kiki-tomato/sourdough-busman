@@ -1,6 +1,6 @@
 import i18n from "../locales/i18n";
 import { useTranslation } from "react-i18next";
-import bread from "../assets/Baguette Bread.svg";
+import bread from "../assets/baguette_bread.png";
 
 function Header() {
   const { t } = useTranslation();

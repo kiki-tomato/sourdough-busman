@@ -2,13 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="./Favicon-bread.ico" />
+    <link rel="icon" href="%PUBLIC_URL%/Favicon-bread.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#fbfbfd" />
     <meta
       name="description"
       content="Find and share sourdough bakeries in Busan, when you’re not in the mood for sweet bread"
     />
+
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -25,10 +26,23 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Sourdough Busan</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sourdough Busan" />
+    <meta property="og:site_name" content="Sourdough Busan" />
+    <meta
+      property="og:description"
+      content="Find and share sourdough bakeries in Busan, when you’re not in the mood for sweet bread"
+    />
     <script
       type="text/javascript"
       src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=%REACT_APP_NAVER_MAP_ID%"
     ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
