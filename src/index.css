@@ -150,3 +150,13 @@ input:focus + .slider {
   border-radius: 15px;
   width: 250px;
 }
+
+.map-container {
+  position: relative;
+}
+
+.map-container button {
+  position: absolute;
+  right: 25px;
+  bottom: 35px;
+}

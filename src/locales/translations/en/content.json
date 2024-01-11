@@ -1,0 +1,39 @@
+{
+  "place1": {
+    "name": "Lucky Bakery",
+    "location": "71, Muhak-ro 49beon-gil, Suyeong-gu, Busan",
+    "openingHours": {
+      "fri": {
+        "open": 10,
+        "close": 17
+      },
+      "sat": {
+        "open": 10,
+        "close": 17
+      },
+      "sun": {
+        "open": 10,
+        "close": 15
+      }
+    }
+  },
+
+  "place2": {
+    "name": "Sourdough Busan",
+    "location": "",
+    "openingHours": {
+      "thu": {
+        "open": 12,
+        "close": 22
+      },
+      "fri": {
+        "open": 11,
+        "close": 23
+      },
+      "sat": {
+        "open": 0,
+        "close": 24
+      }
+    }
+  }
+}

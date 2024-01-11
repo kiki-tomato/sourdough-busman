@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+const { naver } = window;
 
 function Map() {
   const [currentLocation, setCurrentLocation] = useState({
@@ -26,7 +27,6 @@ function Map() {
   }, []);
 
   useEffect(() => {
-    const { naver } = window;
     const mapContainer = document.getElementById("naverMap");
     const defaultLocation = new naver.maps.LatLng(
       currentLocation.latitude,
@@ -50,9 +50,33 @@ function Map() {
       position: defaultLocation,
       map: map,
     });
-  }, []);
+  }, [currentLocation]);
 
-  return <div className="map" id="naverMap"></div>;
+  // const btnMyLocation = '<button type="button">back to my location</button>';
+  // new naver.maps.CustomControl(btnMyLocation, {
+  //   position: naver.maps.Position.TOP_LEFT,
+  // });
+
+  // useEffect(() => {
+  //   const btnMyLocation = '<button type="button">back to my location</button>>';
+  //   const customControl = new naver.maps.CustomControl(btnMyLocation, {
+  //     position: naver.maps.Position.BOTTOM_RIGHT,
+  //   });
+
+  //   // var map = new naver.maps.Map("map", {});
+
+  //   // naver.maps.Event.once(map, "init", function () {
+  //   //   customControl.setMap(map);
+  //   // });
+  // });
+
+  return (
+    // <div className="map-container">
+    //   <div className="map" id="naverMap"></div>
+    //   <button type="button">back to my location</button>
+    // </div>
+    <div className="map" id="naverMap"></div>
+  );
 }
 
 export default Map;
