@@ -4,8 +4,8 @@ import translationKO from "./translations/ko";
 import translateionEN from "./translations/en";
 
 const resources = {
-  en: { translation: translateionEN },
   ko: { translation: translationKO },
+  en: { translation: translateionEN },
 };
 
 i18n.use(initReactI18next).init({
