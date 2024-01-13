@@ -1,3 +1,13 @@
+/* variables */
+:root {
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1.2rem;
+  --text-lg: 1.5rem;
+  --text-xl: 3rem;
+  --text-color: #222222;
+}
+
 @font-face {
   font-family: "Commit Mono";
   src: url("./assets/fonts/CommitMono-400-Regular.otf");
@@ -10,7 +20,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
-  color: #222222;
+  color: var(--text-color);
 }
 
 code {
@@ -33,7 +43,7 @@ code {
   background: #fbfbfd;
   color: #031930;
   font-weight: 700;
-  padding: 0rem 3rem;
+  padding: 0rem 1.5rem;
 }
 
 .header img {
@@ -45,27 +55,37 @@ code {
   flex-grow: 1;
 }
 
-.swtich-container {
+.toggle-switch {
   display: flex;
   cursor: pointer;
-}
-
-.toggle-switch {
-  margin-right: 10px;
-  margin-left: 10px;
+  position: relative;
 }
 
 .toggle-switch [type="checkbox"] {
-  position: relative;
   visibility: hidden;
   height: 0;
   width: 0;
 }
 
-.toggle-switch .slider {
+div p:nth-child(1) {
+  position: absolute;
+  top: -1rem;
+  left: 1rem;
+  z-index: 5;
+  color: #235cf3;
+}
+
+div p:nth-child(2) {
+  position: absolute;
+  top: -1rem;
+  left: 4.6rem;
+  z-index: 5;
+}
+
+div .slider {
   display: inline-block;
   position: relative;
-  width: 120px;
+  width: 125px;
   height: 25px;
   background: rgba(159, 159, 159, 0.3);
   border-radius: 9999px;
@@ -73,38 +93,33 @@ code {
   font-size: 0.87rem;
 }
 
-.toggle-switch .slider:after {
-  content: "Korean";
+div .slider:before {
+  content: "";
   position: absolute;
   left: 0px;
   right: 0px;
   width: 65px;
   height: 25px;
   text-align: center;
-  color: #235cf3;
   background: #fff;
   border-radius: 9999px;
   transition: all 0.2s ease-in-out;
 }
 
-.toggle-switch .slider:before {
-  content: "English";
-  float: right;
-  text-align: center;
+input:checked + div p:nth-child(1) {
+  color: var(--text-color);
 }
 
-input:checked + .slider:before {
-  content: "Korean";
-  float: left;
+input:checked + div p:nth-child(2) {
+  color: #235cf3;
 }
 
-input:checked + .slider:after {
-  content: "English";
+input:checked + div .slider:before {
   transform: translateX(-100%);
   left: 100%;
 }
 
-input:focus + .slider {
+input:focus div .slider {
   box-shadow: 0 0 1px #2196f3;
 }
 
@@ -112,16 +127,16 @@ input:focus + .slider {
   background: rgba(239, 241, 254, 0.4);
   box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px 0px;
   z-index: 2;
-  padding-left: 3rem;
   overflow-y: scroll;
+  font-size: var(--text-sm);
 }
 
 .sidebar ul {
   display: flex;
   flex-direction: row;
   list-style-type: none;
-  padding-left: 0;
   color: #7e7d7d;
+  padding-left: 1.5rem;
 }
 
 .sidebar ul li {
@@ -146,12 +161,6 @@ input:focus + .slider {
   background: rgba(35, 92, 243, 0.12);
 }
 
-.place {
-  border: 1px solid #d6dae3;
-  border-radius: 15px;
-  width: 250px;
-}
-
 .map-container {
   position: relative;
 }
@@ -163,5 +172,23 @@ input:focus + .slider {
 }
 
 .place {
-  margin-bottom: 1rem;
+  border-bottom: 1px solid #d6dae3;
+}
+
+.place:hover {
+  background: rgba(214, 218, 227, 0.5);
+}
+
+.place h3 {
+  padding-top: 1rem;
+  margin-top: 0;
+}
+
+.place h5 {
+  font-weight: 400;
+}
+
+.place * {
+  margin-top: 0;
+  padding-left: 1.5rem;
 }

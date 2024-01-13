@@ -8,16 +8,15 @@ function Place() {
 
   const bakeryData = t("bakeries", { returnObjects: true });
 
-  let places = [];
-  for (let i = 0; i < bakeryData.length; i++) {
-    places.push(
-      <div className="place" key={i}>
-        <h3>{t(`bakeries.${i}.name`)}</h3>
-        <h5>{t(`bakeries.${i}.location`)}</h5>
+  const places = bakeryData.map((element, index) => {
+    return (
+      <div className="place" key={index}>
+        <h3>{t(element.name)}</h3>
+        <h5>{t(element.location)}</h5>
         <h5>hours</h5>
       </div>
     );
-  }
+  });
 
   console.log(places);
 
