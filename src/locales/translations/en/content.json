@@ -3,311 +3,155 @@
     {
       "name": "Lucky Bakery",
       "location": "71, Muhak-ro 49beon-gil, Suyeong-gu, Busan",
-      "openingHours": {
-        "fri": {
-          "open": 10,
-          "close": 17
-        },
-        "sat": {
-          "open": 10,
-          "close": 17
-        },
-        "sun": {
-          "open": 10,
-          "close": 15
-        }
-      }
+      "hours": [
+        { "day": "sun", "open": 10, "close": 15 },
+        { "day": "mon", "closed": true },
+        { "day": "tue", "closed": true },
+        { "day": "wed", "closed": true },
+        { "day": "thu", "closed": true },
+        { "day": "fri", "open": 10, "close": 17 },
+        { "day": "sat", "open": 10, "close": 17 }
+      ]
     },
 
     {
       "name": "J.Sourdough",
-      "location": "",
-      "openingHours": {
-        "sat": {
-          "open": 11,
-          "close": 18
-        }
-      }
+      "location": "부산 해운대구 좌동로 166 LH창업지원주택 상가동 102호",
+      "hours": [
+        { "day": "sun", "closed": true },
+        { "day": "mon", "closed": true },
+        { "day": "tue", "closed": true },
+        { "day": "wed", "closed": true },
+        { "day": "thu", "closed": true },
+        { "day": "fri", "closed": true },
+        { "day": "sat", "open": 11, "close": 18 }
+      ]
     },
 
     {
       "name": "painpainpain busan",
       "location": "부산 해운대구 마린시티1로 91 102동 102호",
-      "openingHours": {
-        "mon": {
-          "open": "",
-          "close": ""
-        },
-        "tue": {
-          "open": 9,
-          "close": 17.5
-        },
-        "wed": {
-          "open": 9,
-          "close": 17.5
-        },
-        "thu": {
-          "open": 9,
-          "close": 17.5
-        },
-        "fri": {
-          "open": 9,
-          "close": 17.5
-        },
-        "sat": {
-          "open": 9,
-          "close": 17.5
-        },
-        "sun": {
-          "open": 9,
-          "close": 17.5
-        }
-      }
+      "hours": [
+        { "day": "sun", "open": 9, "close": 17.5 },
+        { "day": "mon", "closed": true },
+        { "day": "tue", "open": 9, "close": 17.5 },
+        { "day": "wed", "open": 9, "close": 17.5 },
+        { "day": "thu", "open": 9, "close": 17.5 },
+        { "day": "fri", "open": 9, "close": 17.5 },
+        { "day": "sat", "open": 9, "close": 17.5 }
+      ]
     },
 
     {
       "name": "Panem",
       "location": "부산 남구 진남로25번길 28 1층",
-      "openingHours": {
-        "mon": {
-          "open": 10,
-          "close": 21
-        },
-        "tue": {
-          "open": 10,
-          "close": 21
-        },
-        "wed": {
-          "open": 10,
-          "close": 21
-        },
-        "thu": {
-          "open": 10,
-          "close": 21
-        },
-        "fri": {
-          "open": 10,
-          "close": 21
-        },
-        "sat": {
-          "open": 10,
-          "close": 21
-        },
-        "sun": {
-          "open": "",
-          "close": ""
-        }
-      }
+      "hours": [
+        { "day": "sun", "closed": true },
+        { "day": "mon", "open": 10, "close": 21 },
+        { "day": "tue", "open": 10, "close": 21 },
+        { "day": "wed", "open": 10, "close": 21 },
+        { "day": "thu", "open": 10, "close": 21 },
+        { "day": "fri", "open": 10, "close": 21 },
+        { "day": "sat", "open": 10, "close": 21 }
+      ]
     },
 
     {
       "name": "Ramidami Bakery",
       "location": "부산 연제구 법원북로 45 1층",
-      "openingHours": {
-        "mon": {
-          "open": 10,
-          "close": 20
-        },
-        "tue": {
-          "open": 10,
-          "close": 20
-        },
-        "wed": {
-          "open": 10,
-          "close": 20
-        },
-        "thu": {
-          "open": 10,
-          "close": 20
-        },
-        "fri": {
-          "open": 10,
-          "close": 20
-        },
-        "sat": {
-          "open": 10,
-          "close": 19
-        },
-        "sun": {
-          "open": "",
-          "close": ""
-        }
-      }
+      "hours": [
+        { "day": "sun", "closed": true },
+        { "day": "mon", "open": 10, "close": 20 },
+        { "day": "tue", "open": 10, "close": 20 },
+        { "day": "wed", "open": 10, "close": 20 },
+        { "day": "thu", "open": 10, "close": 20 },
+        { "day": "fri", "open": 10, "close": 20 },
+        { "day": "sat", "open": 10, "close": 19 }
+      ]
     },
 
     {
       "name": "Cafe Homil",
       "location": "부산 금정구 금샘로 34",
-      "openingHours": {
-        "mon": {
-          "open": "",
-          "close": ""
-        },
-        "tue": {
-          "open": "",
-          "close": ""
-        },
-        "wed": {
-          "open": 10.5,
-          "close": 18
-        },
-        "thu": {
-          "open": 10.5,
-          "close": 18
-        },
-        "fri": {
-          "open": 10.5,
-          "close": 18
-        },
-        "sat": {
-          "open": 10.5,
-          "close": 18
-        },
-        "sun": {
-          "open": 10.5,
-          "close": 17
-        }
-      }
+      "hours": [
+        { "day": "sun", "open": 10.5, "close": 17 },
+        { "day": "mon", "closed": true },
+        { "day": "tue", "closed": true },
+        { "day": "wed", "open": 10.5, "close": 18 },
+        { "day": "thu", "open": 10.5, "close": 18 },
+        { "day": "fri", "open": 10.5, "close": 18 },
+        { "day": "sat", "open": 10.5, "close": 18 }
+      ]
     },
 
     {
       "name": "Bread Basket",
       "location": "부산 금정구 장전로 10 101호",
-      "openingHours": {
-        "mon": {
-          "open": "",
-          "close": ""
-        },
-        "tue": {
-          "open": 11,
-          "close": 16
-        },
-        "wed": {
-          "open": 11,
-          "close": 16
-        },
-        "thu": {
-          "open": 11,
-          "close": 16
-        },
-        "fri": {
-          "open": 11,
-          "close": 16
-        },
-        "sat": {
-          "open": 11,
-          "close": 16
-        },
-        "sun": {
-          "open": "",
-          "close": ""
-        }
-      }
+      "hours": [
+        { "day": "sun", "closed": true },
+        { "day": "mon", "closed": true },
+        { "day": "tue", "open": 11, "close": 16 },
+        { "day": "wed", "open": 11, "close": 16 },
+        { "day": "thu", "open": 11, "close": 16 },
+        { "day": "fri", "open": 11, "close": 16 },
+        { "day": "sat", "open": 11, "close": 16 }
+      ]
+    },
+
+    {
+      "name": "Won Bread",
+      "location": "부산 기장군 기장읍 대청로35번길 52",
+      "hours": [
+        { "day": "sun", "closed": true },
+        { "day": "mon", "closed": true },
+        { "day": "tue", "closed": true },
+        { "day": "wed", "open": 11, "close": 18 },
+        { "day": "thu", "open": 11, "close": 18 },
+        { "day": "fri", "open": 11, "close": 18 },
+        { "day": "sat", "open": 11, "close": 18 }
+      ]
     },
 
     {
       "name": "ebb",
       "location": "부산 영도구 동삼오션로 30 시타딘커넥트호텔 2층, 이비비베이커리 (244호)",
-      "openingHours": {
-        "mon": {
-          "open": 10,
-          "close": 20
-        },
-        "tue": {
-          "open": 10,
-          "close": 20
-        },
-        "wed": {
-          "open": 10,
-          "close": 20
-        },
-        "thu": {
-          "open": 10,
-          "close": 20
-        },
-        "fri": {
-          "open": 10,
-          "close": 20
-        },
-        "sat": {
-          "open": 10,
-          "close": 20
-        },
-        "sun": {
-          "open": 10,
-          "close": 20
-        }
-      }
+      "hours": [
+        { "day": "sun", "open": 10, "close": 20 },
+        { "day": "mon", "open": 10, "close": 20 },
+        { "day": "tue", "open": 10, "close": 20 },
+        { "day": "wed", "open": 10, "close": 20 },
+        { "day": "thu", "open": 10, "close": 20 },
+        { "day": "fri", "open": 10, "close": 20 },
+        { "day": "sat", "open": 10, "close": 20 }
+      ]
     },
 
     {
       "name": "Arch Bakery",
       "location": "부산 중구 중구로44번길 19-1 1층",
-      "openingHours": {
-        "mon": {
-          "open": 12.5,
-          "close": 19
-        },
-        "tue": {
-          "open": 12.5,
-          "close": 19
-        },
-        "wed": {
-          "open": 12.5,
-          "close": 19
-        },
-        "thu": {
-          "open": 12.5,
-          "close": 19
-        },
-        "fri": {
-          "open": 12.5,
-          "close": 19
-        },
-        "sat": {
-          "open": 12.5,
-          "close": 19
-        },
-        "sun": {
-          "open": 12.5,
-          "close": 19
-        }
-      }
+      "hours": [
+        { "day": "sun", "open": 12.5, "close": 19 },
+        { "day": "mon", "open": 12.5, "close": 19 },
+        { "day": "tue", "open": 12.5, "close": 19 },
+        { "day": "wed", "open": 12.5, "close": 19 },
+        { "day": "thu", "open": 12.5, "close": 19 },
+        { "day": "fri", "open": 12.5, "close": 19 },
+        { "day": "sat", "open": 12.5, "close": 19 }
+      ]
     },
 
     {
       "name": "Bakers Mama",
       "location": "부산 사하구 윤공단로62번길 41 1층",
-      "openingHours": {
-        "mon": {
-          "open": "",
-          "close": ""
-        },
-        "tue": {
-          "open": 11,
-          "close": 19
-        },
-        "wed": {
-          "open": 11,
-          "close": 19
-        },
-        "thu": {
-          "open": 11,
-          "close": 19
-        },
-        "fri": {
-          "open": 11,
-          "close": 19
-        },
-        "sat": {
-          "open": 11,
-          "close": 19
-        },
-        "sun": {
-          "open": "",
-          "close": ""
-        }
-      }
+      "hours": [
+        { "day": "sun", "closed": true },
+        { "day": "mon", "closed": true },
+        { "day": "tue", "open": 11, "close": 19 },
+        { "day": "wed", "open": 11, "close": 19 },
+        { "day": "thu", "open": 11, "close": 19 },
+        { "day": "fri", "open": 11, "close": 19 },
+        { "day": "sat", "open": 11, "close": 19 }
+      ]
     }
   ]
 }

@@ -6,6 +6,7 @@
   --text-lg: 1.5rem;
   --text-xl: 3rem;
   --text-color: #222222;
+  --text-color-accent: #235cf3;
 }
 
 @font-face {
@@ -191,4 +192,13 @@ input:focus div .slider {
 .place * {
   margin-top: 0;
   padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.red {
+  color: #d45a35;
+}
+
+.blue {
+  color: var(--text-color-accent);
 }

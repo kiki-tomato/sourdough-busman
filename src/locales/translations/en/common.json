@@ -6,6 +6,11 @@
   "sideBar": {
     "filter": "Filter",
     "open": "Open Now",
-    "distance": "Nearest"
+    "distance": "Nearest",
+    "openStatus": {
+      "open": "Open 'till {{hour}}pm",
+      "closed": "Closed",
+      "closureDay": "Closed"
+    }
   }
 }
