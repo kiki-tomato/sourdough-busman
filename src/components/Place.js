@@ -15,10 +15,24 @@ function Place() {
       bakeryData[i].hours[currentDay].open <= currentHours &&
       currentHours < bakeryData[i].hours[currentDay].close
     ) {
-      openOrNot = t("sideBar.openStatus.open", {
-        hour: bakeryData[i].hours[currentDay].close - 12,
-      });
       textColor = "blue";
+
+      if (Number.isInteger(bakeryData[i].hours[currentDay].close)) {
+        openOrNot = t("sideBar.openStatus.open", {
+          hour: Math.trunc(bakeryData[i].hours[currentDay].close) - 12,
+          minute: "00",
+        });
+      } else {
+        openOrNot = t("sideBar.openStatus.open", {
+          hour: Math.trunc(bakeryData[i].hours[currentDay].close) - 12,
+          minute:
+            (bakeryData[i].hours[currentDay].close -
+              Math.trunc(bakeryData[i].hours[currentDay].close)) *
+            60,
+        });
+      }
+    } else if (currentHours >= bakeryData[i].hours[currentDay].close) {
+      openOrNot = t("sideBar.openStatus.closed");
     } else if (bakeryData[i].hours[currentDay].closed) {
       openOrNot = t("sideBar.openStatus.closureDay");
       textColor = "red";
@@ -32,6 +46,25 @@ function Place() {
       </div>
     );
   }
+
+  console.log(
+    bakeryData
+      .filter((element) => {
+        return (
+          element.hours[currentDay].open <= currentHours &&
+          element.hours[currentDay].close > currentHours
+        );
+      })
+      .map((element, i) => {
+        return (
+          <div className="place" key={i}>
+            <h3>{t(element.name)}</h3>
+            <h5>{t(element.location)}</h5>
+            <h5 className={textColor}>{openOrNot}</h5>
+          </div>
+        );
+      })
+  );
 
   return <div className="place-container">{places}</div>;
 }

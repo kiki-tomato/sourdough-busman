@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import Place from "./Place";
+import Places from "./Place";
 
 function SideBar() {
   const { t } = useTranslation();
@@ -11,12 +11,14 @@ function SideBar() {
 
   return (
     <div className="sidebar">
-      <ul>
-        <li onClick={btnColorChange}>{t("sideBar.filter")}</li>
-        <li onClick={btnColorChange}>{t("sideBar.open")}</li>
-        <li onClick={btnColorChange}>{t("sideBar.distance")}</li>
-      </ul>
-      <Place />
+      <div className="filter-container">
+        <ul>
+          <li onClick={btnColorChange}>{t("sideBar.filter")}</li>
+          <li onClick={btnColorChange}>{t("sideBar.open")}</li>
+          <li onClick={btnColorChange}>{t("sideBar.distance")}</li>
+        </ul>
+      </div>
+      <Places />
     </div>
   );
 }

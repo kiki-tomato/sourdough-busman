@@ -5,8 +5,9 @@
   --text-md: 1.2rem;
   --text-lg: 1.5rem;
   --text-xl: 3rem;
-  --text-color: #222222;
-  --text-color-accent: #235cf3;
+  --color-default: #222222;
+  --color-accent: #235cf3;
+  --color-warning: #d45a35;
 }
 
 @font-face {
@@ -21,7 +22,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
-  color: var(--text-color);
+  color: var(--color-default);
 }
 
 code {
@@ -42,7 +43,6 @@ code {
   z-index: 3;
   box-shadow: rgba(0, 0, 0, 0.12) 2px 0px 4px 0px;
   background: #fbfbfd;
-  color: #031930;
   font-weight: 700;
   padding: 0rem 1.5rem;
 }
@@ -70,25 +70,28 @@ code {
 
 div p:nth-child(1) {
   position: absolute;
-  top: -1rem;
-  left: 1rem;
+  top: -0.6rem;
+  left: 1.1rem;
   z-index: 5;
-  color: #235cf3;
+  color: var(--color-accent);
+  font-size: var(--text-sm);
 }
 
 div p:nth-child(2) {
   position: absolute;
-  top: -1rem;
-  left: 4.6rem;
+  top: -0.6rem;
+  left: 4.8rem;
   z-index: 5;
+  font-size: var(--text-sm);
+  color: #4a4a4a;
 }
 
 div .slider {
   display: inline-block;
   position: relative;
   width: 125px;
-  height: 25px;
-  background: rgba(159, 159, 159, 0.3);
+  height: 27px;
+  background: rgba(159, 159, 159, 0.24);
   border-radius: 9999px;
   box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 4px 0px;
   font-size: 0.87rem;
@@ -100,7 +103,7 @@ div .slider:before {
   left: 0px;
   right: 0px;
   width: 65px;
-  height: 25px;
+  height: 27px;
   text-align: center;
   background: #fff;
   border-radius: 9999px;
@@ -108,11 +111,11 @@ div .slider:before {
 }
 
 input:checked + div p:nth-child(1) {
-  color: var(--text-color);
+  color: #4a4a4a;
 }
 
 input:checked + div p:nth-child(2) {
-  color: #235cf3;
+  color: var(--color-accent);
 }
 
 input:checked + div .slider:before {
@@ -125,14 +128,21 @@ input:focus div .slider {
 }
 
 .sidebar {
-  background: rgba(239, 241, 254, 0.4);
   box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px 0px;
   z-index: 2;
   overflow-y: scroll;
   font-size: var(--text-sm);
 }
 
-.sidebar ul {
+.filter-container {
+  position: fixed;
+  width: 25%;
+  background: #f7f8ff;
+  border-bottom: 1px solid #d6dae3;
+  /* box-shadow: rgba(0, 0, 0, 0.12) 2px 0px 4px 0px; */
+}
+
+.filter-container ul {
   display: flex;
   flex-direction: row;
   list-style-type: none;
@@ -140,7 +150,7 @@ input:focus div .slider {
   padding-left: 1.5rem;
 }
 
-.sidebar ul li {
+.filter-container ul li {
   border: 1.2px solid #d6dae3;
   border-radius: 9999px;
   padding: 5px 10px 6px 10px;
@@ -148,7 +158,7 @@ input:focus div .slider {
   cursor: pointer;
 }
 
-.sidebar ul li:hover {
+.filter-container ul li:hover {
   background: rgba(214, 218, 227, 0.5);
 }
 
@@ -157,8 +167,8 @@ input:focus div .slider {
 }
 
 .btn-color {
-  color: #235cf3;
-  border-color: #235cf3 !important;
+  color: var(--color-accent);
+  border-color: var(--color-accent) !important;
   background: rgba(35, 92, 243, 0.12);
 }
 
@@ -170,9 +180,11 @@ input:focus div .slider {
   position: absolute;
   right: 25px;
   bottom: 35px;
+  cursor: pointer;
 }
 
 .place {
+  background: rgba(239, 241, 254, 0.4);
   border-bottom: 1px solid #d6dae3;
 }
 
@@ -180,6 +192,9 @@ input:focus div .slider {
   background: rgba(214, 218, 227, 0.5);
 }
 
+.place:nth-child(1) {
+  padding-top: 65px;
+}
 .place h3 {
   padding-top: 1rem;
   margin-top: 0;
@@ -196,9 +211,9 @@ input:focus div .slider {
 }
 
 .red {
-  color: #d45a35;
+  color: var(--color-warning);
 }
 
 .blue {
-  color: var(--text-color-accent);
+  color: var(--color-accent);
 }

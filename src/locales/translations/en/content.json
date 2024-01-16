@@ -16,7 +16,7 @@
 
     {
       "name": "J.Sourdough",
-      "location": "부산 해운대구 좌동로 166 LH창업지원주택 상가동 102호",
+      "location": "166, Jwadong-ro, Haeundae-gu, Busan",
       "hours": [
         { "day": "sun", "closed": true },
         { "day": "mon", "closed": true },
@@ -30,7 +30,7 @@
 
     {
       "name": "painpainpain busan",
-      "location": "부산 해운대구 마린시티1로 91 102동 102호",
+      "location": "91, Marine city 1-ro, Haeundae-gu, Busan",
       "hours": [
         { "day": "sun", "open": 9, "close": 17.5 },
         { "day": "mon", "closed": true },
@@ -44,7 +44,7 @@
 
     {
       "name": "Panem",
-      "location": "부산 남구 진남로25번길 28 1층",
+      "location": "28, Jinnam-ro 25beon-gil, Nam-gu, Busan",
       "hours": [
         { "day": "sun", "closed": true },
         { "day": "mon", "open": 10, "close": 21 },
@@ -58,7 +58,7 @@
 
     {
       "name": "Ramidami Bakery",
-      "location": "부산 연제구 법원북로 45 1층",
+      "location": "45, Beobwonbuk-ro, Yeonje-gu, Busan",
       "hours": [
         { "day": "sun", "closed": true },
         { "day": "mon", "open": 10, "close": 20 },
@@ -72,7 +72,7 @@
 
     {
       "name": "Cafe Homil",
-      "location": "부산 금정구 금샘로 34",
+      "location": "34, Geumsaem-ro, Geumjeong-gu, Busan,",
       "hours": [
         { "day": "sun", "open": 10.5, "close": 17 },
         { "day": "mon", "closed": true },
@@ -86,7 +86,7 @@
 
     {
       "name": "Bread Basket",
-      "location": "부산 금정구 장전로 10 101호",
+      "location": "10, Jangjeon-ro, Geumjeong-gu, Busan",
       "hours": [
         { "day": "sun", "closed": true },
         { "day": "mon", "closed": true },
@@ -100,7 +100,7 @@
 
     {
       "name": "Won Bread",
-      "location": "부산 기장군 기장읍 대청로35번길 52",
+      "location": "52, Daecheong-ro 35beon-gil, Gijang-eup, Gijang-gun, Busan",
       "hours": [
         { "day": "sun", "closed": true },
         { "day": "mon", "closed": true },
@@ -114,7 +114,7 @@
 
     {
       "name": "ebb",
-      "location": "부산 영도구 동삼오션로 30 시타딘커넥트호텔 2층, 이비비베이커리 (244호)",
+      "location": "30, Dongsam ocean-ro, Yeongdo-gu, Busan",
       "hours": [
         { "day": "sun", "open": 10, "close": 20 },
         { "day": "mon", "open": 10, "close": 20 },
@@ -128,7 +128,7 @@
 
     {
       "name": "Arch Bakery",
-      "location": "부산 중구 중구로44번길 19-1 1층",
+      "location": "19-1, Junggu-ro 44beon-gil, Jung-gu, Busan",
       "hours": [
         { "day": "sun", "open": 12.5, "close": 19 },
         { "day": "mon", "open": 12.5, "close": 19 },
@@ -142,7 +142,7 @@
 
     {
       "name": "Bakers Mama",
-      "location": "부산 사하구 윤공단로62번길 41 1층",
+      "location": "41, Yungongdan-ro 62beon-gil, Saha-gu, Busan",
       "hours": [
         { "day": "sun", "closed": true },
         { "day": "mon", "closed": true },

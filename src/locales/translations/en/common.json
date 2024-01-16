@@ -8,7 +8,7 @@
     "open": "Open Now",
     "distance": "Nearest",
     "openStatus": {
-      "open": "Open 'till {{hour}}pm",
+      "open": "Open 'till {{hour}}:{{minute}}pm",
       "closed": "Closed",
       "closureDay": "Closed"
     }

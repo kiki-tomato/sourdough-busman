@@ -50,33 +50,32 @@ function Map() {
       position: defaultLocation,
       map: map,
     });
+
+    naver.maps.Event.once(map, "init", function () {
+      const btnMyLocation =
+        '<button type="button" style="margin: 0px 10px 40px 0px;">back to my location</button>';
+      const customControl = new naver.maps.CustomControl(btnMyLocation, {
+        position: naver.maps.Position.RIGHT_BOTTOM,
+      });
+
+      customControl.setMap(map);
+
+      naver.maps.Event.addDOMListener(
+        customControl.getElement(),
+        "click",
+        function () {
+          map.setCenter(
+            new naver.maps.LatLng(
+              currentLocation.latitude,
+              currentLocation.longitude
+            )
+          );
+        }
+      );
+    });
   }, [currentLocation]);
 
-  // const btnMyLocation = '<button type="button">back to my location</button>';
-  // new naver.maps.CustomControl(btnMyLocation, {
-  //   position: naver.maps.Position.TOP_LEFT,
-  // });
-
-  // useEffect(() => {
-  //   const btnMyLocation = '<button type="button">back to my location</button>>';
-  //   const customControl = new naver.maps.CustomControl(btnMyLocation, {
-  //     position: naver.maps.Position.BOTTOM_RIGHT,
-  //   });
-
-  //   // var map = new naver.maps.Map("map", {});
-
-  //   // naver.maps.Event.once(map, "init", function () {
-  //   //   customControl.setMap(map);
-  //   // });
-  // });
-
-  return (
-    // <div className="map-container">
-    //   <div className="map" id="naverMap"></div>
-    //   <button type="button">back to my location</button>
-    // </div>
-    <div className="map" id="naverMap"></div>
-  );
+  return <div className="map" id="naverMap"></div>;
 }
 
 export default Map;

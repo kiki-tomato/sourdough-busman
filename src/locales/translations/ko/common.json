@@ -8,7 +8,7 @@
     "open": "영업중",
     "distance": "거리순",
     "openStatus": {
-      "open": "{{hour}}pm까지 영업",
+      "open": "{{hour}}:{{minute}}pm까지 영업",
       "closed": "영업마감",
       "closureDay": "정기휴무"
     }
