@@ -42,7 +42,10 @@ function Place() {
       <div className="place" key={i}>
         <h3>{t(`bakeries.${i}.name`)}</h3>
         <h5>{t(`bakeries.${i}.location`)}</h5>
-        <h5 className={textColor}>{openOrNot}</h5>
+        <ul>
+          <li>0.00km</li>
+          <li className={textColor}>{openOrNot}</li>
+        </ul>
       </div>
     );
   }

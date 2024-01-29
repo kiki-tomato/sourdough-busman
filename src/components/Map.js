@@ -52,8 +52,7 @@ function Map() {
     });
 
     naver.maps.Event.once(map, "init", function () {
-      const btnMyLocation =
-        '<button type="button" style="margin: 0px 10px 40px 0px;">back to my location</button>';
+      const btnMyLocation = '<img class="button">';
       const customControl = new naver.maps.CustomControl(btnMyLocation, {
         position: naver.maps.Position.RIGHT_BOTTOM,
       });

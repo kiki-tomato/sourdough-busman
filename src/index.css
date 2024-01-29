@@ -210,10 +210,29 @@ input:focus div .slider {
   padding-right: 1.5rem;
 }
 
+.place ul {
+  display: flex;
+  list-style-type: none;
+}
+
+.place ul li {
+  font-size: var(--text-xs);
+  padding-left: 0;
+}
+
 .red {
   color: var(--color-warning);
 }
 
 .blue {
   color: var(--color-accent);
+}
+
+.button {
+  content: url(./assets/my_location.svg);
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  margin: 0px 10px 25px 0px;
+  filter: drop-shadow(2px 0px 4px rgba(0, 0, 0, 0.12));
 }
