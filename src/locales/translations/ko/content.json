@@ -2,7 +2,11 @@
   "bakeries": [
     {
       "name": "럭키 베이커리",
-      "location": "부산 수영구 무학로49번길 71",
+      "address": "부산 수영구 무학로49번길 71",
+      "location": {
+        "latitude": 35.1641776,
+        "longitude": 129.1181663
+      },
       "hours": [
         { "day": "sun", "open": 10, "close": 15 },
         { "day": "mon", "closed": true },
@@ -16,7 +20,11 @@
 
     {
       "name": "제이사워도우",
-      "location": "부산 해운대구 좌동로 166 LH창업지원주택 상가동 102호",
+      "address": "부산 해운대구 좌동로 166 LH창업지원주택 상가동 102호",
+      "location": {
+        "latitude": 35.1755701,
+        "longitude": 129.182532
+      },
       "hours": [
         { "day": "sun", "closed": true },
         { "day": "mon", "closed": true },
@@ -30,7 +38,11 @@
 
     {
       "name": "아티성블렁제리 빵빵빵",
-      "location": "부산 해운대구 마린시티1로 91 102동 102호",
+      "address": "부산 해운대구 마린시티1로 91 102동 102호",
+      "location": {
+        "latitude": 35.1552701,
+        "longitude": 129.1446744
+      },
       "hours": [
         { "day": "sun", "open": 9, "close": 17.5 },
         { "day": "mon", "closed": true },
@@ -44,7 +56,11 @@
 
     {
       "name": "빠넴",
-      "location": "부산 남구 진남로25번길 28 1층",
+      "address": "부산 남구 진남로25번길 28 1층",
+      "location": {
+        "latitude": 35.1372809,
+        "longitude": 129.0899096
+      },
       "hours": [
         { "day": "sun", "closed": true },
         { "day": "mon", "open": 10, "close": 21 },
@@ -58,7 +74,11 @@
 
     {
       "name": "라미다미 베이커리",
-      "location": "부산 연제구 법원북로 45 1층",
+      "address": "부산 연제구 법원북로 45 1층",
+      "location": {
+        "latitude": 35.194228,
+        "longitude": 129.0718785
+      },
       "hours": [
         { "day": "sun", "closed": true },
         { "day": "mon", "open": 10, "close": 20 },
@@ -72,7 +92,11 @@
 
     {
       "name": "카페호밀 장전점",
-      "location": "부산 금정구 금샘로 34",
+      "address": "부산 금정구 금샘로 34",
+      "location": {
+        "latitude": 35.2287723,
+        "longitude": 129.0772645
+      },
       "hours": [
         { "day": "sun", "open": 10.5, "close": 17 },
         { "day": "mon", "closed": true },
@@ -86,7 +110,11 @@
 
     {
       "name": "브레드바스켓",
-      "location": "부산 금정구 장전로 10 101호",
+      "address": "부산 금정구 장전로 10 101호",
+      "location": {
+        "latitude": 35.2278609,
+        "longitude": 129.0876431
+      },
       "hours": [
         { "day": "sun", "closed": true },
         { "day": "mon", "closed": true },
@@ -100,7 +128,11 @@
 
     {
       "name": "원브레드",
-      "location": "부산 기장군 기장읍 대청로35번길 52",
+      "address": "부산 기장군 기장읍 대청로35번길 52",
+      "location": {
+        "latitude": 35.2402052,
+        "longitude": 129.2144217
+      },
       "hours": [
         { "day": "sun", "closed": true },
         { "day": "mon", "closed": true },
@@ -114,7 +146,11 @@
 
     {
       "name": "이비비 베이커리",
-      "location": "부산 영도구 동삼오션로 30 시타딘커넥트호텔 2층, 이비비베이커리 (244호)",
+      "address": "부산 영도구 동삼오션로 30 시타딘커넥트호텔 2층, 이비비베이커리 (244호)",
+      "location": {
+        "latitude": 35.0696473,
+        "longitude": 129.0823421
+      },
       "hours": [
         { "day": "sun", "open": 10, "close": 20 },
         { "day": "mon", "open": 10, "close": 20 },
@@ -128,7 +164,11 @@
 
     {
       "name": "아치베이커리",
-      "location": "부산 중구 중구로44번길 19-1 1층",
+      "address": "부산 중구 중구로44번길 19-1 1층",
+      "location": {
+        "latitude": 35.1019363,
+        "longitude": 129.0299553
+      },
       "hours": [
         { "day": "sun", "open": 12.5, "close": 19 },
         { "day": "mon", "open": 12.5, "close": 19 },
@@ -142,7 +182,11 @@
 
     {
       "name": "베이커스 마마",
-      "location": "부산 사하구 윤공단로62번길 41 1층",
+      "address": "부산 사하구 윤공단로62번길 41 1층",
+      "location": {
+        "latitude": 35.058892,
+        "longitude": 128.9695897
+      },
       "hours": [
         { "day": "sun", "closed": true },
         { "day": "mon", "closed": true },
