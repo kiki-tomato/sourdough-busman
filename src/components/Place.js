@@ -125,24 +125,24 @@ function Place() {
     );
   }
 
-  console.log(
-    bakeryData
-      .filter((element) => {
-        return (
-          element.hours[currentDay].open <= currentHours &&
-          element.hours[currentDay].close > currentHours
-        );
-      })
-      .map((element, i) => {
-        return (
-          <div className="place" key={i}>
-            <h3>{t(element.name)}</h3>
-            <h5>{t(element.address)}</h5>
-            <h5 className={textColor}>{openOrNot}</h5>
-          </div>
-        );
-      })
-  );
+  // console.log(
+  //   bakeryData
+  //     .filter((element) => {
+  //       return (
+  //         element.hours[currentDay].open <= currentHours &&
+  //         element.hours[currentDay].close > currentHours
+  //       );
+  //     })
+  //     .map((element, i) => {
+  //       return (
+  //         <div className="place" key={i}>
+  //           <h3>{t(element.name)}</h3>
+  //           <h5>{t(element.address)}</h5>
+  //           <h5 className={textColor}>{openOrNot}</h5>
+  //         </div>
+  //       );
+  //     })
+  // );
 
   return <div className="place-container">{places}</div>;
 }

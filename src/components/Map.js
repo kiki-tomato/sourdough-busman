@@ -31,7 +31,9 @@ function Map() {
   useEffect(() => {
     const loadMapScript = async () => {
       try {
-        const response = await axios.get("/load-map-script");
+        const response = await axios.get(
+          "http://localhost:8000/load-map-script"
+        );
         const script = document.createElement("script");
         script.innerHTML = response.data;
         script.async = true;
