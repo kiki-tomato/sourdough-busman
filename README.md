@@ -22,6 +22,7 @@ a website for finding and sharing sourdough bakeries in Busan
 ### 4. Research
 
 [Reference 1](https://intro.threedollars.co.kr)
+
 [Reference 2](https://jinjja-seoul.com)
 
 - common features / positive attribute
