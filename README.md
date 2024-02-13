@@ -21,8 +21,8 @@ a website for finding and sharing sourdough bakeries in Busan
 
 ### 4. Research
 
-<https://intro.threedollars.co.kr>
-<https://jinjja-seoul.com>
+[Reference 1](https://intro.threedollars.co.kr)
+[Reference 2](https://jinjja-seoul.com)
 
 - common features / positive attribute
   - main(map view) : offer users precise information or subtly convey that we have what they're looking for → prevent users from leaving page
@@ -67,10 +67,10 @@ Create a compelling initial impression that assures users we have what they are 
   - contact
   - sharing feature
 
-  ### 10. Design
+### 10. Design
 
-  [Wireframes](https://www.figma.com/file/z5BkctouqCqBbLPuTalfHG/Sourdough-Busan?type=design&node-id=1%3A4&mode=design&t=y2JROav0P76TpJ3A-1)
+[Wireframes](https://www.figma.com/file/z5BkctouqCqBbLPuTalfHG/Sourdough-Busan?type=design&node-id=1%3A4&mode=design&t=y2JROav0P76TpJ3A-1)
 
-  ### 0. For more information
+### 0. For more information
 
-  [click here](https://copper-snail-e31.notion.site/Sourdough-Busan-23-12-20-7dfeecd7c51147689e149052ced94cbc?pvs=4)
+[click here](https://copper-snail-e31.notion.site/Sourdough-Busan-23-12-20-7dfeecd7c51147689e149052ced94cbc?pvs=4)
