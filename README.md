@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# Sourdough Busan
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 1. The Purpose of My Website (What To Build)
 
-## Available Scripts
+a website for finding and sharing sourdough bakeries in Busan
 
-In the project directory, you can run:
+### 2. Website description
 
-### `npm start`
+- title: Sourdough Busan
+- description: for those who are not in the mood for sweet bread. because it’s hard to find sourdough bread in bakery franchise
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 3. Things To Keep In Mind
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- build with React
+- should be a single-page application
+- available in 2 languages (Korean and English)
+- every component on the website should contribute to readability
+- build a responsive website (mobile and PC friendly)
+- follow conventions when it comes to design
+- make sure people share the place with others
 
-### `npm test`
+### 4. Research
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<https://intro.threedollars.co.kr>
+<https://jinjja-seoul.com>
 
-### `npm run build`
+- common features / positive attribute
+  - main(map view) : offer users precise information or subtly convey that we have what they're looking for → prevent users from leaving page
+  - list view : present more organized and detailed information including a filtering feature → help users find more suitable information
+  - additional information : if users are satisfied with the initial impression or information, it’ll be a way to make users stay longer
+  - intuitive words and design : easy to navigate without thinking → reduce the change of users leaving
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 5. Goal (decide based on the research)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Create a compelling initial impression that assures users we have what they are seeking. (make a good first impression)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 6. Ways To Achieve it
 
-### `npm run eject`
+- get straight to the point (avoid overwhelming users with excessive information)
+- provide specific information gradually
+- Ensure an intuitive user experience
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 8. Basic Structure
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Format : single page app
+- Main : map view with modal
+- List View
+- Page for each bakery
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 9. Features for modal and list view
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- For modal
 
-## Learn More
+  - bakery name
+  - trading hours
+  - distance
+  - user reactions
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- For list view
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  - distance
+  - trading hours
+  - filter (sort by)
+  - user reactions
+  - 택배 available
+  - address
+  - contact
+  - sharing feature
 
-### Code Splitting
+  ### 10. Design
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  [Wireframes](https://www.figma.com/file/z5BkctouqCqBbLPuTalfHG/Sourdough-Busan?type=design&node-id=1%3A4&mode=design&t=y2JROav0P76TpJ3A-1)
 
-### Analyzing the Bundle Size
+  ### 0. For more information
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  [click here](https://copper-snail-e31.notion.site/Sourdough-Busan-23-12-20-7dfeecd7c51147689e149052ced94cbc?pvs=4)
