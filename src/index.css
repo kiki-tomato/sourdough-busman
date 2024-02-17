@@ -236,3 +236,8 @@ input:focus div .slider {
   margin: 0px 10px 25px 0px;
   filter: drop-shadow(2px 0px 4px rgba(0, 0, 0, 0.12));
 }
+
+.place-list {
+  list-style-type: none;
+  padding-left: 0;
+}

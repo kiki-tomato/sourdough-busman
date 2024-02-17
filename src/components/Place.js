@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-function Place() {
+function Place({ bakeryData }) {
   const { t } = useTranslation();
-  const bakeryData = t("bakeries", { returnObjects: true });
+  const bakeryData1 = t("bakeries", { returnObjects: true });
   const places = [];
   const d = new Date();
   const currentDay = d.getDay();
@@ -112,17 +112,6 @@ function Place() {
       bakeryData[i].location.latitude,
       bakeryData[i].location.longitude
     );
-
-    places.push(
-      <div className="place" key={i}>
-        <h3>{t(`bakeries.${i}.name`)}</h3>
-        <h5>{t(`bakeries.${i}.address`)}</h5>
-        <ul>
-          <li>{`${distance.toFixed(2)}km`}</li>
-          <li className={textColor}>{openOrNot}</li>
-        </ul>
-      </div>
-    );
   }
 
   // console.log(
@@ -144,7 +133,16 @@ function Place() {
   //     })
   // );
 
-  return <div className="place-container">{places}</div>;
+  return (
+    <li className="place">
+      <h3>{bakeryData.name}</h3>
+      <h5>{bakeryData.address}</h5>
+      <ul>
+        {/* <li>{`${distance.toFixed(2)}km`}</li>
+        <li className={textColor}>{openOrNot}</li> */}
+      </ul>
+    </li>
+  );
 }
 
 export default Place;

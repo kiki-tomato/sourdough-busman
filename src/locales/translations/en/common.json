@@ -3,14 +3,15 @@
     "title": "Sourdough Busan"
   },
 
-  "sideBar": {
+  "filter": {
     "filter": "Filter",
     "open": "Open Now",
-    "distance": "Nearest",
-    "openStatus": {
-      "open": "Open 'till {{hour}}:{{minute}}pm",
-      "closed": "Closed",
-      "closureDay": "Closed"
-    }
+    "distance": "Nearest"
+  },
+
+  "openStatus": {
+    "open": "Open 'till {{hour}}:{{minute}}pm",
+    "closed": "Closed",
+    "closureDay": "Closed"
   }
 }

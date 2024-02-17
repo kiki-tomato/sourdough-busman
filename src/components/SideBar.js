@@ -1,24 +1,27 @@
 import { useTranslation } from "react-i18next";
-import Places from "./Place";
+import Place from "./Place";
+import BtnFilter from "./BtnFilter";
 
 function SideBar() {
   const { t } = useTranslation();
-
-  const btnColorChange = function (event) {
-    console.log(event.target);
-    event.target.classList.toggle("btn-color");
-  };
+  const filterObj = t("filter", { returnObjects: true });
+  const filterArr = Object.entries(filterObj);
+  const bakeriesArr = t("bakeries", { returnObjects: true });
 
   return (
     <div className="sidebar">
       <div className="filter-container">
         <ul>
-          <li onClick={btnColorChange}>{t("sideBar.filter")}</li>
-          <li onClick={btnColorChange}>{t("sideBar.open")}</li>
-          <li onClick={btnColorChange}>{t("sideBar.distance")}</li>
+          {filterArr.map((filter, i) => {
+            return <BtnFilter filterName={filter} key={i} />;
+          })}
         </ul>
       </div>
-      <Places />
+      <ul className="place-list">
+        {bakeriesArr.map((bakery) => (
+          <Place bakeryData={bakery} key={bakery.name} />
+        ))}
+      </ul>
     </div>
   );
 }

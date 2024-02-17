@@ -3,14 +3,15 @@
     "title": "사워도우 부산"
   },
 
-  "sideBar": {
+  "filter": {
     "filter": "필터",
     "open": "영업중",
-    "distance": "거리순",
-    "openStatus": {
-      "open": "{{hour}}:{{minute}}pm까지 영업",
-      "closed": "영업마감",
-      "closureDay": "정기휴무"
-    }
+    "distance": "거리순"
+  },
+
+  "openStatus": {
+    "open": "{{hour}}:{{minute}}pm까지 영업",
+    "closed": "영업마감",
+    "closureDay": "정기휴무"
   }
 }
