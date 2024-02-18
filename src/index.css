@@ -193,7 +193,7 @@ input:focus div .slider {
 }
 
 .place:nth-child(1) {
-  padding-top: 65px;
+  padding-top: 50px;
 }
 .place h3 {
   padding-top: 1rem;
@@ -218,6 +218,7 @@ input:focus div .slider {
 .place ul li {
   font-size: var(--text-xs);
   padding-left: 0;
+  padding-bottom: 20px;
 }
 
 .red {
