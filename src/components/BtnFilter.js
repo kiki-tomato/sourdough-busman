@@ -1,15 +1,7 @@
-import { useState } from "react";
-
-function BtnFilter({ filterName }) {
-  const [filterStatus, setFilterStatus] = useState(false);
-
-  const handleFilterOn = function () {
-    setFilterStatus((value) => !value);
-  };
-
+function BtnFilter({ filterStatus, onFilterClick, children }) {
   return (
-    <li onClick={handleFilterOn} className={filterStatus ? "btn-color" : null}>
-      {filterName[1]}
+    <li onClick={onFilterClick} className={filterStatus ? "btn-color" : null}>
+      {children}
     </li>
   );
 }

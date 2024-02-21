@@ -1,7 +1,6 @@
-import "./App.css";
-import Header from "./components/Header";
-import Map from "./components/Map";
-import SideBar from "./components/SideBar";
+import Header from "./Header";
+import Map from "./Map";
+import SideBar from "./SideBar";
 
 function App() {
   return (
