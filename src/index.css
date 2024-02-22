@@ -137,30 +137,38 @@ input:focus div .slider {
 }
 
 .filter-container {
+  /* display: flex; */
+  /* padding-left: 1.5rem; */
   position: fixed;
   width: 25%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  /* padding-left: 1.5rem; */
   background: #f7f8ff;
   border-bottom: 1px solid #d6dae3;
   /* box-shadow: rgba(0, 0, 0, 0.12) 2px 0px 4px 0px; */
 }
 
-.filter-container ul {
+/* .filter-container ul {
   display: flex;
   flex-direction: row;
   list-style-type: none;
   color: #7e7d7d;
   padding-left: 1.5rem;
-}
+} */
 
-.filter-container ul li {
+.filter-container button {
+  color: #7e7d7d;
   border: 1.2px solid #d6dae3;
+  background: #f7f8ff;
   border-radius: 9999px;
   padding: 5px 10px 6px 10px;
   margin-right: 10px;
   cursor: pointer;
 }
 
-.filter-container ul li:hover {
+.filter-container button:hover {
   background: rgba(214, 218, 227, 0.5);
 }
 
@@ -169,9 +177,9 @@ input:focus div .slider {
 }
 
 .btn-color {
-  color: var(--color-accent);
+  color: var(--color-accent) !important;
   border-color: var(--color-accent) !important;
-  background: rgba(35, 92, 243, 0.12);
+  background: rgba(35, 92, 243, 0.12) !important;
 }
 
 .map-container {

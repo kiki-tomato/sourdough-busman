@@ -1,11 +1,8 @@
 import i18n from "../locales/i18n";
-import { useTranslation } from "react-i18next";
 import bread from "../assets/baguette_bread.png";
 
-function Header() {
-  const { t } = useTranslation();
-
-  const translateContent = function () {
+function Header({ title }) {
+  const handleTranslateContent = function () {
     i18n.language === "en"
       ? i18n.changeLanguage("ko")
       : i18n.changeLanguage("en");
@@ -14,9 +11,9 @@ function Header() {
   return (
     <div className="header">
       <img src={bread} alt="bread emoji"></img>
-      <div className="title">{t("header.title")}</div>
+      <div className="title">{title}</div>
       <label className="toggle-switch">
-        <input type="checkbox" onClick={translateContent}></input>
+        <input type="checkbox" onClick={handleTranslateContent}></input>
         <div>
           <p>Korean</p>
           <p>English</p>

@@ -3,7 +3,7 @@
     "title": "사워도우 부산"
   },
 
-  "filter": {
+  "filters": {
     "filter": "필터",
     "open": "영업중",
     "distance": "거리순"

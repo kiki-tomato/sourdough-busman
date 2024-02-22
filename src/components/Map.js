@@ -1,32 +1,9 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import axios from "axios";
 
-function Map() {
-  const [currentLocation, setCurrentLocation] = useState({
-    latitude: 0,
-    longitude: 0,
-  });
+function Map({ currentLocation }) {
   const mapElement = useRef(null);
   const mapInitialized = useRef(false);
-
-  useEffect(() => {
-    const success = function (position) {
-      setCurrentLocation({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-      });
-    };
-    const error = function () {
-      setCurrentLocation({
-        latitude: 35.1641776,
-        longitude: 129.1181663,
-      });
-    };
-
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success, error);
-    }
-  }, []);
 
   useEffect(() => {
     const loadMapScript = async () => {
