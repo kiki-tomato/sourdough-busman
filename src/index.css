@@ -194,7 +194,6 @@ input:focus div .slider {
 }
 
 .place {
-  background: rgba(239, 241, 254, 0.4);
   border-bottom: 1px solid #d6dae3;
 }
 
@@ -220,12 +219,7 @@ input:focus div .slider {
   padding-right: 1.5rem;
 }
 
-.place ul {
-  display: flex;
-  list-style-type: none;
-}
-
-.place ul li {
+.place div {
   font-size: var(--text-xs);
   padding-left: 0;
   padding-bottom: 20px;

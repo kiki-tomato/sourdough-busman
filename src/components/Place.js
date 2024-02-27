@@ -3,7 +3,7 @@ function Place({ bakeryData, children }) {
     <li className="place">
       <h3>{bakeryData.name}</h3>
       <h5>{bakeryData.address}</h5>
-      <ul>{children}</ul>
+      <div>{children}</div>
     </li>
   );
 }

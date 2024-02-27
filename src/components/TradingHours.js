@@ -40,7 +40,7 @@ function TradingHours({ hoursData, currentDay, currentHour }) {
     }
   }, [hoursData, currentDay, currentHour, t]);
 
-  return <li className={textColor}>{openOrClosed}</li>;
+  return <span className={textColor}>{openOrClosed}</span>;
 }
 
 export default TradingHours;
