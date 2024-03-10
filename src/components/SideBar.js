@@ -5,8 +5,10 @@ import PlaceList from "./PlaceList";
 function SideBar({ filters, bakeryData }) {
   const [openFiltered, setOepnFiltered] = useState(false);
   const [distanceFiltered, setDistanceFiltered] = useState(false);
+
   let filtersNum;
   let isFilterOn = false;
+  const filterLength = Object.entries(filters).length;
 
   const handleOpenFilter = function () {
     setOepnFiltered((on) => !on);
@@ -18,9 +20,9 @@ function SideBar({ filters, bakeryData }) {
 
   if (openFiltered || distanceFiltered) {
     isFilterOn = true;
-    filtersNum = 1;
+    filtersNum = filterLength - (filterLength - 1);
   }
-  if (openFiltered && distanceFiltered) filtersNum = 2;
+  if (openFiltered && distanceFiltered) filtersNum = filterLength - 1;
 
   return (
     <div className="sidebar">
