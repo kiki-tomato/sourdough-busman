@@ -1,37 +1,15 @@
 import { useEffect, useRef } from "react";
 import axios from "axios";
 
+const { naver } = window;
+
 function Map({ currentLocation }) {
   const mapElement = useRef(null);
   const mapInitialized = useRef(false);
 
   useEffect(() => {
-    const loadMapScript = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:8000/load-map-script"
-        );
-        const script = document.createElement("script");
-        script.innerHTML = response.data;
-        script.async = true;
-
-        document.head.appendChild(script);
-        console.log("Naver Map script loaded successfully");
-
-        return () => {
-          document.head.removeChild(script);
-        };
-      } catch (error) {
-        console.error("Failed to load Naver Map script", error);
-      }
-    };
-
-    loadMapScript();
-  }, []);
-
-  useEffect(() => {
-    const { naver } = window;
-    if (!mapInitialized.current && mapElement.current && naver) {
+    if (!mapInitialized.current && mapElement.current && naver.maps) {
+      console.log(naver.maps);
       const mapContainer = document.getElementById("naverMap");
       const defaultLocation = new naver.maps.LatLng(
         currentLocation.latitude,
@@ -81,6 +59,8 @@ function Map({ currentLocation }) {
       });
     }
   }, [currentLocation]);
+
+  console.log(naver);
 
   return <div ref={mapElement} className="map" id="naverMap"></div>;
 }
