@@ -6,7 +6,9 @@
   "filters": {
     "filter": "필터",
     "open": "영업중",
-    "distance": "거리순"
+    "distance": "거리순",
+    "shipping": "택배주문",
+    "dineIn": "좌석구비"
   },
 
   "openStatus": {

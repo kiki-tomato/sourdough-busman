@@ -5,6 +5,8 @@ import PlaceList from "./PlaceList";
 function SideBar({ filters, bakeryData }) {
   const [openFiltered, setOepnFiltered] = useState(false);
   const [distanceFiltered, setDistanceFiltered] = useState(false);
+  const [shippingFiltered, setShippingFiltered] = useState(false);
+  const [dineInFiltered, setDineInFiltered] = useState(false);
 
   let filtersNum;
   let isFilterOn = false;
@@ -18,11 +20,37 @@ function SideBar({ filters, bakeryData }) {
     setDistanceFiltered((on) => !on);
   };
 
-  if (openFiltered || distanceFiltered) {
+  const handleShippingFilter = function () {
+    setShippingFiltered((on) => !on);
+  };
+
+  const handleDineInFilter = function () {
+    setDineInFiltered((on) => !on);
+  };
+
+  if (openFiltered || distanceFiltered || shippingFiltered || dineInFiltered) {
     isFilterOn = true;
     filtersNum = filterLength - (filterLength - 1);
   }
-  if (openFiltered && distanceFiltered) filtersNum = filterLength - 1;
+  if (
+    (openFiltered && distanceFiltered) ||
+    (openFiltered && shippingFiltered) ||
+    (openFiltered && dineInFiltered) ||
+    (distanceFiltered && shippingFiltered) ||
+    (distanceFiltered && dineInFiltered) ||
+    (shippingFiltered && dineInFiltered)
+  )
+    filtersNum = filterLength - (filterLength - 2);
+  if (
+    (openFiltered && distanceFiltered && shippingFiltered) ||
+    (openFiltered && distanceFiltered && dineInFiltered) ||
+    (openFiltered && dineInFiltered && shippingFiltered) ||
+    (distanceFiltered && shippingFiltered && dineInFiltered)
+  )
+    filtersNum = filterLength - (filterLength - 3);
+
+  if (openFiltered && distanceFiltered && shippingFiltered && dineInFiltered)
+    filtersNum = filterLength - 1;
 
   return (
     <div className="sidebar">
@@ -38,6 +66,18 @@ function SideBar({ filters, bakeryData }) {
           filterStatus={distanceFiltered}
         >
           {filters.distance}
+        </Filter>
+        <Filter
+          onFilterClick={handleDineInFilter}
+          filterStatus={dineInFiltered}
+        >
+          {filters.dineIn}
+        </Filter>
+        <Filter
+          onFilterClick={handleShippingFilter}
+          filterStatus={shippingFiltered}
+        >
+          {filters.shipping}
         </Filter>
       </div>
       <PlaceList

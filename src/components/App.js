@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
 
 function App() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const filtersObj = t("filters", { returnObjects: true });
   const initialBakeryData = t("bakeries", { returnObjects: true });
@@ -81,8 +81,6 @@ function App() {
     },
     [currentLocation]
   );
-
-  console.log(bakeryData);
 
   return (
     <div className="container">

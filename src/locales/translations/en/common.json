@@ -4,9 +4,11 @@
   },
 
   "filters": {
-    "filter": "Filter",
+    "filter": "Filters",
     "open": "Open Now",
-    "distance": "Nearest"
+    "distance": "Nearest",
+    "shipping": "Shipping Service",
+    "dineIn": "Dine In"
   },
 
   "openStatus": {

@@ -9,7 +9,6 @@ function Map({ currentLocation }) {
 
   useEffect(() => {
     if (!mapInitialized.current && mapElement.current && naver.maps) {
-      console.log(naver.maps);
       const mapContainer = document.getElementById("naverMap");
       const defaultLocation = new naver.maps.LatLng(
         currentLocation.latitude,
@@ -59,8 +58,6 @@ function Map({ currentLocation }) {
       });
     }
   }, [currentLocation]);
-
-  console.log(naver);
 
   return <div ref={mapElement} className="map" id="naverMap"></div>;
 }

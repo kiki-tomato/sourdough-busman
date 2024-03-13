@@ -1,6 +1,25 @@
 {
   "bakeries": [
     {
+      "name": "Ramidami Bakery",
+      "address": "45, Beobwonbuk-ro, Yeonje-gu, Busan",
+      "location": {
+        "latitude": 35.194228,
+        "longitude": 129.0718785
+      },
+      "hours": [
+        { "day": "sun", "closed": true },
+        { "day": "mon", "open": 10, "close": 20 },
+        { "day": "tue", "open": 10, "close": 20 },
+        { "day": "wed", "open": 10, "close": 20 },
+        { "day": "thu", "open": 10, "close": 20 },
+        { "day": "fri", "open": 10, "close": 20 },
+        { "day": "sat", "open": 10, "close": 19 }
+      ],
+      "dineIn": false
+    },
+
+    {
       "name": "Lucky Bakery",
       "address": "71, Muhak-ro 49beon-gil, Suyeong-gu, Busan",
       "location": {
@@ -15,43 +34,8 @@
         { "day": "thu", "closed": true },
         { "day": "fri", "open": 10, "close": 17 },
         { "day": "sat", "open": 10, "close": 17 }
-      ]
-    },
-
-    {
-      "name": "J.Sourdough",
-      "address": "166, Jwadong-ro, Haeundae-gu, Busan",
-      "location": {
-        "latitude": 35.1755701,
-        "longitude": 129.182532
-      },
-      "hours": [
-        { "day": "sun", "closed": true },
-        { "day": "mon", "closed": true },
-        { "day": "tue", "closed": true },
-        { "day": "wed", "closed": true },
-        { "day": "thu", "closed": true },
-        { "day": "fri", "closed": true },
-        { "day": "sat", "open": 11, "close": 18 }
-      ]
-    },
-
-    {
-      "name": "painpainpain busan",
-      "address": "91, Marine city 1-ro, Haeundae-gu, Busan",
-      "location": {
-        "latitude": 35.1552701,
-        "longitude": 129.1446744
-      },
-      "hours": [
-        { "day": "sun", "open": 9, "close": 17.5 },
-        { "day": "mon", "closed": true },
-        { "day": "tue", "open": 9, "close": 17.5 },
-        { "day": "wed", "open": 9, "close": 17.5 },
-        { "day": "thu", "open": 9, "close": 17.5 },
-        { "day": "fri", "open": 9, "close": 17.5 },
-        { "day": "sat", "open": 9, "close": 17.5 }
-      ]
+      ],
+      "dineIn": false
     },
 
     {
@@ -69,115 +53,8 @@
         { "day": "thu", "open": 10, "close": 21 },
         { "day": "fri", "open": 10, "close": 21 },
         { "day": "sat", "open": 10, "close": 21 }
-      ]
-    },
-
-    {
-      "name": "Ramidami Bakery",
-      "address": "45, Beobwonbuk-ro, Yeonje-gu, Busan",
-      "location": {
-        "latitude": 35.194228,
-        "longitude": 129.0718785
-      },
-      "hours": [
-        { "day": "sun", "closed": true },
-        { "day": "mon", "open": 10, "close": 20 },
-        { "day": "tue", "open": 10, "close": 20 },
-        { "day": "wed", "open": 10, "close": 20 },
-        { "day": "thu", "open": 10, "close": 20 },
-        { "day": "fri", "open": 10, "close": 20 },
-        { "day": "sat", "open": 10, "close": 19 }
-      ]
-    },
-
-    {
-      "name": "Cafe Homil",
-      "address": "34, Geumsaem-ro, Geumjeong-gu, Busan,",
-      "location": {
-        "latitude": 35.2287723,
-        "longitude": 129.0772645
-      },
-      "hours": [
-        { "day": "sun", "open": 10.5, "close": 17 },
-        { "day": "mon", "closed": true },
-        { "day": "tue", "closed": true },
-        { "day": "wed", "open": 10.5, "close": 18 },
-        { "day": "thu", "open": 10.5, "close": 18 },
-        { "day": "fri", "open": 10.5, "close": 18 },
-        { "day": "sat", "open": 10.5, "close": 18 }
-      ]
-    },
-
-    {
-      "name": "Bread Basket",
-      "address": "10, Jangjeon-ro, Geumjeong-gu, Busan",
-      "location": {
-        "latitude": 35.2278609,
-        "longitude": 129.0876431
-      },
-      "hours": [
-        { "day": "sun", "closed": true },
-        { "day": "mon", "closed": true },
-        { "day": "tue", "open": 11, "close": 16 },
-        { "day": "wed", "open": 11, "close": 16 },
-        { "day": "thu", "open": 11, "close": 16 },
-        { "day": "fri", "open": 11, "close": 16 },
-        { "day": "sat", "open": 11, "close": 16 }
-      ]
-    },
-
-    {
-      "name": "Won Bread",
-      "address": "52, Daecheong-ro 35beon-gil, Gijang-eup, Gijang-gun, Busan",
-      "location": {
-        "latitude": 35.2402052,
-        "longitude": 129.2144217
-      },
-      "hours": [
-        { "day": "sun", "closed": true },
-        { "day": "mon", "closed": true },
-        { "day": "tue", "closed": true },
-        { "day": "wed", "open": 11, "close": 18 },
-        { "day": "thu", "open": 11, "close": 18 },
-        { "day": "fri", "open": 11, "close": 18 },
-        { "day": "sat", "open": 11, "close": 18 }
-      ]
-    },
-
-    {
-      "name": "ebb",
-      "address": "30, Dongsam ocean-ro, Yeongdo-gu, Busan",
-      "location": {
-        "latitude": 35.0696473,
-        "longitude": 129.0823421
-      },
-      "hours": [
-        { "day": "sun", "open": 10, "close": 20 },
-        { "day": "mon", "open": 10, "close": 20 },
-        { "day": "tue", "open": 10, "close": 20 },
-        { "day": "wed", "open": 10, "close": 20 },
-        { "day": "thu", "open": 10, "close": 20 },
-        { "day": "fri", "open": 10, "close": 20 },
-        { "day": "sat", "open": 10, "close": 20 }
-      ]
-    },
-
-    {
-      "name": "Arch Bakery",
-      "address": "19-1, Junggu-ro 44beon-gil, Jung-gu, Busan",
-      "location": {
-        "latitude": 35.1019363,
-        "longitude": 129.0299553
-      },
-      "hours": [
-        { "day": "sun", "open": 12.5, "close": 19 },
-        { "day": "mon", "open": 12.5, "close": 19 },
-        { "day": "tue", "open": 12.5, "close": 19 },
-        { "day": "wed", "open": 12.5, "close": 19 },
-        { "day": "thu", "open": 12.5, "close": 19 },
-        { "day": "fri", "open": 12.5, "close": 19 },
-        { "day": "sat", "open": 12.5, "close": 19 }
-      ]
+      ],
+      "dineIn": false
     },
 
     {
@@ -195,7 +72,141 @@
         { "day": "thu", "open": 11, "close": 19 },
         { "day": "fri", "open": 11, "close": 19 },
         { "day": "sat", "open": 11, "close": 19 }
-      ]
+      ],
+      "dineIn": false
+    },
+
+    {
+      "name": "Bread Basket",
+      "address": "10, Jangjeon-ro, Geumjeong-gu, Busan",
+      "location": {
+        "latitude": 35.2278609,
+        "longitude": 129.0876431
+      },
+      "hours": [
+        { "day": "sun", "closed": true },
+        { "day": "mon", "closed": true },
+        { "day": "tue", "open": 11, "close": 16 },
+        { "day": "wed", "open": 11, "close": 16 },
+        { "day": "thu", "open": 11, "close": 16 },
+        { "day": "fri", "open": 11, "close": 16 },
+        { "day": "sat", "open": 11, "close": 16 }
+      ],
+      "dineIn": true
+    },
+
+    {
+      "name": "Arch Bakery",
+      "address": "19-1, Junggu-ro 44beon-gil, Jung-gu, Busan",
+      "location": {
+        "latitude": 35.1019363,
+        "longitude": 129.0299553
+      },
+      "hours": [
+        { "day": "sun", "open": 12.5, "close": 19 },
+        { "day": "mon", "open": 12.5, "close": 19 },
+        { "day": "tue", "open": 12.5, "close": 19 },
+        { "day": "wed", "open": 12.5, "close": 19 },
+        { "day": "thu", "open": 12.5, "close": 19 },
+        { "day": "fri", "open": 12.5, "close": 19 },
+        { "day": "sat", "open": 12.5, "close": 19 }
+      ],
+      "dineIn": false
+    },
+
+    {
+      "name": "painpainpain busan",
+      "address": "91, Marine city 1-ro, Haeundae-gu, Busan",
+      "location": {
+        "latitude": 35.1552701,
+        "longitude": 129.1446744
+      },
+      "hours": [
+        { "day": "sun", "open": 9, "close": 17.5 },
+        { "day": "mon", "closed": true },
+        { "day": "tue", "open": 9, "close": 17.5 },
+        { "day": "wed", "open": 9, "close": 17.5 },
+        { "day": "thu", "open": 9, "close": 17.5 },
+        { "day": "fri", "open": 9, "close": 17.5 },
+        { "day": "sat", "open": 9, "close": 17.5 }
+      ],
+      "dineIn": false
+    },
+
+    {
+      "name": "Won Bread",
+      "address": "52, Daecheong-ro 35beon-gil, Gijang-eup, Gijang-gun, Busan",
+      "location": {
+        "latitude": 35.2402052,
+        "longitude": 129.2144217
+      },
+      "hours": [
+        { "day": "sun", "closed": true },
+        { "day": "mon", "closed": true },
+        { "day": "tue", "closed": true },
+        { "day": "wed", "open": 11, "close": 18 },
+        { "day": "thu", "open": 11, "close": 18 },
+        { "day": "fri", "open": 11, "close": 18 },
+        { "day": "sat", "open": 11, "close": 18 }
+      ],
+      "dineIn": false
+    },
+
+    {
+      "name": "ebb",
+      "address": "30, Dongsam ocean-ro, Yeongdo-gu, Busan",
+      "location": {
+        "latitude": 35.0696473,
+        "longitude": 129.0823421
+      },
+      "hours": [
+        { "day": "sun", "open": 10, "close": 20 },
+        { "day": "mon", "open": 10, "close": 20 },
+        { "day": "tue", "open": 10, "close": 20 },
+        { "day": "wed", "open": 10, "close": 20 },
+        { "day": "thu", "open": 10, "close": 20 },
+        { "day": "fri", "open": 10, "close": 20 },
+        { "day": "sat", "open": 10, "close": 20 }
+      ],
+      "dineIn": false
+    },
+
+    {
+      "name": "J.Sourdough",
+      "address": "166, Jwadong-ro, Haeundae-gu, Busan",
+      "location": {
+        "latitude": 35.1755701,
+        "longitude": 129.182532
+      },
+      "hours": [
+        { "day": "sun", "closed": true },
+        { "day": "mon", "closed": true },
+        { "day": "tue", "closed": true },
+        { "day": "wed", "closed": true },
+        { "day": "thu", "closed": true },
+        { "day": "fri", "closed": true },
+        { "day": "sat", "open": 11, "close": 18 }
+      ],
+      "dineIn": true
+    },
+
+    {
+      "name": "Cafe Homil",
+      "address": "34, Geumsaem-ro, Geumjeong-gu, Busan,",
+      "location": {
+        "latitude": 35.2287723,
+        "longitude": 129.0772645
+      },
+      "hours": [
+        { "day": "sun", "open": 10.5, "close": 17 },
+        { "day": "mon", "closed": true },
+        { "day": "tue", "closed": true },
+        { "day": "wed", "open": 10.5, "close": 18 },
+        { "day": "thu", "open": 10.5, "close": 18 },
+        { "day": "fri", "open": 10.5, "close": 18 },
+        { "day": "sat", "open": 10.5, "close": 18 }
+      ],
+      "dineIn": true
     }
   ]
 }
