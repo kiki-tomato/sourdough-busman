@@ -2,11 +2,11 @@ import { useState } from "react";
 import Filter from "./Filter";
 import PlaceList from "./PlaceList";
 
-function SideBar({ filters, bakeryData }) {
+function SideBar({ filters, bakeryData, currentLocation }) {
   const [openFiltered, setOepnFiltered] = useState(false);
   const [distanceFiltered, setDistanceFiltered] = useState(false);
-  const [shippingFiltered, setShippingFiltered] = useState(false);
   const [dineInFiltered, setDineInFiltered] = useState(false);
+  const [shippingFiltered, setShippingFiltered] = useState(false);
 
   let filtersNum;
   let isFilterOn = false;
@@ -81,9 +81,12 @@ function SideBar({ filters, bakeryData }) {
         </Filter>
       </div>
       <PlaceList
+        bakeryData={bakeryData}
+        currentLocation={currentLocation}
         openFiltered={openFiltered}
         distanceFiltered={distanceFiltered}
-        bakeryData={bakeryData}
+        dineInFiltered={dineInFiltered}
+        shippingFiltered={shippingFiltered}
       />
     </div>
   );

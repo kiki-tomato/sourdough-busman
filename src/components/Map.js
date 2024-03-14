@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import axios from "axios";
 
 const { naver } = window;
 

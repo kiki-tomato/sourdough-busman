@@ -16,7 +16,9 @@
         { "day": "fri", "open": 10, "close": 20 },
         { "day": "sat", "open": 10, "close": 19 }
       ],
-      "dineIn": false
+      "dineIn": false,
+      "shippingService": false,
+      "onlineStore": ""
     },
 
     {
@@ -35,7 +37,9 @@
         { "day": "fri", "open": 10, "close": 17 },
         { "day": "sat", "open": 10, "close": 17 }
       ],
-      "dineIn": false
+      "dineIn": false,
+      "shippingService": true,
+      "onlineStore": "https://smartstore.naver.com/luckybakery/"
     },
 
     {
@@ -54,7 +58,9 @@
         { "day": "fri", "open": 10, "close": 21 },
         { "day": "sat", "open": 10, "close": 21 }
       ],
-      "dineIn": false
+      "dineIn": false,
+      "shippingService": false,
+      "onlineStore": ""
     },
 
     {
@@ -73,7 +79,9 @@
         { "day": "fri", "open": 11, "close": 19 },
         { "day": "sat", "open": 11, "close": 19 }
       ],
-      "dineIn": false
+      "dineIn": false,
+      "shippingService": false,
+      "onlineStore": ""
     },
 
     {
@@ -92,7 +100,9 @@
         { "day": "fri", "open": 11, "close": 16 },
         { "day": "sat", "open": 11, "close": 16 }
       ],
-      "dineIn": true
+      "dineIn": true,
+      "shippingService": true,
+      "onlineStore": ""
     },
 
     {
@@ -111,7 +121,9 @@
         { "day": "fri", "open": 12.5, "close": 19 },
         { "day": "sat", "open": 12.5, "close": 19 }
       ],
-      "dineIn": false
+      "dineIn": false,
+      "shippingService": true,
+      "onlineStore": "https://smartstore.naver.com/archbakery"
     },
 
     {
@@ -130,7 +142,9 @@
         { "day": "fri", "open": 9, "close": 17.5 },
         { "day": "sat", "open": 9, "close": 17.5 }
       ],
-      "dineIn": false
+      "dineIn": false,
+      "shippingService": true,
+      "onlineStore": "https://smartstore.naver.com/painpainpain"
     },
 
     {
@@ -149,7 +163,9 @@
         { "day": "fri", "open": 11, "close": 18 },
         { "day": "sat", "open": 11, "close": 18 }
       ],
-      "dineIn": false
+      "dineIn": false,
+      "shippingService": true,
+      "onlineStore": "https://smartstore.naver.com/won_bread"
     },
 
     {
@@ -168,7 +184,9 @@
         { "day": "fri", "open": 10, "close": 20 },
         { "day": "sat", "open": 10, "close": 20 }
       ],
-      "dineIn": false
+      "dineIn": false,
+      "shippingService": false,
+      "onlineStore": ""
     },
 
     {
@@ -187,7 +205,9 @@
         { "day": "fri", "closed": true },
         { "day": "sat", "open": 11, "close": 18 }
       ],
-      "dineIn": true
+      "dineIn": true,
+      "shippingService": true,
+      "onlineStore": ""
     },
 
     {
@@ -206,7 +226,9 @@
         { "day": "fri", "open": 10.5, "close": 18 },
         { "day": "sat", "open": 10.5, "close": 18 }
       ],
-      "dineIn": true
+      "dineIn": true,
+      "shippingService": false,
+      "onlineStore": ""
     }
   ]
 }
