@@ -1,26 +1,24 @@
 import { useEffect, useRef } from "react";
+import bread from "../assets/baguette_bread.png";
 
 const { naver } = window;
 
-function Map({ currentLocation }) {
+function Map({ currentLocation, bakeryData }) {
   const mapElement = useRef(null);
   const mapInitialized = useRef(false);
 
   useEffect(() => {
     if (!mapInitialized.current && mapElement.current && naver.maps) {
       const mapContainer = document.getElementById("naverMap");
-      const defaultLocation = new naver.maps.LatLng(
-        currentLocation.latitude,
-        currentLocation.longitude
-      );
+      const defaultLocation = new naver.maps.LatLng(35.1531696, 129.118666);
 
       const mapOptions = {
         center: defaultLocation,
-        zoom: 15,
+        zoom: 12,
         zoomControl: true,
         minZoom: 6,
         zoomControlOptions: {
-          style: naver.maps.ZoomControlStyle.LARGE,
+          style: naver.maps.ZoomControlStyle.SMALL,
           position: naver.maps.Position.TOP_RIGHT,
         },
         scaleControl: false,
@@ -29,10 +27,54 @@ function Map({ currentLocation }) {
       };
 
       const map = new naver.maps.Map(mapContainer, mapOptions);
-      const marker = new naver.maps.Marker({
-        position: defaultLocation,
-        map: map,
+
+      const markers = bakeryData.map((bakery) => {
+        return new naver.maps.Marker({
+          position: new naver.maps.LatLng(
+            bakery.location.latitude,
+            bakery.location.longitude
+          ),
+          map: map,
+          icon: {
+            content: [
+              `<div class="marker-container">`,
+              `<img src=${bread} class="marker-icon" alt="Bread Icon" />`,
+              "</div>",
+            ].join(""),
+            anchor: new naver.maps.Point(79, 78),
+          },
+        });
       });
+
+      const infoWindows = bakeryData.map((bakery) => {
+        return new naver.maps.InfoWindow({
+          content: [
+            '<div class="infoWindow">',
+            `${bakery.name}`,
+            "</div>",
+          ].join(""),
+          anchor: new naver.maps.Point(0, 0),
+          anchorSkew: true,
+          pixelOffset: new naver.maps.Point(20, 0),
+        });
+      });
+
+      function getClickHandler(seq) {
+        return function (e) {
+          const marker = markers[seq],
+            infoWindow = infoWindows[seq];
+
+          if (infoWindow.getMap()) {
+            infoWindow.close();
+          } else {
+            infoWindow.open(map, marker);
+          }
+        };
+      }
+
+      for (var i = 0, ii = markers.length; i < ii; i++) {
+        naver.maps.Event.addListener(markers[i], "click", getClickHandler(i));
+      }
 
       naver.maps.Event.once(map, "init", function () {
         const btnMyLocation = '<img class="button">';
@@ -56,7 +98,7 @@ function Map({ currentLocation }) {
         );
       });
     }
-  }, [currentLocation]);
+  }, [currentLocation, bakeryData]);
 
   return <div ref={mapElement} className="map" id="naverMap"></div>;
 }

@@ -45,7 +45,7 @@ function App() {
         bakeryData={bakeryData}
         currentLocation={currentLocation}
       />
-      <Map currentLocation={currentLocation} />
+      <Map currentLocation={currentLocation} bakeryData={bakeryData} />
     </div>
   );
 }

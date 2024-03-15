@@ -1,6 +1,8 @@
 import Place from "./Place";
 import DistanceFromMe from "./DistanceFromMe";
 import TradingHours from "./TradingHours";
+import Alert from "./Alert";
+import { useState } from "react";
 
 function PlaceList({
   bakeryData,
@@ -14,8 +16,9 @@ function PlaceList({
   const currentDay = d.getDay();
   const currentHour = d.getHours() + d.getMinutes() / 60;
 
+  const [distanceArr, setDistanceArr] = useState([]);
+
   let filteredData = bakeryData;
-  const distanceArr = [];
 
   if (openFiltered) {
     const openFilteredData = bakeryData.filter(
@@ -53,57 +56,38 @@ function PlaceList({
     }
   } else if (shippingFiltered) {
     filteredData = bakeryData.filter((bakery) => bakery.shippingService);
+  } else if (distanceFiltered) {
+    const distanceFilteredData = bakeryData
+      .map((bakery, i) => {
+        return { ...bakery, distance: distanceArr[i] };
+      })
+      .slice()
+      .sort((a, b) => Number(a.distance) - Number(b.distance));
+
+    filteredData = distanceFilteredData;
   }
 
-  //order by distance
-  // useEffect(() => {
-  //   const distanceEl = document.querySelectorAll(".distance");
-
-  //   console.log(distanceEl[0]);
-
-  //   distanceEl.forEach((i) =>
-  //     distanceArr.push(Number(i.textContent.split("km")[0]))
-  //   );
-  // });
-
-  //if (distanceFiltered) {
-  //   filteredData = bakeryData
-  //     .slice()
-  //     .sort((a, b) => Number(a.distance) - Number(b.distance));
-  // }
-
-  // console.log(
-  //   bakeryData.map((i) => {
-  //     return { ...i, i: "me" };
-  //   })
-  // );
-
-  // console.log(
-  //   bakeryData.map((bakery, i) => {
-  //     return { ...bakery, distance: distanceArr[i] };
-  //   }, "hi")
-  // );
-
-  console.log(distanceArr);
-
   return (
-    <ul className="place-list">
-      {filteredData.map((bakery) => (
-        <Place eachBakeryData={bakery} key={bakery.name}>
-          <DistanceFromMe
-            locationData={bakery.location}
-            currentLocation={currentLocation}
-            distanceArr={distanceArr}
-            bakeryData={bakeryData}
-          />
-          <TradingHours
-            hoursData={bakery.hours}
-            currentDay={currentDay}
-            currentHour={currentHour}
-          />
-        </Place>
-      ))}
-    </ul>
+    <>
+      <ul className="place-list">
+        {filteredData.map((bakery) => (
+          <Place eachBakeryData={bakery} key={bakery.name}>
+            <DistanceFromMe
+              locationData={bakery.location}
+              currentLocation={currentLocation}
+              bakeryData={bakeryData}
+              setDistanceArr={setDistanceArr}
+            />
+            <TradingHours
+              hoursData={bakery.hours}
+              currentDay={currentDay}
+              currentHour={currentHour}
+            />
+          </Place>
+        ))}
+      </ul>
+      {!filteredData.length ? <Alert /> : null}
+    </>
   );
 }
 

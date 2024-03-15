@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function DistanceFromMe({ locationData, currentLocation, distanceArr }) {
+function DistanceFromMe({ locationData, currentLocation, setDistanceArr }) {
   const [distance, setDistance] = useState(0);
 
   useEffect(
@@ -45,11 +45,17 @@ function DistanceFromMe({ locationData, currentLocation, distanceArr }) {
           locationData.longitude
         )
       );
-
-      distanceArr.push(distance.toFixed(2));
     },
-    [currentLocation, locationData, distance, distanceArr]
+    [currentLocation, locationData]
   );
+
+  useEffect(() => {
+    setDistanceArr((arr) => [...arr, Number(distance.toFixed(2))]);
+
+    return function () {
+      setDistanceArr([]);
+    };
+  }, [setDistanceArr, distance]);
 
   return (
     <>

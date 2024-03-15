@@ -15,5 +15,9 @@
     "open": "Open 'till {{hour}}:{{minute}}pm",
     "closed": "Closed",
     "closureDay": "Closed"
+  },
+
+  "alert": {
+    "noResults": "Oops! No Results Found."
   }
 }

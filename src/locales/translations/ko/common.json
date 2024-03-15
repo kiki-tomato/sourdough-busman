@@ -15,5 +15,9 @@
     "open": "{{hour}}:{{minute}}pm까지 영업",
     "closed": "영업마감",
     "closureDay": "정기휴무"
+  },
+
+  "alert": {
+    "noResults": "앗! 찾으시는 검색 결과가 없어요."
   }
 }

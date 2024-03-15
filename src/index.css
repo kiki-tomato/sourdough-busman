@@ -264,7 +264,7 @@ input:focus div .slider {
   padding-left: 0;
   background: rgba(239, 241, 254, 0.4);
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 130px;
 }
 
 @media (max-width: 1200px) {
@@ -304,4 +304,44 @@ input:focus div .slider {
   .filter-container button:first-child {
     margin-left: 20px;
   }
+
+  .button {
+    width: 35px;
+    height: 35px;
+    margin: 0px 10px 10px 0px;
+  }
+}
+
+.infoWindow {
+  width: 150px;
+  text-align: center;
+  padding: 10px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.marker-container {
+  border-radius: 9999px;
+  border: 7px solid #ffa24d;
+  background-color: #fbfbfd;
+  scale: 30%;
+  filter: drop-shadow(2px 0px 4px rgba(0, 0, 0, 0.3));
+}
+
+.marker-icon {
+  scale: 70%;
+}
+
+.alert-message {
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 50px;
+}
+
+.alert-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
