@@ -9,6 +9,7 @@ function App() {
 
   const filtersObj = t("filters", { returnObjects: true });
   const bakeryData = t("bakeries", { returnObjects: true });
+
   const [currentLocation, setCurrentLocation] = useState({
     latitude: 0,
     longitude: 0,

@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import bread from "../assets/baguette_bread.png";
 
 const { naver } = window;
 
@@ -10,6 +9,8 @@ function Map({ currentLocation, bakeryData }) {
   useEffect(() => {
     if (!mapInitialized.current && mapElement.current && naver.maps) {
       const mapContainer = document.getElementById("naverMap");
+      const places = document.querySelectorAll(".place");
+
       const defaultLocation = new naver.maps.LatLng(35.1531696, 129.118666);
 
       const mapOptions = {
@@ -37,11 +38,10 @@ function Map({ currentLocation, bakeryData }) {
           map: map,
           icon: {
             content: [
-              `<div class="marker-container">`,
-              `<img src=${bread} class="marker-icon" alt="Bread Icon" />`,
-              "</div>",
+              `<div class="marker-container" onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'" >${bakery.name}</div>`,
             ].join(""),
-            anchor: new naver.maps.Point(79, 78),
+            size: new naver.maps.Size(10, 10),
+            anchor: new naver.maps.Point(40, 20),
           },
         });
       });
@@ -55,7 +55,7 @@ function Map({ currentLocation, bakeryData }) {
           ].join(""),
           anchor: new naver.maps.Point(0, 0),
           anchorSkew: true,
-          pixelOffset: new naver.maps.Point(20, 0),
+          // pixelOffset: new naver.maps.Point(20, 0),
         });
       });
 
@@ -69,12 +69,21 @@ function Map({ currentLocation, bakeryData }) {
           } else {
             infoWindow.open(map, marker);
           }
+
+          markers.forEach((marker) =>
+            marker.eventTarget.classList.remove("active-marker")
+          );
+          markers[seq].eventTarget.classList.add("active-marker");
         };
       }
 
       for (var i = 0, ii = markers.length; i < ii; i++) {
         naver.maps.Event.addListener(markers[i], "click", getClickHandler(i));
       }
+
+      places.forEach((el, i) => {
+        el.addEventListener("click", getClickHandler(i));
+      });
 
       naver.maps.Event.once(map, "init", function () {
         const btnMyLocation = '<img class="button">';

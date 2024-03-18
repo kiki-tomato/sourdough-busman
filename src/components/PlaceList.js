@@ -11,6 +11,7 @@ function PlaceList({
   dineInFiltered,
   shippingFiltered,
   currentLocation,
+  setClickedPlace,
 }) {
   const d = new Date();
   const currentDay = d.getDay();
@@ -69,9 +70,17 @@ function PlaceList({
 
   return (
     <>
-      <ul className="place-list">
+      <ul
+        className={
+          !filteredData.length ? "place-list margin-botton" : "place-list"
+        }
+      >
         {filteredData.map((bakery) => (
-          <Place eachBakeryData={bakery} key={bakery.name}>
+          <Place
+            eachBakeryData={bakery}
+            key={bakery.name}
+            setClickedPlace={setClickedPlace}
+          >
             <DistanceFromMe
               locationData={bakery.location}
               currentLocation={currentLocation}

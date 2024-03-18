@@ -322,14 +322,28 @@ input:focus div .slider {
 
 .marker-container {
   border-radius: 9999px;
-  border: 7px solid #ffa24d;
+  border: 1px solid #9f9f9f;
   background-color: #fbfbfd;
-  scale: 30%;
-  filter: drop-shadow(2px 0px 4px rgba(0, 0, 0, 0.3));
+  /* width: 50px; */
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+  background-image: url("./assets/baguette_bread.png");
+  background-repeat: no-repeat;
+  background-size: 25px;
+  background-position: 15px;
+  white-space: nowrap;
+  padding: 7px 17px 7px 42px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transition: transform 0.3s;
 }
 
-.marker-icon {
-  scale: 70%;
+.active-marker {
+  background-color: #222222;
+  color: #fbfbfd;
+}
+
+.marker-container :hover {
+  scale: 50%;
 }
 
 .alert-message {
@@ -344,4 +358,8 @@ input:focus div .slider {
   margin-right: auto;
   margin-top: 50px;
   margin-bottom: 20px;
+}
+
+.margin-botton {
+  margin-bottom: 80px;
 }
