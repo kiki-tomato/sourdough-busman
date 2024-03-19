@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 
 function App() {
   const { t } = useTranslation();
-
   const filtersObj = t("filters", { returnObjects: true });
   const bakeryData = t("bakeries", { returnObjects: true });
 
@@ -14,6 +13,11 @@ function App() {
     latitude: 0,
     longitude: 0,
   });
+  const [btn, setBtn] = useState(false);
+
+  const style = {
+    gridTemplateRows: "40px calc(100vh - 90px) 50px",
+  };
 
   useEffect(() => {
     document.title = t("header.title");
@@ -39,12 +43,14 @@ function App() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container" style={btn ? style : {}}>
       <Header title={t("header.title")} />
       <SideBar
         filters={filtersObj}
         bakeryData={bakeryData}
         currentLocation={currentLocation}
+        btn={btn}
+        setBtn={setBtn}
       />
       <Map currentLocation={currentLocation} bakeryData={bakeryData} />
     </div>

@@ -12,6 +12,8 @@ function PlaceList({
   shippingFiltered,
   currentLocation,
   setClickedPlace,
+  setBtn,
+  btn,
 }) {
   const d = new Date();
   const currentDay = d.getDay();
@@ -96,7 +98,24 @@ function PlaceList({
         ))}
       </ul>
       {!filteredData.length ? <Alert /> : null}
+      <BtnToMap setBtn={setBtn} btn={btn} />
     </>
+  );
+}
+
+function BtnToMap({ setBtn, btn }) {
+  function handleBtn() {
+    setBtn((on) => !on);
+  }
+
+  return (
+    <button
+      className="btn-to-map"
+      onClick={handleBtn}
+      style={btn ? { visibility: "hidden" } : null}
+    >
+      지도
+    </button>
   );
 }
 

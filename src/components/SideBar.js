@@ -2,11 +2,15 @@ import { useState } from "react";
 import Filter from "./Filter";
 import PlaceList from "./PlaceList";
 
-function SideBar({ filters, bakeryData, currentLocation }) {
+function SideBar({ filters, bakeryData, currentLocation, btn, setBtn }) {
   const [openFiltered, setOepnFiltered] = useState(false);
   const [distanceFiltered, setDistanceFiltered] = useState(false);
   const [dineInFiltered, setDineInFiltered] = useState(false);
   const [shippingFiltered, setShippingFiltered] = useState(false);
+
+  const style = {
+    transform: "translate3d(0px, 346px, 0px)",
+  };
 
   let filtersNum;
   let isFilterOn = false;
@@ -53,8 +57,22 @@ function SideBar({ filters, bakeryData, currentLocation }) {
     filtersNum = filterLength - 1;
 
   return (
-    <div className="sidebar">
-      <div className="filter-container">
+    <div
+      className="sidebar"
+      // style={
+      //   btn
+      //     ? style
+      //     : {
+      //         transform: "translate3d(0px, 0px, 0px)",
+      //       }
+      // }
+    >
+      <div
+        className="filter-container"
+        onClick={() => {
+          setBtn((on) => !on);
+        }}
+      >
         <Filter filterStatus={isFilterOn}>
           {filters.filter} {filtersNum}
         </Filter>
@@ -87,6 +105,8 @@ function SideBar({ filters, bakeryData, currentLocation }) {
         distanceFiltered={distanceFiltered}
         dineInFiltered={dineInFiltered}
         shippingFiltered={shippingFiltered}
+        setBtn={setBtn}
+        btn={btn}
       />
     </div>
   );

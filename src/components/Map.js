@@ -37,9 +37,7 @@ function Map({ currentLocation, bakeryData }) {
           ),
           map: map,
           icon: {
-            content: [
-              `<div class="marker-container" onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'" >${bakery.name}</div>`,
-            ].join(""),
+            content: `<div class="marker-container">${bakery.name}</div>`,
             size: new naver.maps.Size(10, 10),
             anchor: new naver.maps.Point(40, 20),
           },
@@ -48,14 +46,16 @@ function Map({ currentLocation, bakeryData }) {
 
       const infoWindows = bakeryData.map((bakery) => {
         return new naver.maps.InfoWindow({
-          content: [
-            '<div class="infoWindow">',
-            `${bakery.name}`,
-            "</div>",
-          ].join(""),
-          anchor: new naver.maps.Point(0, 0),
-          anchorSkew: true,
-          // pixelOffset: new naver.maps.Point(20, 0),
+          content: `
+          <div class="infoWindow">
+          <div>${bakery.name}</div>
+          <div>${bakery.address}</div>
+          <button class="info-window-btn"><a>네이버지도에서 자세히 보기</a></button>
+          </div>`,
+          disableAnchor: true,
+          borderWidth: 0,
+          backgroundColor: "transparent",
+          pixelOffset: new naver.maps.Point(20, -20),
         });
       });
 
@@ -70,27 +70,57 @@ function Map({ currentLocation, bakeryData }) {
             infoWindow.open(map, marker);
           }
 
-          markers.forEach((marker) =>
-            marker.eventTarget.classList.remove("active-marker")
-          );
+          markers.forEach((marker, i) => {
+            marker.eventTarget.classList.remove("active-marker");
+            marker.setZIndex(1);
+          });
+
           markers[seq].eventTarget.classList.add("active-marker");
+          markers[seq].setZIndex(100);
+        };
+      }
+
+      function getMouseOverHandler(seq) {
+        return function (e) {
+          markers[seq].setZIndex(110);
+          markers[seq].eventTarget.classList.add("hover-marker");
+        };
+      }
+
+      function getMouseOutHandler(seq) {
+        return function (e) {
+          markers[seq].eventTarget.classList.remove("hover-marker");
+
+          if (markers[seq].eventTarget.classList.contains("active-marker"))
+            markers[seq].setZIndex(100);
+          else markers[seq].setZIndex(1);
         };
       }
 
       for (var i = 0, ii = markers.length; i < ii; i++) {
         naver.maps.Event.addListener(markers[i], "click", getClickHandler(i));
+        naver.maps.Event.addListener(
+          markers[i],
+          "mouseover",
+          getMouseOverHandler(i)
+        );
+        naver.maps.Event.addListener(
+          markers[i],
+          "mouseout",
+          getMouseOutHandler(i)
+        );
       }
 
       places.forEach((el, i) => {
         el.addEventListener("click", getClickHandler(i));
       });
 
-      naver.maps.Event.once(map, "init", function () {
-        const btnMyLocation = '<img class="button">';
-        const customControl = new naver.maps.CustomControl(btnMyLocation, {
-          position: naver.maps.Position.RIGHT_BOTTOM,
-        });
+      const btnMyLocation = '<img class="button">';
+      const customControl = new naver.maps.CustomControl(btnMyLocation, {
+        position: naver.maps.Position.RIGHT_BOTTOM,
+      });
 
+      naver.maps.Event.once(map, "init", function () {
         customControl.setMap(map);
 
         naver.maps.Event.addDOMListener(
