@@ -12,8 +12,6 @@ function PlaceList({
   shippingFiltered,
   currentLocation,
   setClickedPlace,
-  setBtn,
-  btn,
 }) {
   const d = new Date();
   const currentDay = d.getDay();
@@ -59,16 +57,18 @@ function PlaceList({
     }
   } else if (shippingFiltered) {
     filteredData = bakeryData.filter((bakery) => bakery.shippingService);
-  } else if (distanceFiltered) {
-    const distanceFilteredData = bakeryData
-      .map((bakery, i) => {
-        return { ...bakery, distance: distanceArr[i] };
-      })
-      .slice()
-      .sort((a, b) => Number(a.distance) - Number(b.distance));
-
-    filteredData = distanceFilteredData;
   }
+
+  // else if (distanceFiltered) {
+  //   const distanceFilteredData = bakeryData
+  //     .map((bakery, i) => {
+  //       return { ...bakery, distance: distanceArr[i] };
+  //     })
+  //     .slice()
+  //     .sort((a, b) => Number(a.distance) - Number(b.distance));
+
+  //   filteredData = distanceFilteredData;
+  // }
 
   return (
     <>
@@ -98,25 +98,10 @@ function PlaceList({
         ))}
       </ul>
       {!filteredData.length ? <Alert /> : null}
-      <BtnToMap setBtn={setBtn} btn={btn} />
     </>
   );
 }
 
-function BtnToMap({ setBtn, btn }) {
-  function handleBtn() {
-    setBtn((on) => !on);
-  }
-
-  return (
-    <button
-      className="btn-to-map"
-      onClick={handleBtn}
-      style={btn ? { visibility: "hidden" } : null}
-    >
-      지도
-    </button>
-  );
-}
-
 export default PlaceList;
+
+// style={!btn ? { visibility: "hidden" } : {}}

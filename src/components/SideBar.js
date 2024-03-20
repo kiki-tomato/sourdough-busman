@@ -1,16 +1,24 @@
 import { useState } from "react";
 import Filter from "./Filter";
 import PlaceList from "./PlaceList";
+import BtnToResizeComponent from "./BtnToResizeComponent";
 
-function SideBar({ filters, bakeryData, currentLocation, btn, setBtn }) {
-  const [openFiltered, setOepnFiltered] = useState(false);
+function SideBar({
+  filters,
+  bakeryData,
+  currentLocation,
+  btn,
+  setBtn,
+  setOepnFiltered,
+  openFiltered,
+  setShippingFiltered,
+  shippingFiltered,
+  setDineInFiltered,
+  dineInFiltered,
+  btnObj,
+  clickedMarker,
+}) {
   const [distanceFiltered, setDistanceFiltered] = useState(false);
-  const [dineInFiltered, setDineInFiltered] = useState(false);
-  const [shippingFiltered, setShippingFiltered] = useState(false);
-
-  const style = {
-    transform: "translate3d(0px, 346px, 0px)",
-  };
 
   let filtersNum;
   let isFilterOn = false;
@@ -57,34 +65,20 @@ function SideBar({ filters, bakeryData, currentLocation, btn, setBtn }) {
     filtersNum = filterLength - 1;
 
   return (
-    <div
-      className="sidebar"
-      // style={
-      //   btn
-      //     ? style
-      //     : {
-      //         transform: "translate3d(0px, 0px, 0px)",
-      //       }
-      // }
-    >
-      <div
-        className="filter-container"
-        onClick={() => {
-          setBtn((on) => !on);
-        }}
-      >
+    <div className="sidebar">
+      <div className="filter-container">
         <Filter filterStatus={isFilterOn}>
           {filters.filter} {filtersNum}
         </Filter>
         <Filter onFilterClick={handleOpenFilter} filterStatus={openFiltered}>
           {filters.open}
         </Filter>
-        <Filter
+        {/* <Filter
           onFilterClick={handleDistanceFilter}
           filterStatus={distanceFiltered}
         >
           {filters.distance}
-        </Filter>
+        </Filter> */}
         <Filter
           onFilterClick={handleDineInFilter}
           filterStatus={dineInFiltered}
@@ -107,7 +101,24 @@ function SideBar({ filters, bakeryData, currentLocation, btn, setBtn }) {
         shippingFiltered={shippingFiltered}
         setBtn={setBtn}
         btn={btn}
+        btnObj={btnObj}
       />
+      <BtnToResizeComponent setBtn={setBtn} btn={btn} btnObj={btnObj} />
+
+      <InfoWindow btn={btn} />
+    </div>
+  );
+}
+
+function InfoWindow({ btn }) {
+  return (
+    <div
+      className="infoWindow-test"
+      style={btn ? { visibility: "hidden" } : {}}
+    >
+      <div>name</div>
+      <div>address</div>
+      <button className="info-window-btn">button</button>
     </div>
   );
 }

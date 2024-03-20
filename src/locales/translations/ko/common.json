@@ -19,5 +19,10 @@
 
   "alert": {
     "noResults": "앗! 찾으시는 검색 결과가 없어요."
+  },
+
+  "buttons": {
+    "listView": "목록 보기",
+    "mapView": "지도 표시하기"
   }
 }

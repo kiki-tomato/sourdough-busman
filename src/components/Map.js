@@ -1,12 +1,64 @@
 import { useEffect, useRef } from "react";
 
-const { naver } = window;
-
-function Map({ currentLocation, bakeryData }) {
+function Map({
+  currentLocation,
+  bakeryData,
+  openFiltered,
+  shippingFiltered,
+  dineInFiltered,
+  btnObj,
+  setClickedMarker,
+}) {
   const mapElement = useRef(null);
   const mapInitialized = useRef(false);
 
+  let filteredData = bakeryData;
+
+  const d = new Date();
+  const currentDay = d.getDay();
+  const currentHour = d.getHours() + d.getMinutes() / 60;
+
+  if (openFiltered) {
+    const openFilteredData = bakeryData.filter(
+      (bakery) =>
+        bakery.hours[currentDay].open <= currentHour &&
+        currentHour < bakery.hours[currentDay].close
+    );
+
+    filteredData = openFilteredData;
+
+    if (dineInFiltered) {
+      filteredData = openFilteredData.filter((bakery) => bakery.dineIn);
+    }
+
+    if (shippingFiltered) {
+      filteredData = openFilteredData.filter(
+        (bakery) => bakery.shippingService
+      );
+    }
+
+    if (dineInFiltered && shippingFiltered) {
+      filteredData = openFilteredData.filter(
+        (bakery) => bakery.dineIn && bakery.shippingService
+      );
+    }
+  } else if (dineInFiltered) {
+    const dineInFilteredData = bakeryData.filter((bakery) => bakery.dineIn);
+
+    filteredData = dineInFilteredData;
+
+    if (shippingFiltered) {
+      filteredData = dineInFilteredData.filter(
+        (bakery) => bakery.shippingService
+      );
+    }
+  } else if (shippingFiltered) {
+    filteredData = bakeryData.filter((bakery) => bakery.shippingService);
+  }
+
   useEffect(() => {
+    const { naver } = window;
+
     if (!mapInitialized.current && mapElement.current && naver.maps) {
       const mapContainer = document.getElementById("naverMap");
       const places = document.querySelectorAll(".place");
@@ -29,7 +81,7 @@ function Map({ currentLocation, bakeryData }) {
 
       const map = new naver.maps.Map(mapContainer, mapOptions);
 
-      const markers = bakeryData.map((bakery) => {
+      const markers = filteredData.map((bakery) => {
         return new naver.maps.Marker({
           position: new naver.maps.LatLng(
             bakery.location.latitude,
@@ -44,7 +96,7 @@ function Map({ currentLocation, bakeryData }) {
         });
       });
 
-      const infoWindows = bakeryData.map((bakery) => {
+      const infoWindows = filteredData.map((bakery) => {
         return new naver.maps.InfoWindow({
           content: `
           <div class="infoWindow">
@@ -77,6 +129,10 @@ function Map({ currentLocation, bakeryData }) {
 
           markers[seq].eventTarget.classList.add("active-marker");
           markers[seq].setZIndex(100);
+
+          // if (document.querySelector(".container").classList.contains("grid")) {
+          //   infoWindow.close();
+          // }
         };
       }
 
@@ -111,33 +167,36 @@ function Map({ currentLocation, bakeryData }) {
         );
       }
 
-      places.forEach((el, i) => {
-        el.addEventListener("click", getClickHandler(i));
-      });
+      places.forEach((place, i) =>
+        place.addEventListener("click", getClickHandler(i))
+      );
 
-      const btnMyLocation = '<img class="button">';
-      const customControl = new naver.maps.CustomControl(btnMyLocation, {
-        position: naver.maps.Position.RIGHT_BOTTOM,
-      });
+      // const btnMyLocation = '<img class="button">';
+      // const btnListView = `<button class="btn-listview">${btnObj.listView}</button>`;
+      // const customControl = new naver.maps.CustomControl(btnListView, {
+      //   position: naver.maps.Position.RIGHT_BOTTOM,
+      // });
 
-      naver.maps.Event.once(map, "init", function () {
-        customControl.setMap(map);
+      // naver.maps.Event.once(map, "init", function () {
+      //   customControl.setMap(map);
+      // });
 
-        naver.maps.Event.addDOMListener(
-          customControl.getElement(),
-          "click",
-          function () {
-            map.setCenter(
-              new naver.maps.LatLng(
-                currentLocation.latitude,
-                currentLocation.longitude
-              )
-            );
-          }
-        );
-      });
+      // naver.maps.Event.addDOMListener(
+      //   customControl.getElement(),
+      //   "click",
+      //   function () {
+      //     document.querySelector(".container").classList.toggle("grid");
+
+      //     setBtn((on) => !on);
+
+      //     console.log(customControl.getElement().children);
+
+      //     // console.log(customControl.getElement().firstElementChild);
+      //     // console.log(customControl.getElement().childNodes);
+      //   }
+      // );
     }
-  }, [currentLocation, bakeryData]);
+  }, [currentLocation, bakeryData, filteredData, btnObj, setClickedMarker]);
 
   return <div ref={mapElement} className="map" id="naverMap"></div>;
 }

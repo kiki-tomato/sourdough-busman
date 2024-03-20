@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 function App() {
   const { t } = useTranslation();
   const filtersObj = t("filters", { returnObjects: true });
+  const btnObj = t("buttons", { returnObjects: true });
   const bakeryData = t("bakeries", { returnObjects: true });
 
   const [currentLocation, setCurrentLocation] = useState({
@@ -14,10 +15,10 @@ function App() {
     longitude: 0,
   });
   const [btn, setBtn] = useState(false);
-
-  const style = {
-    gridTemplateRows: "40px calc(100vh - 90px) 50px",
-  };
+  const [openFiltered, setOepnFiltered] = useState(false);
+  const [shippingFiltered, setShippingFiltered] = useState(false);
+  const [dineInFiltered, setDineInFiltered] = useState(false);
+  const [clickedMarker, setClickedMarker] = useState("");
 
   useEffect(() => {
     document.title = t("header.title");
@@ -43,7 +44,7 @@ function App() {
   }, []);
 
   return (
-    <div className="container" style={btn ? style : {}}>
+    <div className="container">
       <Header title={t("header.title")} />
       <SideBar
         filters={filtersObj}
@@ -51,8 +52,25 @@ function App() {
         currentLocation={currentLocation}
         btn={btn}
         setBtn={setBtn}
+        openFiltered={openFiltered}
+        setOepnFiltered={setOepnFiltered}
+        shippingFiltered={shippingFiltered}
+        setShippingFiltered={setShippingFiltered}
+        dineInFiltered={dineInFiltered}
+        setDineInFiltered={setDineInFiltered}
+        btnObj={btnObj}
+        clickedMarker={clickedMarker}
       />
-      <Map currentLocation={currentLocation} bakeryData={bakeryData} />
+      <Map
+        currentLocation={currentLocation}
+        bakeryData={bakeryData}
+        openFiltered={openFiltered}
+        shippingFiltered={shippingFiltered}
+        dineInFiltered={dineInFiltered}
+        btnObj={btnObj}
+        setBtn={setBtn}
+        setClickedMarker={setClickedMarker}
+      />
     </div>
   );
 }

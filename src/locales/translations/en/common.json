@@ -19,5 +19,10 @@
 
   "alert": {
     "noResults": "Oops! No Results Found."
+  },
+
+  "buttons": {
+    "listView": "List View",
+    "mapView": "Map View"
   }
 }

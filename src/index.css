@@ -344,6 +344,14 @@ input:focus div .slider {
   visibility: hidden;
 }
 
+.btn-listview {
+  visibility: hidden;
+}
+
+.infoWindow-test {
+  visibility: hidden;
+}
+
 @media (max-width: 1200px) {
   .container {
     grid-template-columns: 2fr 3fr;
@@ -358,7 +366,8 @@ input:focus div .slider {
 @media (max-width: 600px) {
   .container {
     grid-template-columns: 1fr;
-    grid-template-rows: 40px calc(100vh - 440px) 400px;
+    grid-template-rows: 40px calc(100vh - 40px) 0px;
+    /* grid-template-rows: 40px calc(100vh - 440px) 400px; */
   }
 
   .header {
@@ -391,17 +400,44 @@ input:focus div .slider {
   .btn-to-map {
     visibility: visible;
     position: fixed;
-    top: 93%;
-    left: 40%;
-    right: 40%;
+    bottom: 60px;
+    right: 15px;
     background-color: var(--color-default);
     color: #fbfbfd;
     font-weight: 600;
     font-size: var(--text-sm);
     border-radius: 9999px;
     border: 0px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 20px 10px 45px;
     cursor: pointer;
   }
+
+  .grid {
+    grid-template-rows: 40px 0px calc(100vh - 40px);
+  }
+
+  .infoWindow {
+    /* visibility: hidden; */
+    position: fixed;
+    bottom: 130px;
+    left: 25%;
+    right: 25%;
+  }
+
+  /* .infoWindow-test {
+    visibility: hidden;
+    position: fixed;
+    top: 75%;
+    right: 25%;
+    left: 25%;
+    width: 200px;
+    text-align: center;
+    padding: 10px;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    border: 1px solid rgba(159, 159, 159, 0.5);
+    border-radius: 9px;
+    background-color: #fbfbfd;
+    box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 4px 0px;
+  } */
 }
