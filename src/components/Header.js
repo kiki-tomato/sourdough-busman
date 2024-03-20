@@ -1,7 +1,8 @@
 import i18n from "../locales/i18n";
 import bread from "../assets/baguette_bread.png";
+import BtnToResizeComponent from "./BtnToResizeComponent";
 
-function Header({ title }) {
+function Header({ title, btn, setBtn, btnObj }) {
   const handleTranslateContent = function () {
     i18n.language === "en"
       ? i18n.changeLanguage("ko")
@@ -20,6 +21,7 @@ function Header({ title }) {
           <span className="slider"></span>
         </div>
       </label>
+      <BtnToResizeComponent setBtn={setBtn} btn={btn} btnObj={btnObj} />
     </div>
   );
 }

@@ -400,7 +400,7 @@ input:focus div .slider {
   .btn-to-map {
     visibility: visible;
     position: fixed;
-    bottom: 60px;
+    bottom: 80px;
     right: 15px;
     background-color: var(--color-default);
     color: #fbfbfd;
@@ -416,13 +416,13 @@ input:focus div .slider {
     grid-template-rows: 40px 0px calc(100vh - 40px);
   }
 
-  .infoWindow {
-    /* visibility: hidden; */
+  /* .infoWindow {
+    visibility: hidden;
     position: fixed;
     bottom: 130px;
     left: 25%;
     right: 25%;
-  }
+  } */
 
   /* .infoWindow-test {
     visibility: hidden;

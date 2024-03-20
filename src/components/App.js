@@ -45,7 +45,12 @@ function App() {
 
   return (
     <div className="container">
-      <Header title={t("header.title")} />
+      <Header
+        title={t("header.title")}
+        setBtn={setBtn}
+        btn={btn}
+        btnObj={btnObj}
+      />
       <SideBar
         filters={filtersObj}
         bakeryData={bakeryData}
