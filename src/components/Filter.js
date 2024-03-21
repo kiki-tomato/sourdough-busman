@@ -2,7 +2,7 @@ function Filter({ filterStatus, onFilterClick, children }) {
   return (
     <button
       onClick={onFilterClick}
-      className={filterStatus ? "btn-color" : null}
+      className={filterStatus ? "btn-filter btn-filter-active" : "btn-filter"}
     >
       {children}
     </button>

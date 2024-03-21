@@ -23,6 +23,7 @@
 
   "buttons": {
     "listView": "List View",
-    "mapView": "Map View"
+    "mapView": "Map View",
+    "moreDetails": "More Details"
   }
 }

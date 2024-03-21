@@ -1,7 +1,10 @@
 import mapIcon from "../assets/map-fill.svg";
 import listIcon from "../assets/list-ul.svg";
+import { useTranslation } from "react-i18next";
 
-function BtnToResizeComponent({ setBtn, btn, btnObj }) {
+function BtnToResizeComponent({ resize, setResize }) {
+  const { t } = useTranslation();
+
   const addMapIcon = {
     backgroundImage: `url(${mapIcon})`,
     backgroundRepeat: "no-repeat",
@@ -16,18 +19,18 @@ function BtnToResizeComponent({ setBtn, btn, btnObj }) {
   };
 
   function handleBtn() {
-    setBtn((on) => !on);
+    setResize((on) => !on);
 
-    document.querySelector(".container").classList.toggle("grid");
+    document.querySelector(".container").classList.toggle("grid-alter");
   }
 
   return (
     <button
-      className="btn-to-map"
+      className="btn-to-resize"
       onClick={handleBtn}
-      style={!btn ? addListIcon : addMapIcon}
+      style={!resize ? addListIcon : addMapIcon}
     >
-      {!btn ? btnObj.listView : btnObj.mapView}
+      {!resize ? t("buttons.listView") : t("buttons.mapView")}
     </button>
   );
 }

@@ -1,24 +1,26 @@
 import Header from "./Header";
 import Map from "./Map";
 import SideBar from "./SideBar";
+import BtnToResizeComponent from "./BtnToResizeComponent";
+import PlaceList from "./PlaceList";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
 
 function App() {
   const { t } = useTranslation();
-  const filtersObj = t("filters", { returnObjects: true });
-  const btnObj = t("buttons", { returnObjects: true });
-  const bakeryData = t("bakeries", { returnObjects: true });
-
+  const [resize, setResize] = useState(false);
+  const [openFiltered, setOepnFiltered] = useState(false);
+  const [shippingFiltered, setShippingFiltered] = useState(false);
+  const [dineInFiltered, setDineInFiltered] = useState(false);
   const [currentLocation, setCurrentLocation] = useState({
     latitude: 0,
     longitude: 0,
   });
-  const [btn, setBtn] = useState(false);
-  const [openFiltered, setOepnFiltered] = useState(false);
-  const [shippingFiltered, setShippingFiltered] = useState(false);
-  const [dineInFiltered, setDineInFiltered] = useState(false);
-  const [clickedMarker, setClickedMarker] = useState("");
+
+  const d = new Date();
+  const currentDay = d.getDay();
+  const currentHour = d.getHours() + d.getMinutes() / 60;
+  const bakeryData = t("bakeries", { returnObjects: true });
 
   useEffect(() => {
     document.title = t("header.title");
@@ -45,36 +47,36 @@ function App() {
 
   return (
     <div className="container">
-      <Header
-        title={t("header.title")}
-        setBtn={setBtn}
-        btn={btn}
-        btnObj={btnObj}
-      />
+      <Header>
+        <BtnToResizeComponent resize={resize} setResize={setResize} />
+      </Header>
       <SideBar
-        filters={filtersObj}
-        bakeryData={bakeryData}
-        currentLocation={currentLocation}
-        btn={btn}
-        setBtn={setBtn}
         openFiltered={openFiltered}
+        dineInFiltered={dineInFiltered}
+        shippingFiltered={shippingFiltered}
         setOepnFiltered={setOepnFiltered}
-        shippingFiltered={shippingFiltered}
         setShippingFiltered={setShippingFiltered}
-        dineInFiltered={dineInFiltered}
         setDineInFiltered={setDineInFiltered}
-        btnObj={btnObj}
-        clickedMarker={clickedMarker}
-      />
+      >
+        <PlaceList
+          bakeryData={bakeryData}
+          currentLocation={currentLocation}
+          currentDay={currentDay}
+          currentHour={currentHour}
+          openFiltered={openFiltered}
+          // distanceFiltered={distanceFiltered}
+          dineInFiltered={dineInFiltered}
+          shippingFiltered={shippingFiltered}
+        />
+      </SideBar>
       <Map
-        currentLocation={currentLocation}
         bakeryData={bakeryData}
+        currentLocation={currentLocation}
+        currentDay={currentDay}
+        currentHour={currentHour}
         openFiltered={openFiltered}
         shippingFiltered={shippingFiltered}
         dineInFiltered={dineInFiltered}
-        btnObj={btnObj}
-        setBtn={setBtn}
-        setClickedMarker={setClickedMarker}
       />
     </div>
   );

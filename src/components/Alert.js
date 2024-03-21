@@ -6,7 +6,7 @@ function Alert() {
 
   return (
     <>
-      <img src={noResult} className="alert-img" alt="No Result" />
+      <img src={noResult} className="alert-img" alt="No result" />
       <p className="alert-message">{t("alert.noResults")}</p>
     </>
   );

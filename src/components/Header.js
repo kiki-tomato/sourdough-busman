@@ -1,8 +1,11 @@
 import i18n from "../locales/i18n";
 import bread from "../assets/baguette_bread.png";
-import BtnToResizeComponent from "./BtnToResizeComponent";
+import { useTranslation } from "react-i18next";
+import BtnToMyLocation from "./BtnToMyLocation";
 
-function Header({ title, btn, setBtn, btnObj }) {
+function Header({ children }) {
+  const { t } = useTranslation();
+
   const handleTranslateContent = function () {
     i18n.language === "en"
       ? i18n.changeLanguage("ko")
@@ -12,16 +15,17 @@ function Header({ title, btn, setBtn, btnObj }) {
   return (
     <div className="header">
       <img src={bread} alt="bread emoji"></img>
-      <div className="title">{title}</div>
+      <div className="title">{t("header.title")}</div>
       <label className="toggle-switch">
         <input type="checkbox" onClick={handleTranslateContent}></input>
-        <div>
+        <div className="toggle-options">
           <p>Korean</p>
           <p>English</p>
           <span className="slider"></span>
         </div>
       </label>
-      <BtnToResizeComponent setBtn={setBtn} btn={btn} btnObj={btnObj} />
+      {children}
+      <BtnToMyLocation />
     </div>
   );
 }

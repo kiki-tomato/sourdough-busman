@@ -6,17 +6,14 @@ import { useState } from "react";
 
 function PlaceList({
   bakeryData,
+  currentLocation,
+  currentDay,
+  currentHour,
   openFiltered,
   distanceFiltered,
   dineInFiltered,
   shippingFiltered,
-  currentLocation,
-  setClickedPlace,
 }) {
-  const d = new Date();
-  const currentDay = d.getDay();
-  const currentHour = d.getHours() + d.getMinutes() / 60;
-
   const [distanceArr, setDistanceArr] = useState([]);
 
   let filteredData = bakeryData;
@@ -74,15 +71,11 @@ function PlaceList({
     <>
       <ul
         className={
-          !filteredData.length ? "place-list margin-botton" : "place-list"
+          !filteredData.length ? "place-list spacing-mb" : "place-list"
         }
       >
         {filteredData.map((bakery) => (
-          <Place
-            eachBakeryData={bakery}
-            key={bakery.name}
-            setClickedPlace={setClickedPlace}
-          >
+          <Place eachBakeryData={bakery} key={bakery.name}>
             <DistanceFromMe
               locationData={bakery.location}
               currentLocation={currentLocation}
@@ -103,5 +96,3 @@ function PlaceList({
 }
 
 export default PlaceList;
-
-// style={!btn ? { visibility: "hidden" } : {}}

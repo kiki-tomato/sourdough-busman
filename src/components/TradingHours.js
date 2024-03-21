@@ -11,7 +11,7 @@ function TradingHours({ hoursData, currentDay, currentHour }) {
       hoursData[currentDay].open <= currentHour &&
       currentHour < hoursData[currentDay].close
     ) {
-      setTextColor("blue");
+      setTextColor("bakery-open");
 
       if (Number.isInteger(hoursData[currentDay].close)) {
         setOpenOrClosed(
@@ -32,10 +32,10 @@ function TradingHours({ hoursData, currentDay, currentHour }) {
         );
       }
     } else if (currentHour >= hoursData[currentDay].close) {
-      setTextColor("red");
+      setTextColor("bakery-closed");
       setOpenOrClosed(t("openStatus.closed"));
     } else if (hoursData[currentDay].closed) {
-      setTextColor("red");
+      setTextColor("bakery-closed");
       setOpenOrClosed(t("openStatus.closureDay"));
     }
   }, [hoursData, currentDay, currentHour, t]);

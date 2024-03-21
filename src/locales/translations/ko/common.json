@@ -23,6 +23,7 @@
 
   "buttons": {
     "listView": "목록 보기",
-    "mapView": "지도 표시하기"
+    "mapView": "지도 표시하기",
+    "moreDetails": "자세히 보기"
   }
 }

@@ -1,28 +1,25 @@
 import { useState } from "react";
 import Filter from "./Filter";
-import PlaceList from "./PlaceList";
-import BtnToResizeComponent from "./BtnToResizeComponent";
+import { useTranslation } from "react-i18next";
 
 function SideBar({
-  filters,
-  bakeryData,
-  currentLocation,
-  btn,
-  setBtn,
-  setOepnFiltered,
   openFiltered,
-  setShippingFiltered,
   shippingFiltered,
-  setDineInFiltered,
   dineInFiltered,
-  btnObj,
-  clickedMarker,
+  setOepnFiltered,
+  setShippingFiltered,
+  setDineInFiltered,
+  children,
 }) {
+  const { t } = useTranslation();
   const [distanceFiltered, setDistanceFiltered] = useState(false);
+
+  const filterLength = Object.entries(
+    t("filter", { returnObjects: true })
+  ).length;
 
   let filtersNum;
   let isFilterOn = false;
-  const filterLength = Object.entries(filters).length;
 
   const handleOpenFilter = function () {
     setOepnFiltered((on) => !on);
@@ -68,57 +65,31 @@ function SideBar({
     <div className="sidebar">
       <div className="filter-container">
         <Filter filterStatus={isFilterOn}>
-          {filters.filter} {filtersNum}
+          {t("filters.filter")} {filtersNum}
         </Filter>
         <Filter onFilterClick={handleOpenFilter} filterStatus={openFiltered}>
-          {filters.open}
+          {t("filters.open")}
         </Filter>
         {/* <Filter
           onFilterClick={handleDistanceFilter}
           filterStatus={distanceFiltered}
         >
-          {filters.distance}
+          {t("filters.distance")}
         </Filter> */}
         <Filter
           onFilterClick={handleDineInFilter}
           filterStatus={dineInFiltered}
         >
-          {filters.dineIn}
+          {t("filters.dineIn")}
         </Filter>
         <Filter
           onFilterClick={handleShippingFilter}
           filterStatus={shippingFiltered}
         >
-          {filters.shipping}
+          {t("filters.shipping")}
         </Filter>
       </div>
-      <PlaceList
-        bakeryData={bakeryData}
-        currentLocation={currentLocation}
-        openFiltered={openFiltered}
-        distanceFiltered={distanceFiltered}
-        dineInFiltered={dineInFiltered}
-        shippingFiltered={shippingFiltered}
-        setBtn={setBtn}
-        btn={btn}
-        btnObj={btnObj}
-      />
-      <BtnToResizeComponent setBtn={setBtn} btn={btn} btnObj={btnObj} />
-
-      <InfoWindow btn={btn} />
-    </div>
-  );
-}
-
-function InfoWindow({ btn }) {
-  return (
-    <div
-      className="infoWindow-test"
-      style={btn ? { visibility: "hidden" } : {}}
-    >
-      <div>name</div>
-      <div>address</div>
-      <button className="info-window-btn">button</button>
+      {children}
     </div>
   );
 }

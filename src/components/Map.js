@@ -1,22 +1,20 @@
 import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 function Map({
-  currentLocation,
   bakeryData,
+  currentLocation,
+  currentDay,
+  currentHour,
   openFiltered,
   shippingFiltered,
   dineInFiltered,
-  btnObj,
-  setClickedMarker,
 }) {
   const mapElement = useRef(null);
   const mapInitialized = useRef(false);
+  const { t } = useTranslation();
 
   let filteredData = bakeryData;
-
-  const d = new Date();
-  const currentDay = d.getDay();
-  const currentHour = d.getHours() + d.getMinutes() / 60;
 
   if (openFiltered) {
     const openFilteredData = bakeryData.filter(
@@ -89,7 +87,7 @@ function Map({
           ),
           map: map,
           icon: {
-            content: `<div class="marker-container">${bakery.name}</div>`,
+            content: `<div class="marker">${bakery.name}</div>`,
             size: new naver.maps.Size(10, 10),
             anchor: new naver.maps.Point(40, 20),
           },
@@ -102,7 +100,9 @@ function Map({
           <div class="infoWindow">
           <div>${bakery.name}</div>
           <div>${bakery.address}</div>
-          <button class="info-window-btn"><a>네이버지도에서 자세히 보기</a></button>
+          <button class="btn-more-details"><a>${t(
+            "buttons.moreDetails"
+          )}</a></button>
           </div>`,
           disableAnchor: true,
           borderWidth: 0,
@@ -171,8 +171,19 @@ function Map({
         place.addEventListener("click", getClickHandler(i))
       );
 
+      document
+        .querySelector(".btn-to-my-location")
+        .addEventListener("click", function () {
+          map.setCenter(
+            new naver.maps.LatLng(
+              currentLocation.latitude,
+              currentLocation.longitude
+            )
+          );
+        });
+
       // const btnMyLocation = '<img class="button">';
-      // const btnListView = `<button class="btn-listview">${btnObj.listView}</button>`;
+
       // const customControl = new naver.maps.CustomControl(btnListView, {
       //   position: naver.maps.Position.RIGHT_BOTTOM,
       // });
@@ -196,7 +207,7 @@ function Map({
       //   }
       // );
     }
-  }, [currentLocation, bakeryData, filteredData, btnObj, setClickedMarker]);
+  }, [currentLocation, bakeryData, filteredData, t]);
 
   return <div ref={mapElement} className="map" id="naverMap"></div>;
 }
