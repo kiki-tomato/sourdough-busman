@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Filter from "./Filter";
 import { useTranslation } from "react-i18next";
 
@@ -6,13 +5,14 @@ function SideBar({
   openFiltered,
   shippingFiltered,
   dineInFiltered,
+  distanceFiltered,
   setOepnFiltered,
   setShippingFiltered,
   setDineInFiltered,
+  setDistanceFiltered,
   children,
 }) {
   const { t } = useTranslation();
-  const [distanceFiltered, setDistanceFiltered] = useState(false);
 
   const filterLength = Object.entries(
     t("filter", { returnObjects: true })
@@ -70,12 +70,12 @@ function SideBar({
         <Filter onFilterClick={handleOpenFilter} filterStatus={openFiltered}>
           {t("filters.open")}
         </Filter>
-        {/* <Filter
+        <Filter
           onFilterClick={handleDistanceFilter}
           filterStatus={distanceFiltered}
         >
           {t("filters.distance")}
-        </Filter> */}
+        </Filter>
         <Filter
           onFilterClick={handleDineInFilter}
           filterStatus={dineInFiltered}

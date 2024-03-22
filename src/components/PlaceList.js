@@ -2,7 +2,6 @@ import Place from "./Place";
 import DistanceFromMe from "./DistanceFromMe";
 import TradingHours from "./TradingHours";
 import Alert from "./Alert";
-import { useState } from "react";
 
 function PlaceList({
   bakeryData,
@@ -14,8 +13,6 @@ function PlaceList({
   dineInFiltered,
   shippingFiltered,
 }) {
-  const [distanceArr, setDistanceArr] = useState([]);
-
   let filteredData = bakeryData;
 
   if (openFiltered) {
@@ -37,10 +34,29 @@ function PlaceList({
       );
     }
 
+    if (distanceFiltered) {
+      filteredData = openFilteredData
+        .slice()
+        .sort((a, b) => a.distance - b.distance);
+    }
     if (dineInFiltered && shippingFiltered) {
       filteredData = openFilteredData.filter(
         (bakery) => bakery.dineIn && bakery.shippingService
       );
+    }
+
+    if (dineInFiltered && distanceFiltered) {
+      filteredData = openFilteredData
+        .slice()
+        .sort((a, b) => a.distance - b.distance)
+        .filter((bakery) => bakery.dineIn);
+    }
+
+    if (shippingFiltered && distanceFiltered) {
+      filteredData = openFilteredData
+        .filter((bakery) => bakery.shippingService)
+        .sort((a, b) => a.distance - b.distance)
+        .filter((bakery) => bakery.dineIn);
     }
   } else if (dineInFiltered) {
     const dineInFilteredData = bakeryData.filter((bakery) => bakery.dineIn);
@@ -52,20 +68,38 @@ function PlaceList({
         (bakery) => bakery.shippingService
       );
     }
+
+    if (distanceFiltered) {
+      filteredData = dineInFilteredData
+        .slice()
+        .sort((a, b) => a.distance - b.distance);
+    }
+
+    if (shippingFiltered && distanceFiltered) {
+      filteredData = dineInFilteredData
+        .filter((bakery) => bakery.shippingService)
+        .slice()
+        .sort((a, b) => a.distance - b.distance);
+    }
   } else if (shippingFiltered) {
-    filteredData = bakeryData.filter((bakery) => bakery.shippingService);
+    const shippingFilteredData = bakeryData.filter(
+      (bakery) => bakery.shippingService
+    );
+
+    filteredData = shippingFilteredData;
+
+    if (distanceFiltered) {
+      filteredData = shippingFilteredData
+        .slice()
+        .sort((a, b) => a.distance - b.distance);
+    }
+  } else if (distanceFiltered) {
+    const distanceFilteredData = bakeryData
+      .slice()
+      .sort((a, b) => a.distance - b.distance);
+
+    filteredData = distanceFilteredData;
   }
-
-  // else if (distanceFiltered) {
-  //   const distanceFilteredData = bakeryData
-  //     .map((bakery, i) => {
-  //       return { ...bakery, distance: distanceArr[i] };
-  //     })
-  //     .slice()
-  //     .sort((a, b) => Number(a.distance) - Number(b.distance));
-
-  //   filteredData = distanceFilteredData;
-  // }
 
   return (
     <>
@@ -77,10 +111,9 @@ function PlaceList({
         {filteredData.map((bakery) => (
           <Place eachBakeryData={bakery} key={bakery.name}>
             <DistanceFromMe
-              locationData={bakery.location}
+              distanceData={bakery.distance}
               currentLocation={currentLocation}
               bakeryData={bakeryData}
-              setDistanceArr={setDistanceArr}
             />
             <TradingHours
               hoursData={bakery.hours}

@@ -18,7 +18,8 @@
       ],
       "dineIn": false,
       "shippingService": false,
-      "onlineStore": ""
+      "onlineStore": "",
+      "naverMap": "https://naver.me/IxDrh7fq"
     },
 
     {
@@ -39,7 +40,8 @@
       ],
       "dineIn": false,
       "shippingService": true,
-      "onlineStore": "https://smartstore.naver.com/luckybakery/"
+      "onlineStore": "https://smartstore.naver.com/luckybakery/",
+      "naverMap": "https://naver.me/5Amfv1OS"
     },
 
     {
@@ -60,7 +62,8 @@
       ],
       "dineIn": false,
       "shippingService": false,
-      "onlineStore": ""
+      "onlineStore": "",
+      "naverMap": "https://naver.me/xxfWRzur"
     },
 
     {
@@ -81,7 +84,8 @@
       ],
       "dineIn": false,
       "shippingService": false,
-      "onlineStore": ""
+      "onlineStore": "",
+      "naverMap": "https://naver.me/5c2IS9re"
     },
 
     {
@@ -102,7 +106,8 @@
       ],
       "dineIn": true,
       "shippingService": true,
-      "onlineStore": ""
+      "onlineStore": "https://www.instagram.com/bbang_basket/",
+      "naverMap": "https://naver.me/Gmf7z9eq"
     },
 
     {
@@ -123,7 +128,8 @@
       ],
       "dineIn": false,
       "shippingService": true,
-      "onlineStore": "https://smartstore.naver.com/archbakery"
+      "onlineStore": "https://smartstore.naver.com/archbakery",
+      "naverMap": "https://naver.me/5EQKdQVz"
     },
 
     {
@@ -144,7 +150,8 @@
       ],
       "dineIn": false,
       "shippingService": true,
-      "onlineStore": "https://smartstore.naver.com/painpainpain"
+      "onlineStore": "https://smartstore.naver.com/painpainpain",
+      "naverMap": "https://naver.me/xmrP6gKF"
     },
 
     {
@@ -165,7 +172,8 @@
       ],
       "dineIn": false,
       "shippingService": true,
-      "onlineStore": "https://smartstore.naver.com/won_bread"
+      "onlineStore": "https://smartstore.naver.com/won_bread",
+      "naverMap": "https://naver.me/5qgE3MLQ"
     },
 
     {
@@ -186,7 +194,8 @@
       ],
       "dineIn": false,
       "shippingService": false,
-      "onlineStore": ""
+      "onlineStore": "",
+      "naverMap": "https://naver.me/5CrgOQUh"
     },
 
     {
@@ -207,7 +216,8 @@
       ],
       "dineIn": true,
       "shippingService": true,
-      "onlineStore": ""
+      "onlineStore": "https://www.instagram.com/1688jsd/",
+      "naverMap": "https://naver.me/5MS4nk5h"
     },
 
     {
@@ -228,7 +238,8 @@
       ],
       "dineIn": true,
       "shippingService": false,
-      "onlineStore": ""
+      "onlineStore": "",
+      "naverMap": "https://naver.me/FFvi4TPV"
     }
   ]
 }

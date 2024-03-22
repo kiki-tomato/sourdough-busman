@@ -24,6 +24,8 @@
   "buttons": {
     "listView": "List View",
     "mapView": "Map View",
-    "moreDetails": "More Details"
+    "moreDetails": "More Details",
+    "shippingAvailable": "Shipping Available",
+    "orderOnline": "Order Online"
   }
 }

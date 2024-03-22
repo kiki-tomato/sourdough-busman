@@ -24,6 +24,8 @@
   "buttons": {
     "listView": "목록 보기",
     "mapView": "지도 표시하기",
-    "moreDetails": "자세히 보기"
+    "moreDetails": "네이버지도로 자세히 보기",
+    "shippingAvailable": "택배배송 가능",
+    "orderOnline": "빵 택배 주문하기"
   }
 }

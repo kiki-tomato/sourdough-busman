@@ -7,34 +7,33 @@ function TradingHours({ hoursData, currentDay, currentHour }) {
   const [openOrClosed, setOpenOrClosed] = useState("");
 
   useEffect(() => {
-    if (
-      hoursData[currentDay].open <= currentHour &&
-      currentHour < hoursData[currentDay].close
-    ) {
+    const openingTime = hoursData[currentDay].open;
+    const closingTime = hoursData[currentDay].close;
+    const hourInteger = Math.trunc(closingTime);
+    const dayOff = hoursData[currentDay].closed;
+
+    if (openingTime <= currentHour && currentHour < closingTime) {
       setTextColor("bakery-open");
 
-      if (Number.isInteger(hoursData[currentDay].close)) {
+      if (Number.isInteger(closingTime)) {
         setOpenOrClosed(
           t("openStatus.open", {
-            hour: Math.trunc(hoursData[currentDay].close) - 12,
+            hour: hourInteger - 12,
             minute: "00",
           })
         );
       } else {
         setOpenOrClosed(
           t("openStatus.open", {
-            hour: Math.trunc(hoursData[currentDay].close) - 12,
-            minute:
-              (hoursData[currentDay].close -
-                Math.trunc(hoursData[currentDay].close)) *
-              60,
+            hour: hourInteger - 12,
+            minute: (closingTime - hourInteger) * 60,
           })
         );
       }
-    } else if (currentHour >= hoursData[currentDay].close) {
+    } else if (currentHour >= closingTime) {
       setTextColor("bakery-closed");
       setOpenOrClosed(t("openStatus.closed"));
-    } else if (hoursData[currentDay].closed) {
+    } else if (dayOff) {
       setTextColor("bakery-closed");
       setOpenOrClosed(t("openStatus.closureDay"));
     }

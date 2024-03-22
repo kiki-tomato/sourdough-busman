@@ -1,7 +1,6 @@
 import i18n from "../locales/i18n";
 import bread from "../assets/baguette_bread.png";
 import { useTranslation } from "react-i18next";
-import BtnToMyLocation from "./BtnToMyLocation";
 
 function Header({ children }) {
   const { t } = useTranslation();
@@ -25,7 +24,6 @@ function Header({ children }) {
         </div>
       </label>
       {children}
-      <BtnToMyLocation />
     </div>
   );
 }

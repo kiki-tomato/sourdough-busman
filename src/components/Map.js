@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import arrow from "../assets/arrow_forward.svg";
 
 function Map({
   bakeryData,
@@ -9,6 +10,7 @@ function Map({
   openFiltered,
   shippingFiltered,
   dineInFiltered,
+  distanceFiltered,
 }) {
   const mapElement = useRef(null);
   const mapInitialized = useRef(false);
@@ -35,10 +37,29 @@ function Map({
       );
     }
 
+    if (distanceFiltered) {
+      filteredData = openFilteredData
+        .slice()
+        .sort((a, b) => a.distance - b.distance);
+    }
     if (dineInFiltered && shippingFiltered) {
       filteredData = openFilteredData.filter(
         (bakery) => bakery.dineIn && bakery.shippingService
       );
+    }
+
+    if (dineInFiltered && distanceFiltered) {
+      filteredData = openFilteredData
+        .slice()
+        .sort((a, b) => a.distance - b.distance)
+        .filter((bakery) => bakery.dineIn);
+    }
+
+    if (shippingFiltered && distanceFiltered) {
+      filteredData = openFilteredData
+        .filter((bakery) => bakery.shippingService)
+        .sort((a, b) => a.distance - b.distance)
+        .filter((bakery) => bakery.dineIn);
     }
   } else if (dineInFiltered) {
     const dineInFilteredData = bakeryData.filter((bakery) => bakery.dineIn);
@@ -50,8 +71,37 @@ function Map({
         (bakery) => bakery.shippingService
       );
     }
+
+    if (distanceFiltered) {
+      filteredData = dineInFilteredData
+        .slice()
+        .sort((a, b) => a.distance - b.distance);
+    }
+
+    if (shippingFiltered && distanceFiltered) {
+      filteredData = dineInFilteredData
+        .filter((bakery) => bakery.shippingService)
+        .slice()
+        .sort((a, b) => a.distance - b.distance);
+    }
   } else if (shippingFiltered) {
-    filteredData = bakeryData.filter((bakery) => bakery.shippingService);
+    const shippingFilteredData = bakeryData.filter(
+      (bakery) => bakery.shippingService
+    );
+
+    filteredData = shippingFilteredData;
+
+    if (distanceFiltered) {
+      filteredData = shippingFilteredData
+        .slice()
+        .sort((a, b) => a.distance - b.distance);
+    }
+  } else if (distanceFiltered) {
+    const distanceFilteredData = bakeryData
+      .slice()
+      .sort((a, b) => a.distance - b.distance);
+
+    filteredData = distanceFilteredData;
   }
 
   useEffect(() => {
@@ -97,12 +147,50 @@ function Map({
       const infoWindows = filteredData.map((bakery) => {
         return new naver.maps.InfoWindow({
           content: `
-          <div class="infoWindow">
-          <div>${bakery.name}</div>
+          <div class="info-window">
+          <div>✸ ${bakery.name}</div>
           <div>${bakery.address}</div>
-          <button class="btn-more-details"><a>${t(
+          <div class="extra-info">
+            ${
+              bakery.hours[currentDay].close
+                ? `<span>${
+                    Number.isInteger(bakery.hours[currentDay].close)
+                      ? t("openStatus.open", {
+                          hour: Math.trunc(bakery.hours[currentDay].close) - 12,
+                          minute: "00",
+                        })
+                      : t("openStatus.open", {
+                          hour: Math.trunc(bakery.hours[currentDay].close) - 12,
+                          minute:
+                            (bakery.hours[currentDay].close -
+                              Math.trunc(bakery.hours[currentDay].close)) *
+                            60,
+                        })
+                  }</span>`
+                : `<span>${t("openStatus.closureDay")}</span>`
+            }
+            ${
+              bakery.shippingService
+                ? `<span>|</span>
+                <span>${t("buttons.shippingAvailable")}</span>`
+                : ""
+            }
+          </div>
+          ${
+            bakery.shippingService
+              ? `<a href=${
+                  bakery.onlineStore
+                } target="_blank" rel="noopener" class="btn-to-order">${t(
+                  "buttons.orderOnline"
+                )}<img class="btn-arrow" src=${arrow} alt="arrow"/>
+                </a>`
+              : ""
+          }
+          <a href=${
+            bakery.naverMap
+          } target="_blank" rel="noopener"><button class="btn-more-details">${t(
             "buttons.moreDetails"
-          )}</a></button>
+          )}</button></a>
           </div>`,
           disableAnchor: true,
           borderWidth: 0,
@@ -129,10 +217,6 @@ function Map({
 
           markers[seq].eventTarget.classList.add("active-marker");
           markers[seq].setZIndex(100);
-
-          // if (document.querySelector(".container").classList.contains("grid")) {
-          //   infoWindow.close();
-          // }
         };
       }
 
@@ -181,33 +265,8 @@ function Map({
             )
           );
         });
-
-      // const btnMyLocation = '<img class="button">';
-
-      // const customControl = new naver.maps.CustomControl(btnListView, {
-      //   position: naver.maps.Position.RIGHT_BOTTOM,
-      // });
-
-      // naver.maps.Event.once(map, "init", function () {
-      //   customControl.setMap(map);
-      // });
-
-      // naver.maps.Event.addDOMListener(
-      //   customControl.getElement(),
-      //   "click",
-      //   function () {
-      //     document.querySelector(".container").classList.toggle("grid");
-
-      //     setBtn((on) => !on);
-
-      //     console.log(customControl.getElement().children);
-
-      //     // console.log(customControl.getElement().firstElementChild);
-      //     // console.log(customControl.getElement().childNodes);
-      //   }
-      // );
     }
-  }, [currentLocation, bakeryData, filteredData, t]);
+  }, [currentLocation, bakeryData, filteredData, currentDay, t]);
 
   return <div ref={mapElement} className="map" id="naverMap"></div>;
 }
