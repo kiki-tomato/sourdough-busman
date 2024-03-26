@@ -201,6 +201,7 @@ input:focus div .slider {
 }
 
 .btn-filter:last-child {
+  margin-right: 20px;
   background-image: url("./assets/Delivery\ Truck.png");
   background-size: 19px;
   background-repeat: no-repeat;
@@ -261,7 +262,7 @@ input:focus div .slider {
 
 .extra-info span:nth-child(1) {
   padding: 20px 5px 20px 20px;
-  background-image: url("./assets/Hourglass\ Not\ Done.svg");
+  background-image: url("./assets/Hourglass\ Not\ Done.png");
   background-repeat: no-repeat;
   background-size: 17px;
   background-position: 0px;
