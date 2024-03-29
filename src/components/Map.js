@@ -58,6 +58,12 @@ function Map({
     if (shippingFiltered && distanceFiltered) {
       filteredData = openFilteredData
         .filter((bakery) => bakery.shippingService)
+        .sort((a, b) => a.distance - b.distance);
+    }
+
+    if (dineInFiltered && shippingFiltered && distanceFiltered) {
+      filteredData = openFilteredData
+        .filter((bakery) => bakery.shippingService)
         .sort((a, b) => a.distance - b.distance)
         .filter((bakery) => bakery.dineIn);
     }

@@ -172,11 +172,11 @@ input:focus div .slider {
 }
 
 .btn-filter:first-child {
+  margin-left: 20px;
   background-image: url("./assets/filter.svg");
   background-size: 19px;
   background-repeat: no-repeat;
   background-position: 10px 4px;
-  margin-left: 20px;
 }
 
 .btn-filter:nth-child(2) {
@@ -201,7 +201,7 @@ input:focus div .slider {
 }
 
 .btn-filter:last-child {
-  margin-right: 20px;
+  margin-right: 20px !important;
   background-image: url("./assets/Delivery\ Truck.png");
   background-size: 19px;
   background-repeat: no-repeat;
