@@ -12,9 +12,10 @@
   },
 
   "openStatus": {
+    "notOpenYet": "영업전",
     "open": "{{hour}}:{{minute}}pm까지 영업",
     "closed": "영업마감",
-    "closureDay": "정기휴무"
+    "closureDay": "오늘 휴무"
   },
 
   "alert": {

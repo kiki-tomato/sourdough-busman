@@ -7,7 +7,7 @@ function PlaceList({
   bakeryData,
   currentLocation,
   currentDay,
-  currentHour,
+  currentTime,
   openFiltered,
   distanceFiltered,
   dineInFiltered,
@@ -16,11 +16,20 @@ function PlaceList({
   let filteredData = bakeryData;
 
   if (openFiltered) {
-    const openFilteredData = bakeryData.filter(
-      (bakery) =>
-        bakery.hours[currentDay].open <= currentHour &&
-        currentHour < bakery.hours[currentDay].close
-    );
+    const openFilteredData = bakeryData
+      .filter((bakery) => {
+        return bakery.hours[currentDay].open;
+      })
+      .filter(
+        (bakery) =>
+          Number(
+            `${bakery.hours[currentDay].open.hour}.${bakery.hours[currentDay].open.min}`
+          ) <= currentTime &&
+          currentTime <
+            Number(
+              `${bakery.hours[currentDay].close.hour}.${bakery.hours[currentDay].close.min}`
+            )
+      );
 
     filteredData = openFilteredData;
 
@@ -124,7 +133,7 @@ function PlaceList({
             <TradingHours
               hoursData={bakery.hours}
               currentDay={currentDay}
-              currentHour={currentHour}
+              currentTime={currentTime}
             />
           </Place>
         ))}

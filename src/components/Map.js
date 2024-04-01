@@ -6,7 +6,7 @@ function Map({
   bakeryData,
   currentLocation,
   currentDay,
-  currentHour,
+  currentTime,
   openFiltered,
   shippingFiltered,
   dineInFiltered,
@@ -19,11 +19,20 @@ function Map({
   let filteredData = bakeryData;
 
   if (openFiltered) {
-    const openFilteredData = bakeryData.filter(
-      (bakery) =>
-        bakery.hours[currentDay].open <= currentHour &&
-        currentHour < bakery.hours[currentDay].close
-    );
+    const openFilteredData = bakeryData
+      .filter((bakery) => {
+        return bakery.hours[currentDay].open;
+      })
+      .filter(
+        (bakery) =>
+          Number(
+            `${bakery.hours[currentDay].open.hour}.${bakery.hours[currentDay].open.min}`
+          ) <= currentTime &&
+          currentTime <
+            Number(
+              `${bakery.hours[currentDay].close.hour}.${bakery.hours[currentDay].close.min}`
+            )
+      );
 
     filteredData = openFilteredData;
 
@@ -158,19 +167,21 @@ function Map({
           <div>${bakery.address}</div>
           <div class="extra-info">
             ${
-              bakery.hours[currentDay].close
+              bakery.hours[currentDay].open
                 ? `<span>${
-                    Number.isInteger(bakery.hours[currentDay].close)
+                    currentTime <
+                    Number(
+                      `${bakery.hours[currentDay].open.hour}.${bakery.hours[currentDay].open.min}`
+                    )
+                      ? t("openStatus.notOpenYet")
+                      : bakery.hours[currentDay].close.min === 0
                       ? t("openStatus.open", {
-                          hour: Math.trunc(bakery.hours[currentDay].close) - 12,
+                          hour: bakery.hours[currentDay].close.hour - 12,
                           minute: "00",
                         })
                       : t("openStatus.open", {
-                          hour: Math.trunc(bakery.hours[currentDay].close) - 12,
-                          minute:
-                            (bakery.hours[currentDay].close -
-                              Math.trunc(bakery.hours[currentDay].close)) *
-                            60,
+                          hour: bakery.hours[currentDay].close.hour - 12,
+                          minute: bakery.hours[currentDay].close.min,
                         })
                   }</span>`
                 : `<span>${t("openStatus.closureDay")}</span>`
@@ -243,6 +254,15 @@ function Map({
         };
       }
 
+      function returnToCurrentLocation() {
+        map.setCenter(
+          new naver.maps.LatLng(
+            currentLocation.latitude,
+            currentLocation.longitude
+          )
+        );
+      }
+
       for (var i = 0, ii = markers.length; i < ii; i++) {
         naver.maps.Event.addListener(markers[i], "click", getClickHandler(i));
         naver.maps.Event.addListener(
@@ -263,16 +283,9 @@ function Map({
 
       document
         .querySelector(".btn-to-my-location")
-        .addEventListener("click", function () {
-          map.setCenter(
-            new naver.maps.LatLng(
-              currentLocation.latitude,
-              currentLocation.longitude
-            )
-          );
-        });
+        .addEventListener("click", returnToCurrentLocation);
     }
-  }, [currentLocation, bakeryData, filteredData, currentDay, t]);
+  }, [currentLocation, bakeryData, filteredData, currentDay, currentTime, t]);
 
   return <div ref={mapElement} className="map" id="naverMap"></div>;
 }

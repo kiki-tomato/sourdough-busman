@@ -6,6 +6,7 @@ import BtnToMyLocation from "./BtnToMyLocation";
 import PlaceList from "./PlaceList";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
+import "../assets/App.css";
 
 function App() {
   const { t } = useTranslation();
@@ -21,7 +22,9 @@ function App() {
 
   const d = new Date();
   const currentDay = d.getDay();
-  const currentHour = d.getHours() + d.getMinutes() / 60;
+  const currentHour = d.getHours();
+  const currentMin = d.getMinutes();
+  const currentTime = Number(`${currentHour}.${currentMin}`);
   const initialData = t("bakeries", { returnObjects: true });
 
   useEffect(() => {
@@ -112,7 +115,7 @@ function App() {
           bakeryData={modifiedData}
           currentLocation={currentLocation}
           currentDay={currentDay}
-          currentHour={currentHour}
+          currentTime={currentTime}
           openFiltered={openFiltered}
           distanceFiltered={distanceFiltered}
           dineInFiltered={dineInFiltered}
@@ -123,7 +126,7 @@ function App() {
         bakeryData={modifiedData}
         currentLocation={currentLocation}
         currentDay={currentDay}
-        currentHour={currentHour}
+        currentTime={currentTime}
         openFiltered={openFiltered}
         shippingFiltered={shippingFiltered}
         dineInFiltered={dineInFiltered}

@@ -9,11 +9,31 @@
       },
       "hours": [
         { "day": "sun", "closed": true },
-        { "day": "mon", "open": 10, "close": 20 },
-        { "day": "tue", "open": 10, "close": 20 },
-        { "day": "wed", "open": 10, "close": 20 },
-        { "day": "thu", "open": 10, "close": 20 },
-        { "day": "fri", "open": 10, "close": 20 },
+        {
+          "day": "mon",
+          "open": { "hour": 10, "min": 0 },
+          "close": { "hour": 20, "min": 0 }
+        },
+        {
+          "day": "tue",
+          "open": { "hour": 10, "min": 0 },
+          "close": { "hour": 20, "min": 0 }
+        },
+        {
+          "day": "wed",
+          "open": { "hour": 10, "min": 0 },
+          "close": { "hour": 20, "min": 0 }
+        },
+        {
+          "day": "thu",
+          "open": { "hour": 10, "min": 0 },
+          "close": { "hour": 20, "min": 0 }
+        },
+        {
+          "day": "fri",
+          "open": { "hour": 10, "min": 0 },
+          "close": { "hour": 20, "min": 0 }
+        },
         { "day": "sat", "open": 10, "close": 19 }
       ],
       "dineIn": false,
@@ -30,13 +50,25 @@
         "longitude": 129.1181663
       },
       "hours": [
-        { "day": "sun", "open": 10, "close": 15 },
+        {
+          "day": "sun",
+          "open": { "hour": 9, "min": 30 },
+          "close": { "hour": 16, "min": 30 }
+        },
         { "day": "mon", "closed": true },
         { "day": "tue", "closed": true },
         { "day": "wed", "closed": true },
         { "day": "thu", "closed": true },
-        { "day": "fri", "open": 10, "close": 17 },
-        { "day": "sat", "open": 10, "close": 17 }
+        {
+          "day": "fri",
+          "open": { "hour": 9, "min": 30 },
+          "close": { "hour": 16, "min": 30 }
+        },
+        {
+          "day": "sat",
+          "open": { "hour": 9, "min": 30 },
+          "close": { "hour": 16, "min": 30 }
+        }
       ],
       "dineIn": false,
       "shippingService": true,
@@ -53,12 +85,36 @@
       },
       "hours": [
         { "day": "sun", "closed": true },
-        { "day": "mon", "open": 10, "close": 21 },
-        { "day": "tue", "open": 10, "close": 21 },
-        { "day": "wed", "open": 10, "close": 21 },
-        { "day": "thu", "open": 10, "close": 21 },
-        { "day": "fri", "open": 10, "close": 21 },
-        { "day": "sat", "open": 10, "close": 21 }
+        {
+          "day": "mon",
+          "open": { "hour": 10, "min": 0 },
+          "close": { "hour": 21, "min": 0 }
+        },
+        {
+          "day": "tue",
+          "open": { "hour": 10, "min": 0 },
+          "close": { "hour": 21, "min": 0 }
+        },
+        {
+          "day": "wed",
+          "open": { "hour": 10, "min": 0 },
+          "close": { "hour": 21, "min": 0 }
+        },
+        {
+          "day": "thu",
+          "open": { "hour": 10, "min": 0 },
+          "close": { "hour": 21, "min": 0 }
+        },
+        {
+          "day": "fri",
+          "open": { "hour": 10, "min": 0 },
+          "close": { "hour": 21, "min": 0 }
+        },
+        {
+          "day": "sat",
+          "open": { "hour": 10, "min": 0 },
+          "close": { "hour": 21, "min": 0 }
+        }
       ],
       "dineIn": false,
       "shippingService": false,
@@ -76,11 +132,31 @@
       "hours": [
         { "day": "sun", "closed": true },
         { "day": "mon", "closed": true },
-        { "day": "tue", "open": 11, "close": 19 },
-        { "day": "wed", "open": 11, "close": 19 },
-        { "day": "thu", "open": 11, "close": 19 },
-        { "day": "fri", "open": 11, "close": 19 },
-        { "day": "sat", "open": 11, "close": 19 }
+        {
+          "day": "tue",
+          "open": { "hour": 11, "min": 0 },
+          "close": { "hour": 19, "min": 0 }
+        },
+        {
+          "day": "wed",
+          "open": { "hour": 11, "min": 0 },
+          "close": { "hour": 19, "min": 0 }
+        },
+        {
+          "day": "thu",
+          "open": { "hour": 11, "min": 0 },
+          "close": { "hour": 19, "min": 0 }
+        },
+        {
+          "day": "fri",
+          "open": { "hour": 11, "min": 0 },
+          "close": { "hour": 19, "min": 0 }
+        },
+        {
+          "day": "sat",
+          "open": { "hour": 11, "min": 0 },
+          "close": { "hour": 19, "min": 0 }
+        }
       ],
       "dineIn": false,
       "shippingService": false,
@@ -98,11 +174,31 @@
       "hours": [
         { "day": "sun", "closed": true },
         { "day": "mon", "closed": true },
-        { "day": "tue", "open": 11, "close": 16 },
-        { "day": "wed", "open": 11, "close": 16 },
-        { "day": "thu", "open": 11, "close": 16 },
-        { "day": "fri", "open": 11, "close": 16 },
-        { "day": "sat", "open": 11, "close": 16 }
+        {
+          "day": "tue",
+          "open": { "hour": 11, "min": 0 },
+          "close": { "hour": 16, "min": 0 }
+        },
+        {
+          "day": "wed",
+          "open": { "hour": 11, "min": 0 },
+          "close": { "hour": 16, "min": 0 }
+        },
+        {
+          "day": "thu",
+          "open": { "hour": 11, "min": 0 },
+          "close": { "hour": 16, "min": 0 }
+        },
+        {
+          "day": "fri",
+          "open": { "hour": 11, "min": 0 },
+          "close": { "hour": 16, "min": 0 }
+        },
+        {
+          "day": "sat",
+          "open": { "hour": 11, "min": 0 },
+          "close": { "hour": 16, "min": 0 }
+        }
       ],
       "dineIn": true,
       "shippingService": true,
@@ -118,13 +214,41 @@
         "longitude": 129.0299553
       },
       "hours": [
-        { "day": "sun", "open": 12.5, "close": 19 },
-        { "day": "mon", "open": 12.5, "close": 19 },
-        { "day": "tue", "open": 12.5, "close": 19 },
-        { "day": "wed", "open": 12.5, "close": 19 },
-        { "day": "thu", "open": 12.5, "close": 19 },
-        { "day": "fri", "open": 12.5, "close": 19 },
-        { "day": "sat", "open": 12.5, "close": 19 }
+        {
+          "day": "sun",
+          "open": { "hour": 12, "min": 30 },
+          "close": { "hour": 19, "min": 0 }
+        },
+        {
+          "day": "mon",
+          "open": { "hour": 12, "min": 30 },
+          "close": { "hour": 19, "min": 0 }
+        },
+        {
+          "day": "tue",
+          "open": { "hour": 12, "min": 30 },
+          "close": { "hour": 19, "min": 0 }
+        },
+        {
+          "day": "wed",
+          "open": { "hour": 12, "min": 30 },
+          "close": { "hour": 19, "min": 0 }
+        },
+        {
+          "day": "thu",
+          "open": { "hour": 12, "min": 30 },
+          "close": { "hour": 19, "min": 0 }
+        },
+        {
+          "day": "fri",
+          "open": { "hour": 12, "min": 30 },
+          "close": { "hour": 19, "min": 0 }
+        },
+        {
+          "day": "sat",
+          "open": { "hour": 12, "min": 30 },
+          "close": { "hour": 19, "min": 0 }
+        }
       ],
       "dineIn": false,
       "shippingService": true,
@@ -140,13 +264,37 @@
         "longitude": 129.1446744
       },
       "hours": [
-        { "day": "sun", "open": 9, "close": 17.5 },
+        {
+          "day": "sun",
+          "open": { "hour": 9, "min": 0 },
+          "close": { "hour": 17, "min": 30 }
+        },
         { "day": "mon", "closed": true },
-        { "day": "tue", "open": 9, "close": 17.5 },
-        { "day": "wed", "open": 9, "close": 17.5 },
-        { "day": "thu", "open": 9, "close": 17.5 },
-        { "day": "fri", "open": 9, "close": 17.5 },
-        { "day": "sat", "open": 9, "close": 17.5 }
+        {
+          "day": "tue",
+          "open": { "hour": 9, "min": 0 },
+          "close": { "hour": 17, "min": 30 }
+        },
+        {
+          "day": "wed",
+          "open": { "hour": 9, "min": 0 },
+          "close": { "hour": 17, "min": 30 }
+        },
+        {
+          "day": "thu",
+          "open": { "hour": 9, "min": 0 },
+          "close": { "hour": 17, "min": 30 }
+        },
+        {
+          "day": "fri",
+          "open": { "hour": 9, "min": 0 },
+          "close": { "hour": 17, "min": 30 }
+        },
+        {
+          "day": "sat",
+          "open": { "hour": 9, "min": 0 },
+          "close": { "hour": 17, "min": 30 }
+        }
       ],
       "dineIn": false,
       "shippingService": true,
@@ -165,10 +313,26 @@
         { "day": "sun", "closed": true },
         { "day": "mon", "closed": true },
         { "day": "tue", "closed": true },
-        { "day": "wed", "open": 11, "close": 18 },
-        { "day": "thu", "open": 11, "close": 18 },
-        { "day": "fri", "open": 11, "close": 18 },
-        { "day": "sat", "open": 11, "close": 18 }
+        {
+          "day": "wed",
+          "open": { "hour": 11, "min": 0 },
+          "close": { "hour": 18, "min": 0 }
+        },
+        {
+          "day": "thu",
+          "open": { "hour": 11, "min": 0 },
+          "close": { "hour": 18, "min": 0 }
+        },
+        {
+          "day": "fri",
+          "open": { "hour": 11, "min": 0 },
+          "close": { "hour": 18, "min": 0 }
+        },
+        {
+          "day": "sat",
+          "open": { "hour": 11, "min": 0 },
+          "close": { "hour": 18, "min": 0 }
+        }
       ],
       "dineIn": false,
       "shippingService": true,
@@ -184,13 +348,41 @@
         "longitude": 129.0823421
       },
       "hours": [
-        { "day": "sun", "open": 10, "close": 20 },
-        { "day": "mon", "open": 10, "close": 20 },
-        { "day": "tue", "open": 10, "close": 20 },
-        { "day": "wed", "open": 10, "close": 20 },
-        { "day": "thu", "open": 10, "close": 20 },
-        { "day": "fri", "open": 10, "close": 20 },
-        { "day": "sat", "open": 10, "close": 20 }
+        {
+          "day": "sun",
+          "open": { "hour": 10, "min": 0 },
+          "close": { "hour": 20, "min": 0 }
+        },
+        {
+          "day": "mon",
+          "open": { "hour": 10, "min": 0 },
+          "close": { "hour": 20, "min": 0 }
+        },
+        {
+          "day": "tue",
+          "open": { "hour": 10, "min": 0 },
+          "close": { "hour": 20, "min": 0 }
+        },
+        {
+          "day": "wed",
+          "open": { "hour": 10, "min": 0 },
+          "close": { "hour": 20, "min": 0 }
+        },
+        {
+          "day": "thu",
+          "open": { "hour": 10, "min": 0 },
+          "close": { "hour": 20, "min": 0 }
+        },
+        {
+          "day": "fri",
+          "open": { "hour": 10, "min": 0 },
+          "close": { "hour": 20, "min": 0 }
+        },
+        {
+          "day": "sat",
+          "open": { "hour": 10, "min": 0 },
+          "close": { "hour": 20, "min": 0 }
+        }
       ],
       "dineIn": false,
       "shippingService": false,
@@ -212,7 +404,11 @@
         { "day": "wed", "closed": true },
         { "day": "thu", "closed": true },
         { "day": "fri", "closed": true },
-        { "day": "sat", "open": 11, "close": 18 }
+        {
+          "day": "sat",
+          "open": { "hour": 11, "min": 0 },
+          "close": { "hour": 18, "min": 0 }
+        }
       ],
       "dineIn": true,
       "shippingService": true,
@@ -228,13 +424,33 @@
         "longitude": 129.0772645
       },
       "hours": [
-        { "day": "sun", "open": 10.5, "close": 17 },
+        {
+          "day": "sun",
+          "open": { "hour": 10, "min": 30 },
+          "close": { "hour": 17, "min": 0 }
+        },
         { "day": "mon", "closed": true },
         { "day": "tue", "closed": true },
-        { "day": "wed", "open": 10.5, "close": 18 },
-        { "day": "thu", "open": 10.5, "close": 18 },
-        { "day": "fri", "open": 10.5, "close": 18 },
-        { "day": "sat", "open": 10.5, "close": 18 }
+        {
+          "day": "wed",
+          "open": { "hour": 10, "min": 30 },
+          "close": { "hour": 18, "min": 0 }
+        },
+        {
+          "day": "thu",
+          "open": { "hour": 10, "min": 30 },
+          "close": { "hour": 18, "min": 0 }
+        },
+        {
+          "day": "fri",
+          "open": { "hour": 10, "min": 30 },
+          "close": { "hour": 18, "min": 0 }
+        },
+        {
+          "day": "sat",
+          "open": { "hour": 10, "min": 30 },
+          "close": { "hour": 18, "min": 0 }
+        }
       ],
       "dineIn": true,
       "shippingService": false,

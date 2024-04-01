@@ -12,6 +12,7 @@
   },
 
   "openStatus": {
+    "notOpenYet": "Not open yet",
     "open": "Open 'till {{hour}}:{{minute}}pm",
     "closed": "Closed",
     "closureDay": "Closed"
