@@ -41,6 +41,7 @@ function SideBar({
     isFilterOn = true;
     filtersNum = filterLength - (filterLength - 1);
   }
+
   if (
     (openFiltered && distanceFiltered) ||
     (openFiltered && shippingFiltered) ||
@@ -50,6 +51,7 @@ function SideBar({
     (shippingFiltered && dineInFiltered)
   )
     filtersNum = filterLength - (filterLength - 2);
+
   if (
     (openFiltered && distanceFiltered && shippingFiltered) ||
     (openFiltered && distanceFiltered && dineInFiltered) ||

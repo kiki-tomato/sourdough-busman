@@ -1,41 +1,39 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-function TradingHours({ hoursData, currentDay, currentTime }) {
+function TradingHours({ hoursData, today, currentTime }) {
   const { t } = useTranslation();
   const [textColor, setTextColor] = useState("");
   const [openOrClosed, setOpenOrClosed] = useState("");
 
   useEffect(() => {
-    const open = hoursData[currentDay].open;
-    const dayOff = hoursData[currentDay].closed;
+    const open = hoursData[today].open;
+    const dayOff = hoursData[today].closed;
 
     if (open) {
-      const closingHour = hoursData[currentDay].close.hour;
-      const closingMin = hoursData[currentDay].close.min;
+      const closingHour = hoursData[today].close.hour;
+      const closingMin = hoursData[today].close.min;
       const openingTime = Number(
-        `${hoursData[currentDay].open.hour}.${hoursData[currentDay].open.min}`
+        `${hoursData[today].open.hour}.${hoursData[today].open.min}`
       );
       const closingTime = Number(`${closingHour}.${closingMin}`);
 
       if (openingTime <= currentTime && currentTime < closingTime) {
         setTextColor("bakery-open");
 
-        if (closingMin === 0) {
-          setOpenOrClosed(
-            t("openStatus.open", {
-              hour: closingHour - 12,
-              minute: "00",
-            })
-          );
-        } else {
-          setOpenOrClosed(
-            t("openStatus.open", {
-              hour: closingHour - 12,
-              minute: closingMin,
-            })
-          );
-        }
+        closingMin === 0
+          ? setOpenOrClosed(
+              t("openStatus.open", {
+                hour: closingHour - 12,
+                minute: "00",
+              })
+            )
+          : setOpenOrClosed(
+              t("openStatus.open", {
+                hour: closingHour - 12,
+                minute: closingMin,
+              })
+            );
       } else if (currentTime >= closingTime) {
         setTextColor("bakery-closed");
         setOpenOrClosed(t("openStatus.closed"));
@@ -43,11 +41,13 @@ function TradingHours({ hoursData, currentDay, currentTime }) {
         setTextColor("bakery-closed");
         setOpenOrClosed(t("openStatus.notOpenYet"));
       }
-    } else if (dayOff) {
+    }
+
+    if (dayOff) {
       setTextColor("bakery-closed");
       setOpenOrClosed(t("openStatus.closureDay"));
     }
-  }, [hoursData, currentDay, currentTime, t]);
+  }, [hoursData, today, currentTime, t]);
 
   return <span className={textColor}>{openOrClosed}</span>;
 }

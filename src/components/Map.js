@@ -5,129 +5,37 @@ import arrow from "../assets/arrow_forward.svg";
 function Map({
   bakeryData,
   currentLocation,
-  currentDay,
+  today,
   currentTime,
   openFiltered,
   shippingFiltered,
   dineInFiltered,
   distanceFiltered,
+  filterData,
 }) {
   const mapElement = useRef(null);
   const mapInitialized = useRef(false);
   const { t } = useTranslation();
+  const filterOptions = [
+    today,
+    currentTime,
+    openFiltered,
+    shippingFiltered,
+    dineInFiltered,
+    distanceFiltered,
+  ];
 
-  let filteredData = bakeryData;
-
-  if (openFiltered) {
-    const openFilteredData = bakeryData
-      .filter((bakery) => {
-        return bakery.hours[currentDay].open;
-      })
-      .filter(
-        (bakery) =>
-          Number(
-            `${bakery.hours[currentDay].open.hour}.${bakery.hours[currentDay].open.min}`
-          ) <= currentTime &&
-          currentTime <
-            Number(
-              `${bakery.hours[currentDay].close.hour}.${bakery.hours[currentDay].close.min}`
-            )
-      );
-
-    filteredData = openFilteredData;
-
-    if (dineInFiltered) {
-      filteredData = openFilteredData.filter((bakery) => bakery.dineIn);
-    }
-
-    if (shippingFiltered) {
-      filteredData = openFilteredData.filter(
-        (bakery) => bakery.shippingService
-      );
-    }
-
-    if (distanceFiltered) {
-      filteredData = openFilteredData
-        .slice()
-        .sort((a, b) => a.distance - b.distance);
-    }
-    if (dineInFiltered && shippingFiltered) {
-      filteredData = openFilteredData.filter(
-        (bakery) => bakery.dineIn && bakery.shippingService
-      );
-    }
-
-    if (dineInFiltered && distanceFiltered) {
-      filteredData = openFilteredData
-        .slice()
-        .sort((a, b) => a.distance - b.distance)
-        .filter((bakery) => bakery.dineIn);
-    }
-
-    if (shippingFiltered && distanceFiltered) {
-      filteredData = openFilteredData
-        .filter((bakery) => bakery.shippingService)
-        .sort((a, b) => a.distance - b.distance);
-    }
-
-    if (dineInFiltered && shippingFiltered && distanceFiltered) {
-      filteredData = openFilteredData
-        .filter((bakery) => bakery.shippingService)
-        .sort((a, b) => a.distance - b.distance)
-        .filter((bakery) => bakery.dineIn);
-    }
-  } else if (dineInFiltered) {
-    const dineInFilteredData = bakeryData.filter((bakery) => bakery.dineIn);
-
-    filteredData = dineInFilteredData;
-
-    if (shippingFiltered) {
-      filteredData = dineInFilteredData.filter(
-        (bakery) => bakery.shippingService
-      );
-    }
-
-    if (distanceFiltered) {
-      filteredData = dineInFilteredData
-        .slice()
-        .sort((a, b) => a.distance - b.distance);
-    }
-
-    if (shippingFiltered && distanceFiltered) {
-      filteredData = dineInFilteredData
-        .filter((bakery) => bakery.shippingService)
-        .slice()
-        .sort((a, b) => a.distance - b.distance);
-    }
-  } else if (shippingFiltered) {
-    const shippingFilteredData = bakeryData.filter(
-      (bakery) => bakery.shippingService
-    );
-
-    filteredData = shippingFilteredData;
-
-    if (distanceFiltered) {
-      filteredData = shippingFilteredData
-        .slice()
-        .sort((a, b) => a.distance - b.distance);
-    }
-  } else if (distanceFiltered) {
-    const distanceFilteredData = bakeryData
-      .slice()
-      .sort((a, b) => a.distance - b.distance);
-
-    filteredData = distanceFilteredData;
-  }
+  let filteredData = filterData(bakeryData, filterOptions);
 
   useEffect(() => {
     const { naver } = window;
 
     if (!mapInitialized.current && mapElement.current && naver.maps) {
       const mapContainer = document.getElementById("naverMap");
-      const places = document.querySelectorAll(".place");
+      const placeList = document.querySelector(".place-list");
+      const btnToMyLocation = document.querySelector(".btn-to-my-location");
 
       const defaultLocation = new naver.maps.LatLng(35.1531696, 129.118666);
-
       const mapOptions = {
         center: defaultLocation,
         zoom: 12,
@@ -141,116 +49,128 @@ function Map({
         logoControl: false,
         mapDataControl: false,
       };
-
       const map = new naver.maps.Map(mapContainer, mapOptions);
 
-      const markers = filteredData.map((bakery) => {
-        return new naver.maps.Marker({
-          position: new naver.maps.LatLng(
-            bakery.location.latitude,
-            bakery.location.longitude
-          ),
-          map: map,
-          icon: {
-            content: `<div class="marker">${bakery.name}</div>`,
-            size: new naver.maps.Size(10, 10),
-            anchor: new naver.maps.Point(40, 20),
-          },
-        });
-      });
+      const markerEl = function (content) {
+        return `<div class="marker">${content.name}</div>`;
+      };
+      const infoWindowEl = function (content) {
+        const bakeryOpen = content.hours[today].open;
+        const openingTime = Number(`${bakeryOpen?.hour}.${bakeryOpen?.min}`);
+        const closingHour = content.hours[today].close?.hour;
+        const closingMin = content.hours[today].close?.min;
+        const shippingAvail = content.shippingService;
 
-      const infoWindows = filteredData.map((bakery) => {
-        return new naver.maps.InfoWindow({
-          content: `
-          <div class="info-window">
-          <div>✸ ${bakery.name}</div>
-          <div>${bakery.address}</div>
+        return `
+        <div class="info-window">
+          <div>✸ ${content.name}</div>
+          <div>${content.address}</div>
           <div class="extra-info">
             ${
-              bakery.hours[currentDay].open
+              bakeryOpen
                 ? `<span>${
-                    currentTime <
-                    Number(
-                      `${bakery.hours[currentDay].open.hour}.${bakery.hours[currentDay].open.min}`
-                    )
+                    currentTime < openingTime
                       ? t("openStatus.notOpenYet")
-                      : bakery.hours[currentDay].close.min === 0
+                      : closingMin === 0
                       ? t("openStatus.open", {
-                          hour: bakery.hours[currentDay].close.hour - 12,
+                          hour: closingHour - 12,
                           minute: "00",
                         })
                       : t("openStatus.open", {
-                          hour: bakery.hours[currentDay].close.hour - 12,
-                          minute: bakery.hours[currentDay].close.min,
+                          hour: closingHour - 12,
+                          minute: closingMin,
                         })
                   }</span>`
                 : `<span>${t("openStatus.closureDay")}</span>`
             }
             ${
-              bakery.shippingService
+              shippingAvail
                 ? `<span>|</span>
-                <span>${t("buttons.shippingAvailable")}</span>`
+                   <span>${t("buttons.shippingAvailable")}</span>`
                 : ""
             }
           </div>
           ${
-            bakery.shippingService
+            shippingAvail
               ? `<a href=${
-                  bakery.onlineStore
-                } target="_blank" rel="noopener" class="btn-to-order">${t(
-                  "buttons.orderOnline"
-                )}<img class="btn-arrow" src=${arrow} alt="arrow"/>
+                  content.onlineStore
+                } target="_blank" rel="noopener" class="btn-to-order">
+                  ${t(
+                    "buttons.orderOnline"
+                  )}<img class="btn-arrow" src=${arrow} alt="arrow"/>
                 </a>`
               : ""
           }
-          <a href=${
-            bakery.naverMap
-          } target="_blank" rel="noopener"><button class="btn-more-details">${t(
-            "buttons.moreDetails"
-          )}</button></a>
-          </div>`,
-          disableAnchor: true,
-          borderWidth: 0,
-          backgroundColor: "transparent",
-          pixelOffset: new naver.maps.Point(20, -20),
+          <a href=${content.naverMap} target="_blank" rel="noopener">
+            <button class="btn-more-details">${t(
+              "buttons.moreDetails"
+            )}</button>
+          </a>
+        </div>`;
+      };
+
+      const markers = filteredData.map(
+        (bakery) =>
+          new naver.maps.Marker({
+            position: new naver.maps.LatLng(
+              bakery.location.latitude,
+              bakery.location.longitude
+            ),
+            map: map,
+            icon: {
+              content: markerEl(bakery),
+              size: new naver.maps.Size(10, 10),
+              anchor: new naver.maps.Point(40, 20),
+            },
+          })
+      );
+
+      const infoWindows = filteredData.map(
+        (bakery) =>
+          new naver.maps.InfoWindow({
+            content: infoWindowEl(bakery),
+            disableAnchor: true,
+            borderWidth: 0,
+            backgroundColor: "transparent",
+            pixelOffset: new naver.maps.Point(20, -20),
+          })
+      );
+
+      function openInfoWindow(marker, seq) {
+        const infoWindow = infoWindows[seq];
+
+        infoWindow.getMap() ? infoWindow.close() : infoWindow.open(map, marker);
+
+        deactivateMarker(markers);
+        activateMarker(marker);
+      }
+
+      function activateMarker(marker) {
+        marker.eventTarget.classList.add("active-marker");
+        marker.setZIndex(100);
+      }
+
+      function deactivateMarker(markerArr) {
+        markerArr.map((marker) => {
+          marker.setZIndex(1);
+          return marker.eventTarget.classList.remove("active-marker");
         });
-      });
+      }
 
-      function getClickHandler(seq) {
+      function magnifyMarker(marker) {
         return function (e) {
-          const marker = markers[seq],
-            infoWindow = infoWindows[seq];
-
-          if (infoWindow.getMap()) {
-            infoWindow.close();
-          } else {
-            infoWindow.open(map, marker);
-          }
-
-          markers.forEach((marker, i) => {
-            marker.eventTarget.classList.remove("active-marker");
-            marker.setZIndex(1);
-          });
-
-          markers[seq].eventTarget.classList.add("active-marker");
-          markers[seq].setZIndex(100);
+          marker.setZIndex(110);
+          marker.eventTarget.classList.add("hover-marker");
         };
       }
 
-      function getMouseOverHandler(seq) {
+      function downsizeMarker(marker) {
         return function (e) {
-          markers[seq].setZIndex(110);
-          markers[seq].eventTarget.classList.add("hover-marker");
-        };
-      }
+          marker.eventTarget.classList.remove("hover-marker");
 
-      function getMouseOutHandler(seq) {
-        return function (e) {
-          markers[seq].eventTarget.classList.remove("hover-marker");
-
-          if (markers[seq].eventTarget.classList.contains("active-marker"))
-            markers[seq].setZIndex(100);
-          else markers[seq].setZIndex(1);
+          marker.eventTarget.classList.contains("active-marker")
+            ? marker.setZIndex(100)
+            : marker.setZIndex(1);
         };
       }
 
@@ -263,29 +183,42 @@ function Map({
         );
       }
 
-      for (var i = 0, ii = markers.length; i < ii; i++) {
-        naver.maps.Event.addListener(markers[i], "click", getClickHandler(i));
+      markers.forEach((marker, i) => {
+        naver.maps.Event.addListener(marker, "click", () =>
+          openInfoWindow(marker, i)
+        );
         naver.maps.Event.addListener(
-          markers[i],
+          marker,
           "mouseover",
-          getMouseOverHandler(i)
+          magnifyMarker(marker)
         );
         naver.maps.Event.addListener(
-          markers[i],
+          marker,
           "mouseout",
-          getMouseOutHandler(i)
+          downsizeMarker(marker)
         );
-      }
+      });
 
-      places.forEach((place, i) =>
-        place.addEventListener("click", getClickHandler(i))
-      );
+      placeList.addEventListener("click", function (e) {
+        const clickedListItem = e.target
+          .closest(".place")
+          .querySelector("h3").textContent;
 
-      document
-        .querySelector(".btn-to-my-location")
-        .addEventListener("click", returnToCurrentLocation);
+        const [markerIndexPair] = markers
+          .map((marker, i) =>
+            marker.eventTarget.textContent === clickedListItem
+              ? [marker, i]
+              : ""
+          )
+          .filter((marker) => marker);
+        const [marker, index] = markerIndexPair;
+
+        openInfoWindow(marker, index);
+      });
+
+      btnToMyLocation.addEventListener("click", returnToCurrentLocation);
     }
-  }, [currentLocation, bakeryData, filteredData, currentDay, currentTime, t]);
+  }, [currentLocation, bakeryData, filteredData, today, currentTime, t]);
 
   return <div ref={mapElement} className="map" id="naverMap"></div>;
 }
