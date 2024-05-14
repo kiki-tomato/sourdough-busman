@@ -8,7 +8,8 @@
     "open": "Open Now",
     "distance": "Nearest",
     "shipping": "Shipping Service",
-    "dineIn": "Dine In"
+    "dineIn": "Dine In",
+    "saved": "Saved"
   },
 
   "openStatus": {
@@ -27,6 +28,9 @@
     "mapView": "Map View",
     "moreDetails": "More Details",
     "shippingAvailable": "Shipping Available",
-    "orderOnline": "Order Online"
+    "bookmark": "Save",
+    "share": "share",
+    "orderOnline": "Order Online",
+    "shortInfo": "Short Info"
   }
 }

@@ -180,20 +180,27 @@ input:focus div .slider {
 }
 
 .btn-filter:nth-child(2) {
+  background-image: url("../assets/Star.svg");
+  background-size: 19px;
+  background-repeat: no-repeat;
+  background-position: 10px 3.5px;
+}
+
+.btn-filter:nth-child(3) {
   background-image: url("../assets/Cook.png");
   background-size: 19px;
   background-repeat: no-repeat;
   background-position: 10px 4px;
 }
 
-.btn-filter:nth-child(3) {
+.btn-filter:nth-child(4) {
   background-image: url("../assets/Globe\ Showing\ Asia\ Australia.png");
   background-size: 19px;
   background-repeat: no-repeat;
   background-position: 10px 4px;
 }
 
-.btn-filter:nth-child(4) {
+.btn-filter:nth-child(5) {
   background-image: url("../assets/Fork\ And\ Knife\ With\ Plate.png");
   background-size: 19px;
   background-repeat: no-repeat;
@@ -234,18 +241,28 @@ input:focus div .slider {
 }
 
 .info-window {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   width: 270px;
   padding: 20px;
   border: 1px solid rgba(159, 159, 159, 0.5);
   border-radius: 9px;
   font-size: var(--text-sm);
   font-weight: var(--text-weight-medium);
-  text-align: center;
   background-color: var(--color-light);
   box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 4px 0px;
+}
+
+.short-info {
+  padding-top: 8px;
+  font-size: var(--text-xs);
+}
+
+.short-info div:nth-child(1) {
+  margin-bottom: 7px;
+}
+
+.short-info div:nth-child(2) {
+  margin-bottom: 10px;
+  font-weight: var(--text-weight-regular);
 }
 
 .extra-info {
@@ -257,7 +274,8 @@ input:focus div .slider {
   background-color: rgba(213, 224, 254, 0.4);
   color: var(--color-info);
   font-size: var(--text-xs);
-  /* font-weight: var(--text-weight-semi-bold); */
+  text-align: center;
+  font-weight: var(--text-weight-regular);
 }
 
 .extra-info span:nth-child(1) {
@@ -276,11 +294,43 @@ input:focus div .slider {
   background-position: 8px 16px;
 }
 
-.info-window div:nth-child(2) {
+.info-window > div:nth-child(2) {
   margin-top: 3px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border);
   font-size: var(--text-xs);
   font-weight: var(--text-weight-regular);
-  text-align: left;
+}
+
+.info-window-btns {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 5px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--color-border);
+}
+
+.btn-bookmark {
+  padding-left: 25px;
+  border: 0.5px solid var(--color-border);
+  border-radius: 9px;
+  background-image: url(../assets/Star.svg);
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: 11px 3.5px;
+  font-size: var(--text-xs);
+  cursor: pointer;
+  /* text-align: right; */
+}
+
+.btn-bookmark:hover {
+  background-color: var(--color-border);
+  border-color: var(--color-border);
+}
+
+.bookmarked {
+  background-image: url(../assets/Star-filled.svg);
 }
 
 .btn-to-order {
@@ -313,9 +363,8 @@ input:focus div .slider {
 }
 
 .btn-more-details {
-  width: 270px;
+  width: 100%;
   padding: 5px 10px 5px 10px;
-  margin-top: 15px;
   border: 0.5px solid var(--color-border);
   border-radius: 9px;
   text-decoration: none;
@@ -376,9 +425,32 @@ input:focus div .slider {
 .place:nth-child(1) {
   padding-top: 53px;
 }
+
+.place-header {
+  display: flex;
+  padding-bottom: 0 !important;
+}
+
 .place h3 {
   padding-top: 1rem;
   margin-top: 0;
+  flex-grow: 1;
+}
+
+.sidebar-bookmark {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.place img {
+  padding: 10px 0px 0px 0px;
+  width: 18px;
+}
+
+.place button:hover .place img {
+  width: 20px;
 }
 
 .place h5 {
@@ -446,6 +518,10 @@ input:focus div .slider {
   background-position: 8px 1px;
   margin-left: 20px;
   color: var(--color-secondary);
+}
+
+.active {
+  background: rgba(214, 218, 227, 0.5);
 }
 
 @media (max-width: 1200px) {

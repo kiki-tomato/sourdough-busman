@@ -13,6 +13,9 @@ function PlaceList({
   dineInFiltered,
   shippingFiltered,
   filterData,
+  bookmarks,
+  setBookmarks,
+  UpdateBookmarks,
 }) {
   const filterOptions = [
     today,
@@ -33,7 +36,13 @@ function PlaceList({
         }
       >
         {filteredData.map((bakery) => (
-          <Place eachBakeryData={bakery} key={bakery.name}>
+          <Place
+            eachBakeryData={bakery}
+            key={bakery.name}
+            bookmarks={bookmarks}
+            setBookmarks={setBookmarks}
+            UpdateBookmarks={UpdateBookmarks}
+          >
             <DistanceFromMe
               distanceData={bakery.distance}
               currentLocation={currentLocation}

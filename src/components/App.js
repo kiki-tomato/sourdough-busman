@@ -15,10 +15,12 @@ function App() {
   const [shippingFiltered, setShippingFiltered] = useState(false);
   const [dineInFiltered, setDineInFiltered] = useState(false);
   const [distanceFiltered, setDistanceFiltered] = useState(false);
+  const [savedFiltered, setSavedFiltered] = useState(false);
   const [currentLocation, setCurrentLocation] = useState({
     latitude: 0,
     longitude: 0,
   });
+  const [bookmarks, setBookmarks] = useState(getBookmarksFromLocalstorage());
 
   const d = new Date();
   const today = d.getDay();
@@ -49,6 +51,45 @@ function App() {
       navigator.geolocation.getCurrentPosition(success, error);
     }
   }, []);
+
+  function storeBookmarks(arr) {
+    localStorage.setItem("bookmarks", JSON.stringify(arr));
+  }
+
+  function getBookmarksFromLocalstorage() {
+    const storage = localStorage.getItem("bookmarks");
+    return storage && storage !== "undefined" ? JSON.parse(storage) : [];
+  }
+
+  function addBookmark(id) {
+    setBookmarks((bookmarks) => {
+      return [...bookmarks, id];
+    });
+  }
+
+  function deleteBookmark(id) {
+    setBookmarks((bookmarks) =>
+      bookmarks.filter((bookmark) => bookmark !== id)
+    );
+  }
+
+  function UpdateBookmarks(id) {
+    bookmarks.includes(id) ? deleteBookmark(id) : addBookmark(id);
+  }
+
+  useEffect(() => {
+    storeBookmarks(bookmarks);
+  }, [bookmarks]);
+
+  // useEffect(() => {
+  //   localStorage.removeItem("bookmarks");
+  // }, [bookmarks]);
+
+  function generateId(data, index) {
+    return `sb${index + 1}lat${data.location.latitude}lng${
+      data.location.longitude
+    }`;
+  }
 
   function calculateDistance(lat1, lon1, lat2, lon2) {
     const R = 6371; // Earth radius in kilometers
@@ -91,8 +132,8 @@ function App() {
       distanceFiltered,
     ] = filterOptions;
 
-    if (openFiltered) {
-      const openFilteredData = initalData
+    function filterOpen(arr) {
+      return arr
         .filter((bakery) => bakery.hours[today].open)
         .filter(
           (bakery) =>
@@ -104,76 +145,82 @@ function App() {
                 `${bakery.hours[today].close.hour}.${bakery.hours[today].close.min}`
               )
         );
+    }
 
-      output = openFilteredData;
+    function filterDineIn(arr) {
+      return arr.filter((bakery) => bakery.dineIn);
+    }
 
-      if (dineInFiltered)
-        output = openFilteredData.filter((bakery) => bakery.dineIn);
+    function filterDistance(arr) {
+      return arr.slice().sort((a, b) => a.distance - b.distance);
+    }
 
-      if (shippingFiltered)
-        output = openFilteredData.filter((bakery) => bakery.shippingService);
+    function filterShipping(arr) {
+      return arr.filter((bakery) => bakery.shippingService);
+    }
 
-      if (distanceFiltered)
-        output = openFilteredData
-          .slice()
-          .sort((a, b) => a.distance - b.distance);
+    function filterSaved(arr) {
+      const savedArr = [];
+      bookmarks.forEach((id) =>
+        arr.forEach((bakery) => {
+          if (bakery.id === id) savedArr.push(bakery);
+        })
+      );
+      return savedArr;
+    }
+
+    if (openFiltered) {
+      output = filterOpen(initalData);
+
+      if (dineInFiltered) output = filterDineIn(output);
+      if (shippingFiltered) output = filterShipping(output);
+      if (distanceFiltered) output = filterDistance(output);
+      if (savedFiltered) {
+        output = filterSaved(output);
+        if (distanceFiltered) output = filterDistance(output);
+      }
 
       if (dineInFiltered && shippingFiltered)
-        output = openFilteredData.filter(
+        output = output.filter(
           (bakery) => bakery.dineIn && bakery.shippingService
         );
-
       if (dineInFiltered && distanceFiltered)
-        output = openFilteredData
-          .slice()
-          .sort((a, b) => a.distance - b.distance)
-          .filter((bakery) => bakery.dineIn);
-
+        output = filterDistance(output).filter((bakery) => bakery.dineIn);
       if (shippingFiltered && distanceFiltered)
-        output = openFilteredData
-          .filter((bakery) => bakery.shippingService)
-          .sort((a, b) => a.distance - b.distance);
+        output = filterShipping(output).sort((a, b) => a.distance - b.distance);
 
       if (dineInFiltered && shippingFiltered && distanceFiltered)
-        output = openFilteredData
-          .filter((bakery) => bakery.shippingService)
+        output = filterShipping(output)
           .sort((a, b) => a.distance - b.distance)
           .filter((bakery) => bakery.dineIn);
     } else if (dineInFiltered) {
-      const dineInFilteredData = initalData.filter((bakery) => bakery.dineIn);
+      output = filterDineIn(initalData);
 
-      output = dineInFilteredData;
+      if (shippingFiltered) output = filterShipping(output);
+      if (distanceFiltered) output = filterDistance(output);
+      if (savedFiltered) {
+        output = filterSaved(output);
 
-      if (shippingFiltered)
-        output = dineInFilteredData.filter((bakery) => bakery.shippingService);
-
-      if (distanceFiltered)
-        output = dineInFilteredData
-          .slice()
-          .sort((a, b) => a.distance - b.distance);
+        if (distanceFiltered) output = filterDistance(output);
+      }
 
       if (shippingFiltered && distanceFiltered)
-        output = dineInFilteredData
-          .filter((bakery) => bakery.shippingService)
-          .slice()
-          .sort((a, b) => a.distance - b.distance);
+        output = filterShipping(output).sort((a, b) => a.distance - b.distance);
     } else if (shippingFiltered) {
-      const shippingFilteredData = initalData.filter(
-        (bakery) => bakery.shippingService
-      );
+      output = filterShipping(initalData);
 
-      output = shippingFilteredData;
+      if (distanceFiltered) output = filterDistance(output);
+      if (savedFiltered) {
+        output = filterSaved(output);
 
-      if (distanceFiltered)
-        output = shippingFilteredData
-          .slice()
-          .sort((a, b) => a.distance - b.distance);
+        if (distanceFiltered) output = filterDistance(output);
+      }
+    } else if (savedFiltered) {
+      output = filterSaved(initalData);
+
+      if (distanceFiltered) output = filterDistance(output);
     } else if (distanceFiltered) {
-      const distanceFilteredData = initalData
-        .slice()
-        .sort((a, b) => a.distance - b.distance);
-
-      output = distanceFilteredData;
+      output = filterDistance(initalData);
     }
 
     return output;
@@ -191,7 +238,7 @@ function App() {
   );
 
   const modifiedData = initialData.map((bakery, i) => {
-    return { ...bakery, distance: distanceArr[i] };
+    return { ...bakery, distance: distanceArr[i], id: generateId(bakery, i) };
   });
 
   return (
@@ -205,10 +252,12 @@ function App() {
         dineInFiltered={dineInFiltered}
         shippingFiltered={shippingFiltered}
         distanceFiltered={distanceFiltered}
+        savedFiltered={savedFiltered}
         setOepnFiltered={setOepnFiltered}
         setShippingFiltered={setShippingFiltered}
         setDineInFiltered={setDineInFiltered}
         setDistanceFiltered={setDistanceFiltered}
+        setSavedFiltered={setSavedFiltered}
       >
         <PlaceList
           bakeryData={modifiedData}
@@ -220,6 +269,9 @@ function App() {
           dineInFiltered={dineInFiltered}
           shippingFiltered={shippingFiltered}
           filterData={filterData}
+          bookmarks={bookmarks}
+          setBookmarks={setBookmarks}
+          UpdateBookmarks={UpdateBookmarks}
         />
       </SideBar>
       <Map
@@ -232,6 +284,9 @@ function App() {
         dineInFiltered={dineInFiltered}
         distanceFiltered={distanceFiltered}
         filterData={filterData}
+        bookmarks={bookmarks}
+        setBookmarks={setBookmarks}
+        UpdateBookmarks={UpdateBookmarks}
       />
     </div>
   );

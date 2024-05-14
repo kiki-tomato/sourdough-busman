@@ -1,6 +1,56 @@
 {
   "bakeries": [
     {
+      "name": "데일리럭키",
+      "address": "부산 수영구 수영로540번길 7",
+      "location": {
+        "latitude": 35.1539822,
+        "longitude": 129.112674
+      },
+      "hours": [
+        {
+          "day": "sun",
+          "open": { "hour": 7, "min": 0 },
+          "close": { "hour": 17, "min": 0 }
+        },
+        {
+          "day": "mon",
+          "open": { "hour": 7, "min": 0 },
+          "close": { "hour": 17, "min": 0 }
+        },
+        {
+          "day": "tue",
+          "open": { "hour": 7, "min": 0 },
+          "close": { "hour": 17, "min": 0 }
+        },
+        {
+          "day": "wed",
+          "open": { "hour": 7, "min": 0 },
+          "close": { "hour": 17, "min": 0 }
+        },
+        {
+          "day": "thu",
+          "open": { "hour": 7, "min": 0 },
+          "close": { "hour": 17, "min": 0 }
+        },
+        {
+          "day": "fri",
+          "open": { "hour": 7, "min": 0 },
+          "close": { "hour": 17, "min": 0 }
+        },
+        {
+          "day": "sat",
+          "open": { "hour": 7, "min": 0 },
+          "close": { "hour": 17, "min": 0 }
+        }
+      ],
+      "dineIn": true,
+      "shippingService": true,
+      "onlineStore": "https://smartstore.naver.com/luckybakery/",
+      "naverMap": "https://naver.me/5kkCeyAJ",
+      "description": "럭키 베이커리 2호점"
+    },
+    {
       "name": "라미다미 베이커리",
       "address": "부산 연제구 법원북로 45 1층",
       "location": {
@@ -34,12 +84,17 @@
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 20, "min": 0 }
         },
-        { "day": "sat", "open": 10, "close": 19 }
+        {
+          "day": "sat",
+          "open": { "hour": 10, "min": 0 },
+          "close": { "hour": 19, "min": 0 }
+        }
       ],
       "dineIn": false,
       "shippingService": false,
       "onlineStore": "",
-      "naverMap": "https://naver.me/IxDrh7fq"
+      "naverMap": "https://naver.me/IxDrh7fq",
+      "description": ""
     },
 
     {
@@ -52,7 +107,7 @@
       "hours": [
         {
           "day": "sun",
-          "open": { "hour": 9, "min": 30 },
+          "open": { "hour": 10, "min": 30 },
           "close": { "hour": 16, "min": 30 }
         },
         { "day": "mon", "closed": true },
@@ -61,19 +116,19 @@
         { "day": "thu", "closed": true },
         {
           "day": "fri",
-          "open": { "hour": 9, "min": 30 },
-          "close": { "hour": 16, "min": 30 }
+          "closed": true
         },
         {
           "day": "sat",
-          "open": { "hour": 9, "min": 30 },
+          "open": { "hour": 10, "min": 30 },
           "close": { "hour": 16, "min": 30 }
         }
       ],
       "dineIn": false,
       "shippingService": true,
       "onlineStore": "https://smartstore.naver.com/luckybakery/",
-      "naverMap": "https://naver.me/5Amfv1OS"
+      "naverMap": "https://naver.me/5Amfv1OS",
+      "description": "영업시간이 자주 변경되어요. 꼭 확인하고 방문하기!"
     },
 
     {
@@ -119,7 +174,8 @@
       "dineIn": false,
       "shippingService": false,
       "onlineStore": "",
-      "naverMap": "https://naver.me/xxfWRzur"
+      "naverMap": "https://naver.me/xxfWRzur",
+      "description": ""
     },
 
     {
@@ -161,7 +217,8 @@
       "dineIn": false,
       "shippingService": false,
       "onlineStore": "",
-      "naverMap": "https://naver.me/5c2IS9re"
+      "naverMap": "https://naver.me/5c2IS9re",
+      "description": ""
     },
 
     {
@@ -203,7 +260,8 @@
       "dineIn": true,
       "shippingService": true,
       "onlineStore": "https://www.instagram.com/bbang_basket/",
-      "naverMap": "https://naver.me/Gmf7z9eq"
+      "naverMap": "https://naver.me/Gmf7z9eq",
+      "description": ""
     },
 
     {
@@ -253,7 +311,8 @@
       "dineIn": false,
       "shippingService": true,
       "onlineStore": "https://smartstore.naver.com/archbakery",
-      "naverMap": "https://naver.me/5EQKdQVz"
+      "naverMap": "https://naver.me/5EQKdQVz",
+      "description": ""
     },
 
     {
@@ -299,7 +358,8 @@
       "dineIn": false,
       "shippingService": true,
       "onlineStore": "https://smartstore.naver.com/painpainpain",
-      "naverMap": "https://naver.me/xmrP6gKF"
+      "naverMap": "https://naver.me/xmrP6gKF",
+      "description": ""
     },
 
     {
@@ -337,7 +397,8 @@
       "dineIn": false,
       "shippingService": true,
       "onlineStore": "https://smartstore.naver.com/won_bread",
-      "naverMap": "https://naver.me/5qgE3MLQ"
+      "naverMap": "https://naver.me/5qgE3MLQ",
+      "description": ""
     },
 
     {
@@ -387,7 +448,8 @@
       "dineIn": false,
       "shippingService": false,
       "onlineStore": "",
-      "naverMap": "https://naver.me/5CrgOQUh"
+      "naverMap": "https://naver.me/5CrgOQUh",
+      "description": ""
     },
 
     {
@@ -413,7 +475,8 @@
       "dineIn": true,
       "shippingService": true,
       "onlineStore": "https://www.instagram.com/1688jsd/",
-      "naverMap": "https://naver.me/5MS4nk5h"
+      "naverMap": "https://naver.me/5MS4nk5h",
+      "description": ""
     },
 
     {
@@ -455,7 +518,8 @@
       "dineIn": true,
       "shippingService": false,
       "onlineStore": "",
-      "naverMap": "https://naver.me/FFvi4TPV"
+      "naverMap": "https://naver.me/FFvi4TPV",
+      "description": ""
     }
   ]
 }

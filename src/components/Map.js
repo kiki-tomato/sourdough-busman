@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import arrow from "../assets/arrow_forward.svg";
 
 function Map({
   bakeryData,
@@ -12,6 +11,9 @@ function Map({
   dineInFiltered,
   distanceFiltered,
   filterData,
+  bookmarks,
+  setBookmarks,
+  UpdateBookmarks,
 }) {
   const mapElement = useRef(null);
   const mapInitialized = useRef(false);
@@ -35,6 +37,8 @@ function Map({
       const placeList = document.querySelector(".place-list");
       const btnToMyLocation = document.querySelector(".btn-to-my-location");
 
+      const hash = window.location.hash.slice(1);
+
       const defaultLocation = new naver.maps.LatLng(35.1531696, 129.118666);
       const mapOptions = {
         center: defaultLocation,
@@ -51,21 +55,26 @@ function Map({
       };
       const map = new naver.maps.Map(mapContainer, mapOptions);
 
-      const markerEl = function (content) {
-        return `<div class="marker">${content.name}</div>`;
+      const generateMarkerMarkup = function (content) {
+        return `<div class="marker" data-id=${content.id}>${content.name}</div>`;
       };
-      const infoWindowEl = function (content) {
+
+      const generateInfoWindowMarkup = function (content) {
         const bakeryOpen = content.hours[today].open;
         const openingTime = Number(`${bakeryOpen?.hour}.${bakeryOpen?.min}`);
         const closingHour = content.hours[today].close?.hour;
         const closingMin = content.hours[today].close?.min;
         const shippingAvail = content.shippingService;
+        const descriptionAvail = content.description;
 
         return `
         <div class="info-window">
           <div>✸ ${content.name}</div>
           <div>${content.address}</div>
-          <div class="extra-info">
+          <div class="short-info">
+              <div>${t("buttons.shortInfo")}</div>
+              ${descriptionAvail ? `<div>"${content.description}"</div>` : ""}
+              <div class="extra-info">
             ${
               bakeryOpen
                 ? `<span>${
@@ -90,22 +99,17 @@ function Map({
                 : ""
             }
           </div>
-          ${
-            shippingAvail
-              ? `<a href=${
-                  content.onlineStore
-                } target="_blank" rel="noopener" class="btn-to-order">
-                  ${t(
-                    "buttons.orderOnline"
-                  )}<img class="btn-arrow" src=${arrow} alt="arrow"/>
-                </a>`
-              : ""
-          }
-          <a href=${content.naverMap} target="_blank" rel="noopener">
-            <button class="btn-more-details">${t(
-              "buttons.moreDetails"
-            )}</button>
-          </a>
+          </div>
+          <div class="info-window-btns">
+            <a href=${content.naverMap} target="_blank" rel="noopener">
+              <button class="btn-more-details" >${t(
+                "buttons.moreDetails"
+              )}</button>
+            </a>
+            <button class="btn-bookmark" data-id=${content.id}>${t(
+          "buttons.bookmark"
+        )}</button>
+          </div>
         </div>`;
       };
 
@@ -118,7 +122,7 @@ function Map({
             ),
             map: map,
             icon: {
-              content: markerEl(bakery),
+              content: generateMarkerMarkup(bakery),
               size: new naver.maps.Size(10, 10),
               anchor: new naver.maps.Point(40, 20),
             },
@@ -128,7 +132,7 @@ function Map({
       const infoWindows = filteredData.map(
         (bakery) =>
           new naver.maps.InfoWindow({
-            content: infoWindowEl(bakery),
+            content: generateInfoWindowMarkup(bakery),
             disableAnchor: true,
             borderWidth: 0,
             backgroundColor: "transparent",
@@ -136,13 +140,18 @@ function Map({
           })
       );
 
-      function openInfoWindow(marker, seq) {
-        const infoWindow = infoWindows[seq];
+      function openInfoWindow(id) {
+        markers.forEach((marker, i) => {
+          if (marker.eventTarget.dataset.id === id)
+            infoWindows[i].open(map, marker);
+        });
+      }
 
-        infoWindow.getMap() ? infoWindow.close() : infoWindow.open(map, marker);
-
-        deactivateMarker(markers);
-        activateMarker(marker);
+      function markActiveList(id) {
+        placeList.querySelectorAll(".place").forEach((place) => {
+          place.classList.remove("active");
+          if (place.dataset.id === id) place.classList.add("active");
+        });
       }
 
       function activateMarker(marker) {
@@ -174,6 +183,12 @@ function Map({
         };
       }
 
+      function addIdToUrl(dataArr, id) {
+        dataArr.forEach((data) => {
+          if (data.id === id) window.history.pushState(null, "", `#${data.id}`);
+        });
+      }
+
       function returnToCurrentLocation() {
         map.setCenter(
           new naver.maps.LatLng(
@@ -184,9 +199,13 @@ function Map({
       }
 
       markers.forEach((marker, i) => {
-        naver.maps.Event.addListener(marker, "click", () =>
-          openInfoWindow(marker, i)
-        );
+        naver.maps.Event.addListener(marker, "click", () => {
+          openInfoWindow(marker.eventTarget.dataset.id);
+          deactivateMarker(markers);
+          activateMarker(marker);
+          addIdToUrl(filteredData, marker.eventTarget.dataset.id);
+          markActiveList(marker.eventTarget.dataset.id);
+        });
         naver.maps.Event.addListener(
           marker,
           "mouseover",
@@ -199,26 +218,65 @@ function Map({
         );
       });
 
-      placeList.addEventListener("click", function (e) {
-        const clickedListItem = e.target
-          .closest(".place")
-          .querySelector("h3").textContent;
+      infoWindows.forEach((window) => {
+        const windowEl = window.getContentElement();
 
-        const [markerIndexPair] = markers
-          .map((marker, i) =>
-            marker.eventTarget.textContent === clickedListItem
-              ? [marker, i]
-              : ""
-          )
-          .filter((marker) => marker);
-        const [marker, index] = markerIndexPair;
+        if (
+          bookmarks.includes(windowEl.querySelector(".btn-bookmark").dataset.id)
+        )
+          windowEl.querySelector(".btn-bookmark").classList.add("bookmarked");
 
-        openInfoWindow(marker, index);
+        windowEl.addEventListener("click", function (e) {
+          const btnBookmark = e.target.closest(".btn-bookmark");
+
+          if (btnBookmark) {
+            const newBookmark = btnBookmark.dataset.id;
+            btnBookmark.classList.toggle("bookmarked");
+
+            UpdateBookmarks(newBookmark);
+          }
+        });
       });
 
+      placeList.addEventListener("click", function (e) {
+        const clickedPlace = e.target.closest(".place");
+        const id = clickedPlace.dataset.id;
+
+        openInfoWindow(id);
+        addIdToUrl(filteredData, id);
+        markActiveList(id);
+        deactivateMarker(markers);
+        markers.map((marker) =>
+          marker.eventTarget.dataset.id === id ? activateMarker(marker) : ""
+        );
+      });
+
+      window.addEventListener("load", () => {
+        markActiveList(hash);
+        openInfoWindow(window.location.hash.slice(1));
+        deactivateMarker(markers);
+        markers.map((marker) =>
+          marker.eventTarget.dataset.id === hash ? activateMarker(marker) : ""
+        );
+      });
+
+      naver.maps.Event.addListener(map, "click", function () {
+        infoWindows.map((window) => (window.getMap() ? window.close() : ""));
+        deactivateMarker(markers);
+      });
       btnToMyLocation.addEventListener("click", returnToCurrentLocation);
     }
-  }, [currentLocation, bakeryData, filteredData, today, currentTime, t]);
+  }, [
+    currentLocation,
+    bakeryData,
+    filteredData,
+    today,
+    currentTime,
+    t,
+    setBookmarks,
+    bookmarks,
+    UpdateBookmarks,
+  ]);
 
   return <div ref={mapElement} className="map" id="naverMap"></div>;
 }

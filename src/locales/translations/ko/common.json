@@ -8,7 +8,8 @@
     "open": "영업중",
     "distance": "거리순",
     "shipping": "택배주문",
-    "dineIn": "좌석구비"
+    "dineIn": "좌석구비",
+    "saved": "저장"
   },
 
   "openStatus": {
@@ -27,6 +28,9 @@
     "mapView": "지도 표시하기",
     "moreDetails": "네이버지도로 자세히 보기",
     "shippingAvailable": "택배배송 가능",
-    "orderOnline": "빵 택배 주문하기"
+    "bookmark": "저장",
+    "share": "공유",
+    "orderOnline": "택배 주문하기",
+    "shortInfo": "짧막 정보"
   }
 }
