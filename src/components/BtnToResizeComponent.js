@@ -1,6 +1,7 @@
+import { useTranslation } from "react-i18next";
+
 import mapIcon from "../assets/map-fill.png";
 import listIcon from "../assets/list-ul.png";
-import { useTranslation } from "react-i18next";
 
 function BtnToResizeComponent({ resize, setResize }) {
   const { t } = useTranslation();

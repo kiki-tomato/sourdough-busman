@@ -1,43 +1,29 @@
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
-function Map({
-  bakeryData,
-  currentLocation,
-  today,
-  currentTime,
-  openFiltered,
-  shippingFiltered,
-  dineInFiltered,
-  distanceFiltered,
-  filterData,
-  bookmarks,
-  setBookmarks,
-  UpdateBookmarks,
-}) {
-  const mapElement = useRef(null);
-  const mapInitialized = useRef(false);
-  const { t } = useTranslation();
-  const filterOptions = [
-    today,
-    currentTime,
-    openFiltered,
-    shippingFiltered,
-    dineInFiltered,
-    distanceFiltered,
-  ];
+import { useBakeries } from "../contexts/BakeriesContext";
+import { useToday } from "../contexts/TodayContext";
+import { useBookmarks } from "../contexts/BookmarksContext";
 
-  let filteredData = filterData(bakeryData, filterOptions);
+const { naver } = window;
+
+function Map() {
+  const { t } = useTranslation();
+  const { bookmarks, updateBookmarks } = useBookmarks();
+  const { bakeryData, currentLocation, filterData } = useBakeries();
+  const { today, currentTime } = useToday();
+
+  const mapElement = useRef(null);
+
+  let filteredData = filterData(bakeryData, today, currentTime);
 
   useEffect(() => {
-    const { naver } = window;
+    if (mapElement.current && naver.maps) {
+      const mapContainer = mapElement.current;
+      const hash = window.location.hash.slice(1);
 
-    if (!mapInitialized.current && mapElement.current && naver.maps) {
-      const mapContainer = document.getElementById("naverMap");
       const placeList = document.querySelector(".place-list");
       const btnToMyLocation = document.querySelector(".btn-to-my-location");
-
-      const hash = window.location.hash.slice(1);
 
       const defaultLocation = new naver.maps.LatLng(35.1531696, 129.118666);
       const mapOptions = {
@@ -233,22 +219,26 @@ function Map({
             const newBookmark = btnBookmark.dataset.id;
             btnBookmark.classList.toggle("bookmarked");
 
-            UpdateBookmarks(newBookmark);
+            updateBookmarks(newBookmark);
           }
         });
       });
 
       placeList.addEventListener("click", function (e) {
         const clickedPlace = e.target.closest(".place");
+        const btnBookmark = e.target.closest(".sidebar-bookmark");
         const id = clickedPlace.dataset.id;
 
-        openInfoWindow(id);
         addIdToUrl(filteredData, id);
-        markActiveList(id);
-        deactivateMarker(markers);
-        markers.map((marker) =>
-          marker.eventTarget.dataset.id === id ? activateMarker(marker) : ""
-        );
+
+        if (!btnBookmark) {
+          markActiveList(id);
+          openInfoWindow(id);
+          deactivateMarker(markers);
+          markers.map((marker) =>
+            marker.eventTarget.dataset.id === id ? activateMarker(marker) : ""
+          );
+        }
       });
 
       window.addEventListener("load", () => {
@@ -262,6 +252,9 @@ function Map({
 
       naver.maps.Event.addListener(map, "click", function () {
         infoWindows.map((window) => (window.getMap() ? window.close() : ""));
+        placeList
+          .querySelectorAll(".place")
+          .forEach((place) => place.classList.remove("active"));
         deactivateMarker(markers);
       });
       btnToMyLocation.addEventListener("click", returnToCurrentLocation);
@@ -273,9 +266,8 @@ function Map({
     today,
     currentTime,
     t,
-    setBookmarks,
     bookmarks,
-    UpdateBookmarks,
+    updateBookmarks,
   ]);
 
   return <div ref={mapElement} className="map" id="naverMap"></div>;

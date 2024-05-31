@@ -1,10 +1,14 @@
-function Filter({ filterStatus, onFilterClick, children, icon }) {
+import { useBakeries } from "../contexts/BakeriesContext";
+
+function Filter({ filterStatus, children, icon, type }) {
+  const { dispatch } = useBakeries();
+
   const imageChange = { backgroundImage: `url(${icon})` };
 
   return (
     <button
-      onClick={onFilterClick}
-      className={filterStatus ? "btn-filter btn-filter-active" : "btn-filter"}
+      onClick={() => dispatch({ type: type })}
+      className={`btn-filter ${filterStatus ? "btn-filter-active" : ""}`}
       style={filterStatus && icon ? imageChange : {}}
     >
       {children}

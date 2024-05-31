@@ -1,13 +1,15 @@
+import { useEffect } from "react";
 import starFilled from "../assets/Star-filled.svg";
 import star from "../assets/Star.svg";
+import { useBookmarks } from "../contexts/BookmarksContext";
 
-function Place({
-  eachBakeryData,
-  children,
-  bookmarks,
-  setBookmarks,
-  UpdateBookmarks,
-}) {
+function Place({ eachBakeryData, children }) {
+  const { bookmarks, updateBookmarks } = useBookmarks();
+
+  // useEffect(() => {
+  //   console.log("State updated:", bookmarks);
+  // }, [bookmarks]);
+
   function matchingData() {
     if (bookmarks.length) {
       return bookmarks.find((bookmark) => bookmark === eachBakeryData.id);
@@ -20,7 +22,7 @@ function Place({
         <h3>{eachBakeryData.name}</h3>
         <button
           className="sidebar-bookmark"
-          onClick={() => UpdateBookmarks(eachBakeryData.id)}
+          onClick={() => updateBookmarks(eachBakeryData.id)}
         >
           <img src={matchingData() ? starFilled : star} alt="star icon" />
         </button>

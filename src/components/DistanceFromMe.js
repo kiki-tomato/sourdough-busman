@@ -1,12 +1,10 @@
 function DistanceFromMe({ distanceData }) {
+  if (distanceData > 10000) return null;
+
   return (
     <>
-      {distanceData < 10000 ? (
-        <>
-          <span className="distance-from-me">{distanceData}km</span>
-          <span>|</span>
-        </>
-      ) : null}
+      <span className="distance-from-me">{distanceData}km</span>
+      <span>|</span>
     </>
   );
 }

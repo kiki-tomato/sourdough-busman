@@ -2,31 +2,13 @@ import Place from "./Place";
 import DistanceFromMe from "./DistanceFromMe";
 import TradingHours from "./TradingHours";
 import Alert from "./Alert";
+import { useBakeries } from "../contexts/BakeriesContext";
+import { useToday } from "../contexts/TodayContext";
+function PlaceList() {
+  const { bakeryData, currentLocation, filterData } = useBakeries();
+  const { today, currentTime } = useToday();
 
-function PlaceList({
-  bakeryData,
-  currentLocation,
-  today,
-  currentTime,
-  openFiltered,
-  distanceFiltered,
-  dineInFiltered,
-  shippingFiltered,
-  filterData,
-  bookmarks,
-  setBookmarks,
-  UpdateBookmarks,
-}) {
-  const filterOptions = [
-    today,
-    currentTime,
-    openFiltered,
-    shippingFiltered,
-    dineInFiltered,
-    distanceFiltered,
-  ];
-
-  let filteredData = filterData(bakeryData, filterOptions);
+  let filteredData = filterData(bakeryData, today, currentTime);
 
   return (
     <>
@@ -36,23 +18,13 @@ function PlaceList({
         }
       >
         {filteredData.map((bakery) => (
-          <Place
-            eachBakeryData={bakery}
-            key={bakery.name}
-            bookmarks={bookmarks}
-            setBookmarks={setBookmarks}
-            UpdateBookmarks={UpdateBookmarks}
-          >
+          <Place eachBakeryData={bakery} key={bakery.id}>
             <DistanceFromMe
               distanceData={bakery.distance}
               currentLocation={currentLocation}
               bakeryData={bakeryData}
             />
-            <TradingHours
-              hoursData={bakery.hours}
-              today={today}
-              currentTime={currentTime}
-            />
+            <TradingHours hoursData={bakery.hours} />
           </Place>
         ))}
       </ul>
