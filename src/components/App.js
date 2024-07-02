@@ -6,9 +6,9 @@ import PlaceList from "./PlaceList";
 import { useBrowserTabTitle } from "../hooks/useBrowserTabTitle";
 import { BakeriesProvider } from "../contexts/BakeriesContext";
 import { TodayProvider } from "../contexts/TodayContext";
+import { BookmarksProvider } from "../contexts/BookmarksContext";
 
 import "../assets/App.css";
-import { BookmarksProvider } from "../contexts/BookmarksContext";
 
 function App() {
   useBrowserTabTitle();

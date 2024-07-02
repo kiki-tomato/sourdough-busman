@@ -1,77 +1,32 @@
 # Sourdough Busan
 
-### 1. The Purpose of My Website (What To Build)
+## Project Description
 
-a website for finding and sharing sourdough bakeries in Busan
+Find and share sourdough bakeries in Busan.  
+&nbsp;
 
-### 2. Website description
+## Built With
 
-- title: Sourdough Busan
-- description: for those who are not in the mood for sweet bread. because it’s hard to find sourdough bread in bakery franchise
+![Static Badge](https://img.shields.io/badge/React-61DAFB?style=for-the-badge) ![Static Badge](https://img.shields.io/badge/Naver%20Map%20API-03C75A?style=for-the-badge) ![Static Badge](https://img.shields.io/badge/Geolocation%20API-5A0FC8?style=for-the-badge) ![Static Badge](https://img.shields.io/badge/i18next-26A69A?style=for-the-badge) ![Static Badge](https://img.shields.io/badge/localStorage-AECBFA?style=for-the-badge)  
+&nbsp;
 
-### 3. Things To Keep In Mind
+## Features
 
-- build with React
-- should be a single-page application
-- available in 2 languages (Korean and English)
-- every component on the website should contribute to readability
-- build a responsive website (mobile and PC friendly)
-- follow conventions when it comes to design
-- make sure people share the place with others
+| Feature          | Description                                                                                                                                                                                                                                |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Map and List     | - Read bakery data with i18next<br> - Display all bakeries on the map<br> - Display all bakeries in the list<br> - Display relevant information about each bakery                                                                          |
+| Display Distance | - Geolocation to calculate the distance between the user’s current location and each bakery<br> - Display the calculated distance for each bakery in the list<br> - Offer a sort-by-distance option                                        |
+| Bookmark Places  | - Save interesting places in the browser using localStorage API<br> - On the saved button click, read the data from localStorage and display a list of it both on the map                                                                  |
+| Filter Places    | - Offer multiple filters, including open status, dine-in availability, and shipping service availability, to save users time<br> - Display filtered data both on the map and in the list<br> - Show the number of filters currently in use |
+| Language Options | - Toggle between Korean and English language options using i18next                                                                                                                                                                         |
 
-### 4. Research
+&nbsp;
 
-[Reference 1](https://intro.threedollars.co.kr)
+## Improvement Ideas
 
-[Reference 2](https://jinjja-seoul.com)
-
-- common features / positive attribute
-  - main(map view) : offer users precise information or subtly convey that we have what they're looking for → prevent users from leaving page
-  - list view : present more organized and detailed information including a filtering feature → help users find more suitable information
-  - additional information : if users are satisfied with the initial impression or information, it’ll be a way to make users stay longer
-  - intuitive words and design : easy to navigate without thinking → reduce the change of users leaving
-
-### 5. Goal (decide based on the research)
-
-Create a compelling initial impression that assures users we have what they are seeking. (make a good first impression)
-
-### 6. Ways To Achieve it
-
-- get straight to the point (avoid overwhelming users with excessive information)
-- provide specific information gradually
-- Ensure an intuitive user experience
-
-### 8. Basic Structure
-
-- Format : single page app
-- Main : map view with modal
-- List View
-- Page for each bakery
-
-### 9. Features for modal and list view
-
-- For modal
-
-  - bakery name
-  - trading hours
-  - distance
-  - user reactions
-
-- For list view
-
-  - distance
-  - trading hours
-  - filter (sort by)
-  - user reactions
-  - 택배 available
-  - address
-  - contact
-  - sharing feature
-
-### 10. Design
-
-[Wireframes](https://www.figma.com/file/z5BkctouqCqBbLPuTalfHG/Sourdough-Busan?type=design&node-id=1%3A4&mode=design&t=y2JROav0P76TpJ3A-1)
-
-### 0. For more information
-
-[click here](https://copper-snail-e31.notion.site/Sourdough-Busan-23-12-20-7dfeecd7c51147689e149052ced94cbc?pvs=4)
+- Ability to store the location state in the URL to read data and
+  display
+- Ability to share certain locations with others
+- Performance optimization for a better user experience
+- More realistic error and confirmation messages
+- Smooth navigation on the map
