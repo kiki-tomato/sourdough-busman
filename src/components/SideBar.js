@@ -1,49 +1,36 @@
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 
 import Filter from "./Filter";
 import starFilled from "../assets/Star-filled.svg";
 import filterFilled from "../assets/filter-filled.svg";
-import { useBakeries } from "../contexts/BakeriesContext";
 
 function SideBar({ children }) {
   const { t } = useTranslation();
-  const { filters } = useBakeries();
+  const { search } = useLocation();
 
-  const {
-    openFiltered,
-    shippingFiltered,
-    dineInFiltered,
-    distanceFiltered,
-    savedFiltered,
-    isFilterOn,
-    numFilters,
-  } = filters;
+  const isFilterOn = search
+    ? search
+        .slice(1)
+        .split("&")
+        .map((filter) => filter.slice(0, -3))
+    : [];
+
+  const numFilters = isFilterOn.length;
 
   return (
     <div className="sidebar">
       <div className="filter-container">
-        <Filter filterStatus={isFilterOn} icon={filterFilled}>
+        <Filter icon={filterFilled} type="filterSummary">
           {t("filters.filter")} {numFilters}
         </Filter>
-        <Filter
-          filterStatus={savedFiltered}
-          type="savedFilter"
-          icon={starFilled}
-        >
+        <Filter type="savedFilter" icon={starFilled}>
           {t("filters.saved")}
         </Filter>
-        <Filter filterStatus={openFiltered} type="openFilter">
-          {t("filters.open")}
-        </Filter>
-        <Filter filterStatus={distanceFiltered} type="distanceFilter">
-          {t("filters.distance")}
-        </Filter>
-        <Filter filterStatus={dineInFiltered} type="dineInFilter">
-          {t("filters.dineIn")}
-        </Filter>
-        <Filter filterStatus={shippingFiltered} type="shippingFilter">
-          {t("filters.shipping")}
-        </Filter>
+        <Filter type="openFilter">{t("filters.open")}</Filter>
+        <Filter type="distanceFilter">{t("filters.distance")}</Filter>
+        <Filter type="dineInFilter">{t("filters.dineIn")}</Filter>
+        <Filter type="shippingFilter">{t("filters.shipping")}</Filter>
       </div>
       {children}
     </div>

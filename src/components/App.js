@@ -1,7 +1,7 @@
 import Header from "./Header";
-import Map from "./Map";
 import SideBar from "./SideBar";
 import PlaceList from "./PlaceList";
+import MapContainer from "./MapContainer";
 
 import { useBrowserTabTitle } from "../hooks/useBrowserTabTitle";
 import { BakeriesProvider } from "../contexts/BakeriesContext";
@@ -22,7 +22,7 @@ function App() {
             <SideBar>
               <PlaceList />
             </SideBar>
-            <Map />
+            <MapContainer />
           </div>
         </TodayProvider>
       </BakeriesProvider>

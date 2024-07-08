@@ -1,101 +1,24 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext } from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 
 import { usePosition } from "../hooks/usePosition";
 import { useBookmarks } from "../contexts/BookmarksContext";
 
 const BakeriesContext = createContext();
 
-const initialState = {
-  openFiltered: false,
-  shippingFiltered: false,
-  dineInFiltered: false,
-  distanceFiltered: false,
-  savedFiltered: false,
-  isFilterOn: false,
-  numFilters: 0,
-};
-
-function reducer(state, action) {
-  function calcNumFilters(numfilters, filterStatus) {
-    const value = !filterStatus ? 1 : -1;
-    return numfilters + value;
-  }
-
-  switch (action.type) {
-    case "openFilter":
-      return {
-        ...state,
-        openFiltered: !state.openFiltered,
-        numFilters: calcNumFilters(state.numFilters, state.openFiltered),
-        isFilterOn: calcNumFilters(state.numFilters, state.openFiltered)
-          ? true
-          : false,
-      };
-
-    case "shippingFilter":
-      return {
-        ...state,
-        shippingFiltered: !state.shippingFiltered,
-        numFilters: calcNumFilters(state.numFilters, state.shippingFiltered),
-        isFilterOn: calcNumFilters(state.numFilters, state.shippingFiltered)
-          ? true
-          : false,
-      };
-
-    case "dineInFilter":
-      return {
-        ...state,
-        dineInFiltered: !state.dineInFiltered,
-        numFilters: calcNumFilters(state.numFilters, state.dineInFiltered),
-        isFilterOn: calcNumFilters(state.numFilters, state.dineInFiltered)
-          ? true
-          : false,
-      };
-
-    case "distanceFilter":
-      return {
-        ...state,
-        distanceFiltered: !state.distanceFiltered,
-        numFilters: calcNumFilters(state.numFilters, state.distanceFiltered),
-        isFilterOn: calcNumFilters(state.numFilters, state.distanceFiltered)
-          ? true
-          : false,
-      };
-
-    case "savedFilter":
-      return {
-        ...state,
-        savedFiltered: !state.savedFiltered,
-        numFilters: calcNumFilters(state.numFilters, state.savedFiltered),
-        isFilterOn: calcNumFilters(state.numFilters, state.savedFiltered)
-          ? true
-          : false,
-      };
-
-    default:
-      throw new Error("action unknown");
-  }
-}
-
 function BakeriesProvider({ children }) {
   const { t } = useTranslation();
   const initialData = t("bakeries", { returnObjects: true });
 
-  const [
-    {
-      openFiltered,
-      shippingFiltered,
-      dineInFiltered,
-      distanceFiltered,
-      savedFiltered,
-      isFilterOn,
-      numFilters,
-    },
-    dispatch,
-  ] = useReducer(reducer, initialState);
-  const currentLocation = usePosition();
   const { bookmarks } = useBookmarks();
+  const { search } = useLocation();
+  const currentLocation = usePosition();
+
+  const queryArr = search
+    .slice(1)
+    .split("&")
+    .map((filter) => filter.slice(0, -3));
 
   function calculateDistance(lat1, lon1, lat2, lon2) {
     const R = 6371; // Earth radius in kilometers
@@ -147,13 +70,6 @@ function BakeriesProvider({ children }) {
   function filterData(initalData, today, currentTime) {
     let output = initalData;
 
-    const placeList = document.querySelector(".place-list");
-
-    if (placeList)
-      placeList
-        .querySelectorAll(".place")
-        .forEach((place) => place.classList.remove("active"));
-
     function filterOpen(arr) {
       return arr
         .filter((bakery) => bakery.hours[today].open)
@@ -191,57 +107,85 @@ function BakeriesProvider({ children }) {
       return savedArr;
     }
 
-    if (openFiltered) {
+    function isIncluded(filterType) {
+      return queryArr.includes(filterType);
+    }
+
+    if (isIncluded("openFilter")) {
       output = filterOpen(initalData);
 
-      if (dineInFiltered) output = filterDineIn(output);
-      if (shippingFiltered) output = filterShipping(output);
-      if (distanceFiltered) output = filterDistance(output);
-      if (savedFiltered) {
+      if (isIncluded("dineInFilter")) output = filterDineIn(output);
+      if (isIncluded("shippingFilter")) output = filterShipping(output);
+      if (isIncluded("distanceFilter")) output = filterDistance(output);
+      if (isIncluded("savedFilter")) {
         output = filterSaved(output);
-        if (distanceFiltered) output = filterDistance(output);
+        if (isIncluded("distanceFilter")) output = filterDistance(output);
       }
-
-      if (dineInFiltered && shippingFiltered)
+      if (
+        queryArr.every(
+          (filter) => filter === "dineInFilter" || filter === "shippingFilter"
+        )
+      )
         output = output.filter(
           (bakery) => bakery.dineIn && bakery.shippingService
         );
-      if (dineInFiltered && distanceFiltered)
+
+      if (
+        queryArr.every(
+          (filter) => filter === "dineInFilter" || filter === "distanceFilter"
+        )
+      )
         output = filterDistance(output).filter((bakery) => bakery.dineIn);
-      if (shippingFiltered && distanceFiltered)
+
+      if (
+        queryArr.every(
+          (filter) => filter === "shippingFilter" || filter === "distanceFilter"
+        )
+      )
         output = filterShipping(output).sort((a, b) => a.distance - b.distance);
 
-      if (dineInFiltered && shippingFiltered && distanceFiltered)
+      if (
+        queryArr.every(
+          (filter) =>
+            filter === "dineInFilter" ||
+            filter === "shippingFilter" ||
+            filter === "distanceFilter"
+        )
+      )
         output = filterShipping(output)
           .sort((a, b) => a.distance - b.distance)
           .filter((bakery) => bakery.dineIn);
-    } else if (dineInFiltered) {
+    } else if (isIncluded("dineInFilter")) {
       output = filterDineIn(initalData);
 
-      if (shippingFiltered) output = filterShipping(output);
-      if (distanceFiltered) output = filterDistance(output);
-      if (savedFiltered) {
+      if (isIncluded("shippingFilter")) output = filterShipping(output);
+      if (isIncluded("distanceFilter")) output = filterDistance(output);
+      if (isIncluded("savedFilter")) {
         output = filterSaved(output);
 
-        if (distanceFiltered) output = filterDistance(output);
+        if (isIncluded("distanceFilter")) output = filterDistance(output);
       }
 
-      if (shippingFiltered && distanceFiltered)
+      if (
+        queryArr.every(
+          (filter) => filter === "shippingFilter" || filter === "distanceFilter"
+        )
+      )
         output = filterShipping(output).sort((a, b) => a.distance - b.distance);
-    } else if (shippingFiltered) {
+    } else if (isIncluded("shippingFilter")) {
       output = filterShipping(initalData);
 
-      if (distanceFiltered) output = filterDistance(output);
-      if (savedFiltered) {
+      if (isIncluded("distanceFilter")) output = filterDistance(output);
+      if (isIncluded("savedFilter")) {
         output = filterSaved(output);
 
-        if (distanceFiltered) output = filterDistance(output);
+        if (isIncluded("distanceFilter")) output = filterDistance(output);
       }
-    } else if (savedFiltered) {
+    } else if (isIncluded("savedFilter")) {
       output = filterSaved(initalData);
 
-      if (distanceFiltered) output = filterDistance(output);
-    } else if (distanceFiltered) {
+      if (isIncluded("distanceFilter")) output = filterDistance(output);
+    } else if (isIncluded("distanceFilter")) {
       output = filterDistance(initalData);
     }
 
@@ -258,16 +202,6 @@ function BakeriesProvider({ children }) {
         bakeryData,
         currentLocation,
         filterData,
-        filters: {
-          openFiltered,
-          shippingFiltered,
-          dineInFiltered,
-          distanceFiltered,
-          savedFiltered,
-          isFilterOn,
-          numFilters,
-        },
-        dispatch,
       }}
     >
       {children}

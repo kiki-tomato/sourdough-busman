@@ -1,30 +1,47 @@
-import { useEffect } from "react";
+import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+
 import starFilled from "../assets/Star-filled.svg";
 import star from "../assets/Star.svg";
+
 import { useBookmarks } from "../contexts/BookmarksContext";
 
 function Place({ eachBakeryData, children }) {
-  const { bookmarks, updateBookmarks } = useBookmarks();
+  const { updateBookmarks, matchingData } = useBookmarks();
+  const [isActive, setIsActive] = useState(false);
+  const { search } = useLocation();
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   console.log("State updated:", bookmarks);
-  // }, [bookmarks]);
+  function handleInfoWindow() {
+    navigate(`/${eachBakeryData.id}${search}`);
+  }
 
-  function matchingData() {
-    if (bookmarks.length) {
-      return bookmarks.find((bookmark) => bookmark === eachBakeryData.id);
-    }
+  function handleActiveList() {
+    setIsActive(true);
+  }
+
+  function handleDeactivateList() {
+    setIsActive(false);
   }
 
   return (
-    <li className="place" data-id={eachBakeryData.id}>
+    <li
+      className={isActive ? "place active" : "place"}
+      data-id={eachBakeryData.id}
+      onClick={handleInfoWindow}
+      onMouseOver={handleActiveList}
+      onMouseOut={handleDeactivateList}
+    >
       <div className="place-header">
         <h3>{eachBakeryData.name}</h3>
         <button
           className="sidebar-bookmark"
           onClick={() => updateBookmarks(eachBakeryData.id)}
         >
-          <img src={matchingData() ? starFilled : star} alt="star icon" />
+          <img
+            src={matchingData(eachBakeryData.id) ? starFilled : star}
+            alt="star icon"
+          />
         </button>
       </div>
       <h5>{eachBakeryData.address}</h5>

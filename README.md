@@ -22,11 +22,29 @@ Find and share sourdough bakeries in Busan.
 
 &nbsp;
 
+## Problem Solving Process
+
+#### Cleaning Up Redundant Elements for Performance
+
+- Problem Identification: The website slowed down over time due to the duplication of map and marker elements created in useEffect on each render
+- Solution:
+  - Used one useEffect per purpose to avoid unnecessary side effects
+  - Ensured cleanup of side effects on component unmount, such as removing markers from the map and detaching event listeners
+  - Created a separate info-window component and positioned it on the map to avoid additional duplicates
+- Outcome: Smoother operation with better performance by preventing the duplication of elements  
+  &nbsp;
+
+#### Handling API Key to Load the Map for Practicality
+
+- Problem Identification : Using a server-side proxy to hide the API key wasn’t cost-efficient for this project, despite the potential risks of exposing the API key on the client side
+- Solution :
+  - Researched how other services manage API keys for map integrations
+  - Found that many services use the map API with the API key exposed because the benefits outweigh the risks, especially when API key restrictions are properly implemented
+- Outcome : Reduced the app building time by including the API key directly in the HTML and restricting the API key to specific URLs, while maintaining a reasonable level of security  
+  &nbsp;
+
 ## Improvement Ideas
 
-- Ability to store the location state in the URL to read data and
-  display
+- Ability to store the location state in the URL to read data and display
 - Ability to share certain locations with others
-- Performance optimization for a better user experience
 - More realistic error and confirmation messages
-- Smooth navigation on the map

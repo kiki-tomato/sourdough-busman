@@ -223,26 +223,29 @@ input:focus div .slider {
 
 .map {
   z-index: 1;
-}
-
-.map-container {
-  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .btn-to-my-location {
-  position: fixed;
+  position: absolute;
+  z-index: 10;
   right: 10px;
   bottom: 20px;
   content: url(../assets/my_location.svg);
-  scale: 140%;
+  scale: 120%;
   margin: 0px 10px 25px 0px;
   filter: drop-shadow(2px 0px 4px rgba(0, 0, 0, 0.5));
   cursor: pointer;
 }
 
 .info-window {
+  position: absolute;
+  right: 10%;
+  bottom: 20px;
+  z-index: 20;
   width: 270px;
-  padding: 20px;
+  padding: 15px;
   border: 1px solid rgba(159, 159, 159, 0.5);
   border-radius: 9px;
   font-size: var(--text-sm);
@@ -294,6 +297,20 @@ input:focus div .slider {
   background-position: 8px 16px;
 }
 
+.bakery-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bakery-name button {
+  border: none;
+  background: none;
+  font-size: var(--text-lg);
+  color: var(--color-secondary);
+  cursor: pointer;
+}
+
 .info-window > div:nth-child(2) {
   margin-top: 3px;
   padding-bottom: 8px;
@@ -319,9 +336,9 @@ input:focus div .slider {
   background-repeat: no-repeat;
   background-size: 16px;
   background-position: 11px 3.5px;
+  background-color: #efefef;
   font-size: var(--text-xs);
   cursor: pointer;
-  /* text-align: right; */
 }
 
 .btn-bookmark:hover {
@@ -508,7 +525,7 @@ input:focus div .slider {
 
 .btn-to-resize {
   visibility: hidden;
-  position: fixed;
+  position: absolute;
 }
 
 .distance-from-me {
@@ -546,7 +563,7 @@ input:focus div .slider {
     order: 1;
   }
 
-  .map {
+  .map-container {
     order: 2;
   }
 
@@ -564,7 +581,8 @@ input:focus div .slider {
 
   .btn-to-resize {
     visibility: visible;
-    position: fixed;
+    position: absolute;
+    z-index: 10;
     bottom: 40px;
     right: 15px;
     padding: 10px 20px 10px 45px;
@@ -576,6 +594,14 @@ input:focus div .slider {
     filter: drop-shadow(2px 0px 4px rgba(0, 0, 0, 0.5));
     color: var(--color-light);
     cursor: pointer;
+  }
+
+  .info-window {
+    bottom: 100px;
+  }
+
+  .info-window-hidden {
+    visibility: hidden;
   }
 
   .btn-to-my-location {

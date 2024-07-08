@@ -30,6 +30,12 @@ function BookmarksProvider({ children }) {
     bookmarks.includes(id) ? deleteBookmark(id) : addBookmark(id);
   }
 
+  function matchingData(id) {
+    if (bookmarks.length) {
+      return bookmarks.find((bookmark) => bookmark === id);
+    }
+  }
+
   useEffect(() => {
     storeinLocalStorage(bookmarks);
   }, [bookmarks]);
@@ -39,7 +45,9 @@ function BookmarksProvider({ children }) {
   // }, [bookmarks]);
 
   return (
-    <BookmarksContext.Provider value={{ updateBookmarks, bookmarks }}>
+    <BookmarksContext.Provider
+      value={{ updateBookmarks, bookmarks, matchingData }}
+    >
       {children}
     </BookmarksContext.Provider>
   );
