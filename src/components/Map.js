@@ -8,7 +8,7 @@ import { useUrl } from "../hooks/useUrl";
 const { naver } = window;
 
 function Map() {
-  const { bakeryData, currentLocation, filterData, setMarkerPosition } =
+  const { bakeryData, currentLocation, filterData, setInfoWindowPosition } =
     useBakeries();
   const { today, currentTime } = useToday();
   const [map, setMap] = useState(null);
@@ -116,14 +116,16 @@ function Map() {
           const leftGap = positionObj.x - sidebarWidth <= 300;
           const bottomGap = vh - positionObj.bottom <= 300;
 
-          setMarkerPosition({
-            x: rightGap
-              ? vw - 310
-              : leftGap
-              ? positionObj.right
-              : positionObj.x,
-            y: bottomGap ? vh - 310 : positionObj.bottom,
-          });
+          vw > 600
+            ? setInfoWindowPosition({
+                x: rightGap
+                  ? vw - 310
+                  : leftGap
+                  ? positionObj.right
+                  : positionObj.x,
+                y: bottomGap ? vh - 320 : positionObj.bottom + 10,
+              })
+            : setInfoWindowPosition({ x: 0, y: "initial" });
 
           search ? navigate(`${bakeryId}${search}`) : navigate(`${bakeryId}`);
 
@@ -189,7 +191,7 @@ function Map() {
     navigate,
     search,
     queryStrings,
-    setMarkerPosition,
+    setInfoWindowPosition,
   ]);
 
   useEffect(() => {

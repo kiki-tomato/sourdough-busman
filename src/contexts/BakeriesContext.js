@@ -14,7 +14,7 @@ function BakeriesProvider({ children }) {
   const { bookmarks } = useBookmarks();
   const { appliedFilters } = useUrl();
   const currentLocation = usePosition();
-  const [markerPosition, setMarkerPosition] = useState();
+  const [infoWindowPosition, setInfoWindowPosition] = useState();
 
   function calculateDistance(lat1, lon1, lat2, lon2) {
     const R = 6371; // Earth radius in kilometers
@@ -198,8 +198,8 @@ function BakeriesProvider({ children }) {
         bakeryData,
         currentLocation,
         filterData,
-        setMarkerPosition,
-        markerPosition,
+        setInfoWindowPosition,
+        infoWindowPosition,
       }}
     >
       {children}

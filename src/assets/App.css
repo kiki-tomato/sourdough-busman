@@ -242,6 +242,8 @@ input:focus div .slider {
 .info-window {
   position: absolute;
   z-index: 20;
+  top: 50%;
+  left: 60%;
   width: 270px;
   padding: 15px;
   border: 1px solid rgba(159, 159, 159, 0.5);
