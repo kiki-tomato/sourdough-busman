@@ -1,22 +1,16 @@
 import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router-dom";
 
 import Filter from "./Filter";
 import starFilled from "../assets/Star-filled.svg";
 import filterFilled from "../assets/filter-filled.svg";
 
+import { useUrl } from "../hooks/useUrl";
+
 function SideBar({ children }) {
   const { t } = useTranslation();
-  const { search } = useLocation();
+  const { filterQuery } = useUrl();
 
-  const isFilterOn = search
-    ? search
-        .slice(1)
-        .split("&")
-        .map((filter) => filter.slice(0, -3))
-    : [];
-
-  const numFilters = isFilterOn.length;
+  const numFilters = filterQuery.length;
 
   return (
     <div className="sidebar">

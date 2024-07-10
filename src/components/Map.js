@@ -3,17 +3,20 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import { useBakeries } from "../contexts/BakeriesContext";
 import { useToday } from "../contexts/TodayContext";
+import { useUrl } from "../hooks/useUrl";
 
 const { naver } = window;
 
 function Map() {
-  const { bakeryData, currentLocation, filterData } = useBakeries();
+  const { bakeryData, currentLocation, filterData, setMarkerPosition } =
+    useBakeries();
   const { today, currentTime } = useToday();
   const [map, setMap] = useState(null);
   const mapElement = useRef(null);
   const navigate = useNavigate();
   const { bakeryId } = useParams();
   const { search } = useLocation();
+  const { queryStrings } = useUrl();
 
   let filteredData = filterData(bakeryData, today, currentTime);
 
@@ -100,10 +103,32 @@ function Map() {
         );
 
       markers.forEach((marker, i) => {
-        naver.maps.Event.addListener(marker, "click", () => {
+        naver.maps.Event.addListener(marker, "click", (e) => {
+          const bakeryId = marker.eventTarget.dataset.id;
+          const vw = window.innerWidth;
+          const vh = window.innerHeight;
+          const positionObj = marker.eventTarget.getBoundingClientRect();
+          const sidebarWidth = document
+            .querySelector(".sidebar")
+            .getBoundingClientRect().width;
+
+          const rightGap = vw - positionObj.right <= 300;
+          const leftGap = positionObj.x - sidebarWidth <= 300;
+          const bottomGap = vh - positionObj.bottom <= 300;
+
+          setMarkerPosition({
+            x: rightGap
+              ? vw - 310
+              : leftGap
+              ? positionObj.right
+              : positionObj.x,
+            y: bottomGap ? vh - 310 : positionObj.bottom,
+          });
+
+          search ? navigate(`${bakeryId}${search}`) : navigate(`${bakeryId}`);
+
           deactivateMarker(markers);
           activateMarker(marker);
-          navigate(`/${marker.eventTarget.dataset.id}${search}`);
         });
         naver.maps.Event.addListener(marker, "mouseover", () =>
           magnifyMarker(marker)
@@ -157,7 +182,15 @@ function Map() {
 
       clearMarkers();
     };
-  }, [filteredData, map, bakeryId, navigate, search]);
+  }, [
+    filteredData,
+    map,
+    bakeryId,
+    navigate,
+    search,
+    queryStrings,
+    setMarkerPosition,
+  ]);
 
   useEffect(() => {
     const btnToMyLocation = document.querySelector(".btn-to-my-location");

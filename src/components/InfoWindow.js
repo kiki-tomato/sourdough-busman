@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import { useBookmarks } from "../contexts/BookmarksContext";
@@ -7,12 +8,13 @@ import { useToday } from "../contexts/TodayContext";
 
 function InfoWindow({ resize }) {
   const { t } = useTranslation();
-  const { bakeryData, filterData } = useBakeries();
+  const { bakeryData, filterData, markerPosition } = useBakeries();
   const { updateBookmarks, matchingData } = useBookmarks();
   const { today, currentTime } = useToday();
   const { bakeryId } = useParams();
   const { search } = useLocation();
   const navigate = useNavigate();
+  const [viewport, setViewport] = useState(false);
 
   let filteredData = filterData(bakeryData, today, currentTime);
   let bakery = filteredData.filter((data) => data.id === bakeryId)[0];
@@ -24,6 +26,12 @@ function InfoWindow({ resize }) {
   const shippingAvail = bakery?.shippingService;
   const descriptionAvail = bakery?.description;
 
+  const largeVw = {
+    top: markerPosition ? markerPosition.y + 10 : "60%",
+    left: markerPosition ? markerPosition.x : "50%",
+  };
+  const smallVw = {};
+
   function handleBookmark() {
     updateBookmarks(bakery.id);
   }
@@ -32,10 +40,27 @@ function InfoWindow({ resize }) {
     navigate(`bakeries${search}`);
   }
 
+  useEffect(() => {
+    const mediaQuery600 = window.matchMedia("(max-width: 600px)");
+    const mediaQuery1000 = window.matchMedia("(max-width: 1000px)");
+
+    function setStyle(e) {
+      navigate(`bakeries${search}`);
+      setViewport(e.matches);
+      console.log(e);
+    }
+
+    mediaQuery600.addEventListener("change", setStyle);
+    mediaQuery1000.addEventListener("change", setStyle);
+
+    return () => mediaQuery600.removeEventListener("change", setStyle);
+  }, [navigate, search]);
+
   if (bakery)
     return (
       <div
         className={resize ? "info-window info-window-hidden" : "info-window"}
+        style={viewport ? smallVw : largeVw}
       >
         <div className="bakery-name">
           <div>✸ {bakery.name}</div>

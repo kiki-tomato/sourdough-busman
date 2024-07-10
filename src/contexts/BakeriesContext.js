@@ -1,9 +1,9 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router-dom";
 
 import { usePosition } from "../hooks/usePosition";
 import { useBookmarks } from "../contexts/BookmarksContext";
+import { useUrl } from "../hooks/useUrl";
 
 const BakeriesContext = createContext();
 
@@ -12,13 +12,9 @@ function BakeriesProvider({ children }) {
   const initialData = t("bakeries", { returnObjects: true });
 
   const { bookmarks } = useBookmarks();
-  const { search } = useLocation();
+  const { appliedFilters } = useUrl();
   const currentLocation = usePosition();
-
-  const queryArr = search
-    .slice(1)
-    .split("&")
-    .map((filter) => filter.slice(0, -3));
+  const [markerPosition, setMarkerPosition] = useState();
 
   function calculateDistance(lat1, lon1, lat2, lon2) {
     const R = 6371; // Earth radius in kilometers
@@ -108,7 +104,7 @@ function BakeriesProvider({ children }) {
     }
 
     function isIncluded(filterType) {
-      return queryArr.includes(filterType);
+      return appliedFilters.includes(filterType);
     }
 
     if (isIncluded("openFilter")) {
@@ -122,7 +118,7 @@ function BakeriesProvider({ children }) {
         if (isIncluded("distanceFilter")) output = filterDistance(output);
       }
       if (
-        queryArr.every(
+        appliedFilters.every(
           (filter) => filter === "dineInFilter" || filter === "shippingFilter"
         )
       )
@@ -131,21 +127,21 @@ function BakeriesProvider({ children }) {
         );
 
       if (
-        queryArr.every(
+        appliedFilters.every(
           (filter) => filter === "dineInFilter" || filter === "distanceFilter"
         )
       )
         output = filterDistance(output).filter((bakery) => bakery.dineIn);
 
       if (
-        queryArr.every(
+        appliedFilters.every(
           (filter) => filter === "shippingFilter" || filter === "distanceFilter"
         )
       )
         output = filterShipping(output).sort((a, b) => a.distance - b.distance);
 
       if (
-        queryArr.every(
+        appliedFilters.every(
           (filter) =>
             filter === "dineInFilter" ||
             filter === "shippingFilter" ||
@@ -167,7 +163,7 @@ function BakeriesProvider({ children }) {
       }
 
       if (
-        queryArr.every(
+        appliedFilters.every(
           (filter) => filter === "shippingFilter" || filter === "distanceFilter"
         )
       )
@@ -202,6 +198,8 @@ function BakeriesProvider({ children }) {
         bakeryData,
         currentLocation,
         filterData,
+        setMarkerPosition,
+        markerPosition,
       }}
     >
       {children}

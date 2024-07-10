@@ -1,22 +1,27 @@
 import { useLocation, useNavigate } from "react-router-dom";
 
+import { useUrl } from "../hooks/useUrl";
+
 function Filter({ children, icon, type }) {
   const { search } = useLocation();
+  const { filterQuery, appliedFilters } = useUrl();
   const navigate = useNavigate();
 
   const imageChange = { backgroundImage: `url(${icon})` };
-  const queryArr = search
-    .slice(1)
-    .split("&")
-    .filter((filter) => !filter.includes(type));
 
   function handleFilter() {
     if (type === "filterSummary") return;
 
     if (search.includes(type)) {
-      queryArr.length === 0 && navigate(`bakeries`);
-      queryArr.length === 1 && navigate(`bakeries?${queryArr[0]}`);
-      queryArr.length > 1 && navigate(`bakeries?${queryArr.join("&")}`);
+      const filterQueryWithoutType = filterQuery.filter(
+        (filter) => !filter.includes(type)
+      );
+
+      filterQueryWithoutType.length === 0 && navigate(`bakeries`);
+      filterQueryWithoutType.length === 1 &&
+        navigate(`bakeries?${filterQueryWithoutType[0]}`);
+      filterQueryWithoutType.length > 1 &&
+        navigate(`bakeries?${filterQueryWithoutType.join("&")}`);
     } else {
       search
         ? navigate(`bakeries${search}&${type}=on`)
@@ -26,12 +31,8 @@ function Filter({ children, icon, type }) {
 
   const isFilterOn =
     type === "filterSummary"
-      ? search
-      : search
-          .slice(1)
-          .split("&")
-          .map((filter) => filter.slice(0, -3))
-          .includes(type);
+      ? filterQuery.length
+      : appliedFilters.includes(type);
 
   return (
     <button
