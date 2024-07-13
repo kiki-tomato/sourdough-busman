@@ -7,6 +7,7 @@ import { useBrowserTabTitle } from "../hooks/useBrowserTabTitle";
 import { BakeriesProvider } from "../contexts/BakeriesContext";
 import { TodayProvider } from "../contexts/TodayContext";
 import { BookmarksProvider } from "../contexts/BookmarksContext";
+import { ResizeProvider } from "../contexts/ResizeContext";
 
 import "../assets/App.css";
 
@@ -17,13 +18,15 @@ function App() {
     <BookmarksProvider>
       <BakeriesProvider>
         <TodayProvider>
-          <div className="container">
-            <Header />
-            <SideBar>
-              <PlaceList />
-            </SideBar>
-            <MapContainer />
-          </div>
+          <ResizeProvider>
+            <div className="container">
+              <Header />
+              <SideBar>
+                <PlaceList />
+              </SideBar>
+              <MapContainer />
+            </div>
+          </ResizeProvider>
         </TodayProvider>
       </BakeriesProvider>
     </BookmarksProvider>

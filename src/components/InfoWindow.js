@@ -5,8 +5,9 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useBookmarks } from "../contexts/BookmarksContext";
 import { useBakeries } from "../contexts/BakeriesContext";
 import { useToday } from "../contexts/TodayContext";
+import { useResize } from "../contexts/ResizeContext";
 
-function InfoWindow({ resize }) {
+function InfoWindow() {
   const { t } = useTranslation();
   const { bakeryData, filterData, infoWindowPosition, setInfoWindowPosition } =
     useBakeries();
@@ -14,6 +15,7 @@ function InfoWindow({ resize }) {
   const { today, currentTime } = useToday();
   const { bakeryId } = useParams();
   const { search } = useLocation();
+  const { resize } = useResize();
   const navigate = useNavigate();
 
   let filteredData = filterData(bakeryData, today, currentTime);
@@ -67,7 +69,7 @@ function InfoWindow({ resize }) {
   if (bakery)
     return (
       <div
-        className={resize ? "info-window info-window-hidden" : "info-window"}
+        className={`info-window ${resize ? "info-window-hidden" : ""}`}
         style={style}
       >
         <div className="bakery-name">
@@ -113,11 +115,9 @@ function InfoWindow({ resize }) {
             </button>
           </a>
           <button
-            className={
-              matchingData(bakery.id)
-                ? "btn-bookmark bookmarked"
-                : "btn-bookmark"
-            }
+            className={`btn-bookmark ${
+              matchingData(bakery.id) ? "bookmarked" : ""
+            }`}
             data-id={bakery.id}
             onClick={handleBookmark}
           >

@@ -27,12 +27,12 @@ Find and share sourdough bakeries in Busan.
 
 #### Cleaning Up Redundant Elements for Performance
 
-- Problem Identification: The website slowed down over time due to the duplication of map and marker elements created in useEffect on each render
+- Problem Identification: The website slowed down over time due to the duplication of map and marker elements on every re-execution of the useEffect
 - Solution:
   - Used one useEffect per purpose to avoid unnecessary side effects
-  - Ensured cleanup of side effects on component unmount, such as removing markers from the map and detaching event listeners
+  - Ensured cleanup of side effects, such as removing markers from the map and detaching event listeners
   - Created a separate info-window component and positioned it on the map to avoid additional duplicates
-- Outcome: Smoother operation with better performance by preventing the duplication of elements  
+- Outcome: Smoother user experience with better performance by preventing the duplication of elements  
   &nbsp;
 
 #### Handling API Key to Load the Map for Practicality

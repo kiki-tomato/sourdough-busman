@@ -45,7 +45,9 @@ function Map() {
     const placeList = document.querySelector(".place-list");
 
     function generateMarkerMarkup(content) {
-      return `<div class="marker" data-id=${content.id}>${content.name}</div>`;
+      const markerMarkup = `<div class="marker" data-id=${content.id}>${content.name}</div>`;
+
+      return markerMarkup;
     }
 
     function createMarkers() {
@@ -68,6 +70,7 @@ function Map() {
     }
 
     function activateMarker(marker) {
+      marker.eventTarget.classList.remove("hover-marker");
       marker.eventTarget.classList.add("active-marker");
       marker.setZIndex(100);
     }
@@ -102,9 +105,9 @@ function Map() {
             : ""
         );
 
-      markers.forEach((marker, i) => {
-        naver.maps.Event.addListener(marker, "click", (e) => {
-          const bakeryId = marker.eventTarget.dataset.id;
+      markers.forEach((marker) => {
+        naver.maps.Event.addListener(marker, "click", () => {
+          const markerId = marker.eventTarget.dataset.id;
           const vw = window.innerWidth;
           const vh = window.innerHeight;
           const positionObj = marker.eventTarget.getBoundingClientRect();
@@ -127,7 +130,7 @@ function Map() {
               })
             : setInfoWindowPosition({ x: 0, y: "initial" });
 
-          search ? navigate(`${bakeryId}${search}`) : navigate(`${bakeryId}`);
+          search ? navigate(`${markerId}${search}`) : navigate(`${markerId}`);
 
           deactivateMarker(markers);
           activateMarker(marker);

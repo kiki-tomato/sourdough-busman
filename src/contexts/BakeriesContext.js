@@ -196,8 +196,8 @@ function BakeriesProvider({ children }) {
     <BakeriesContext.Provider
       value={{
         bakeryData,
-        currentLocation,
         filterData,
+        currentLocation,
         setInfoWindowPosition,
         infoWindowPosition,
       }}

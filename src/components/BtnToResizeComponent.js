@@ -3,8 +3,11 @@ import { useTranslation } from "react-i18next";
 import mapIcon from "../assets/map-fill.png";
 import listIcon from "../assets/list-ul.png";
 
-function BtnToResizeComponent({ resize, setResize }) {
+import { useResize } from "../contexts/ResizeContext";
+
+function BtnToResizeComponent() {
   const { t } = useTranslation();
+  const { resize, setResize } = useResize();
 
   const addMapIcon = {
     backgroundImage: `url(${mapIcon})`,
@@ -21,8 +24,6 @@ function BtnToResizeComponent({ resize, setResize }) {
 
   function handleBtn() {
     setResize((on) => !on);
-
-    document.querySelector(".container").classList.toggle("grid-alter");
   }
 
   return (
