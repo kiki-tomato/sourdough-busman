@@ -582,7 +582,7 @@ input:focus div .slider {
     visibility: hidden;
     position: absolute;
     width: 100%;
-    transform: translate3d(0px, 100%, 0px);
+    transform: translate3d(0px, 100vh, 0px);
   }
 
   .sidebar-sm {
@@ -594,9 +594,8 @@ input:focus div .slider {
     position: absolute;
     width: 100%;
     height: calc(100vh - 40px);
-    transform: translate3d(0px, 100%, 0px);
     transition: transform 0.4s ease-out;
-    background-color: white;
+    background-color: var(--color-light);
   }
 
   .filter-container {
@@ -629,6 +628,7 @@ input:focus div .slider {
     width: 85vw;
     margin-left: auto;
     margin-right: auto;
+    top: initial;
     left: 0;
     right: 0;
     bottom: 85px;

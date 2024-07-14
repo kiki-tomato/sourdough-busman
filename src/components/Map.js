@@ -1,22 +1,26 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-import { useBakeries } from "../contexts/BakeriesContext";
-import { useToday } from "../contexts/TodayContext";
+import { usePosition } from "../contexts/PositionContext";
 import { useUrl } from "../hooks/useUrl";
+import { useCurrentLocation } from "../hooks/useCurrentLocation";
+import { useFilterData } from "../hooks/useFilterData";
+import { getToday } from "../utils/helpers";
 
 const { naver } = window;
 
 function Map() {
-  const { bakeryData, currentLocation, filterData, setInfoWindowPosition } =
-    useBakeries();
-  const { today, currentTime } = useToday();
-  const [map, setMap] = useState(null);
-  const mapElement = useRef(null);
-  const navigate = useNavigate();
+  const { currentLocation } = useCurrentLocation();
+  const { bakeryData, filterData } = useFilterData();
+  const { setInfoWindowPosition } = usePosition();
   const { bakeryId } = useParams();
   const { search } = useLocation();
   const { queryStrings } = useUrl();
+  const [map, setMap] = useState(null);
+  const mapElement = useRef(null);
+  const navigate = useNavigate();
+
+  const { today, currentTime } = getToday();
 
   let filteredData = filterData(bakeryData, today, currentTime);
 
@@ -128,7 +132,7 @@ function Map() {
                   : positionObj.x,
                 y: bottomGap ? vh - 320 : positionObj.bottom + 10,
               })
-            : setInfoWindowPosition({ x: 0, y: "initial" });
+            : setInfoWindowPosition({});
 
           search ? navigate(`${markerId}${search}`) : navigate(`${markerId}`);
 

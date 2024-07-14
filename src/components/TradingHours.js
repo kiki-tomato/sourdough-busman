@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useToday } from "../contexts/TodayContext";
+
+import { getToday } from "../utils/helpers";
 
 function TradingHours({ hoursData }) {
   const { t } = useTranslation();
   const [textColor, setTextColor] = useState("");
   const [openOrClosed, setOpenOrClosed] = useState("");
-  const { today, currentTime } = useToday();
+
+  const { today, currentTime } = getToday();
 
   useEffect(() => {
     const open = hoursData[today].open;

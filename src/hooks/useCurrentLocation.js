@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export function usePosition() {
+export function useCurrentLocation() {
   const [currentLocation, setCurrentLocation] = useState({
     latitude: 0,
     longitude: 0,
@@ -31,5 +31,5 @@ export function usePosition() {
     }
   }, []);
 
-  return currentLocation;
+  return { currentLocation };
 }

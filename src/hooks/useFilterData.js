@@ -1,20 +1,16 @@
-import { createContext, useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { usePosition } from "../hooks/usePosition";
 import { useBookmarks } from "../contexts/BookmarksContext";
-import { useUrl } from "../hooks/useUrl";
+import { useUrl } from "./useUrl";
+import { useCurrentLocation } from "./useCurrentLocation";
 
-const BakeriesContext = createContext();
-
-function BakeriesProvider({ children }) {
+export function useFilterData() {
   const { t } = useTranslation();
-  const initialData = t("bakeries", { returnObjects: true });
-
   const { bookmarks } = useBookmarks();
   const { appliedFilters } = useUrl();
-  const currentLocation = usePosition();
-  const [infoWindowPosition, setInfoWindowPosition] = useState();
+  const { currentLocation } = useCurrentLocation();
+
+  const initialData = t("bakeries", { returnObjects: true });
 
   function calculateDistance(lat1, lon1, lat2, lon2) {
     const R = 6371; // Earth radius in kilometers
@@ -192,28 +188,5 @@ function BakeriesProvider({ children }) {
     return { ...bakery, distance: distanceArr[i], id: generateId(bakery, i) };
   });
 
-  return (
-    <BakeriesContext.Provider
-      value={{
-        bakeryData,
-        filterData,
-        currentLocation,
-        setInfoWindowPosition,
-        infoWindowPosition,
-      }}
-    >
-      {children}
-    </BakeriesContext.Provider>
-  );
+  return { bakeryData, filterData };
 }
-
-function useBakeries() {
-  const value = useContext(BakeriesContext);
-
-  if (value === undefined)
-    throw new Error("BakeriesContext was used outside of BakeriesProvider");
-
-  return value;
-}
-
-export { BakeriesProvider, useBakeries };

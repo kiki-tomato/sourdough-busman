@@ -3,18 +3,21 @@ import { useCallback, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import { useBookmarks } from "../contexts/BookmarksContext";
-import { useBakeries } from "../contexts/BakeriesContext";
-import { useToday } from "../contexts/TodayContext";
+import { usePosition } from "../contexts/PositionContext";
+import { useFilterData } from "../hooks/useFilterData";
+
+import { getToday } from "../utils/helpers";
 
 function InfoWindow() {
   const { t } = useTranslation();
-  const { bakeryData, filterData, infoWindowPosition, setInfoWindowPosition } =
-    useBakeries();
+  const { bakeryData, filterData } = useFilterData();
+  const { infoWindowPosition } = usePosition();
   const { updateBookmarks, matchingData } = useBookmarks();
-  const { today, currentTime } = useToday();
   const { bakeryId } = useParams();
   const { search } = useLocation();
   const navigate = useNavigate();
+
+  const { today, currentTime } = getToday();
 
   let filteredData = filterData(bakeryData, today, currentTime);
   let bakery = filteredData.filter((data) => data.id === bakeryId)[0];
@@ -25,7 +28,6 @@ function InfoWindow() {
   const closingMin = bakery?.hours[today].close?.min;
   const shippingAvail = bakery?.shippingService;
   const descriptionAvail = bakery?.description;
-
   const style = infoWindowPosition && {
     top: infoWindowPosition.y,
     left: infoWindowPosition.x,
@@ -51,18 +53,6 @@ function InfoWindow() {
       mediaQuery1000.removeEventListener("change", handleInfoWindow);
     };
   }, [handleInfoWindow]);
-
-  useEffect(() => {
-    function setPosition() {
-      if (window.innerWidth <= 600) {
-        setInfoWindowPosition({ x: 0, y: "initial" });
-      }
-    }
-
-    window.addEventListener("load", setPosition);
-
-    return () => window.removeEventListener("load", setPosition);
-  }, [setInfoWindowPosition]);
 
   if (bakery)
     return (

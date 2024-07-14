@@ -15,11 +15,11 @@ function SideBar({ children }) {
   const numFilters = filterQuery.length;
 
   const defaultStyle = {
-    transform: `translate3d(0px, 100vh, 0px)`,
+    transform: "translate3d(0px, 100vh, 0px)",
   };
 
   const openStyle = {
-    transform: `translate3d(0px, 40px, 0px)`,
+    transform: "translate3d(0px, 40px, 0px)",
   };
 
   if (isSmallViewport)

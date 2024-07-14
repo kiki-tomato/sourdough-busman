@@ -3,12 +3,16 @@ import DistanceFromMe from "./DistanceFromMe";
 import TradingHours from "./TradingHours";
 import Alert from "./Alert";
 
-import { useBakeries } from "../contexts/BakeriesContext";
-import { useToday } from "../contexts/TodayContext";
+import { useCurrentLocation } from "../hooks/useCurrentLocation";
+import { useFilterData } from "../hooks/useFilterData";
+
+import { getToday } from "../utils/helpers";
 
 function PlaceList() {
-  const { bakeryData, currentLocation, filterData } = useBakeries();
-  const { today, currentTime } = useToday();
+  const { currentLocation } = useCurrentLocation();
+  const { bakeryData, filterData } = useFilterData();
+
+  const { today, currentTime } = getToday();
 
   let filteredData = filterData(bakeryData, today, currentTime);
 

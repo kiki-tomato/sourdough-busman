@@ -4,8 +4,7 @@ import PlaceList from "./PlaceList";
 import MapContainer from "./MapContainer";
 
 import { useBrowserTabTitle } from "../hooks/useBrowserTabTitle";
-import { BakeriesProvider } from "../contexts/BakeriesContext";
-import { TodayProvider } from "../contexts/TodayContext";
+import { PositionProvider } from "../contexts/PositionContext";
 import { BookmarksProvider } from "../contexts/BookmarksContext";
 import { ResizeProvider } from "../contexts/ResizeContext";
 
@@ -16,19 +15,17 @@ function App() {
 
   return (
     <BookmarksProvider>
-      <BakeriesProvider>
-        <TodayProvider>
-          <ResizeProvider>
-            <div className="container">
-              <Header />
-              <SideBar>
-                <PlaceList />
-              </SideBar>
-              <MapContainer />
-            </div>
-          </ResizeProvider>
-        </TodayProvider>
-      </BakeriesProvider>
+      <PositionProvider>
+        <ResizeProvider>
+          <div className="container">
+            <Header />
+            <SideBar>
+              <PlaceList />
+            </SideBar>
+            <MapContainer />
+          </div>
+        </ResizeProvider>
+      </PositionProvider>
     </BookmarksProvider>
   );
 }
