@@ -5,7 +5,6 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useBookmarks } from "../contexts/BookmarksContext";
 import { useBakeries } from "../contexts/BakeriesContext";
 import { useToday } from "../contexts/TodayContext";
-import { useResize } from "../contexts/ResizeContext";
 
 function InfoWindow() {
   const { t } = useTranslation();
@@ -15,7 +14,6 @@ function InfoWindow() {
   const { today, currentTime } = useToday();
   const { bakeryId } = useParams();
   const { search } = useLocation();
-  const { resize } = useResize();
   const navigate = useNavigate();
 
   let filteredData = filterData(bakeryData, today, currentTime);
@@ -68,10 +66,7 @@ function InfoWindow() {
 
   if (bakery)
     return (
-      <div
-        className={`info-window ${resize ? "info-window-hidden" : ""}`}
-        style={style}
-      >
+      <div className="info-window" style={style}>
         <div className="bakery-name">
           <div>✸ {bakery.name}</div>
           <button onClick={handleInfoWindow}>&times;</button>

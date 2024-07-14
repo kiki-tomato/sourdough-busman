@@ -7,7 +7,7 @@ import { useResize } from "../contexts/ResizeContext";
 
 function BtnToResizeComponent() {
   const { t } = useTranslation();
-  const { resize, setResize } = useResize();
+  const { isOpen, setIsOpen, setIsSmallViewport } = useResize();
 
   const addMapIcon = {
     backgroundImage: `url(${mapIcon})`,
@@ -23,16 +23,17 @@ function BtnToResizeComponent() {
   };
 
   function handleBtn() {
-    setResize((on) => !on);
+    setIsOpen((on) => !on);
+    setIsSmallViewport(true);
   }
 
   return (
     <button
       className="btn-to-resize"
       onClick={handleBtn}
-      style={!resize ? addListIcon : addMapIcon}
+      style={isOpen ? addMapIcon : addListIcon}
     >
-      {!resize ? t("buttons.listView") : t("buttons.mapView")}
+      {isOpen ? t("buttons.mapView") : t("buttons.listView")}
     </button>
   );
 }

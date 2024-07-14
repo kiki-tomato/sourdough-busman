@@ -6,40 +6,25 @@ import filterFilled from "../assets/filter-filled.svg";
 
 import { useUrl } from "../hooks/useUrl";
 import { useResize } from "../contexts/ResizeContext";
-import { useEffect, useState } from "react";
 
 function SideBar({ children }) {
   const { t } = useTranslation();
   const { filterQuery } = useUrl();
-  const { resize } = useResize();
-  const [isSmallViewport, setIsSmallViewport] = useState(false);
+  const { isOpen, isSmallViewport } = useResize();
 
   const numFilters = filterQuery.length;
 
-  const defaultPosition = {
-    transition: `transform 0.5s ease-out`,
+  const defaultStyle = {
+    transform: `translate3d(0px, 100vh, 0px)`,
   };
-  const openPoistion = {
+
+  const openStyle = {
     transform: `translate3d(0px, 40px, 0px)`,
-    transition: `transform 0.5s ease-out`,
   };
 
-  useEffect(() => {
-    const mediaQuery600 = window.matchMedia("(max-width: 600px)");
-
-    function getViewportSize(e) {
-      setIsSmallViewport(e.matches);
-    }
-
-    window.addEventListener("load", function () {
-      if (window.innerWidth <= 600) setIsSmallViewport(true);
-    });
-    mediaQuery600.addEventListener("change", getViewportSize);
-  }, []);
-
-  if (!isSmallViewport)
+  if (isSmallViewport)
     return (
-      <div className="sidebar">
+      <div className="sidebar-sm" style={isOpen ? openStyle : defaultStyle}>
         <div className="filter-container">
           <Filter icon={filterFilled} type="filterSummary">
             {t("filters.filter")} {numFilters}
@@ -56,9 +41,9 @@ function SideBar({ children }) {
       </div>
     );
 
-  if (isSmallViewport)
+  if (!isSmallViewport)
     return (
-      <div className="sidebar" style={resize ? openPoistion : defaultPosition}>
+      <div className="sidebar">
         <div className="filter-container">
           <Filter icon={filterFilled} type="filterSummary">
             {t("filters.filter")} {numFilters}

@@ -1,12 +1,26 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const ResizeContext = createContext();
 
 function ResizeProvider({ children }) {
-  const [resize, setResize] = useState(false);
+  const [isSmallViewport, setIsSmallViewport] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery600 = window.matchMedia("(max-width: 600px)");
+
+    function handleSidebar() {
+      setIsOpen(false);
+      setIsSmallViewport(false);
+    }
+
+    mediaQuery600.addEventListener("change", handleSidebar);
+  }, []);
 
   return (
-    <ResizeContext.Provider value={{ resize, setResize }}>
+    <ResizeContext.Provider
+      value={{ isSmallViewport, setIsSmallViewport, isOpen, setIsOpen }}
+    >
       {children}
     </ResizeContext.Provider>
   );
