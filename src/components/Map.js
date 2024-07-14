@@ -113,7 +113,7 @@ function Map() {
           const positionObj = marker.eventTarget.getBoundingClientRect();
           const sidebarWidth = document
             .querySelector(".sidebar")
-            .getBoundingClientRect().width;
+            ?.getBoundingClientRect().width;
 
           const rightGap = vw - positionObj.right <= 300;
           const leftGap = positionObj.x - sidebarWidth <= 300;
