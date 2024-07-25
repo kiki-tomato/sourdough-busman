@@ -1,19 +1,17 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import starFilled from "../assets/Star-filled.svg";
-import star from "../assets/Star.svg";
-
-import { useBookmarks } from "../contexts/BookmarksContext";
+import Button from "../../ui/Button";
 
 function Place({ eachBakeryData, children }) {
-  const { updateBookmarks, matchingData } = useBookmarks();
   const [isActive, setIsActive] = useState(false);
   const { search } = useLocation();
   const navigate = useNavigate();
 
+  const bakeryId = eachBakeryData.id;
+
   function handleInfoWindow() {
-    navigate(`/${eachBakeryData.id}${search}`);
+    navigate(`/details/${bakeryId}${search}`);
   }
 
   function handleActiveList() {
@@ -34,15 +32,7 @@ function Place({ eachBakeryData, children }) {
     >
       <div className="place-header">
         <h3>{eachBakeryData.name}</h3>
-        <button
-          className="sidebar-bookmark"
-          onClick={() => updateBookmarks(eachBakeryData.id)}
-        >
-          <img
-            src={matchingData(eachBakeryData.id) ? starFilled : star}
-            alt="star icon"
-          />
-        </button>
+        <Button type="sidebar-bookmark" id={eachBakeryData.id} />
       </div>
       <h5>{eachBakeryData.address}</h5>
       <div>{children}</div>

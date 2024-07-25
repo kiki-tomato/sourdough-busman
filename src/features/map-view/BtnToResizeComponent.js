@@ -1,13 +1,15 @@
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 
-import mapIcon from "../assets/map-fill.png";
-import listIcon from "../assets/list-ul.png";
+import mapIcon from "../../assets/map-fill.png";
+import listIcon from "../../assets/list-ul.png";
 
-import { useResize } from "../contexts/ResizeContext";
+import { useResize } from "../../contexts/ResizeContext";
 
 function BtnToResizeComponent() {
   const { t } = useTranslation();
-  const { isOpen, setIsOpen, setIsSmallViewport } = useResize();
+  const { isSidebarOpen, setIsSidebarOpen, setIsSmallViewport } = useResize();
+  const { pathname } = useLocation();
 
   const addMapIcon = {
     backgroundImage: `url(${mapIcon})`,
@@ -23,17 +25,19 @@ function BtnToResizeComponent() {
   };
 
   function handleBtn() {
-    setIsOpen((on) => !on);
+    setIsSidebarOpen((on) => !on);
     setIsSmallViewport(true);
   }
+
+  if (pathname.includes("details")) return;
 
   return (
     <button
       className="btn-to-resize"
       onClick={handleBtn}
-      style={isOpen ? addMapIcon : addListIcon}
+      style={isSidebarOpen ? addMapIcon : addListIcon}
     >
-      {isOpen ? t("buttons.mapView") : t("buttons.listView")}
+      {isSidebarOpen ? t("buttons.mapView") : t("buttons.listView")}
     </button>
   );
 }

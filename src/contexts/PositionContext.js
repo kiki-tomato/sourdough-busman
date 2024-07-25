@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 const PositionContext = createContext();
 
 function PositionProvider({ children }) {
-  const [infoWindowPosition, setInfoWindowPosition] = useState();
+  const [infoWindowPosition, setInfoWindowPosition] = useState(null);
 
   return (
     <PositionContext.Provider

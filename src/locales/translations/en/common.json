@@ -27,10 +27,15 @@
     "listView": "List View",
     "mapView": "Map View",
     "moreDetails": "More Details",
+    "link": "Link to Naver Map",
     "shippingAvailable": "Shipping Available",
     "bookmark": "Save",
     "share": "share",
     "orderOnline": "Order Online",
     "shortInfo": "Short Info"
+  },
+
+  "info": {
+    "location": "Location"
   }
 }

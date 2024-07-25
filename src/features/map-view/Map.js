@@ -1,21 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-import { usePosition } from "../contexts/PositionContext";
-import { useUrl } from "../hooks/useUrl";
-import { useCurrentLocation } from "../hooks/useCurrentLocation";
-import { useFilterData } from "../hooks/useFilterData";
-import { getToday } from "../utils/helpers";
+import { usePosition } from "../../contexts/PositionContext";
+import { useCurrentLocation } from "../../hooks/useCurrentLocation";
+import { useData } from "../../hooks/useData";
+import { getToday } from "../../utils/helpers";
 
 const { naver } = window;
 
 function Map() {
   const { currentLocation } = useCurrentLocation();
-  const { bakeryData, filterData } = useFilterData();
+  const { bakeryData, filterData } = useData();
   const { setInfoWindowPosition } = usePosition();
   const { bakeryId } = useParams();
-  const { search } = useLocation();
-  const { queryStrings } = useUrl();
+  const { pathname, search } = useLocation();
   const [map, setMap] = useState(null);
   const mapElement = useRef(null);
   const navigate = useNavigate();
@@ -110,34 +108,43 @@ function Map() {
         );
 
       markers.forEach((marker) => {
-        naver.maps.Event.addListener(marker, "click", () => {
+        naver.maps.Event.addListener(marker, "click", (e) => {
           const markerId = marker.eventTarget.dataset.id;
-          const vw = window.innerWidth;
-          const vh = window.innerHeight;
-          const positionObj = marker.eventTarget.getBoundingClientRect();
-          const sidebarWidth = document
-            .querySelector(".sidebar")
-            ?.getBoundingClientRect().width;
-
-          const rightGap = vw - positionObj.right <= 300;
-          const leftGap = positionObj.x - sidebarWidth <= 300;
-          const bottomGap = vh - positionObj.bottom <= 300;
-
-          vw > 600
-            ? setInfoWindowPosition({
-                x: rightGap
-                  ? vw - 310
-                  : leftGap
-                  ? positionObj.right
-                  : positionObj.x,
-                y: bottomGap ? vh - 320 : positionObj.bottom + 10,
-              })
-            : setInfoWindowPosition({});
-
-          search ? navigate(`${markerId}${search}`) : navigate(`${markerId}`);
 
           deactivateMarker(markers);
           activateMarker(marker);
+
+          if (pathname.includes("details")) {
+            search
+              ? navigate(`/details/${markerId}${search}`)
+              : navigate(`/details/${markerId}`);
+          } else {
+            const vw = window.innerWidth;
+            const vh = window.innerHeight;
+            const positionObj = marker.eventTarget.getBoundingClientRect();
+            const sidebarWidth = document
+              .querySelector(".sidebar")
+              ?.getBoundingClientRect().width;
+
+            const rightGap = vw - positionObj.right <= 300;
+            const leftGap = positionObj.x - sidebarWidth <= 300;
+            const bottomGap = vh - positionObj.bottom <= 300;
+
+            vw > 600
+              ? setInfoWindowPosition({
+                  x: rightGap
+                    ? vw - 310
+                    : leftGap
+                    ? positionObj.right
+                    : positionObj.x,
+                  y: bottomGap ? vh - 320 : positionObj.bottom + 10,
+                })
+              : setInfoWindowPosition({});
+
+            search
+              ? navigate(`/${markerId}${search}`)
+              : navigate(`/${markerId}`);
+          }
         });
         naver.maps.Event.addListener(marker, "mouseover", () =>
           magnifyMarker(marker)
@@ -148,29 +155,29 @@ function Map() {
       });
 
       naver.maps.Event.addListener(map, "click", function () {
-        navigate(`bakeries${search}`);
         deactivateMarker(markers);
+        navigate(`bakeries${search}`);
       });
 
-      placeList.addEventListener("mouseover", function (e) {
+      placeList?.addEventListener("mouseover", function (e) {
         const clickedPlace = e.target.closest(".place");
-        const id = clickedPlace.dataset.id;
+        const id = clickedPlace?.dataset.id;
 
         markers.map((marker) =>
           marker.eventTarget.dataset.id === id ? magnifyMarker(marker) : ""
         );
       });
 
-      placeList.addEventListener("mouseout", function (e) {
+      placeList?.addEventListener("mouseout", function (e) {
         const clickedPlace = e.target.closest(".place");
-        const id = clickedPlace.dataset.id;
+        const id = clickedPlace?.dataset.id;
 
         markers.map((marker) =>
           marker.eventTarget.dataset.id === id ? downsizeMarker(marker) : ""
         );
       });
 
-      placeList.addEventListener("click", function (e) {
+      placeList?.addEventListener("click", function (e) {
         const clickedPlace = e.target.closest(".place");
         const btnBookmark = e.target.closest(".sidebar-bookmark");
         const id = clickedPlace.dataset.id;
@@ -197,8 +204,8 @@ function Map() {
     bakeryId,
     navigate,
     search,
-    queryStrings,
     setInfoWindowPosition,
+    pathname,
   ]);
 
   useEffect(() => {

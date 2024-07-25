@@ -4,13 +4,13 @@ const ResizeContext = createContext();
 
 function ResizeProvider({ children }) {
   const [isSmallViewport, setIsSmallViewport] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     const mediaQuery600 = window.matchMedia("(max-width: 600px)");
 
     function handleSidebar() {
-      setIsOpen(false);
+      setIsSidebarOpen(false);
       setIsSmallViewport(false);
     }
 
@@ -19,7 +19,12 @@ function ResizeProvider({ children }) {
 
   return (
     <ResizeContext.Provider
-      value={{ isSmallViewport, setIsSmallViewport, isOpen, setIsOpen }}
+      value={{
+        isSmallViewport,
+        setIsSmallViewport,
+        isSidebarOpen,
+        setIsSidebarOpen,
+      }}
     >
       {children}
     </ResizeContext.Provider>

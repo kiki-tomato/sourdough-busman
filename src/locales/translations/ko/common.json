@@ -26,11 +26,16 @@
   "buttons": {
     "listView": "목록 보기",
     "mapView": "지도 표시하기",
-    "moreDetails": "네이버지도로 자세히 보기",
+    "moreDetails": "자세히 보기",
+    "link": "네이버지도로 보기",
     "shippingAvailable": "택배배송 가능",
     "bookmark": "저장",
     "share": "공유",
     "orderOnline": "택배 주문하기",
     "shortInfo": "짧막 정보"
+  },
+
+  "info": {
+    "location": "위치"
   }
 }

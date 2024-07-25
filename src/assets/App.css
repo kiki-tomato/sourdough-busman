@@ -134,6 +134,8 @@ input:focus div .slider {
 }
 
 .sidebar {
+  grid-column: 1/2;
+  grid-row: 2;
   z-index: 2000;
   overflow-y: scroll;
   font-size: var(--text-sm);
@@ -220,10 +222,67 @@ input:focus div .slider {
   background-color: rgba(35, 92, 243, 0.12) !important;
 }
 
+.place-details {
+  grid-column: 1/2;
+  grid-row: 2;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  font-size: var(--text-sm);
+  background-color: var(--color-tertiary-bg);
+}
+
+.place-details svg {
+  cursor: pointer;
+}
+
+.place-name {
+  line-height: 2;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 10px;
+}
+
+.place-name div:first-child {
+  font-size: var(--text-lg);
+  font-weight: var(--text-weight-medium);
+}
+
+.place-name .description {
+  font-size: var(--text-xs);
+}
+
+.place-details .short-info div:first-child {
+  font-size: var(--text-sm);
+  font-weight: var(--text-weight-medium);
+}
+
+.place-details .extra-info {
+  width: inherit;
+}
+
+.place-details .info-window-btns {
+  border: none;
+}
+
+.location-info div:first-child {
+  margin-bottom: 10px;
+  font-size: var(--text-sm);
+  font-weight: var(--text-weight-medium);
+}
+
 .map {
   z-index: 1;
   width: 100%;
   height: 100%;
+}
+
+.mini-map {
+  width: 100%;
+  height: 200px;
+  border: 0.5px solid var(--color-border);
+  border-radius: 9px;
 }
 
 .btn-to-my-location {
@@ -241,8 +300,6 @@ input:focus div .slider {
 .info-window {
   position: absolute;
   z-index: 20;
-  top: 50%;
-  left: 60%;
   width: 270px;
   padding: 15px;
   border: 1px solid rgba(159, 159, 159, 0.5);
@@ -275,7 +332,7 @@ input:focus div .slider {
   padding-bottom: 10px;
   border-radius: 9px;
   background-color: rgba(213, 224, 254, 0.4);
-  color: var(--color-info);
+  color: var(--color-primary);
   font-size: var(--text-xs);
   text-align: center;
   font-weight: var(--text-weight-regular);
@@ -328,7 +385,7 @@ input:focus div .slider {
   border-top: 1px solid var(--color-border);
 }
 
-.btn-bookmark {
+.info-window-bookmark {
   padding-left: 25px;
   border: 0.5px solid var(--color-border);
   border-radius: 9px;
@@ -341,7 +398,7 @@ input:focus div .slider {
   cursor: pointer;
 }
 
-.btn-bookmark:hover {
+.info-window-bookmark:hover {
   background-color: var(--color-border);
   border-color: var(--color-border);
 }
@@ -522,16 +579,22 @@ input:focus div .slider {
   background: rgba(239, 241, 254, 0.4);
 }
 
+.alert {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
 .alert-img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 50px;
-  margin-bottom: 20px;
 }
 
 .alert-message {
-  margin-bottom: 50px;
   text-align: center;
   font-weight: var(--text-weight-medium);
 }
@@ -578,6 +641,12 @@ input:focus div .slider {
     order: 2;
   }
 
+  .place-details {
+    order: 2;
+    z-index: 3000;
+    background-color: var(--color-tertiary-bg);
+  }
+
   .sidebar {
     visibility: hidden;
     position: absolute;
@@ -589,11 +658,11 @@ input:focus div .slider {
     z-index: 2000;
     overflow-y: scroll;
     font-size: var(--text-sm);
+    height: calc(100vh - 40px);
     box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px 0px;
 
     position: absolute;
     width: 100%;
-    height: calc(100vh - 40px);
     transition: transform 0.4s ease-out;
     background-color: var(--color-light);
   }

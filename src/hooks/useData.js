@@ -1,13 +1,13 @@
 import { useTranslation } from "react-i18next";
 
 import { useBookmarks } from "../contexts/BookmarksContext";
-import { useUrl } from "./useUrl";
+import { useQueryString } from "./useQueryString";
 import { useCurrentLocation } from "./useCurrentLocation";
 
-export function useFilterData() {
+export function useData() {
   const { t } = useTranslation();
   const { bookmarks } = useBookmarks();
-  const { appliedFilters } = useUrl();
+  const { appliedFilters } = useQueryString();
   const { currentLocation } = useCurrentLocation();
 
   const initialData = t("bakeries", { returnObjects: true });
