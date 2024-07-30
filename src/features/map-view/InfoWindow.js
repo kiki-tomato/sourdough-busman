@@ -1,27 +1,16 @@
 import { useTranslation } from "react-i18next";
-import { useCallback, useEffect, useRef } from "react";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useCallback, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import TradingHours from "../../ui/TradingHours";
-import ShippingInfo from "../../ui/ShippingInfo";
 import Button from "../../ui/Button";
-import About from "../../ui/About";
 
-import { usePosition } from "../../contexts/PositionContext";
 import { useBakeryInfo } from "../../hooks/useBakeryInfo";
 
 function InfoWindow() {
   const { t } = useTranslation();
-  const { infoWindowPosition } = usePosition();
-  const { pathname, search } = useLocation();
-  const { bakery, name, address, tradingHours, id } = useBakeryInfo();
+  const { search } = useLocation();
+  const { bakery, name, address, id } = useBakeryInfo();
   const navigate = useNavigate();
-  const infoWindowElement = useRef(null);
-
-  const style = infoWindowPosition && {
-    top: infoWindowPosition.y,
-    left: infoWindowPosition.x,
-  };
 
   const handleInfoWindow = useCallback(() => {
     navigate(`/bakeries${search}`);
@@ -40,21 +29,18 @@ function InfoWindow() {
     };
   }, [handleInfoWindow]);
 
-  if (!infoWindowPosition && !pathname.includes("details"))
-    return <Navigate to={`/bakeries${search}`} replace={true} />;
-
-  if (bakery && infoWindowPosition)
+  if (bakery)
     return (
-      <div className="info-window" style={style} ref={infoWindowElement}>
+      <div className="info-window">
         <div className="bakery-name">
           <div>✸ {name}</div>
           <button onClick={handleInfoWindow}>&times;</button>
         </div>
         <div>{address}</div>
-        <About>
-          <TradingHours type="info-window" hoursData={tradingHours} />
-          <ShippingInfo>{t("buttons.shippingAvailable")}</ShippingInfo>
-        </About>
+        <div className="one-sentence-review">
+          <span>★ 4.5</span>
+          <div>{t("buttons.oneSentenceReview")}: coming soon </div>
+        </div>
         <div className="info-window-btns">
           <Button type="link"> {t("buttons.moreDetails")}</Button>
           <Button type="info-window-bookmark" id={id}>

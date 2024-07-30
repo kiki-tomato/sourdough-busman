@@ -1,21 +1,23 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-import { usePosition } from "../../contexts/PositionContext";
 import { useCurrentLocation } from "../../hooks/useCurrentLocation";
 import { useData } from "../../hooks/useData";
+import { useMap } from "../../hooks/useMap";
 import { getToday } from "../../utils/helpers";
+import { useTranslation } from "react-i18next";
 
 const { naver } = window;
+const defaultCoords = { lat: 35.1531696, lng: 129.118666 };
 
 function Map() {
+  const { t } = useTranslation();
   const { currentLocation } = useCurrentLocation();
   const { bakeryData, filterData } = useData();
-  const { setInfoWindowPosition } = usePosition();
   const { bakeryId } = useParams();
   const { pathname, search } = useLocation();
-  const [map, setMap] = useState(null);
-  const mapElement = useRef(null);
+  const { mapObj, mapElement } = useMap(defaultCoords.lat, defaultCoords.lng);
+
   const navigate = useNavigate();
 
   const { today, currentTime } = getToday();
@@ -23,34 +25,16 @@ function Map() {
   let filteredData = filterData(bakeryData, today, currentTime);
 
   useEffect(() => {
-    const mapContainer = mapElement.current;
-    const defaultLocation = new naver.maps.LatLng(35.1531696, 129.118666);
-    const mapOptions = {
-      center: defaultLocation,
-      zoom: 12,
-      zoomControl: true,
-      minZoom: 6,
-      zoomControlOptions: {
-        style: naver.maps.ZoomControlStyle.SMALL,
-        position: naver.maps.Position.TOP_RIGHT,
-      },
-      scaleControl: false,
-      logoControl: false,
-      mapDataControl: false,
-    };
-
-    setMap(new naver.maps.Map(mapContainer, mapOptions));
-  }, []);
-
-  useEffect(() => {
     const markers = [];
+    const infoWindows = [];
     const placeList = document.querySelector(".place-list");
+    const sidebar = document.querySelector(".sidebar");
+    const header = document.querySelector(".header");
 
-    function generateMarkerMarkup(content) {
-      const markerMarkup = `<div class="marker" data-id=${content.id}>${content.name}</div>`;
-
-      return markerMarkup;
-    }
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const sidebarWidth = sidebar?.getBoundingClientRect().width;
+    const headerHeight = header?.getBoundingClientRect().height;
 
     function createMarkers() {
       filteredData.map((bakery) => {
@@ -59,15 +43,29 @@ function Map() {
             bakery.location.latitude,
             bakery.location.longitude
           ),
-          map: map,
+          map: mapObj,
           icon: {
-            content: generateMarkerMarkup(bakery),
-            size: new naver.maps.Size(10, 10),
+            content: `<div class="marker" data-id=${bakery.id}>${bakery.name}</div>`,
             anchor: new naver.maps.Point(40, 20),
           },
         });
 
-        return markers.push(marker);
+        const infoWindow = new naver.maps.InfoWindow({
+          content: `<div class="mini-info-window" data-id=${bakery.id}>
+            <div>
+              <span>${bakery.name}</span>
+              <span>★ 4.5</span>
+            </div>
+            <div>${t("buttons.oneSentenceReview")}: coming soon </div>
+          </div>`,
+          borderWidth: 0,
+          backgroundColor: "transparent",
+          disableAnchor: true,
+          pixelOffset: new naver.maps.Point(20, -20),
+        });
+
+        markers.push(marker);
+        infoWindows.push(infoWindow);
       });
     }
 
@@ -97,7 +95,27 @@ function Map() {
         : marker.setZIndex(1);
     }
 
-    if (map) {
+    function moveMap(marker) {
+      const positionObj = marker.eventTarget.getBoundingClientRect();
+      const markerWidth = positionObj.width;
+      const markerHeight = positionObj.height;
+      const x = positionObj.x;
+      const y = positionObj.y;
+
+      const lat = marker.position.y;
+      const lng = marker.position.x;
+
+      if (!x) return;
+      if (
+        x + markerWidth >= vw ||
+        x <= sidebarWidth ||
+        y + markerHeight >= vh ||
+        y <= headerHeight
+      )
+        mapObj.panTo(new naver.maps.LatLng(lat, lng));
+    }
+
+    if (mapObj) {
       createMarkers();
 
       if (bakeryId)
@@ -107,56 +125,32 @@ function Map() {
             : ""
         );
 
-      markers.forEach((marker) => {
-        naver.maps.Event.addListener(marker, "click", (e) => {
+      markers.forEach((marker, i) => {
+        naver.maps.Event.addListener(marker, "click", () => {
           const markerId = marker.eventTarget.dataset.id;
 
           deactivateMarker(markers);
           activateMarker(marker);
+          moveMap(marker);
 
-          if (pathname.includes("details")) {
+          if (vw > 600) {
             search
               ? navigate(`/details/${markerId}${search}`)
               : navigate(`/details/${markerId}`);
           } else {
-            const vw = window.innerWidth;
-            const vh = window.innerHeight;
-            const positionObj = marker.eventTarget.getBoundingClientRect();
-            const sidebarWidth = document
-              .querySelector(".sidebar")
-              ?.getBoundingClientRect().width;
-
-            const rightGap = vw - positionObj.right <= 300;
-            const leftGap = positionObj.x - sidebarWidth <= 300;
-            const bottomGap = vh - positionObj.bottom <= 300;
-
-            vw > 600
-              ? setInfoWindowPosition({
-                  x: rightGap
-                    ? vw - 310
-                    : leftGap
-                    ? positionObj.right
-                    : positionObj.x,
-                  y: bottomGap ? vh - 320 : positionObj.bottom + 10,
-                })
-              : setInfoWindowPosition({});
-
             search
               ? navigate(`/${markerId}${search}`)
               : navigate(`/${markerId}`);
           }
         });
-        naver.maps.Event.addListener(marker, "mouseover", () =>
-          magnifyMarker(marker)
-        );
-        naver.maps.Event.addListener(marker, "mouseout", () =>
-          downsizeMarker(marker)
-        );
-      });
-
-      naver.maps.Event.addListener(map, "click", function () {
-        deactivateMarker(markers);
-        navigate(`bakeries${search}`);
+        naver.maps.Event.addListener(marker, "mouseover", () => {
+          magnifyMarker(marker);
+          if (vw > 600) infoWindows[i].open(mapObj, marker);
+        });
+        naver.maps.Event.addListener(marker, "mouseout", () => {
+          downsizeMarker(marker);
+          if (vw > 600) infoWindows[i].close();
+        });
       });
 
       placeList?.addEventListener("mouseover", function (e) {
@@ -179,8 +173,13 @@ function Map() {
 
       placeList?.addEventListener("click", function (e) {
         const clickedPlace = e.target.closest(".place");
+        const id = clickedPlace?.dataset.id;
         const btnBookmark = e.target.closest(".sidebar-bookmark");
-        const id = clickedPlace.dataset.id;
+        const correspondingMarker = markers.filter(
+          (marker) => marker.eventTarget.dataset.id === id
+        )[0];
+
+        moveMap(correspondingMarker);
 
         if (!btnBookmark) {
           deactivateMarker(markers);
@@ -196,23 +195,23 @@ function Map() {
         markers.forEach((marker) => marker.setMap(null));
       }
 
-      clearMarkers();
+      if (mapObj) {
+        markers.forEach((marker, i) => {
+          naver.maps.Event.clearListeners(marker, "click");
+          naver.maps.Event.clearListeners(marker, "mouseover");
+          naver.maps.Event.clearListeners(marker, "mouseout");
+        });
+
+        clearMarkers();
+      }
     };
-  }, [
-    filteredData,
-    map,
-    bakeryId,
-    navigate,
-    search,
-    setInfoWindowPosition,
-    pathname,
-  ]);
+  }, [mapObj, bakeryId, navigate, search, pathname, filteredData, t]);
 
   useEffect(() => {
     const btnToMyLocation = document.querySelector(".btn-to-my-location");
 
     function returnToCurrentLocation() {
-      map.setCenter(
+      mapObj.setCenter(
         new naver.maps.LatLng(
           currentLocation.latitude,
           currentLocation.longitude
@@ -220,13 +219,13 @@ function Map() {
       );
     }
 
-    if (map) {
+    if (mapObj) {
       btnToMyLocation.addEventListener("click", returnToCurrentLocation);
     }
 
     return () =>
       btnToMyLocation.removeEventListener("click", returnToCurrentLocation);
-  }, [currentLocation, map]);
+  }, [currentLocation, mapObj]);
 
   return <div ref={mapElement} id="naverMap" className="map"></div>;
 }

@@ -10,7 +10,10 @@ function Place({ eachBakeryData, children }) {
 
   const bakeryId = eachBakeryData.id;
 
-  function handleInfoWindow() {
+  function handleBakeryDetails(e) {
+    const btnBookmark = e.target.closest(".sidebar-bookmark");
+
+    if (btnBookmark) return;
     navigate(`/details/${bakeryId}${search}`);
   }
 
@@ -26,7 +29,7 @@ function Place({ eachBakeryData, children }) {
     <li
       className={isActive ? "place active" : "place"}
       data-id={eachBakeryData.id}
-      onClick={handleInfoWindow}
+      onClick={handleBakeryDetails}
       onMouseOver={handleActiveList}
       onMouseOut={handleDeactivateList}
     >

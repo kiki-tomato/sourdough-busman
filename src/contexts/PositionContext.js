@@ -8,8 +8,8 @@ function PositionProvider({ children }) {
   return (
     <PositionContext.Provider
       value={{
-        setInfoWindowPosition,
         infoWindowPosition,
+        setInfoWindowPosition,
       }}
     >
       {children}
