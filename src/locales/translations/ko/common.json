@@ -25,18 +25,18 @@
 
   "buttons": {
     "listView": "목록 보기",
-    "mapView": "지도 표시하기",
+    "mapView": "지도 보기",
     "moreDetails": "자세히 보기",
     "link": "네이버지도로 보기",
-    "shippingAvailable": "택배배송 가능",
     "bookmark": "저장",
     "share": "공유",
-    "orderOnline": "택배 주문하기",
-    "shortInfo": "짧막 정보",
-    "oneSentenceReview": "한줄평"
+    "orderOnline": "택배 주문하기"
   },
 
   "info": {
-    "location": "위치"
+    "location": "위치",
+    "shippingAvailable": "택배배송 가능",
+    "shortInfo": "짧막 정보",
+    "oneSentenceReview": "한줄평"
   }
 }

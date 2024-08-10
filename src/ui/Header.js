@@ -5,11 +5,13 @@ import i18n from "../locales/i18n";
 import bread from "../assets/baguette_bread.png";
 
 import { useResize } from "../contexts/ResizeContext";
+import { usePosition } from "../contexts/PositionContext";
 
 function Header() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { setIsSidebarOpen } = useResize();
+  const { setBakeryId } = usePosition();
 
   function handleTranslateContent() {
     i18n.language === "en"

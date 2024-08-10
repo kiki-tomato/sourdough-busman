@@ -26,7 +26,6 @@ function Map() {
 
   useEffect(() => {
     const markers = [];
-    const infoWindows = [];
     const placeList = document.querySelector(".place-list");
     const sidebar = document.querySelector(".sidebar");
     const header = document.querySelector(".header");
@@ -45,27 +44,17 @@ function Map() {
           ),
           map: mapObj,
           icon: {
-            content: `<div class="marker" data-id=${bakery.id}>${bakery.name}</div>`,
+            content: `<div class="marker" data-id=${bakery.id}>
+              <div>${bakery.name}</div>
+              <div>${
+                bakery.review.rate ? `★ ${bakery.review.rate}` : "★ -"
+              }</div>
+            </div>`,
             anchor: new naver.maps.Point(40, 20),
           },
         });
 
-        const infoWindow = new naver.maps.InfoWindow({
-          content: `<div class="mini-info-window" data-id=${bakery.id}>
-            <div>
-              <span>${bakery.name}</span>
-              <span>★ 4.5</span>
-            </div>
-            <div>${t("buttons.oneSentenceReview")}: coming soon </div>
-          </div>`,
-          borderWidth: 0,
-          backgroundColor: "transparent",
-          disableAnchor: true,
-          pixelOffset: new naver.maps.Point(20, -20),
-        });
-
         markers.push(marker);
-        infoWindows.push(infoWindow);
       });
     }
 
@@ -128,28 +117,19 @@ function Map() {
       markers.forEach((marker, i) => {
         naver.maps.Event.addListener(marker, "click", () => {
           const markerId = marker.eventTarget.dataset.id;
-
           deactivateMarker(markers);
           activateMarker(marker);
           moveMap(marker);
 
-          if (vw > 600) {
-            search
-              ? navigate(`/details/${markerId}${search}`)
-              : navigate(`/details/${markerId}`);
-          } else {
-            search
-              ? navigate(`/${markerId}${search}`)
-              : navigate(`/${markerId}`);
-          }
+          search
+            ? navigate(`/details/${markerId}${search}`)
+            : navigate(`/details/${markerId}`);
         });
         naver.maps.Event.addListener(marker, "mouseover", () => {
           magnifyMarker(marker);
-          if (vw > 600) infoWindows[i].open(mapObj, marker);
         });
         naver.maps.Event.addListener(marker, "mouseout", () => {
           downsizeMarker(marker);
-          if (vw > 600) infoWindows[i].close();
         });
       });
 
@@ -196,7 +176,7 @@ function Map() {
       }
 
       if (mapObj) {
-        markers.forEach((marker, i) => {
+        markers.forEach((marker) => {
           naver.maps.Event.clearListeners(marker, "click");
           naver.maps.Event.clearListeners(marker, "mouseover");
           naver.maps.Event.clearListeners(marker, "mouseout");

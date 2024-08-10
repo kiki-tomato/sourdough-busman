@@ -5,7 +5,7 @@ function About({ children }) {
 
   return (
     <div className="short-info">
-      <div>✸ {t("buttons.shortInfo")}</div>
+      <div>✸ {t("info.shortInfo")}</div>
       <div className="extra-info">{children}</div>
     </div>
   );

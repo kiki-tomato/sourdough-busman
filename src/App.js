@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import Header from "./ui/Header";
 import SideBar from "./features/list-view/SideBar";
@@ -12,8 +12,6 @@ import "./assets/App.css";
 import { useBrowserTabTitle } from "./hooks/useBrowserTabTitle";
 
 function App() {
-  const { pathname } = useLocation();
-
   useBrowserTabTitle();
 
   return (
@@ -27,7 +25,6 @@ function App() {
         <Map />
         <BtnToResizeComponent />
         <BtnToMyLocation />
-        {!pathname.includes("details") && <Outlet />}
       </MapContainer>
     </div>
   );

@@ -14,10 +14,10 @@ function Filter({ children, icon, type }) {
 
     if (queryStrings.includes(type)) {
       deleteQuery(type);
-      navigate(`bakeries?${updatedQuery}`);
+      navigate(`?${updatedQuery}`);
     } else {
       setQuery(type, "on");
-      navigate(`bakeries?${updatedQuery}`);
+      navigate(`?${updatedQuery}`);
     }
   }
 

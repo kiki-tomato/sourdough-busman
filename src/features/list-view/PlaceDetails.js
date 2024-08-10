@@ -15,11 +15,11 @@ import { useBakeryInfo } from "../../hooks/useBakeryInfo";
 function PlaceDetails() {
   const { t } = useTranslation();
   const { search } = useLocation();
-  const { bakery, tradingHours, id } = useBakeryInfo();
+  const { bakery, tradingHours, id, naverMap } = useBakeryInfo();
   const navigate = useNavigate();
 
   function handleClose() {
-    navigate(`/bakeries${search}`);
+    navigate(`/${search}`);
   }
 
   if (bakery)
@@ -42,14 +42,14 @@ function PlaceDetails() {
         <Overview />
         <About>
           <TradingHours type="info-window" hoursData={tradingHours} />
-          <ShippingInfo>{t("buttons.shippingAvailable")}</ShippingInfo>
+          <ShippingInfo>{t("info.shippingAvailable")}</ShippingInfo>
         </About>
         <Review />
         <LocationInfo>
           <MiniMap />
         </LocationInfo>
         <div className="info-window-btns">
-          <Button type="link" url={bakery.naverMap}>
+          <Button type="link" url={naverMap}>
             {t("buttons.link")}
           </Button>
           <Button type="info-window-bookmark" id={id}>

@@ -15,6 +15,10 @@ export function useBakeryInfo() {
   const id = bakery?.id;
   const lat = bakery?.location.latitude;
   const lng = bakery?.location.longitude;
+  const rate = bakery?.review.rate;
+  const comment = bakery?.review.comment;
+  const img = bakery?.image;
+  const naverMap = bakery?.naverMap;
 
   return {
     name,
@@ -26,5 +30,9 @@ export function useBakeryInfo() {
     bakery,
     lat,
     lng,
+    rate,
+    comment,
+    img,
+    naverMap,
   };
 }

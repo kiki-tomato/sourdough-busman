@@ -5,7 +5,6 @@ import { RouterProvider, createHashRouter } from "react-router-dom";
 import App from "./App";
 import ErrorPage from "./ui/ErrorPage";
 import PlaceDetails from "./features/list-view/PlaceDetails";
-import InfoWindow from "./features/map-view/InfoWindow";
 import "./locales/i18n";
 
 import { BookmarksProvider } from "./contexts/BookmarksContext";
@@ -17,10 +16,7 @@ const router = createHashRouter([
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
-    children: [
-      { path: "/:bakeryId", element: <InfoWindow /> },
-      { path: "details/:bakeryId", element: <PlaceDetails /> },
-    ],
+    children: [{ path: "details/:bakeryId", element: <PlaceDetails /> }],
   },
 ]);
 
