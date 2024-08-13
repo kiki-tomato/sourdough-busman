@@ -2,8 +2,8 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import { useBookmarks } from "../contexts/BookmarksContext";
 
-import starFilled from "../assets/Star-filled.svg";
-import star from "../assets/Star.svg";
+import heart from "../assets/Heart.svg";
+import heartFilled from "../assets/Heart-filled.svg";
 
 function Button({ type, id, url, children }) {
   const { updateBookmarks, matchingData } = useBookmarks();
@@ -31,7 +31,7 @@ function Button({ type, id, url, children }) {
           updateBookmarks(id);
         }}
       >
-        <img src={matchingData(id) ? starFilled : star} alt="star icon" />
+        <img src={matchingData(id) ? heartFilled : heart} alt="star icon" />
       </button>
     );
 

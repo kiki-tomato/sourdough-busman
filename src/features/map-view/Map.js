@@ -85,14 +85,14 @@ function Map() {
     }
 
     function moveMap(marker) {
-      const positionObj = marker.eventTarget.getBoundingClientRect();
-      const markerWidth = positionObj.width;
-      const markerHeight = positionObj.height;
-      const x = positionObj.x;
-      const y = positionObj.y;
+      const positionObj = marker?.eventTarget.getBoundingClientRect();
+      const markerWidth = positionObj?.width;
+      const markerHeight = positionObj?.height;
+      const x = positionObj?.x;
+      const y = positionObj?.y;
 
-      const lat = marker.position.y;
-      const lng = marker.position.x;
+      const lat = marker?.position.y;
+      const lng = marker?.position.x;
 
       if (!x) return;
       if (

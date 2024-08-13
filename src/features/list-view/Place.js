@@ -37,7 +37,7 @@ function Place({ eachBakeryData, children }) {
         <h3>{eachBakeryData.name}</h3>
         <Button type="sidebar-bookmark" id={eachBakeryData.id} />
       </div>
-      <h5>{eachBakeryData.address}</h5>
+      <div>{eachBakeryData.address}</div>
       <div>{children}</div>
     </li>
   );

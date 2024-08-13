@@ -8,7 +8,6 @@ import PlaceDetails from "./features/list-view/PlaceDetails";
 import "./locales/i18n";
 
 import { BookmarksProvider } from "./contexts/BookmarksContext";
-import { PositionProvider } from "./contexts/PositionContext";
 import { ResizeProvider } from "./contexts/ResizeContext";
 
 const router = createHashRouter([
@@ -24,11 +23,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BookmarksProvider>
-      <PositionProvider>
-        <ResizeProvider>
-          <RouterProvider router={router} />
-        </ResizeProvider>
-      </PositionProvider>
+      <ResizeProvider>
+        <RouterProvider router={router} />
+      </ResizeProvider>
     </BookmarksProvider>
   </React.StrictMode>
 );

@@ -19,6 +19,7 @@ export function useBakeryInfo() {
   const comment = bakery?.review.comment;
   const img = bakery?.image;
   const naverMap = bakery?.naverMap;
+  const visitCount = bakery?.review.visit;
 
   return {
     name,
@@ -32,6 +33,7 @@ export function useBakeryInfo() {
     lng,
     rate,
     comment,
+    visitCount,
     img,
     naverMap,
   };

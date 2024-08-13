@@ -9,37 +9,37 @@
       },
       "hours": [
         {
-          "day": "sun",
+          "day": "일",
           "open": { "hour": 7, "min": 0 },
           "close": { "hour": 17, "min": 0 }
         },
         {
-          "day": "mon",
+          "day": "월",
           "open": { "hour": 7, "min": 0 },
           "close": { "hour": 17, "min": 0 }
         },
         {
-          "day": "tue",
+          "day": "화",
           "open": { "hour": 7, "min": 0 },
           "close": { "hour": 17, "min": 0 }
         },
         {
-          "day": "wed",
+          "day": "수",
           "open": { "hour": 7, "min": 0 },
           "close": { "hour": 17, "min": 0 }
         },
         {
-          "day": "thu",
+          "day": "목",
           "open": { "hour": 7, "min": 0 },
           "close": { "hour": 17, "min": 0 }
         },
         {
-          "day": "fri",
+          "day": "금",
           "open": { "hour": 7, "min": 0 },
           "close": { "hour": 17, "min": 0 }
         },
         {
-          "day": "sat",
+          "day": "토",
           "open": { "hour": 7, "min": 0 },
           "close": { "hour": 17, "min": 0 }
         }
@@ -50,7 +50,8 @@
       "naverMap": "https://naver.me/5kkCeyAJ",
       "description": "럭키 베이커리 2호점",
       "review": {
-        "rate": "4.9",
+        "visit": 2,
+        "rate": "4.5",
         "comment": "한번 밖에 못 가봤는데 샌드위치가 자꾸 눈앞에 아른거려"
       },
       "image": "./daily-lucky.jpeg"
@@ -63,34 +64,34 @@
         "longitude": 129.0718785
       },
       "hours": [
-        { "day": "sun", "closed": true },
+        { "day": "일", "closed": true },
         {
-          "day": "mon",
+          "day": "월",
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 20, "min": 0 }
         },
         {
-          "day": "tue",
+          "day": "화",
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 20, "min": 0 }
         },
         {
-          "day": "wed",
+          "day": "수",
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 20, "min": 0 }
         },
         {
-          "day": "thu",
+          "day": "목",
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 20, "min": 0 }
         },
         {
-          "day": "fri",
+          "day": "금",
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 20, "min": 0 }
         },
         {
-          "day": "sat",
+          "day": "토",
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 19, "min": 0 }
         }
@@ -100,7 +101,7 @@
       "onlineStore": "",
       "naverMap": "https://naver.me/IxDrh7fq",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     },
 
@@ -113,20 +114,20 @@
       },
       "hours": [
         {
-          "day": "sun",
+          "day": "일",
           "open": { "hour": 10, "min": 30 },
           "close": { "hour": 16, "min": 30 }
         },
-        { "day": "mon", "closed": true },
-        { "day": "tue", "closed": true },
-        { "day": "wed", "closed": true },
-        { "day": "thu", "closed": true },
+        { "day": "월", "closed": true },
+        { "day": "화", "closed": true },
+        { "day": "수", "closed": true },
+        { "day": "목", "closed": true },
         {
-          "day": "fri",
+          "day": "금",
           "closed": true
         },
         {
-          "day": "sat",
+          "day": "토",
           "open": { "hour": 10, "min": 30 },
           "close": { "hour": 16, "min": 30 }
         }
@@ -136,7 +137,7 @@
       "onlineStore": "https://smartstore.naver.com/luckybakery/",
       "naverMap": "https://naver.me/5Amfv1OS",
       "description": "영업시간이 자주 변경되어요. 꼭 확인하고 방문하기!",
-      "review": { "rate": 5, "comment": "난 여기 단골이 될거야" },
+      "review": { "visit": 2, "rate": 5, "comment": "난 여기 단골이 될거야" },
       "image": "./lucky-bakery.jpeg"
     },
 
@@ -148,34 +149,34 @@
         "longitude": 129.0899096
       },
       "hours": [
-        { "day": "sun", "closed": true },
+        { "day": "일", "closed": true },
         {
-          "day": "mon",
+          "day": "월",
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 21, "min": 0 }
         },
         {
-          "day": "tue",
+          "day": "화",
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 21, "min": 0 }
         },
         {
-          "day": "wed",
+          "day": "수",
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 21, "min": 0 }
         },
         {
-          "day": "thu",
+          "day": "목",
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 21, "min": 0 }
         },
         {
-          "day": "fri",
+          "day": "금",
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 21, "min": 0 }
         },
         {
-          "day": "sat",
+          "day": "토",
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 21, "min": 0 }
         }
@@ -185,7 +186,7 @@
       "onlineStore": "",
       "naverMap": "https://naver.me/xxfWRzur",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     },
 
@@ -197,30 +198,30 @@
         "longitude": 128.9695897
       },
       "hours": [
-        { "day": "sun", "closed": true },
-        { "day": "mon", "closed": true },
+        { "day": "일", "closed": true },
+        { "day": "월", "closed": true },
         {
-          "day": "tue",
+          "day": "화",
           "open": { "hour": 11, "min": 0 },
           "close": { "hour": 19, "min": 0 }
         },
         {
-          "day": "wed",
+          "day": "수",
           "open": { "hour": 11, "min": 0 },
           "close": { "hour": 19, "min": 0 }
         },
         {
-          "day": "thu",
+          "day": "목",
           "open": { "hour": 11, "min": 0 },
           "close": { "hour": 19, "min": 0 }
         },
         {
-          "day": "fri",
+          "day": "금",
           "open": { "hour": 11, "min": 0 },
           "close": { "hour": 19, "min": 0 }
         },
         {
-          "day": "sat",
+          "day": "토",
           "open": { "hour": 11, "min": 0 },
           "close": { "hour": 19, "min": 0 }
         }
@@ -230,7 +231,7 @@
       "onlineStore": "",
       "naverMap": "https://naver.me/5c2IS9re",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     },
 
@@ -242,30 +243,30 @@
         "longitude": 129.0876431
       },
       "hours": [
-        { "day": "sun", "closed": true },
-        { "day": "mon", "closed": true },
+        { "day": "일", "closed": true },
+        { "day": "월", "closed": true },
         {
-          "day": "tue",
+          "day": "화",
           "open": { "hour": 11, "min": 0 },
           "close": { "hour": 16, "min": 0 }
         },
         {
-          "day": "wed",
+          "day": "수",
           "open": { "hour": 11, "min": 0 },
           "close": { "hour": 16, "min": 0 }
         },
         {
-          "day": "thu",
+          "day": "목",
           "open": { "hour": 11, "min": 0 },
           "close": { "hour": 16, "min": 0 }
         },
         {
-          "day": "fri",
+          "day": "금",
           "open": { "hour": 11, "min": 0 },
           "close": { "hour": 16, "min": 0 }
         },
         {
-          "day": "sat",
+          "day": "토",
           "open": { "hour": 11, "min": 0 },
           "close": { "hour": 16, "min": 0 }
         }
@@ -275,7 +276,7 @@
       "onlineStore": "https://www.instagram.com/bbang_basket/",
       "naverMap": "https://naver.me/Gmf7z9eq",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     },
 
@@ -288,37 +289,37 @@
       },
       "hours": [
         {
-          "day": "sun",
+          "day": "일",
           "open": { "hour": 12, "min": 30 },
           "close": { "hour": 19, "min": 0 }
         },
         {
-          "day": "mon",
+          "day": "월",
           "open": { "hour": 12, "min": 30 },
           "close": { "hour": 19, "min": 0 }
         },
         {
-          "day": "tue",
+          "day": "화",
           "open": { "hour": 12, "min": 30 },
           "close": { "hour": 19, "min": 0 }
         },
         {
-          "day": "wed",
+          "day": "수",
           "open": { "hour": 12, "min": 30 },
           "close": { "hour": 19, "min": 0 }
         },
         {
-          "day": "thu",
+          "day": "목",
           "open": { "hour": 12, "min": 30 },
           "close": { "hour": 19, "min": 0 }
         },
         {
-          "day": "fri",
+          "day": "금",
           "open": { "hour": 12, "min": 30 },
           "close": { "hour": 19, "min": 0 }
         },
         {
-          "day": "sat",
+          "day": "토",
           "open": { "hour": 12, "min": 30 },
           "close": { "hour": 19, "min": 0 }
         }
@@ -328,7 +329,7 @@
       "onlineStore": "https://smartstore.naver.com/archbakery",
       "naverMap": "https://naver.me/5EQKdQVz",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     },
 
@@ -341,33 +342,33 @@
       },
       "hours": [
         {
-          "day": "sun",
+          "day": "일",
           "open": { "hour": 9, "min": 0 },
           "close": { "hour": 17, "min": 30 }
         },
-        { "day": "mon", "closed": true },
+        { "day": "월", "closed": true },
         {
-          "day": "tue",
-          "open": { "hour": 9, "min": 0 },
-          "close": { "hour": 17, "min": 30 }
-        },
-        {
-          "day": "wed",
+          "day": "화",
           "open": { "hour": 9, "min": 0 },
           "close": { "hour": 17, "min": 30 }
         },
         {
-          "day": "thu",
+          "day": "수",
           "open": { "hour": 9, "min": 0 },
           "close": { "hour": 17, "min": 30 }
         },
         {
-          "day": "fri",
+          "day": "목",
           "open": { "hour": 9, "min": 0 },
           "close": { "hour": 17, "min": 30 }
         },
         {
-          "day": "sat",
+          "day": "금",
+          "open": { "hour": 9, "min": 0 },
+          "close": { "hour": 17, "min": 30 }
+        },
+        {
+          "day": "토",
           "open": { "hour": 9, "min": 0 },
           "close": { "hour": 17, "min": 30 }
         }
@@ -377,7 +378,7 @@
       "onlineStore": "https://smartstore.naver.com/painpainpain",
       "naverMap": "https://naver.me/xmrP6gKF",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     },
 
@@ -389,26 +390,26 @@
         "longitude": 129.2144217
       },
       "hours": [
-        { "day": "sun", "closed": true },
-        { "day": "mon", "closed": true },
-        { "day": "tue", "closed": true },
+        { "day": "일", "closed": true },
+        { "day": "월", "closed": true },
+        { "day": "화", "closed": true },
         {
-          "day": "wed",
+          "day": "수",
           "open": { "hour": 11, "min": 0 },
           "close": { "hour": 18, "min": 0 }
         },
         {
-          "day": "thu",
+          "day": "목",
           "open": { "hour": 11, "min": 0 },
           "close": { "hour": 18, "min": 0 }
         },
         {
-          "day": "fri",
+          "day": "금",
           "open": { "hour": 11, "min": 0 },
           "close": { "hour": 18, "min": 0 }
         },
         {
-          "day": "sat",
+          "day": "토",
           "open": { "hour": 11, "min": 0 },
           "close": { "hour": 18, "min": 0 }
         }
@@ -418,7 +419,7 @@
       "onlineStore": "https://smartstore.naver.com/won_bread",
       "naverMap": "https://naver.me/5qgE3MLQ",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     },
 
@@ -431,37 +432,37 @@
       },
       "hours": [
         {
-          "day": "sun",
+          "day": "일",
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 20, "min": 0 }
         },
         {
-          "day": "mon",
+          "day": "월",
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 20, "min": 0 }
         },
         {
-          "day": "tue",
+          "day": "화",
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 20, "min": 0 }
         },
         {
-          "day": "wed",
+          "day": "수",
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 20, "min": 0 }
         },
         {
-          "day": "thu",
+          "day": "목",
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 20, "min": 0 }
         },
         {
-          "day": "fri",
+          "day": "금",
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 20, "min": 0 }
         },
         {
-          "day": "sat",
+          "day": "토",
           "open": { "hour": 10, "min": 0 },
           "close": { "hour": 20, "min": 0 }
         }
@@ -471,7 +472,7 @@
       "onlineStore": "",
       "naverMap": "https://naver.me/5CrgOQUh",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     },
 
@@ -483,14 +484,14 @@
         "longitude": 129.182532
       },
       "hours": [
-        { "day": "sun", "closed": true },
-        { "day": "mon", "closed": true },
-        { "day": "tue", "closed": true },
-        { "day": "wed", "closed": true },
-        { "day": "thu", "closed": true },
-        { "day": "fri", "closed": true },
+        { "day": "일", "closed": true },
+        { "day": "월", "closed": true },
+        { "day": "화", "closed": true },
+        { "day": "수", "closed": true },
+        { "day": "목", "closed": true },
+        { "day": "금", "closed": true },
         {
-          "day": "sat",
+          "day": "토",
           "open": { "hour": 11, "min": 0 },
           "close": { "hour": 18, "min": 0 }
         }
@@ -500,7 +501,7 @@
       "onlineStore": "https://www.instagram.com/1688jsd/",
       "naverMap": "https://naver.me/5MS4nk5h",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     },
 
@@ -513,29 +514,29 @@
       },
       "hours": [
         {
-          "day": "sun",
+          "day": "일",
           "open": { "hour": 10, "min": 30 },
           "close": { "hour": 17, "min": 0 }
         },
-        { "day": "mon", "closed": true },
-        { "day": "tue", "closed": true },
+        { "day": "월", "closed": true },
+        { "day": "화", "closed": true },
         {
-          "day": "wed",
+          "day": "수",
           "open": { "hour": 10, "min": 30 },
           "close": { "hour": 18, "min": 0 }
         },
         {
-          "day": "thu",
+          "day": "목",
           "open": { "hour": 10, "min": 30 },
           "close": { "hour": 18, "min": 0 }
         },
         {
-          "day": "fri",
+          "day": "금",
           "open": { "hour": 10, "min": 30 },
           "close": { "hour": 18, "min": 0 }
         },
         {
-          "day": "sat",
+          "day": "토",
           "open": { "hour": 10, "min": 30 },
           "close": { "hour": 18, "min": 0 }
         }
@@ -545,7 +546,7 @@
       "onlineStore": "",
       "naverMap": "https://naver.me/FFvi4TPV",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     }
   ]

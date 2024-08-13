@@ -16,7 +16,8 @@
     "notOpenYet": "Not open yet",
     "open": "Open 'till {{hour}}:{{minute}}pm",
     "closed": "Closed",
-    "closureDay": "Closed"
+    "closureDay": "Closed",
+    "dayoff": "Closed"
   },
 
   "alert": {
@@ -30,13 +31,21 @@
     "link": "Link to Naver Map",
     "bookmark": "Save",
     "share": "share",
-    "orderOnline": "Order Online"
+    "orderOnline": "Order Online",
+    "tradingHours": "Trading Hours"
   },
 
   "info": {
     "location": "Location",
     "shippingAvailable": "Shipping Available",
     "shortInfo": "Short Info",
-    "oneSentenceReview": "Short Review"
+    "oneSentenceReview": "Short Review",
+    "visitCount": "{{visitNum}} visit",
+    "notVisited": "Not Visited Yet"
+  },
+
+  "footer": {
+    "contact": "Contact",
+    "about": "Visit bakeries and document my journey to find a good sourdough bread"
   }
 }

@@ -9,6 +9,7 @@ import LocationInfo from "../../ui/LocationInfo";
 import About from "../../ui/About";
 import Review from "../../ui/Review";
 import Overview from "../../ui/Overview";
+import Footer from "../../ui/Footer";
 
 import { useBakeryInfo } from "../../hooks/useBakeryInfo";
 
@@ -56,6 +57,7 @@ function PlaceDetails() {
             {t("buttons.bookmark")}
           </Button>
         </div>
+        <Footer />
       </div>
     );
 }

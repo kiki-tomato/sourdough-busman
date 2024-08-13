@@ -50,7 +50,8 @@
       "naverMap": "https://naver.me/5kkCeyAJ",
       "description": "The new branch of Lucky Bakery",
       "review": {
-        "rate": "4.9",
+        "visit": 2,
+        "rate": "4.5",
         "comment": "Constantly craving their sandwiches"
       },
       "image": "./daily-lucky.jpeg"
@@ -100,7 +101,7 @@
       "onlineStore": "",
       "naverMap": "https://naver.me/IxDrh7fq",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     },
 
@@ -136,7 +137,11 @@
       "onlineStore": "https://smartstore.naver.com/luckybakery/",
       "naverMap": "https://naver.me/5Amfv1OS",
       "description": "Trading hours often change. We highly recommend checking them before your visit!",
-      "review": { "rate": 5, "comment": "I will become a regular!" },
+      "review": {
+        "visit": 2,
+        "rate": 5,
+        "comment": "I will become a regular!"
+      },
       "image": "./lucky-bakery.jpeg"
     },
 
@@ -185,7 +190,7 @@
       "onlineStore": "",
       "naverMap": "https://naver.me/xxfWRzur",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     },
 
@@ -230,7 +235,7 @@
       "onlineStore": "",
       "naverMap": "https://naver.me/5c2IS9re",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     },
 
@@ -275,7 +280,7 @@
       "onlineStore": "https://www.instagram.com/bbang_basket/",
       "naverMap": "https://naver.me/Gmf7z9eq",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     },
 
@@ -328,7 +333,7 @@
       "onlineStore": "https://smartstore.naver.com/archbakery",
       "naverMap": "https://naver.me/5EQKdQVz",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     },
 
@@ -377,7 +382,7 @@
       "onlineStore": "https://smartstore.naver.com/painpainpain",
       "naverMap": "https://naver.me/xmrP6gKF",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     },
 
@@ -418,7 +423,7 @@
       "onlineStore": "https://smartstore.naver.com/won_bread",
       "naverMap": "https://naver.me/5qgE3MLQ",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     },
 
@@ -471,7 +476,7 @@
       "onlineStore": "",
       "naverMap": "https://naver.me/5CrgOQUh",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     },
 
@@ -500,7 +505,7 @@
       "onlineStore": "https://www.instagram.com/1688jsd/",
       "naverMap": "https://naver.me/5MS4nk5h",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     },
 
@@ -545,7 +550,7 @@
       "onlineStore": "",
       "naverMap": "https://naver.me/FFvi4TPV",
       "description": "",
-      "review": { "rate": "", "comment": "" },
+      "review": { "visit": 0, "rate": "", "comment": "" },
       "image": ""
     }
   ]

@@ -16,7 +16,8 @@
     "notOpenYet": "영업전",
     "open": "{{hour}}:{{minute}}pm까지 영업",
     "closed": "영업마감",
-    "closureDay": "오늘 휴무"
+    "closureDay": "오늘 휴무",
+    "dayoff": "휴무일"
   },
 
   "alert": {
@@ -30,13 +31,21 @@
     "link": "네이버지도로 보기",
     "bookmark": "저장",
     "share": "공유",
-    "orderOnline": "택배 주문하기"
+    "orderOnline": "택배 주문하기",
+    "tradingHours": "영업시간"
   },
 
   "info": {
     "location": "위치",
     "shippingAvailable": "택배배송 가능",
     "shortInfo": "짧막 정보",
-    "oneSentenceReview": "한줄평"
+    "oneSentenceReview": "한줄평",
+    "visitCount": "{{visitNum}}회 방문",
+    "notVisited": "방문전"
+  },
+
+  "footer": {
+    "contact": "문의하기",
+    "about": "사워도우 빵을 파는 곳에 가보고 기록을 남기고 있어요"
   }
 }

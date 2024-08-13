@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 import Filter from "./Filter";
-import starFilled from "../../assets/Star-filled.svg";
+import heartFilled from "../../assets/Heart-filled.svg";
 import filterFilled from "../../assets/filter-filled.svg";
 
 import { useQueryString } from "../../hooks/useQueryString";
@@ -32,7 +32,7 @@ function SideBar({ children }) {
           <Filter icon={filterFilled} type="filterSummary">
             {t("filters.filter")} {numFilters}
           </Filter>
-          <Filter type="savedFilter" icon={starFilled}>
+          <Filter type="savedFilter" icon={heartFilled}>
             {t("filters.saved")}
           </Filter>
           <Filter type="openFilter">{t("filters.open")}</Filter>
@@ -51,7 +51,7 @@ function SideBar({ children }) {
           <Filter icon={filterFilled} type="filterSummary">
             {t("filters.filter")} {numFilters}
           </Filter>
-          <Filter type="savedFilter" icon={starFilled}>
+          <Filter type="savedFilter" icon={heartFilled}>
             {t("filters.saved")}
           </Filter>
           <Filter type="openFilter">{t("filters.open")}</Filter>
