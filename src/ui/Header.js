@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import i18n from "../locales/i18n";
 import bread from "../assets/baguette_bread.png";
+import styles from "./Header.module.css";
 
 import { useResize } from "../contexts/ResizeContext";
 
@@ -23,17 +24,17 @@ function Header() {
   }
 
   return (
-    <div className="header">
+    <div className={styles.header}>
       <img src={bread} alt="bread emoji"></img>
-      <div className="title">
+      <div className={styles.title}>
         <div onClick={handleNavigation}>{t("header.title")}</div>
       </div>
-      <label className="toggle-switch">
+      <label className={styles.toggleSwitch}>
         <input type="checkbox" onClick={handleTranslateContent}></input>
-        <div className="toggle-options">
+        <div className={styles.toggleOptions}>
           <p>Korean</p>
           <p>English</p>
-          <span className="slider"></span>
+          <span className={styles.slider}></span>
         </div>
       </label>
     </div>

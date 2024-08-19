@@ -1,11 +1,15 @@
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
-import { useBakeryInfo } from "../hooks/useBakeryInfo";
-import { useMap } from "../hooks/useMap";
+import styles from "./MiniMap.module.css";
+
+import { useBakeryInfo } from "../../hooks/useBakeryInfo";
+import { useMap } from "../../hooks/useMap";
 
 const { naver } = window;
 
 function MiniMap() {
+  const { t } = useTranslation();
   const { lat, lng } = useBakeryInfo();
   const { mapObj, mapElement } = useMap(lat, lng, 13);
 
@@ -34,7 +38,12 @@ function MiniMap() {
     };
   }, [mapObj, lat, lng]);
 
-  return <div ref={mapElement} id="naverMap" className="mini-map"></div>;
+  return (
+    <div className={styles.locationInfo}>
+      <div>✸ {t("info.location")}</div>
+      <div ref={mapElement} id="naverMap" className={styles.miniMap}></div>
+    </div>
+  );
 }
 
 export default MiniMap;

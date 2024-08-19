@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
+import styles from "./Map.module.css";
+
 import { useCurrentLocation } from "../../hooks/useCurrentLocation";
 import { useData } from "../../hooks/useData";
 import { useMap } from "../../hooks/useMap";
@@ -188,7 +190,7 @@ function Map() {
   }, [mapObj, bakeryId, navigate, search, pathname, filteredData, t]);
 
   useEffect(() => {
-    const btnToMyLocation = document.querySelector(".btn-to-my-location");
+    const btnToMyLocation = document.querySelector("#myLocation");
 
     function returnToCurrentLocation() {
       mapObj.setCenter(
@@ -207,7 +209,7 @@ function Map() {
       btnToMyLocation.removeEventListener("click", returnToCurrentLocation);
   }, [currentLocation, mapObj]);
 
-  return <div ref={mapElement} id="naverMap" className="map"></div>;
+  return <div ref={mapElement} id="naverMap" className={styles.map}></div>;
 }
 
 export default Map;

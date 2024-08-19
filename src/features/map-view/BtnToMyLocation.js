@@ -1,6 +1,12 @@
+import styles from "./BtnToMyLocation.module.css";
+
 function BtnToMyLocation() {
   return (
-    <img className="btn-to-my-location" alt="Back to my location button" />
+    <img
+      className={styles.btnToMyLocation}
+      id="myLocation"
+      alt="Back to my location button"
+    />
   );
 }
 

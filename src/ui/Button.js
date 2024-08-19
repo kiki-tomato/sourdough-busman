@@ -1,9 +1,10 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-import { useBookmarks } from "../contexts/BookmarksContext";
-
 import heart from "../assets/Heart.svg";
 import heartFilled from "../assets/Heart-filled.svg";
+import styles from "./Button.module.css";
+
+import { useBookmarks } from "../contexts/BookmarksContext";
 
 function Button({ type, id, url, children }) {
   const { updateBookmarks, matchingData } = useBookmarks();
@@ -19,27 +20,27 @@ function Button({ type, id, url, children }) {
         rel="noreferrer"
         onClick={() => navigate(`/details/${bakeryId}${search}`)}
       >
-        <button className="btn-more-details">{children}</button>
+        <button className={styles.btnLink}>{children}</button>
       </a>
     );
 
   if (type === "sidebar-bookmark")
     return (
       <button
-        className="sidebar-bookmark"
+        className={styles.sidebarBookmark}
         onClick={() => {
           updateBookmarks(id);
         }}
       >
-        <img src={matchingData(id) ? heartFilled : heart} alt="star icon" />
+        <img src={matchingData(id) ? heartFilled : heart} alt="heart icon" />
       </button>
     );
 
-  if (type === "info-window-bookmark")
+  if (type === "place-detail-bookmark")
     return (
       <button
-        className={`info-window-bookmark ${
-          matchingData(id) ? "bookmarked" : ""
+        className={`${styles.placeDetailBookmark} ${
+          matchingData(id) ? styles.bookmarked : ""
         }`}
         data-id={id}
         onClick={() => updateBookmarks(id)}

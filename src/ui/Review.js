@@ -1,8 +1,9 @@
 import { useTranslation } from "react-i18next";
 import { useBakeryInfo } from "../hooks/useBakeryInfo";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Spinner from "./Spinner";
+import styles from "./Review.module.css";
 
 function Review() {
   const { comment, id, img } = useBakeryInfo();
@@ -15,10 +16,6 @@ function Review() {
     setIsLoading(true);
   }
 
-  useEffect(() => {
-    if (!img) setIsLoading(true);
-  }, [img, setIsLoading]);
-
   if (!comment)
     return (
       <div className="review" data-id={id}>
@@ -28,7 +25,7 @@ function Review() {
     );
 
   return (
-    <div className="review" data-id={id}>
+    <div className={styles.review} data-id={id}>
       <div>✸ {t("info.oneSentenceReview")}</div>
       <div>
         <img src={img} alt="review" onLoad={handleSpinner} style={imgStyle} />

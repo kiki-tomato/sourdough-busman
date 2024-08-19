@@ -1,0 +1,71 @@
+.sidebar {
+  grid-column: 1/2;
+  grid-row: 2;
+  z-index: 2000;
+  overflow-y: scroll;
+  font-size: var(--text-sm);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px 0px;
+  background: rgba(239, 241, 254, 0.4);
+}
+
+.filterContainer {
+  display: flex;
+  overflow: scroll;
+  position: fixed;
+  width: 25%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-tertiary-bg);
+}
+
+.filterContainer button {
+  display: inline-block;
+  height: 30px;
+  padding: 2px 10px 5px 35px;
+  margin-right: 10px;
+  border: 1.2px solid var(--color-border);
+  border-radius: 9999px;
+  white-space: nowrap;
+  font-size: var(--text-sm);
+  color: var(--color-tertiary);
+  background: var(--color-tertiary-bg);
+  cursor: pointer;
+  font-family: "Quicksand", "Noto Sans KR";
+  font-weight: var(--text-weight-medium);
+}
+
+.filterContainer button:hover {
+  background-color: rgba(214, 218, 227, 0.5);
+}
+
+@media (max-width: 1200px) {
+  .filterContainer {
+    width: 40%;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    transform: translate3d(0px, 100vh, 0px);
+  }
+
+  .sidebarSm {
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 40px);
+    z-index: 2000;
+    overflow-y: scroll;
+    transition: transform 0.4s ease-out;
+    font-size: var(--text-sm);
+    background-color: var(--color-light);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px 0px;
+  }
+
+  .filterContainer {
+    width: 100%;
+  }
+}

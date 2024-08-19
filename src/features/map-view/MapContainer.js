@@ -1,6 +1,6 @@
 function MapContainer({ children }) {
   return (
-    <div className="map-container" style={{ poistion: "relative" }}>
+    <div id="map-container" style={{ poistion: "relative" }}>
       {children}
     </div>
   );

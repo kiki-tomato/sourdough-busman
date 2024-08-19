@@ -3,11 +3,12 @@ import { useTranslation } from "react-i18next";
 import Filter from "./Filter";
 import heartFilled from "../../assets/Heart-filled.svg";
 import filterFilled from "../../assets/filter-filled.svg";
+import styles from "./Sidebar.module.css";
 
 import { useQueryString } from "../../hooks/useQueryString";
 import { useResize } from "../../contexts/ResizeContext";
 
-function SideBar({ children }) {
+function Sidebar({ children }) {
   const { t } = useTranslation();
   const { filterQuery } = useQueryString();
   const { isSidebarOpen, isSmallViewport } = useResize();
@@ -25,10 +26,10 @@ function SideBar({ children }) {
   if (isSmallViewport)
     return (
       <div
-        className="sidebar-sm"
+        className={styles.sidebarSm}
         style={isSidebarOpen ? openStyle : defaultStyle}
       >
-        <div className="filter-container">
+        <div className={styles.filterContainer}>
           <Filter icon={filterFilled} type="filterSummary">
             {t("filters.filter")} {numFilters}
           </Filter>
@@ -46,8 +47,8 @@ function SideBar({ children }) {
 
   if (!isSmallViewport)
     return (
-      <div className="sidebar">
-        <div className="filter-container">
+      <div className={styles.sidebar}>
+        <div className={styles.filterContainer}>
           <Filter icon={filterFilled} type="filterSummary">
             {t("filters.filter")} {numFilters}
           </Filter>
@@ -64,4 +65,4 @@ function SideBar({ children }) {
     );
 }
 
-export default SideBar;
+export default Sidebar;

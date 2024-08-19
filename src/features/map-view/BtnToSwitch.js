@@ -3,10 +3,11 @@ import { useLocation } from "react-router-dom";
 
 import mapIcon from "../../assets/map-fill.png";
 import listIcon from "../../assets/list-ul.png";
+import styles from "./BtnToSwitch.module.css";
 
 import { useResize } from "../../contexts/ResizeContext";
 
-function BtnToResizeComponent() {
+function BtnToSwitch() {
   const { t } = useTranslation();
   const { isSidebarOpen, setIsSidebarOpen, setIsSmallViewport } = useResize();
   const { pathname } = useLocation();
@@ -33,7 +34,7 @@ function BtnToResizeComponent() {
 
   return (
     <button
-      className="btn-to-resize"
+      className={styles.btnToSwitch}
       onClick={handleBtn}
       style={isSidebarOpen ? addMapIcon : addListIcon}
     >
@@ -42,4 +43,4 @@ function BtnToResizeComponent() {
   );
 }
 
-export default BtnToResizeComponent;
+export default BtnToSwitch;

@@ -13,12 +13,14 @@ function PlaceList() {
 
   const { today, currentTime } = getToday();
 
+  const style = { marginBottom: "80px" };
+
   let filteredData = filterData(bakeryData, today, currentTime);
 
   if (!filteredData.length) return <Alert />;
 
   return (
-    <ul className={`place-list ${!filteredData.length ? "spacing-mb" : ""}`}>
+    <ul id="place-list" style={!filteredData.length ? style : {}}>
       {filteredData.map((bakery) => (
         <Place eachBakeryData={bakery} key={bakery.id}>
           <DistanceFromMe
@@ -26,7 +28,7 @@ function PlaceList() {
             currentLocation={currentLocation}
             bakeryData={bakeryData}
           />
-          <TradingHours type="sidebar" hoursData={bakery.hours} />
+          <TradingHours hoursData={bakery.hours} />
         </Place>
       ))}
     </ul>

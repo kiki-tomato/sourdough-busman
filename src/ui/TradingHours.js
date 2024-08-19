@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import styles from "./TradingHours.module.css";
+
 import { getToday } from "../utils/helpers";
 
 function TradingHours({ hoursData }) {
@@ -23,7 +25,7 @@ function TradingHours({ hoursData }) {
       const closingTime = Number(`${closingHour}.${closingMin}`);
 
       if (openingTime <= currentTime && currentTime < closingTime) {
-        setTextColor("bakery-open");
+        setTextColor(styles.bakeryOpen);
 
         closingMin === 0
           ? setOpenOrClosed(
@@ -39,16 +41,16 @@ function TradingHours({ hoursData }) {
               })
             );
       } else if (currentTime >= closingTime) {
-        setTextColor("bakery-closed");
+        setTextColor(styles.bakeryClosed);
         setOpenOrClosed(t("openStatus.closed"));
       } else if (currentTime < openingTime) {
-        setTextColor("bakery-closed");
+        setTextColor(styles.bakeryClosed);
         setOpenOrClosed(t("openStatus.notOpenYet"));
       }
     }
 
     if (dayOff) {
-      setTextColor("bakery-closed");
+      setTextColor(styles.bakeryClosed);
       setOpenOrClosed(t("openStatus.closureDay"));
     }
   }, [hoursData, today, currentTime, t]);

@@ -3,6 +3,7 @@ import { useCallback, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import Button from "../../ui/Button";
+import styles from "./InfoWindow.module.css";
 
 import { useBakeryInfo } from "../../hooks/useBakeryInfo";
 
@@ -40,7 +41,7 @@ function InfoWindow() {
         }
         alt=""
       />
-      <div className="infomation">
+      <div className="infomation_">
         <div className="bakery-name">
           <div>{name}</div>
           <button onClick={handleInfoWindow}>&times;</button>

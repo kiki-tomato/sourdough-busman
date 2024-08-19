@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import Button from "../../ui/Button";
+import styles from "./Place.module.css";
 
 function Place({ eachBakeryData, children }) {
   const [isActive, setIsActive] = useState(false);
@@ -27,13 +28,13 @@ function Place({ eachBakeryData, children }) {
 
   return (
     <li
-      className={isActive ? "place active" : "place"}
+      className={isActive ? `${styles.place} ${styles.active}` : styles.place}
       data-id={eachBakeryData.id}
       onClick={handleBakeryDetails}
       onMouseOver={handleActiveList}
       onMouseOut={handleDeactivateList}
     >
-      <div className="place-header">
+      <div className={styles.placeHeader}>
         <h3>{eachBakeryData.name}</h3>
         <Button type="sidebar-bookmark" id={eachBakeryData.id} />
       </div>

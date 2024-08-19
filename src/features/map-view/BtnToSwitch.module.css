@@ -1,0 +1,25 @@
+.btnToSwitch {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .btnToSwitch {
+    display: block;
+    position: absolute;
+    height: 37px;
+    z-index: 10;
+    bottom: 30px;
+    right: 15px;
+    padding: 7px 20px 10px 45px;
+    border: 0px;
+    border-radius: 9999px;
+    font-size: var(--text-sm);
+    font-weight: var(--text-weight-semi-bold);
+    background-color: var(--color-emphasis);
+    filter: drop-shadow(2px 0px 4px rgba(0, 0, 0, 0.5));
+    color: var(--color-light);
+    font-family: "Quicksand", "Noto Sans KR";
+    cursor: pointer;
+    z-index: 3000;
+  }
+}

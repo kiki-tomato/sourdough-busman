@@ -1,0 +1,49 @@
+.btnFilter:first-child {
+  margin-left: 20px;
+  background-image: url("../../assets/filter.svg");
+  background-size: 19px;
+  background-repeat: no-repeat;
+  background-position: 10px 4px;
+}
+
+.btnFilter:nth-child(2) {
+  background-image: url("../../assets/Heart.svg");
+  background-size: 19px;
+  background-repeat: no-repeat;
+  background-position: 10px 4px;
+}
+
+.btnFilter:nth-child(3) {
+  background-image: url("../../assets/Cook.png");
+  background-size: 19px;
+  background-repeat: no-repeat;
+  background-position: 10px 4px;
+}
+
+.btnFilter:nth-child(4) {
+  background-image: url("../../assets/Globe\ Showing\ Asia\ Australia.png");
+  background-size: 19px;
+  background-repeat: no-repeat;
+  background-position: 10px 4px;
+}
+
+.btnFilter:nth-child(5) {
+  background-image: url("../../assets/Fork\ And\ Knife\ With\ Plate.png");
+  background-size: 19px;
+  background-repeat: no-repeat;
+  background-position: 10px 4px;
+}
+
+.btnFilter:last-child {
+  margin-right: 20px !important;
+  background-image: url("../../assets/Delivery\ Truck.png");
+  background-size: 19px;
+  background-repeat: no-repeat;
+  background-position: 10px 2px;
+}
+
+.active {
+  color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  background-color: rgba(35, 92, 243, 0.12) !important;
+}

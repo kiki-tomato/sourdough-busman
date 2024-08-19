@@ -1,0 +1,19 @@
+.alert {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.alertImg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.alertMessage {
+  text-align: center;
+  font-weight: var(--text-weight-medium);
+}

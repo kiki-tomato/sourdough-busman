@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
+import styles from "./Filter.module.css";
+
 import { useQueryString } from "../../hooks/useQueryString";
 
 function Filter({ children, icon, type }) {
@@ -27,7 +29,7 @@ function Filter({ children, icon, type }) {
   return (
     <button
       onClick={handleFilter}
-      className={`btn-filter ${isFilterOn ? "btn-filter-active" : ""}`}
+      className={`${styles.btnFilter} ${isFilterOn ? styles.active : ""}`}
       style={isFilterOn && icon ? imageChange : {}}
       disabled={type === "filterSummary"}
     >

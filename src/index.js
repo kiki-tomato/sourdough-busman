@@ -4,7 +4,7 @@ import { RouterProvider, createHashRouter } from "react-router-dom";
 
 import App from "./App";
 import ErrorPage from "./ui/ErrorPage";
-import PlaceDetails from "./features/list-view/PlaceDetails";
+import PlaceDetails from "./features/detail-view/PlaceDetails";
 import "./locales/i18n";
 
 import { BookmarksProvider } from "./contexts/BookmarksContext";
