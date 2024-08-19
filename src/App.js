@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 
 import Header from "./ui/Header";
+import Sidebar from "./features/list-view/Sidebar";
 import PlaceList from "./features/list-view/PlaceList";
 import MapContainer from "./features/map-view/MapContainer";
 import BtnToMyLocation from "./features/map-view/BtnToMyLocation";
@@ -9,7 +10,6 @@ import Map from "./features/map-view/Map";
 import "./assets/App.css";
 
 import { useBrowserTabTitle } from "./hooks/useBrowserTabTitle";
-import Sidebar from "./features/list-view/Sidebar";
 
 function App() {
   useBrowserTabTitle();
