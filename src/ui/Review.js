@@ -16,22 +16,10 @@ function Review() {
     setIsLoading(true);
   }
 
-  if (!comment)
-    return (
-      <div className="review" data-id={id}>
-        <div>✸ {t("info.oneSentenceReview")}</div>
-        <div>coming soon!</div>
-      </div>
-    );
-
   return (
-    <div className={styles.review} data-id={id}>
-      <div>✸ {t("info.oneSentenceReview")}</div>
-      <div>
-        <img src={img} alt="review" onLoad={handleSpinner} style={imgStyle} />
-        {!isLoading && <Spinner />}
-        <div>{comment}</div>
-      </div>
+    <div data-id={id}>
+      <h3 className={styles.review}>{t("info.review")}</h3>
+      <p>coming soon!</p>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import Place from "./Place";
 import DistanceFromMe from "../../ui/DistanceFromMe";
 import TradingHours from "../../ui/TradingHours";
 import Alert from "../../ui/Alert";
+import styles from "./PlaceList.module.css";
 
 import { useCurrentLocation } from "../../hooks/useCurrentLocation";
 import { useData } from "../../hooks/useData";
@@ -20,7 +21,7 @@ function PlaceList() {
   if (!filteredData.length) return <Alert />;
 
   return (
-    <ul id="place-list" style={!filteredData.length ? style : {}}>
+    <ul className={styles.placeList} style={!filteredData.length ? style : {}}>
       {filteredData.map((bakery) => (
         <Place eachBakeryData={bakery} key={bakery.id}>
           <DistanceFromMe

@@ -1,17 +1,3 @@
-.review > div:first-child {
-  font-weight: var(--text-weight-medium);
-  margin-bottom: 7px;
-}
-
-.review > div:nth-child(2) {
-  display: flex;
-  gap: 10px;
-  background-color: var(--color-tertiary-bg);
-  border-radius: 9px;
-}
-
-.review img {
-  border-radius: 9px;
-  width: 40%;
-  height: 40%;
+.review {
+  margin-bottom: 16px;
 }

@@ -1,9 +1,17 @@
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .info {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  gap: 6px;
 }
 
 .icon {
-  scale: 0.6;
-  opacity: 0.9;
+  width: 20px;
+  height: 20px;
+  stroke: var(--color-emphasis);
 }

@@ -1,49 +1,35 @@
-.btnFilter:first-child {
-  margin-left: 20px;
-  background-image: url("../../assets/filter.svg");
-  background-size: 19px;
-  background-repeat: no-repeat;
-  background-position: 10px 4px;
+.btnFilter {
+  display: flex;
+  line-height: 20px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  background: var(--color-background);
+  cursor: pointer;
+
+  font-family: "Quicksand", "Noto Sans KR";
+  font-weight: var(--text-weight-medium);
+  font-size: var(--text-sm);
+  color: var(--color-tertiary);
+  white-space: nowrap;
 }
 
-.btnFilter:nth-child(2) {
-  background-image: url("../../assets/Heart.svg");
-  background-size: 19px;
-  background-repeat: no-repeat;
-  background-position: 10px 4px;
+.btnFilter:hover {
+  background-color: var(--color-hover);
 }
 
-.btnFilter:nth-child(3) {
-  background-image: url("../../assets/Cook.png");
-  background-size: 19px;
-  background-repeat: no-repeat;
-  background-position: 10px 4px;
-}
-
-.btnFilter:nth-child(4) {
-  background-image: url("../../assets/Globe\ Showing\ Asia\ Australia.png");
-  background-size: 19px;
-  background-repeat: no-repeat;
-  background-position: 10px 4px;
-}
-
-.btnFilter:nth-child(5) {
-  background-image: url("../../assets/Fork\ And\ Knife\ With\ Plate.png");
-  background-size: 19px;
-  background-repeat: no-repeat;
-  background-position: 10px 4px;
-}
-
-.btnFilter:last-child {
-  margin-right: 20px !important;
-  background-image: url("../../assets/Delivery\ Truck.png");
-  background-size: 19px;
-  background-repeat: no-repeat;
-  background-position: 10px 2px;
+.icon {
+  width: 20px;
+  height: 20px;
 }
 
 .active {
-  color: var(--color-primary) !important;
-  border-color: var(--color-primary) !important;
-  background-color: rgba(35, 92, 243, 0.12) !important;
+  color: #6b3800;
+  border-color: var(--color-primary);
+  background-color: rgba(255, 236, 153, 0.2);
+  font-weight: var(--text-weight-bold);
+  stroke: var(--color-primary);
 }

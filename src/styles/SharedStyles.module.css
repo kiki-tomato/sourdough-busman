@@ -1,0 +1,14 @@
+/* PURPOSE : REUSE CLASS NAMES ON MULTIPLE COMPONENTS */
+
+.tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 20px;
+  padding: 12px 8px;
+  border-radius: 9999px;
+  text-align: center;
+  font-weight: var(--text-weight-bold);
+  font-size: var(--text-sm);
+}

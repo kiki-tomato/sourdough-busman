@@ -1,6 +1,8 @@
+import styles from "./MapContainer.module.css";
+
 function MapContainer({ children }) {
   return (
-    <div id="map-container" style={{ poistion: "relative" }}>
+    <div className={styles.mapContainer} style={{ poistion: "relative" }}>
       {children}
     </div>
   );

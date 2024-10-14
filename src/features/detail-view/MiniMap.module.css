@@ -1,7 +1,5 @@
-.locationInfo div:first-child {
-  margin-bottom: 10px;
-  font-size: var(--text-sm);
-  font-weight: var(--text-weight-medium);
+.heading {
+  margin-bottom: 16px;
 }
 
 .miniMap {

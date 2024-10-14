@@ -1,7 +1,7 @@
-.bakeryClosed {
-  color: var(--color-warning);
+.bakeryOpen {
+  color: var(--color-info);
 }
 
-.bakeryOpen {
-  color: var(--color-primary);
+.bakeryClosed {
+  color: var(--color-warning);
 }

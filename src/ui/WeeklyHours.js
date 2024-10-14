@@ -1,10 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 
-import clock from "../assets/Clock.svg";
-import caretDown from "../assets/CaretDown.svg";
-import caretUp from "../assets/CaretUp.svg";
 import DisplayHours from "./DisplayHours";
+import TradingHours from "./TradingHours";
 import styles from "./WeeklyHours.module.css";
 
 import { useBakeryInfo } from "../hooks/useBakeryInfo";
@@ -21,13 +19,54 @@ function WeeklyHours() {
   return (
     <>
       <div onClick={handleOpen} className={styles.weeklyHours}>
-        <img src={clock} alt="clock icon" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="1.5"
+          stroke="currentColor"
+          className={styles.icon}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+          />
+        </svg>
         <div>{t("buttons.tradingHours")}</div>
-        <img
-          src={isOpen ? caretUp : caretDown}
-          className={styles.caretDown}
-          alt="caret down icon"
-        />
+        <TradingHours hoursData={tradingHours} />
+        {isOpen && (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className={styles.icon}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m4.5 15.75 7.5-7.5 7.5 7.5"
+            />
+          </svg>
+        )}
+        {!isOpen && (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className={styles.icon}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m19.5 8.25-7.5 7.5-7.5-7.5"
+            />
+          </svg>
+        )}
       </div>
       {isOpen &&
         tradingHours.map((day) => (

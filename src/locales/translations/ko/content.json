@@ -52,7 +52,7 @@
       "review": {
         "visit": 2,
         "rate": "4.5",
-        "comment": "한번 밖에 못 가봤는데 샌드위치가 자꾸 눈앞에 아른거려"
+        "comment": "이른 아침 느긋하게 즐기는 샌드위치 & 커피"
       },
       "image": "./daily-lucky.jpeg"
     },
@@ -136,8 +136,12 @@
       "shippingService": true,
       "onlineStore": "https://smartstore.naver.com/luckybakery/",
       "naverMap": "https://naver.me/5Amfv1OS",
-      "description": "영업시간이 자주 변경되어요. 꼭 확인하고 방문하기!",
-      "review": { "visit": 2, "rate": 5, "comment": "난 여기 단골이 될거야" },
+      "description": "영업시간이 자주 변경되어요. 방문 전 꼭 확인하기!",
+      "review": {
+        "visit": 2,
+        "rate": 5,
+        "comment": "먹는 순간 바로 행복해지는 사워도우, 포카치아!"
+      },
       "image": "./lucky-bakery.jpeg"
     },
 

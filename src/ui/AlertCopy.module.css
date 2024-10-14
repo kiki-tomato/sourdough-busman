@@ -1,0 +1,40 @@
+.alertCopy {
+  position: absolute;
+  top: 100%;
+  transform: translate(0, 20px);
+  animation-name: show-alert;
+  animation-duration: 0.3s;
+
+  background-color: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 0 10px 1px #0000001f;
+
+  padding: 10px;
+  display: flex;
+  white-space: nowrap;
+  font-weight: var(--text-weight-medium);
+}
+
+@keyframes show-alert {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.iconSuccess {
+  fill: #2f9e44;
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+}
+
+.iconFail {
+  fill: #c92a2a;
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+}

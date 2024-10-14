@@ -1,0 +1,102 @@
+:root {
+  --text-default: 14px;
+  --text-xs: 0.75rem;
+  --text-sm: 12px;
+  --text-md: 1.2rem;
+  --text-lg: 1.5rem;
+  --text-xl: 3rem;
+  --text-weight-regular: 400;
+  --text-weight-medium: 500;
+  --text-weight-semi-bold: 600;
+  --text-weight-bold: 700;
+  --color-emphasis: #343a40;
+  --color-secondary: #4a4a4a;
+  --color-tertiary: #495057;
+  --color-tertiary-bg: #f7f8ff;
+  --color-primary: #ffd43b;
+  --color-active: #212529;
+
+  /* --color-primary: #0042b0; */
+  --color-primary-bg: #d5e0fe;
+  --color-warning: #e03131;
+  --color-info: #3b5bdb;
+  --color-light: #fbfbfd;
+  --color-border: #dee2e6;
+  --color-hover: #f1f3f5;
+  --color-background: #fff;
+  --grid-rows: 50px calc(100vh - 50px);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  font-family: "Quicksand", "Noto Sans KR";
+  font-optical-sizing: auto;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--color-emphasis);
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#root {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: var(--grid-rows);
+
+  @media (max-width: 1200px) {
+    grid-template-columns: 2fr 3fr;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* FOR MAP MARKERS */
+.marker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid rgba(159, 159, 159, 0.5);
+  border-radius: 9999px;
+  background-color: var(--color-light);
+  white-space: nowrap;
+  font-size: var(--text-default);
+  font-weight: var(--text-weight-semi-bold);
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-marker {
+  transform: scale(1.15);
+}
+
+.active-marker {
+  transform: scale(1.15);
+  background-color: var(--color-active);
+  border-color: var(--color-active);
+  color: var(--color-light);
+}
+
+.star-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.marker-icon {
+  width: 14px;
+  height: 14px;
+}

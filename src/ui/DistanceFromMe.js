@@ -1,9 +1,11 @@
+import styles from "./DistanceFromMe.module.css";
+
 function DistanceFromMe({ distanceData }) {
   if (distanceData > 10000) return null;
 
   return (
     <>
-      <span className="distance-from-me">{distanceData}km</span>
+      <span className={styles.distanceFromMe}>{distanceData}km</span>
       <span>|</span>
     </>
   );

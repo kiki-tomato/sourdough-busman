@@ -20,7 +20,7 @@ function Sidebar({ children }) {
   };
 
   const openStyle = {
-    transform: "translate3d(0px, 40px, 0px)",
+    transform: "translate3d(0px, 50px, 0px)",
   };
 
   if (isSmallViewport)

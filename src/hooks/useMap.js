@@ -12,11 +12,11 @@ export function useMap(lat, lng, zoom = 12) {
     const mapOptions = {
       center: defaultLocation,
       zoom,
-      zoomControl: true,
+      zoomControl: false,
       minZoom: 6,
       zoomControlOptions: {
         style: naver.maps.ZoomControlStyle.SMALL,
-        position: naver.maps.Position.TOP_RIGHT,
+        position: naver.maps.Position.RIGHT_CENTER,
       },
       scaleControl: false,
       logoControl: false,

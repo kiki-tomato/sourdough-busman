@@ -5,12 +5,13 @@ import styles from "./MiniMap.module.css";
 
 import { useBakeryInfo } from "../../hooks/useBakeryInfo";
 import { useMap } from "../../hooks/useMap";
+import Button from "../../ui/Button";
 
 const { naver } = window;
 
 function MiniMap() {
   const { t } = useTranslation();
-  const { lat, lng } = useBakeryInfo();
+  const { lat, lng, naverMap } = useBakeryInfo();
   const { mapObj, mapElement } = useMap(lat, lng, 13);
 
   useEffect(() => {
@@ -40,7 +41,10 @@ function MiniMap() {
 
   return (
     <div className={styles.locationInfo}>
-      <div>✸ {t("info.location")}</div>
+      <h3 className={styles.heading}>{t("info.location")}</h3>
+      <Button type="link" url={naverMap}>
+        {t("buttons.link")}
+      </Button>
       <div ref={mapElement} id="naverMap" className={styles.miniMap}></div>
     </div>
   );

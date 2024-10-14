@@ -32,16 +32,20 @@
     "bookmark": "Save",
     "share": "share",
     "orderOnline": "Order Online",
-    "tradingHours": "Trading Hours"
+    "tradingHours": "Trading Hours",
+    "copy": "Copy"
   },
 
   "info": {
     "location": "Location",
     "shippingAvailable": "Shipping Available",
     "shortInfo": "Short Info",
-    "oneSentenceReview": "Short Review",
+    "review": "Review",
     "visitCount": "{{visitNum}} visit",
-    "notVisited": "Not Visited Yet"
+    "notVisited": "Not Visited Yet",
+    "share": "Share this place",
+    "linkCopied": "Link Copied",
+    "tryAgain": "Please try again"
   },
 
   "footer": {

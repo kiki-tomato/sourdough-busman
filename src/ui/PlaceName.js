@@ -5,15 +5,16 @@ import styles from "./PlaceName.module.css";
 import { useBakeryInfo } from "../hooks/useBakeryInfo";
 
 function PlaceName() {
-  const { name } = useBakeryInfo();
+  const { name, comment } = useBakeryInfo();
 
   return (
     <div className={styles.placeName}>
-      <div>{name}</div>
+      <h2 className={styles.heading}>{name}</h2>
       <div className={styles.tagBox}>
-        <VisitTag />
         <StarRatingTag />
+        <VisitTag />
       </div>
+      <p className={styles.review}>{comment}</p>
     </div>
   );
 }

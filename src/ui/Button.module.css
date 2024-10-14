@@ -1,45 +1,23 @@
-.btnLink {
-  width: 100%;
-  padding: 5px 10px 5px 10px;
-  border: 0.5px solid var(--color-border);
-  border-radius: 9px;
-  text-decoration: none;
-  white-space: nowrap;
+.linkNaver:link,
+.linkNaver:visited,
+.linkNaver:hover,
+.linkNaver:active {
+  display: block;
   color: var(--color-emphasis);
-  background-color: #efefef;
-  cursor: pointer;
+  margin-bottom: 10px;
 }
 
-.btnLink:hover {
-  background-color: var(--color-border);
-  border-color: var(--color-border);
-}
-
-.sidebarBookmark {
-  background: none;
-  border: none;
+.bookmark {
   padding: 0;
-  cursor: pointer;
+  align-self: start;
+  width: 20px;
+  height: 20px;
 }
 
-.placeDetailBookmark {
-  padding-left: 25px;
-  border: 0.5px solid var(--color-border);
-  border-radius: 9px;
-  background-image: url(../assets/Heart.svg);
-  background-repeat: no-repeat;
-  background-size: 16px;
-  background-position: 11px 3.5px;
-  background-color: #efefef;
-  color: var(--color-emphasis);
-  cursor: pointer;
+.icon {
+  stroke: var(--color-emphasis);
 }
 
-.placeDetailBookmark:hover {
-  background-color: var(--color-border);
-  border-color: var(--color-border);
-}
-
-.bookmarked {
-  background-image: url(../assets/Heart-filled.svg);
+.iconActive {
+  fill: var(--color-primary);
 }

@@ -32,16 +32,20 @@
     "bookmark": "저장",
     "share": "공유",
     "orderOnline": "택배 주문하기",
-    "tradingHours": "영업시간"
+    "tradingHours": "영업시간",
+    "copy": "복사하기"
   },
 
   "info": {
     "location": "위치",
     "shippingAvailable": "택배배송 가능",
     "shortInfo": "짧막 정보",
-    "oneSentenceReview": "한줄평",
+    "review": "감상문",
     "visitCount": "{{visitNum}}회 방문",
-    "notVisited": "방문전"
+    "notVisited": "방문전",
+    "share": "공유하기",
+    "linkCopied": "링크 복사완료",
+    "tryAgain": "다시 시도해주세요"
   },
 
   "footer": {
