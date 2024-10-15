@@ -2,36 +2,36 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 0px;
+
   border: none;
   cursor: pointer;
-  background: none;
-}
-
-.weeklyHours > img:first-child {
-  scale: 0.6;
-  opacity: 0.9;
-}
-
-.caretDown {
-  height: 30px;
-  scale: 0.45;
 }
 
 .weekly {
   display: flex;
+  flex-direction: column;
   gap: 10px;
-  margin-left: 32px;
-  margin-bottom: 5px;
+  padding-left: 26px;
 }
 
-.weekly div:first-child {
-  width: 30px;
+.dayList {
+  display: flex;
+}
+
+.day {
+  flex: 0 1 40px;
+  font-weight: var(--text-weight-medium);
   text-transform: capitalize;
 }
 
 .icon {
   width: 20px;
   height: 20px;
+  stroke: var(--color-emphasis);
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
   stroke: var(--color-emphasis);
 }

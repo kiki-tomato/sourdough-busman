@@ -42,7 +42,7 @@ function WeeklyHours() {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className={styles.icon}
+            className={styles.arrow}
           >
             <path
               strokeLinecap="round"
@@ -58,7 +58,7 @@ function WeeklyHours() {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className={styles.icon}
+            className={styles.arrow}
           >
             <path
               strokeLinecap="round"
@@ -68,14 +68,17 @@ function WeeklyHours() {
           </svg>
         )}
       </div>
-      {isOpen &&
-        tradingHours.map((day) => (
-          <div className={styles.weekly} key={day.day}>
-            <div>{day.day}</div>
-            {day.closed && <div>{t("openStatus.dayoff")}</div>}
-            {day.open && <DisplayHours day={day} />}
-          </div>
-        ))}
+      {isOpen && (
+        <div className={styles.weekly}>
+          {tradingHours.map((day) => (
+            <div className={styles.dayList} key={day.day}>
+              <div className={styles.day}>{day.day}</div>
+              {day.closed && <div>{t("openStatus.dayoff")}</div>}
+              {day.open && <DisplayHours day={day} />}
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 }

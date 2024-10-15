@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 
 import styles from "./ModalShare.module.css";
-import AlertCopy from "./AlertCopy";
+import Alert from "./Alert";
 
 function ModalShare({ currentUrl, setIsModalOpen }) {
   const { t } = useTranslation();
@@ -48,10 +48,8 @@ function ModalShare({ currentUrl, setIsModalOpen }) {
           {t("buttons.copy")}
         </button>
       </div>
-      {copySuccess && (
-        <AlertCopy type="success" message={t("info.linkCopied")} />
-      )}
-      {copyFail && <AlertCopy type="fail" message={t("info.tryAgain")} />}
+      {copySuccess && <Alert type="success" />}
+      {copyFail && <Alert type="fail" />}
     </div>
   );
 }

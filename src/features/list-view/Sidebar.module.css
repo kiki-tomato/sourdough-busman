@@ -3,8 +3,31 @@
   grid-row: 2;
   z-index: 2000;
   overflow-y: scroll;
+
+  box-shadow: var(--box-shadow);
+
   font-size: var(--text-default);
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px 0px;
+
+  @media (max-width: 600px) {
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    transform: translate3d(0px, 100vh, 0px);
+  }
+}
+
+.sidebarSm {
+  @media (max-width: 600px) {
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 40px);
+    z-index: 2000;
+    overflow-y: scroll;
+    transition: transform 0.4s ease-out;
+    font-size: var(--text-default);
+    background-color: var(--color-background);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px 0px;
+  }
 }
 
 .filterContainer {
@@ -16,39 +39,16 @@
   padding: 10px 24px;
   border-bottom: 1px solid var(--color-border);
   background-color: var(--color-background);
+
+  @media (max-width: 1200px) {
+    width: 40%;
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 }
 
 .filterContainer::-webkit-scrollbar {
   display: none;
-}
-
-@media (max-width: 1200px) {
-  .filterContainer {
-    width: 40%;
-  }
-}
-
-@media (max-width: 600px) {
-  .sidebar {
-    visibility: hidden;
-    position: absolute;
-    width: 100%;
-    transform: translate3d(0px, 100vh, 0px);
-  }
-
-  .sidebarSm {
-    position: absolute;
-    width: 100%;
-    height: calc(100vh - 40px);
-    z-index: 2000;
-    overflow-y: scroll;
-    transition: transform 0.4s ease-out;
-    font-size: var(--text-sm);
-    background-color: var(--color-light);
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px 0px;
-  }
-
-  .filterContainer {
-    width: 100%;
-  }
 }

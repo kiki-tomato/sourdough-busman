@@ -1,5 +1,7 @@
-@media (max-width: 600px) {
-  .mapContainer {
+.mapContainer {
+  position: relative;
+
+  @media (max-width: 600px) {
     grid-column: 1 / 2;
     grid-row: 2;
     order: 2;

@@ -4,7 +4,7 @@ import styles from "./Filter.module.css";
 
 import { useQueryString } from "../../hooks/useQueryString";
 
-function Filter({ children, icon, type }) {
+function Filter({ children, type }) {
   const { setQuery, deleteQuery, updatedQuery, queryStrings } =
     useQueryString();
   const navigate = useNavigate();

@@ -5,11 +5,11 @@
   width: 25%;
   height: 100vh;
   z-index: 3000;
-  padding: 50px 20px 100px 20px;
+  padding: 50px 24px 100px 24px;
+  overflow-y: scroll;
+
   font-size: var(--text-default);
   background: var(--color-background);
-  box-sizing: border-box;
-  overflow-y: scroll;
 
   @media (max-width: 1200px) {
     width: 40%;
@@ -23,7 +23,7 @@
 
 .placeDetails > div {
   padding: 32px 0;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: var(--border-default);
 }
 
 .placeDetails > div:first-child {
@@ -37,22 +37,4 @@
 
 .placeDetails > div:last-child {
   border-bottom: none;
-}
-
-.placeDetails svg {
-  flex-shrink: 0;
-}
-
-.placeDetails > .short-info > div:first-child {
-  font-size: var(--text-sm);
-  font-weight: var(--text-weight-medium);
-}
-
-.btnBox {
-  width: inherit;
-  border: none;
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 5px;
-  width: 100%;
 }

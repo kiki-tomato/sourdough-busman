@@ -1,8 +1,6 @@
 import { useTranslation } from "react-i18next";
 
 import Filter from "./Filter";
-import heartFilled from "../../assets/Heart-filled.svg";
-import filterFilled from "../../assets/filter-filled.svg";
 import styles from "./Sidebar.module.css";
 
 import { useQueryString } from "../../hooks/useQueryString";
@@ -30,12 +28,10 @@ function Sidebar({ children }) {
         style={isSidebarOpen ? openStyle : defaultStyle}
       >
         <div className={styles.filterContainer}>
-          <Filter icon={filterFilled} type="filterSummary">
+          <Filter type="filterSummary">
             {t("filters.filter")} {numFilters}
           </Filter>
-          <Filter type="savedFilter" icon={heartFilled}>
-            {t("filters.saved")}
-          </Filter>
+          <Filter type="savedFilter">{t("filters.saved")}</Filter>
           <Filter type="openFilter">{t("filters.open")}</Filter>
           <Filter type="distanceFilter">{t("filters.distance")}</Filter>
           <Filter type="dineInFilter">{t("filters.dineIn")}</Filter>
@@ -49,12 +45,10 @@ function Sidebar({ children }) {
     return (
       <div className={styles.sidebar}>
         <div className={styles.filterContainer}>
-          <Filter icon={filterFilled} type="filterSummary">
+          <Filter type="filterSummary">
             {t("filters.filter")} {numFilters}
           </Filter>
-          <Filter type="savedFilter" icon={heartFilled}>
-            {t("filters.saved")}
-          </Filter>
+          <Filter type="savedFilter">{t("filters.saved")}</Filter>
           <Filter type="openFilter">{t("filters.open")}</Filter>
           <Filter type="distanceFilter">{t("filters.distance")}</Filter>
           <Filter type="dineInFilter">{t("filters.dineIn")}</Filter>

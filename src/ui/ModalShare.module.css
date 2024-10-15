@@ -1,26 +1,28 @@
 .modal {
   position: absolute;
-  background-color: #fff;
   top: 100%;
-  border: 1px solid var(--color-border);
   padding: 20px;
   width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 0 10px 1px #0000001f;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   gap: 24px;
+
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 0 10px 1px #0000001f;
+
+  background-color: var(--color-background);
 }
 
 .urlContainer {
-  padding: 5px;
-  border-radius: 9px;
-  background-color: var(--color-hover);
+  position: relative;
   width: 100%;
   padding: 12px;
-  position: relative;
+
+  border-radius: 9px;
+  background-color: var(--color-hover);
 }
 
 .btnCopy {
@@ -29,16 +31,20 @@
   right: 0;
   height: 100%;
   padding: 12px;
+
   border-top-right-radius: 9px;
   border-bottom-right-radius: 9px;
   background-color: var(--color-hover);
+
   font-weight: var(--text-weight-medium);
   font-size: var(--text-default);
+  line-height: 14px;
 }
 
 .iconX {
   width: 20px;
   height: 20px;
+
   stroke: var(--color-emphasis);
 }
 
@@ -49,6 +55,7 @@
 .url {
   color: #868e96;
   overflow-y: scroll;
+  white-space: nowrap;
 }
 
 .url::-webkit-scrollbar {

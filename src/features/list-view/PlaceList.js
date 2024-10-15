@@ -18,7 +18,7 @@ function PlaceList() {
 
   let filteredData = filterData(bakeryData, today, currentTime);
 
-  if (!filteredData.length) return <Alert />;
+  if (!filteredData.length) return <Alert type="no-result" />;
 
   return (
     <ul className={styles.placeList} style={!filteredData.length ? style : {}}>

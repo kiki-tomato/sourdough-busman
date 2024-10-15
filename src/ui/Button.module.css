@@ -3,8 +3,10 @@
 .linkNaver:hover,
 .linkNaver:active {
   display: block;
-  color: var(--color-emphasis);
   margin-bottom: 10px;
+
+  color: var(--color-emphasis);
+  text-underline-offset: 2px;
 }
 
 .bookmark {
@@ -14,10 +16,21 @@
   height: 20px;
 }
 
-.icon {
+.iconBookmark {
   stroke: var(--color-emphasis);
 }
 
-.iconActive {
+.iconBookmarkActive {
   fill: var(--color-primary);
+}
+
+.share {
+  margin-left: 20px;
+}
+
+.iconShare {
+  width: 20px;
+  height: 20px;
+
+  stroke: var(--color-emphasis);
 }

@@ -9,16 +9,15 @@
     bottom: 30px;
     right: 15px;
     padding: 5px 10px;
-    border-radius: 9999px;
-    background-color: var(--color-active);
-    filter: drop-shadow(2px 0px 4px rgba(0, 0, 0, 0.5));
-    cursor: pointer;
     z-index: 3000;
 
-    font-family: "Quicksand", "Noto Sans KR";
-    font-size: var(--text-sm);
+    border-radius: var(--border-radius-big);
+    background-color: var(--color-active);
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.3));
+
+    font-size: var(--text-default);
     font-weight: var(--text-weight-semi-bold);
-    color: var(--color-light);
+    color: var(--color-tertiary);
     white-space: nowrap;
   }
 }

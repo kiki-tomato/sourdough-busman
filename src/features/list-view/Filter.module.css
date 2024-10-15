@@ -1,24 +1,23 @@
 .btnFilter {
   display: flex;
-  line-height: 20px;
   align-items: center;
   justify-content: center;
   gap: 4px;
   padding: 5px 10px;
-  border: 1px solid var(--color-border);
-  border-radius: 9999px;
-  background: var(--color-background);
-  cursor: pointer;
 
-  font-family: "Quicksand", "Noto Sans KR";
+  border: var(--border-default);
+  border-radius: var(--border-radius-big);
+  background: var(--color-background);
+
   font-weight: var(--text-weight-medium);
   font-size: var(--text-sm);
-  color: var(--color-tertiary);
+  color: var(--color-secondary);
+  line-height: 20px;
   white-space: nowrap;
 }
 
 .btnFilter:hover {
-  background-color: var(--color-hover);
+  border: 1px solid var(--color-primary);
 }
 
 .icon {
@@ -27,9 +26,10 @@
 }
 
 .active {
-  color: #6b3800;
-  border-color: var(--color-primary);
-  background-color: rgba(255, 236, 153, 0.2);
-  font-weight: var(--text-weight-bold);
+  border-color: rgba(255, 236, 153, 0.2);
+  background-color: rgba(255, 236, 153, 0.5);
   stroke: var(--color-primary);
+
+  font-weight: var(--text-weight-bold);
+  color: var(--color-accent);
 }

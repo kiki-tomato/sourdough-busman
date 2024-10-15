@@ -2,27 +2,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   position: relative;
 }
 
 .iconArrow {
   width: 24px;
   height: 24px;
+
   stroke: var(--color-emphasis);
 }
-
-.iconShare {
-  width: 20px;
-  height: 20px;
-  stroke: var(--color-emphasis);
-}
-
-.btnIcon {
-  margin-left: 20px;
-}
-
-/* .btnIcon:hover {
-  border-radius: 9999px;
-  background-color: var(--color-hover);
-} */

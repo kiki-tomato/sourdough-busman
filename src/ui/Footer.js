@@ -8,7 +8,9 @@ function Footer() {
   return (
     <div className={styles.footer}>
       <p>• {t("footer.about")} •</p>
-      <a href="mailto:jihyun_bae@icloud.com">{t("footer.contact")}</a>
+      <a className={styles.contact} href="mailto:jihyun_bae@icloud.com">
+        {t("footer.contact")}
+      </a>
       <div>© 2024 Bae</div>
     </div>
   );

@@ -1,18 +1,24 @@
-.btnToMyLocation {
+.btn {
   position: absolute;
+  right: 15px;
+  bottom: 30px;
+  width: 37px;
+  height: 37px;
   z-index: 10;
-  right: 10px;
-  bottom: 20px;
-  content: url(../../assets/my_location.svg);
-  scale: 120%;
-  margin: 0px 10px 25px 0px;
-  filter: drop-shadow(2px 0px 4px rgba(0, 0, 0, 0.5));
-  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: var(--border-radius-big);
+  background-color: var(--color-background);
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.3));
+
+  @media (max-width: 600px) {
+    left: 15px;
+  }
 }
 
-@media (max-width: 600px) {
-  .btnToMyLocation {
-    bottom: 10px;
-    left: 20px;
-  }
+.icon {
+  width: 22px;
+  height: 22px;
 }

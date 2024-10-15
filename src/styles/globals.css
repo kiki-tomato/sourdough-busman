@@ -1,30 +1,31 @@
 :root {
   --text-default: 14px;
-  --text-xs: 0.75rem;
   --text-sm: 12px;
-  --text-md: 1.2rem;
-  --text-lg: 1.5rem;
-  --text-xl: 3rem;
+
   --text-weight-regular: 400;
   --text-weight-medium: 500;
   --text-weight-semi-bold: 600;
   --text-weight-bold: 700;
-  --color-emphasis: #343a40;
-  --color-secondary: #4a4a4a;
-  --color-tertiary: #495057;
-  --color-tertiary-bg: #f7f8ff;
-  --color-primary: #ffd43b;
-  --color-active: #212529;
 
-  /* --color-primary: #0042b0; */
-  --color-primary-bg: #d5e0fe;
+  --color-emphasis: #343a40;
+  --color-secondary: #495057;
+  --color-tertiary: #fbfbfd;
+  --color-primary: #ffd43b;
+  --color-accent: #6b3800;
+  --color-active: #212529;
   --color-warning: #e03131;
   --color-info: #3b5bdb;
-  --color-light: #fbfbfd;
   --color-border: #dee2e6;
   --color-hover: #f1f3f5;
   --color-background: #fff;
+
   --grid-rows: 50px calc(100vh - 50px);
+
+  --border-default: 1px solid var(--color-border);
+  --border-radius-big: 9999px;
+  --border-radius-small: 12px;
+
+  --box-shadow: rgba(0, 0, 0, 0.12) 0 0 4px 0;
 }
 
 * {
@@ -35,7 +36,7 @@
 
 body {
   overflow: hidden;
-  font-family: "Quicksand", "Noto Sans KR";
+  font-family: "Quicksand", "Noto Sans KR", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
@@ -47,6 +48,8 @@ button {
   background: none;
   border: none;
   cursor: pointer;
+  color: var(--color-emphasis);
+  font-family: "Quicksand", "Noto Sans KR", sans-serif;
 }
 
 #root {
@@ -69,14 +72,16 @@ button {
   align-items: center;
   gap: 8px;
   padding: 6px 12px;
+
   border: 1px solid rgba(159, 159, 159, 0.5);
-  border-radius: 9999px;
-  background-color: var(--color-light);
+  border-radius: var(--border-radius-big);
+  background-color: var(--color-tertiary);
+  transition: transform 0.3s ease-in-out;
+
   white-space: nowrap;
   font-size: var(--text-default);
   font-weight: var(--text-weight-semi-bold);
-  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
-  transition: transform 0.3s ease-in-out;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.3));
 }
 
 .hover-marker {
@@ -87,7 +92,7 @@ button {
   transform: scale(1.15);
   background-color: var(--color-active);
   border-color: var(--color-active);
-  color: var(--color-light);
+  color: var(--color-tertiary);
 }
 
 .star-rating {

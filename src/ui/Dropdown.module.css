@@ -1,0 +1,72 @@
+.dropDown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+}
+
+.icon {
+  width: 15px;
+  height: 15px;
+}
+
+.iconGlobe {
+  margin-right: 2px;
+}
+
+.dropDownBtn {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px;
+  color: var(--color-emphasis);
+  font-weight: var(--text-weight-medium);
+  background-color: var(--color-hover);
+  font-size: var(--text-default);
+}
+
+.focus {
+  border-color: var(--color-emphasis);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.lang {
+  display: flex;
+  align-items: center;
+
+  line-height: 14px;
+}
+
+.dropDownMenu {
+  position: absolute;
+  top: 100%;
+  width: 100px;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-emphasis);
+  border-top: none;
+  border-bottom-left-radius: var(--border-radius-small);
+  border-bottom-right-radius: var(--border-radius-small);
+
+  list-style-type: none;
+  box-shadow: 0 0 4px 0 #0000001f;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+}
+
+.dropDownMenu li {
+  cursor: pointer;
+  font-size: var(--text-default);
+  font-weight: var(--text-weight-medium);
+  padding: 6px;
+}
+
+.dropDownMenu li:hover {
+  background-color: var(--color-hover);
+  border-radius: var(--border-radius-small);
+}
