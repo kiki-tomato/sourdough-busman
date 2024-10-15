@@ -19,7 +19,7 @@
   --color-hover: #f1f3f5;
   --color-background: #fff;
 
-  --grid-rows: 50px calc(100vh - 50px);
+  --grid-rows: 50px calc(100dvh - 50px);
 
   --border-default: 1px solid var(--color-border);
   --border-radius-big: 9999px;
