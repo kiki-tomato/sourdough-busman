@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import bread from "../assets/baguette_bread.png";
 import Dropdown from "./Dropdown";
-import styles from "./Header.module.css";
+import styles from "./Header.module.scss";
 
 import { useResize } from "../contexts/ResizeContext";
 
@@ -19,13 +19,13 @@ function Header() {
   }
 
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <div className={styles.title} onClick={handleNavigation}>
         <img src={bread} alt="bread emoji" />
-        <h4>{t("header.title")}</h4>
+        <h1 className={styles.heading}>{t("header.title")}</h1>
       </div>
       <Dropdown />
-    </div>
+    </header>
   );
 }
 

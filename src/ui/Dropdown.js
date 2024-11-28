@@ -1,11 +1,13 @@
 import { useState } from "react";
 
 import i18n from "../locales/i18n";
-import styles from "./Dropdown.module.css";
+import styles from "./Dropdown.module.scss";
 
 function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const [lang, setLang] = useState("Korean");
+
+  const arrowStyle = isOpen ? { transform: "rotate(180deg)" } : {};
 
   function handleDropDown() {
     setIsOpen((status) => !status);
@@ -26,9 +28,7 @@ function Dropdown() {
   return (
     <div className={styles.dropDown}>
       <button
-        className={
-          isOpen ? `${styles.dropDownBtn} ${styles.focus}` : styles.dropDownBtn
-        }
+        className={isOpen ? styles.dropDownFocus : styles.dropDownBtn}
         onClick={handleDropDown}
       >
         <div className={styles.lang}>
@@ -48,40 +48,24 @@ function Dropdown() {
           </svg>
           {lang}
         </div>
-        {isOpen ? (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className={styles.icon}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m4.5 15.75 7.5-7.5 7.5 7.5"
-            />
-          </svg>
-        ) : (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className={styles.icon}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m19.5 8.25-7.5 7.5-7.5-7.5"
-            />
-          </svg>
-        )}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="1.5"
+          stroke="currentColor"
+          className={styles.icon}
+          style={arrowStyle}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m19.5 8.25-7.5 7.5-7.5-7.5"
+          />
+        </svg>
       </button>
       {isOpen && (
-        <ul className={styles.dropDownMenu}>
+        <ul className={styles.dropDownList}>
           <li onClick={handleKorean}>Korean</li>
           <li onClick={handleEnglish}>English</li>
         </ul>

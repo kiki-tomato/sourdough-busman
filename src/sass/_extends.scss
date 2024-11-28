@@ -1,15 +1,13 @@
-/* PURPOSE : REUSE CLASS NAMES ON MULTIPLE COMPONENTS */
-
-.tag {
+// TAG
+%tag {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  height: 20px;
-  padding: 12px 8px;
+  gap: 0.5rem;
+  height: 2rem;
+  padding: 1.2rem 0.8rem;
 
   border-radius: var(--border-radius-big);
-
   text-align: center;
   font-weight: var(--text-weight-bold);
   font-size: var(--text-sm);

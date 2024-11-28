@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import DisplayHours from "./DisplayHours";
 import TradingHours from "./TradingHours";
-import styles from "./WeeklyHours.module.css";
+import styles from "./WeeklyHours.module.scss";
 
 import { useBakeryInfo } from "../hooks/useBakeryInfo";
 
@@ -11,6 +11,8 @@ function WeeklyHours() {
   const { t } = useTranslation();
   const { tradingHours } = useBakeryInfo();
   const [isOpen, setIsOpen] = useState(false);
+
+  const arrowStyle = isOpen ? { transform: "rotate(180deg)" } : {};
 
   function handleOpen() {
     setIsOpen((open) => !open);
@@ -35,38 +37,21 @@ function WeeklyHours() {
         </svg>
         <div>{t("buttons.tradingHours")}</div>
         <TradingHours hoursData={tradingHours} />
-        {isOpen && (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className={styles.arrow}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m4.5 15.75 7.5-7.5 7.5 7.5"
-            />
-          </svg>
-        )}
-        {!isOpen && (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className={styles.arrow}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m19.5 8.25-7.5 7.5-7.5-7.5"
-            />
-          </svg>
-        )}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="1.5"
+          stroke="currentColor"
+          className={styles.arrow}
+          style={arrowStyle}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m19.5 8.25-7.5 7.5-7.5-7.5"
+          />
+        </svg>
       </div>
       {isOpen && (
         <div className={styles.weekly}>

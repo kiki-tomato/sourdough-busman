@@ -1,19 +1,21 @@
+@use "../../sass/mixins" as *;
+
 .btnToSwitch {
   display: none;
 
-  @media (max-width: 600px) {
+  @include media-breakpoint(600px) {
     display: block;
     position: absolute;
-    width: 120px;
-    height: 37px;
-    bottom: 30px;
-    right: 15px;
-    padding: 5px 10px;
+    width: 12rem;
+    height: 3.7rem;
+    bottom: 3rem;
+    right: 1.5rem;
+    padding: 0.5rem 1rem;
     z-index: 3000;
 
     border-radius: var(--border-radius-big);
     background-color: var(--color-active);
-    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.3));
+    filter: var(--drop-shadow);
 
     font-size: var(--text-default);
     font-weight: var(--text-weight-semi-bold);
@@ -26,12 +28,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  line-height: 15px;
+  gap: 0.6rem;
+  line-height: 1.5rem;
 }
 
 .icon {
-  width: 22px;
-  height: 22px;
+  width: 2.2rem;
+  height: 2.2rem;
   margin-bottom: 1.5px;
 }

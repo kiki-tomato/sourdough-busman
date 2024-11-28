@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 import WeeklyHours from "./WeeklyHours";
-import styles from "./InfoList.module.css";
+import styles from "./InfoList.module.scss";
 
 import { useBakeryInfo } from "../hooks/useBakeryInfo";
 

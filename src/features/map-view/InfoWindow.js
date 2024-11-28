@@ -3,7 +3,7 @@ import { useCallback, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import Button from "../../ui/Button";
-import styles from "./InfoWindow.module.css";
+import styles from "./InfoWindow.module.scss";
 
 import { useBakeryInfo } from "../../hooks/useBakeryInfo";
 

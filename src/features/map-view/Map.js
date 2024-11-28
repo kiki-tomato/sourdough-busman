@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-import styles from "./Map.module.css";
+import styles from "./Map.module.scss";
 
 import { useCurrentLocation } from "../../hooks/useCurrentLocation";
 import { useData } from "../../hooks/useData";

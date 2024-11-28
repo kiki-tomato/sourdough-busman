@@ -6,7 +6,7 @@ import App from "./App";
 import ErrorPage from "./ui/ErrorPage";
 import PlaceDetails from "./features/detail-view/PlaceDetails";
 import "./locales/i18n";
-import "./styles/globals.css";
+import "./sass/main.scss";
 
 import { BookmarksProvider } from "./contexts/BookmarksContext";
 import { ResizeProvider } from "./contexts/ResizeContext";

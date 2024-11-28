@@ -2,7 +2,7 @@ import Place from "./Place";
 import DistanceFromMe from "../../ui/DistanceFromMe";
 import TradingHours from "../../ui/TradingHours";
 import Alert from "../../ui/Alert";
-import styles from "./PlaceList.module.css";
+import styles from "./PlaceList.module.scss";
 
 import { useCurrentLocation } from "../../hooks/useCurrentLocation";
 import { useData } from "../../hooks/useData";

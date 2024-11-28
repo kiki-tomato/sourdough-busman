@@ -1,0 +1,84 @@
+@use "../sass/mixins" as *;
+@use "../sass/animations" as *;
+
+%dropdown-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+  color: var(--color-emphasis);
+  font-size: var(--text-default);
+  font-weight: var(--text-weight-medium);
+  background-color: var(--color-hover);
+  transition: all 0.3s var(--function-easeoutquint);
+}
+
+.dropDown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 10rem;
+
+  &Btn {
+    @extend %dropdown-btn;
+  }
+
+  &Focus {
+    @extend %dropdown-btn;
+
+    border-color: var(--color-emphasis);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.dropDownList {
+  position: absolute;
+  top: 100%;
+  width: 10rem;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-emphasis);
+  border-top: none;
+  border-bottom-left-radius: var(--border-radius-small);
+  border-bottom-right-radius: var(--border-radius-small);
+
+  list-style-type: none;
+  box-shadow: 0 0 4px 0 #0000001f;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 0.6rem;
+
+  @include animation(fade-in, var(--function-easeoutquint));
+
+  li {
+    cursor: pointer;
+    font-size: var(--text-default);
+    font-weight: var(--text-weight-medium);
+    padding: 0.6rem;
+
+    &:hover {
+      background-color: var(--color-hover);
+      border-radius: var(--border-radius-small);
+    }
+  }
+}
+
+.icon {
+  @include icon-arrow(1.5rem);
+
+  &Globe {
+    margin-right: 2px;
+  }
+}
+
+.lang {
+  display: flex;
+  align-items: center;
+
+  line-height: 1.4rem;
+}

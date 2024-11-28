@@ -1,0 +1,33 @@
+@mixin media-breakpoint($breakpoint) {
+  @if $breakpoint == 1200px {
+    @media screen and (max-width: 75em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == 600px {
+    @media screen and (max-width: 37.5em) {
+      @content;
+    }
+  }
+}
+
+@mixin animation($keyframe, $timing) {
+  animation-name: $keyframe;
+  animation-duration: 0.3s;
+  animation-timing-function: $timing;
+}
+
+@mixin icon-arrow($size) {
+  width: $size;
+  height: $size;
+  transition: transform 0.3s;
+}
+
+@mixin button-default {
+  border: none;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+}

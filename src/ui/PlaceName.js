@@ -1,6 +1,6 @@
 import StarRatingTag from "./StarRatingTag";
 import VisitTag from "./VisitTag";
-import styles from "./PlaceName.module.css";
+import styles from "./PlaceName.module.scss";
 
 import { useBakeryInfo } from "../hooks/useBakeryInfo";
 

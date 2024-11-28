@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 import Filter from "./Filter";
-import styles from "./Sidebar.module.css";
+import styles from "./Sidebar.module.scss";
 
 import { useQueryString } from "../../hooks/useQueryString";
 import { useResize } from "../../contexts/ResizeContext";
@@ -14,11 +14,11 @@ function Sidebar({ children }) {
   const numFilters = filterQuery.length;
 
   const defaultStyle = {
-    transform: "translate3d(0px, 100vh, 0px)",
+    transform: "translate3d(0, 100vh, 0)",
   };
 
   const openStyle = {
-    transform: "translate3d(0px, 50px, 0px)",
+    transform: "translate3d(0, 5rem, 0)",
   };
 
   if (isSmallViewport)

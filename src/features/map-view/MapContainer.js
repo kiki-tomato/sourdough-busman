@@ -1,4 +1,4 @@
-import styles from "./MapContainer.module.css";
+import styles from "./MapContainer.module.scss";
 
 function MapContainer({ children }) {
   return (

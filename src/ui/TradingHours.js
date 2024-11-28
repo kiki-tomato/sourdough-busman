@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import styles from "./TradingHours.module.css";
+import styles from "./TradingHours.module.scss";
 
 import { getToday } from "../utils/helpers";
 

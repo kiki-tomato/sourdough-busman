@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 
 import Button from "../../ui/Button";
-import styles from "./Place.module.css";
+import styles from "./Place.module.scss";
 
 function Place({ eachBakeryData, children }) {
   const { search } = useLocation();

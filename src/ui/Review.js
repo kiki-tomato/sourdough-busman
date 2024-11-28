@@ -1,20 +1,11 @@
 import { useTranslation } from "react-i18next";
 import { useBakeryInfo } from "../hooks/useBakeryInfo";
-import { useState } from "react";
 
-import Spinner from "./Spinner";
-import styles from "./Review.module.css";
+import styles from "./Review.module.scss";
 
 function Review() {
-  const { comment, id, img } = useBakeryInfo();
+  const { id } = useBakeryInfo();
   const { t } = useTranslation();
-  const [isLoading, setIsLoading] = useState(false);
-
-  const imgStyle = isLoading ? { display: "block" } : { display: "none" };
-
-  function handleSpinner() {
-    setIsLoading(true);
-  }
 
   return (
     <div data-id={id}>

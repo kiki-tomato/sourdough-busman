@@ -1,6 +1,6 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-import styles from "./Button.module.css";
+import styles from "./Button.module.scss";
 
 import { useBookmarks } from "../contexts/BookmarksContext";
 

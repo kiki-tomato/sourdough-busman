@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import styles from "./Alert.module.css";
+import styles from "./Alert.module.scss";
 
 function Alert({ type }) {
   const { t } = useTranslation();
@@ -33,7 +33,7 @@ function Alert({ type }) {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className={styles.iconSuccess}
+          className={`${styles.icon} ${styles.iconSuccess}`}
         >
           <path
             fillRule="evenodd"
@@ -52,7 +52,7 @@ function Alert({ type }) {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className={styles.iconFail}
+          className={`${styles.icon} ${styles.iconFail}`}
         >
           <path
             fillRule="evenodd"

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import styles from "./Filter.module.css";
+import styles from "./Filter.module.scss";
 
 import { useQueryString } from "../../hooks/useQueryString";
 

@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 
-import styles from "./BtnClose.module.css";
+import styles from "./BtnClose.module.scss";
 import Button from "./Button";
 import ShareLink from "./ModalShare";
 

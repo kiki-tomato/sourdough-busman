@@ -1,17 +1,17 @@
 .modal {
   position: absolute;
   top: 100%;
-  padding: 20px;
+  padding: 2rem;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  gap: 24px;
+  gap: 2.4rem;
 
-  border-radius: 12px;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 0 10px 1px #0000001f;
+  border-radius: var(--border-radius-small);
+  border: var(--border-default);
+  box-shadow: 0 0 1rem 1px #0000001f;
 
   background-color: var(--color-background);
 }
@@ -19,9 +19,9 @@
 .urlContainer {
   position: relative;
   width: 100%;
-  padding: 12px;
+  padding: 1.2rem;
 
-  border-radius: 9px;
+  border-radius: 0.9rem;
   background-color: var(--color-hover);
 }
 
@@ -30,20 +30,20 @@
   top: 0;
   right: 0;
   height: 100%;
-  padding: 12px;
+  padding: 1.2rem;
 
-  border-top-right-radius: 9px;
-  border-bottom-right-radius: 9px;
+  border-top-right-radius: 0.9rem;
+  border-bottom-right-radius: 0.9rem;
   background-color: var(--color-hover);
 
   font-weight: var(--text-weight-medium);
   font-size: var(--text-default);
-  line-height: 14px;
+  line-height: 1.4rem;
 }
 
 .iconX {
-  width: 20px;
-  height: 20px;
+  width: var(--icon-size-default);
+  height: var(--icon-size-default);
 
   stroke: var(--color-emphasis);
 }
@@ -56,8 +56,8 @@
   color: #868e96;
   overflow-y: scroll;
   white-space: nowrap;
-}
 
-.url::-webkit-scrollbar {
-  display: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }

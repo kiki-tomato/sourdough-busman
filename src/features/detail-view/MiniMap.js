@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import styles from "./MiniMap.module.css";
+import Button from "../../ui/Button";
+import styles from "./MiniMap.module.scss";
 
 import { useBakeryInfo } from "../../hooks/useBakeryInfo";
 import { useMap } from "../../hooks/useMap";
-import Button from "../../ui/Button";
 
 const { naver } = window;
 

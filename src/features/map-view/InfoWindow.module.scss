@@ -1,12 +1,13 @@
-@media (max-width: 600px) {
+/* 600px */
+@media screen and (max-width: 37.5em) {
   .info-window {
     align-items: center;
-    padding: 0px 10px;
-    gap: 10px;
+    padding: 0 1rem;
+    gap: 1rem;
     position: absolute;
     z-index: 20;
-    height: 150px;
-    border-radius: 9px;
+    height: 15rem;
+    border-radius: 0.9rem;
     font-size: var(--text-sm);
     background-color: var(--color-light);
     box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 6px 2px;
@@ -18,13 +19,13 @@
     top: initial;
     left: 0;
     right: 0;
-    bottom: 85px;
+    bottom: 8.5rem;
   }
 
   .info-window img {
-    width: 130px;
-    height: 130px;
-    border-radius: 9px;
+    width: 13rem;
+    height: 13rem;
+    border-radius: 0.9rem;
   }
 
   .bakery-name {
@@ -46,12 +47,12 @@
   .one-sentence-review {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 0.3rem;
   }
 
   .info-window > div:nth-child(2) {
-    margin-top: 3px;
-    padding-bottom: 8px;
+    margin-top: 0.3rem;
+    padding-bottom: 0.8rem;
     font-size: var(--text-xs);
     font-weight: var(--text-weight-regular);
   }

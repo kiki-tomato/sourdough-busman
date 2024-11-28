@@ -3,25 +3,24 @@
   grid-template-columns: 80% 5%;
   justify-content: space-between;
   align-content: space-between;
-  height: 140px;
-  padding: 24px;
+  height: 14rem;
+  padding: 2.4rem;
 
   border-bottom: 1px solid var(--color-border);
-
   font-weight: var(--text-weight-regular);
-}
 
-.place:hover {
-  background: var(--color-hover);
-  cursor: pointer;
-}
+  &:hover {
+    background: var(--color-hover);
+    cursor: pointer;
+  }
 
-.place:first-child {
-  margin-top: 52px;
+  &:first-child {
+    margin-top: 5.2rem;
+  }
 }
 
 .name {
-  margin-bottom: 4px;
+  margin-bottom: 0.4rem;
 }
 
 .address {
@@ -33,7 +32,7 @@
 
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.8rem;
 
   color: var(--color-secondary);
 }

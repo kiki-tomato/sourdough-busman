@@ -6,12 +6,9 @@ import MiniMap from "./MiniMap";
 import BtnClose from "../../ui/BtnClose";
 import Review from "../../ui/Review";
 import Footer from "../../ui/Footer";
-import styles from "./PlaceDetails.module.css";
-
-import { useBakeryInfo } from "../../hooks/useBakeryInfo";
+import styles from "./PlaceDetails.module.scss";
 
 function PlaceDetails() {
-  const { bakery } = useBakeryInfo();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   function handleModalShare(e) {
@@ -21,17 +18,16 @@ function PlaceDetails() {
     if (!modal && !btnShare) setIsModalOpen(false);
   }
 
-  if (bakery)
-    return (
-      <div className={styles.placeDetails} onClick={handleModalShare}>
-        <BtnClose isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-        <PlaceName />
-        <InfoList />
-        <Review />
-        <MiniMap />
-        <Footer />
-      </div>
-    );
+  return (
+    <div className={styles.placeDetails} onClick={handleModalShare}>
+      <BtnClose isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <PlaceName />
+      <InfoList />
+      <Review />
+      <MiniMap />
+      <Footer />
+    </div>
+  );
 }
 
 export default PlaceDetails;

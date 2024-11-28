@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  padding: 5px 10px;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
 
   border: var(--border-default);
   border-radius: var(--border-radius-big);
@@ -12,17 +12,17 @@
   font-weight: var(--text-weight-medium);
   font-size: var(--text-sm);
   color: var(--color-secondary);
-  line-height: 20px;
+  line-height: 2rem;
   white-space: nowrap;
-}
 
-.btnFilter:hover {
-  border: 1px solid var(--color-primary);
+  &:hover {
+    border: 1px solid var(--color-primary);
+  }
 }
 
 .icon {
-  width: 20px;
-  height: 20px;
+  width: var(--icon-size-default);
+  height: var(--icon-size-default);
 }
 
 .active {

@@ -1,0 +1,38 @@
+.linkNaver {
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    display: block;
+    margin-bottom: 1rem;
+
+    color: var(--color-emphasis);
+    text-underline-offset: 2px;
+  }
+}
+
+.bookmark {
+  padding: 0;
+  align-self: start;
+  width: 2rem;
+  height: 2rem;
+}
+
+.iconBookmark {
+  stroke: var(--color-emphasis);
+}
+
+.iconBookmarkActive {
+  fill: var(--color-primary);
+}
+
+.share {
+  margin-left: 2rem;
+}
+
+.iconShare {
+  width: 2rem;
+  height: 2rem;
+
+  stroke: var(--color-emphasis);
+}

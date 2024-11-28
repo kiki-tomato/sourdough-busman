@@ -4,12 +4,12 @@
 }
 
 .spinner {
-  margin: 32px auto;
+  margin: 3.2rem auto;
   width: 30%;
   aspect-ratio: 1;
   border-radius: 50%;
 
-  border: 8px solid var(--color-border);
+  border: 0.8rem solid var(--color-border);
   border-right-color: var(--color-tertiary-bg);
   animation: rotate 1s infinite linear;
 }

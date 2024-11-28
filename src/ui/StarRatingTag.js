@@ -1,14 +1,13 @@
 import { useBakeryInfo } from "../hooks/useBakeryInfo";
 
-import sharedStyles from "../styles/SharedStyles.module.css";
-import styles from "./StarRatingTag.module.css";
+import styles from "./StarRatingTag.module.scss";
 
 function StarRatingTag() {
   const { rate } = useBakeryInfo();
 
   if (!rate)
     return (
-      <div className={`${sharedStyles.tag} ${styles.tagRating}`}>
+      <div className={styles.tagRating}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -26,7 +25,7 @@ function StarRatingTag() {
     );
 
   return (
-    <div className={`${sharedStyles.tag} ${styles.tagRating}`}>
+    <div className={styles.tagRating}>
       <>
         {Array.from({ length: rate }, (_, i) => (
           <svg

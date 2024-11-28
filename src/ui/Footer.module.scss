@@ -1,0 +1,24 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  font-size: var(--text-sm);
+  color: var(--color-secondary);
+
+  p {
+    font-weight: var(--text-weight-medium);
+    text-align: center;
+  }
+}
+
+.contact {
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: var(--color-secondary);
+    text-underline-offset: 2px;
+  }
+}

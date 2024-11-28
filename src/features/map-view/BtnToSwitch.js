@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 
-import styles from "./BtnToSwitch.module.css";
+import styles from "./BtnToSwitch.module.scss";
 
 import { useResize } from "../../contexts/ResizeContext";
 

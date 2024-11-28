@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 
-import styles from "./ModalShare.module.css";
+import styles from "./ModalShare.module.scss";
 import Alert from "./Alert";
 
 function ModalShare({ currentUrl, setIsModalOpen }) {

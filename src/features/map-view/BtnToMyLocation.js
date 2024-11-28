@@ -1,4 +1,4 @@
-import styles from "./BtnToMyLocation.module.css";
+import styles from "./BtnToMyLocation.module.scss";
 
 function BtnToMyLocation() {
   return (
