@@ -7,14 +7,14 @@ function ResizeProvider({ children }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
-    const mediaQuery600 = window.matchMedia("(max-width: 600px)");
+    const mediaQuery750 = window.matchMedia("(max-width: 750px)");
 
     function handleSidebar() {
       setIsSidebarOpen(false);
       setIsSmallViewport(false);
     }
 
-    mediaQuery600.addEventListener("change", handleSidebar);
+    mediaQuery750.addEventListener("change", handleSidebar);
   }, []);
 
   return (

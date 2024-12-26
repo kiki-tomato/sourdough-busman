@@ -3,8 +3,7 @@
 .btnToSwitch {
   display: none;
 
-  @include media-breakpoint(600px) {
-    display: block;
+  @include media-breakpoint(750px) {
     position: absolute;
     width: 12rem;
     height: 3.7rem;
@@ -12,6 +11,12 @@
     right: 1.5rem;
     padding: 0.5rem 1rem;
     z-index: 3000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    line-height: 1.5rem;
 
     border-radius: var(--border-radius-big);
     background-color: var(--color-active);
@@ -22,14 +27,6 @@
     color: var(--color-tertiary);
     white-space: nowrap;
   }
-}
-
-.content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  line-height: 1.5rem;
 }
 
 .icon {

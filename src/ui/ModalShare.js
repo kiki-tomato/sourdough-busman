@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import styles from "./ModalShare.module.scss";
 import Alert from "./Alert";
+import Icons from "./Icons";
 
 function ModalShare({ currentUrl, setIsModalOpen }) {
   const { t } = useTranslation();
@@ -25,23 +26,16 @@ function ModalShare({ currentUrl, setIsModalOpen }) {
 
   return (
     <div className={styles.modal} id="modal">
-      <button className={styles.btnClose} onClick={() => setIsModalOpen(false)}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className={styles.iconX}
+      <div className={styles.headingContainer}>
+        <h3 className={styles.heading}> {t("info.share")}</h3>
+        <button
+          className={styles.btnClose}
+          onClick={() => setIsModalOpen(false)}
+          aria-label="Close"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M6 18 18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
-      <h3 className={styles.heading}> {t("info.share")}</h3>
+          <Icons name="iconClose" />
+        </button>
+      </div>
       <div className={styles.urlContainer}>
         <div className={styles.url}>{currentUrl}</div>
         <button className={styles.btnCopy} onClick={handleCopy}>

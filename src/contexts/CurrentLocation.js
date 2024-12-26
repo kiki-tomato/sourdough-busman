@@ -1,13 +1,15 @@
-import { useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 
-export function useCurrentLocation() {
+const CurrentLocationContext = createContext();
+
+function CurrentLocationProvider({ children }) {
   const [currentLocation, setCurrentLocation] = useState({
     latitude: 0,
     longitude: 0,
   });
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
+  function askPermission() {
     setIsLoading(true);
 
     const success = function (position) {
@@ -29,7 +31,24 @@ export function useCurrentLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, error);
     }
-  }, []);
+  }
 
-  return { currentLocation };
+  return (
+    <CurrentLocationContext.Provider value={{ askPermission, currentLocation }}>
+      {children}
+    </CurrentLocationContext.Provider>
+  );
 }
+
+function useCurrentLocation() {
+  const value = useContext(CurrentLocationContext);
+
+  if (value === undefined)
+    throw new Error(
+      "CurrentLocationContext was used outside of BookmarksProvider"
+    );
+
+  return value;
+}
+
+export { CurrentLocationProvider, useCurrentLocation };

@@ -2,50 +2,43 @@
 @use "../../sass/animations" as *;
 
 .placeDetails {
-  display: flex;
-  flex-direction: column;
   position: absolute;
-  width: 25%;
-  height: 100vh;
+  height: 100dvh;
   z-index: 3000;
   padding: 5rem 2.4rem 10rem 2.4rem;
   overflow-y: scroll;
-
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-width: 35rem;
+  max-width: 25%;
   font-size: var(--text-default);
   background: var(--color-background);
 
   @include animation(fade-in, var(--function-easeoutquint));
 
-  /* 1200px */
-  @media screen and (max-width: 75em) {
-    width: 40%;
-  }
-
-  /* 600px */
-  @media screen and (max-width: 37.5em) {
-    width: 100%;
+  @include media-breakpoint(750px) {
+    min-width: 100%;
     z-index: 3000;
 
     @include animation(slide-in, var(--function-easeoutcirc));
   }
-}
 
-.placeDetails {
   & > * {
     padding: 3.2rem 0;
     border-bottom: var(--border-default);
   }
 
-  & > div:first-child {
+  & > div {
     border-bottom: none;
     padding: 1.6rem 0;
   }
 
-  & > div:nth-child(2) {
+  & > header {
     padding: 1.2rem 0;
   }
 
-  & > div:last-child {
+  & > footer {
     border-bottom: none;
   }
 }

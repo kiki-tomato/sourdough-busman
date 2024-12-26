@@ -1,15 +1,16 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
-import PlaceName from "../../ui/PlaceName";
-import InfoList from "../../ui/InfoList";
-import MiniMap from "./MiniMap";
+import PlaceName from "./PlaceName";
+import InfoList from "./InfoList";
 import BtnClose from "../../ui/BtnClose";
-import Review from "../../ui/Review";
 import Footer from "../../ui/Footer";
+import Section from "./Section";
 import styles from "./PlaceDetails.module.scss";
 
 function PlaceDetails() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { t } = useTranslation();
 
   function handleModalShare(e) {
     const modal = e.target.closest("#modal");
@@ -23,8 +24,8 @@ function PlaceDetails() {
       <BtnClose isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
       <PlaceName />
       <InfoList />
-      <Review />
-      <MiniMap />
+      <Section type="review" heading={t("info.review")} />
+      <Section type="mini-map" heading={t("info.location")} />
       <Footer />
     </div>
   );

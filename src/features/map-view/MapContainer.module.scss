@@ -3,7 +3,7 @@
 .mapContainer {
   position: relative;
 
-  @include media-breakpoint(600px) {
+  @include media-breakpoint(750px) {
     grid-column: 1 / 2;
     grid-row: 2;
     order: 2;

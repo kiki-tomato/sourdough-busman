@@ -1,0 +1,18 @@
+.noResults {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  height: 100%;
+
+  font-weight: var(--text-weight-medium);
+}
+
+.iconExclamation {
+  width: 4.8rem;
+  height: 4.8rem;
+
+  color: var(--color-secondary);
+}

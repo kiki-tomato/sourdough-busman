@@ -1,52 +1,38 @@
 @use "../sass/mixins" as *;
 @use "../sass/animations" as *;
 
-.noResults {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.8rem;
-  width: 100%;
-  height: 100%;
-
-  font-weight: var(--text-weight-medium);
-}
-
 .alertCopy {
   display: flex;
+  gap: 0.4rem;
   position: absolute;
   top: 100%;
-  transform: translate(0, 2rem);
+  left: 0;
+  transform: translateY(1.8rem);
   padding: 1rem;
+  width: 100%;
 
-  background-color: var(--color-background);
+  background-color: var(--color-active);
+  color: var(--color-background);
   border: var(--border-default);
   border-radius: var(--border-radius-small);
-  box-shadow: 0 0 1rem 1px #0000001f;
+  box-shadow: 0 0 1rem 1px rgba(0, 0, 0, 0.2);
   white-space: nowrap;
   font-weight: var(--text-weight-medium);
+  line-height: 1.4;
 
   @include animation(fade-in, var(--function-easeoutquint));
 }
 
-.icon {
+.iconSuccess,
+.iconFail {
   width: 2rem;
   height: 2rem;
-  margin-right: 0.4rem;
-
-  &Success {
-    fill: #2f9e44;
-  }
-
-  &Fail {
-    fill: var(--color-warning);
-  }
 }
 
-.iconExclamation {
-  width: 4.8rem;
-  height: 4.8rem;
+.iconSuccess {
+  color: #2f9e44;
+}
 
-  stroke: var(--color-secondary);
+.iconFail {
+  color: var(--color-warning);
 }

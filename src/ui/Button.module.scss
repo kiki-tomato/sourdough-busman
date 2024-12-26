@@ -3,7 +3,7 @@
   &:visited,
   &:hover,
   &:active {
-    display: block;
+    display: inline-block;
     margin-bottom: 1rem;
 
     color: var(--color-emphasis);
@@ -18,21 +18,8 @@
   height: 2rem;
 }
 
-.iconBookmark {
-  stroke: var(--color-emphasis);
-}
-
-.iconBookmarkActive {
-  fill: var(--color-primary);
-}
-
 .share {
   margin-left: 2rem;
-}
-
-.iconShare {
   width: 2rem;
   height: 2rem;
-
-  stroke: var(--color-emphasis);
 }

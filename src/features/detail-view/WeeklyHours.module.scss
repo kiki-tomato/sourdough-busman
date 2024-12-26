@@ -1,5 +1,5 @@
-@use "../sass/mixins" as *;
-@use "../sass/animations" as *;
+@use "../../sass/mixins" as *;
+@use "../../sass/animations" as *;
 
 @keyframes slide-down {
   from {
@@ -9,15 +9,6 @@
   to {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
-}
-
-.weeklyHours {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-
-  border: none;
-  cursor: pointer;
 }
 
 .weekly {
@@ -34,19 +25,7 @@
 }
 
 .day {
-  flex: 0 1 4rem;
+  flex: 0 0 4rem;
   font-weight: var(--text-weight-medium);
   text-transform: capitalize;
-}
-
-.icon {
-  width: var(--icon-size-default);
-  height: var(--icon-size-default);
-  stroke: var(--color-emphasis);
-}
-
-.arrow {
-  stroke: var(--color-emphasis);
-
-  @include icon-arrow(var(--icon-size-sm));
 }

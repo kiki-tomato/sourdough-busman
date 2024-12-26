@@ -10,6 +10,7 @@ import "./sass/main.scss";
 
 import { BookmarksProvider } from "./contexts/BookmarksContext";
 import { ResizeProvider } from "./contexts/ResizeContext";
+import { CurrentLocationProvider } from "./contexts/CurrentLocation";
 
 const router = createHashRouter([
   {
@@ -25,7 +26,9 @@ root.render(
   <React.StrictMode>
     <BookmarksProvider>
       <ResizeProvider>
-        <RouterProvider router={router} />
+        <CurrentLocationProvider>
+          <RouterProvider router={router} />
+        </CurrentLocationProvider>
       </ResizeProvider>
     </BookmarksProvider>
   </React.StrictMode>

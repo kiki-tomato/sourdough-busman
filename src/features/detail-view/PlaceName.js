@@ -1,21 +1,20 @@
-import StarRatingTag from "./StarRatingTag";
-import VisitTag from "./VisitTag";
 import styles from "./PlaceName.module.scss";
 
-import { useBakeryInfo } from "../hooks/useBakeryInfo";
+import { useBakeryInfo } from "../../hooks/useBakeryInfo";
+import Tag from "../../ui/Tag";
 
 function PlaceName() {
   const { name, comment } = useBakeryInfo();
 
   return (
-    <div className={styles.placeName}>
+    <header className={styles.placeName}>
       <h2 className={styles.heading}>{name}</h2>
       <div className={styles.tagBox}>
-        <StarRatingTag />
-        <VisitTag />
+        <Tag type="rating" />
+        <Tag type="visited" />
       </div>
       <p className={styles.review}>{comment}</p>
-    </div>
+    </header>
   );
 }
 

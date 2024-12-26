@@ -15,7 +15,7 @@
   background-color: var(--color-background);
   filter: var(--drop-shadow);
 
-  @include media-breakpoint(600px) {
+  @include media-breakpoint(750px) {
     left: 1.5rem;
   }
 }

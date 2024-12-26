@@ -1,0 +1,15 @@
+@use "../../sass/mixins" as *;
+@use "../../sass/animations" as *;
+
+.info {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.weeklyHours {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  align-self: flex-start;
+  font-size: inherit;
+}

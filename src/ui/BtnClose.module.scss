@@ -5,9 +5,9 @@
   position: relative;
 }
 
-.iconArrow {
-  width: 2.4rem;
-  height: 2.4rem;
-
-  stroke: var(--color-emphasis);
+.btnArrow {
+  &:link,
+  &:visited {
+    color: inherit;
+  }
 }

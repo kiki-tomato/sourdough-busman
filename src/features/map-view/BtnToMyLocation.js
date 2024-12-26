@@ -1,8 +1,17 @@
 import styles from "./BtnToMyLocation.module.scss";
 
+import { useCurrentLocation } from "../../contexts/CurrentLocation";
+
 function BtnToMyLocation() {
+  const { askPermission } = useCurrentLocation();
+
   return (
-    <button className={styles.btn} id="myLocation">
+    <button
+      className={styles.btn}
+      id="myLocation"
+      aria-label="To my current Location"
+      onClick={askPermission}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"

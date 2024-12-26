@@ -3,7 +3,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import styles from "./Map.module.scss";
 
-import { useCurrentLocation } from "../../hooks/useCurrentLocation";
+import { useCurrentLocation } from "../../contexts/CurrentLocation";
 import { useData } from "../../hooks/useData";
 import { useMap } from "../../hooks/useMap";
 import { getToday } from "../../utils/helpers";
@@ -193,23 +193,13 @@ function Map() {
   }, [mapObj, bakeryId, navigate, search, pathname, filteredData, t]);
 
   useEffect(() => {
-    const btnToMyLocation = document.querySelector("#myLocation");
-
-    function returnToCurrentLocation() {
+    if (mapObj && currentLocation.latitude)
       mapObj.setCenter(
         new naver.maps.LatLng(
           currentLocation.latitude,
           currentLocation.longitude
         )
       );
-    }
-
-    if (mapObj) {
-      btnToMyLocation.addEventListener("click", returnToCurrentLocation);
-    }
-
-    return () =>
-      btnToMyLocation.removeEventListener("click", returnToCurrentLocation);
   }, [currentLocation, mapObj]);
 
   return <div ref={mapElement} id="naverMap" className={styles.map}></div>;

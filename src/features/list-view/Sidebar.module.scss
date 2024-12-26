@@ -7,9 +7,8 @@
   overflow-y: scroll;
 
   box-shadow: var(--box-shadow);
-  font-size: var(--text-default);
 
-  @include media-breakpoint(600px) {
+  @include media-breakpoint(750px) {
     visibility: hidden;
     position: absolute;
     width: 100%;
@@ -18,15 +17,13 @@
 }
 
 .sidebarSm {
-  @include media-breakpoint(600px) {
+  @include media-breakpoint(750px) {
     position: absolute;
     width: 100%;
     height: calc(100vh - 4rem);
     z-index: 2000;
     overflow-y: scroll;
-    font-size: var(--text-default);
     background-color: var(--color-background);
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px 0px;
     transition: all 0.3s cubic-bezier(0, 0.55, 0.45, 1);
   }
 }
@@ -36,17 +33,15 @@
   gap: 0.8rem;
   overflow-x: scroll;
   position: fixed;
-  width: 25%;
+  width: 100%;
+  max-width: 25%;
+  min-width: 35rem;
   padding: 1rem 2.4rem;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: var(--border-default);
   background-color: var(--color-background);
 
-  @include media-breakpoint(1200px) {
-    width: 40%;
-  }
-
-  @include media-breakpoint(600px) {
-    width: 100%;
+  @include media-breakpoint(750px) {
+    min-width: 100%;
   }
 
   &::-webkit-scrollbar {

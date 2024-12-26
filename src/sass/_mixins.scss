@@ -5,8 +5,8 @@
     }
   }
 
-  @if $breakpoint == 600px {
-    @media screen and (max-width: 37.5em) {
+  @if $breakpoint == 750px {
+    @media screen and (max-width: 47.5em) {
       @content;
     }
   }
@@ -16,12 +16,6 @@
   animation-name: $keyframe;
   animation-duration: 0.3s;
   animation-timing-function: $timing;
-}
-
-@mixin icon-arrow($size) {
-  width: $size;
-  height: $size;
-  transition: transform 0.3s;
 }
 
 @mixin button-default {

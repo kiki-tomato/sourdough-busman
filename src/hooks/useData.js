@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 
 import { useBookmarks } from "../contexts/BookmarksContext";
 import { useQueryString } from "./useQueryString";
-import { useCurrentLocation } from "./useCurrentLocation";
+import { useCurrentLocation } from "../contexts/CurrentLocation";
 
 export function useData() {
   const { t } = useTranslation();

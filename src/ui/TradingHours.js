@@ -1,61 +1,14 @@
-import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
+function TradingHours({ day }) {
+  const openHour = day.open?.hour < 10 ? `0${day.open?.hour}` : day.open?.hour;
+  const openMin = day.open?.min === 0 ? "00" : day.open?.min;
+  const closeHour = day.close?.hour;
+  const closeMin = day.close?.min === 0 ? "00" : day.close?.min;
 
-import styles from "./TradingHours.module.scss";
-
-import { getToday } from "../utils/helpers";
-
-function TradingHours({ hoursData }) {
-  const { t } = useTranslation();
-  const [textColor, setTextColor] = useState("");
-  const [openOrClosed, setOpenOrClosed] = useState("");
-
-  const { today, currentTime } = getToday();
-
-  useEffect(() => {
-    const open = hoursData[today].open;
-    const dayOff = hoursData[today].closed;
-
-    if (open) {
-      const closingHour = hoursData[today].close.hour;
-      const closingMin = hoursData[today].close.min;
-      const openingTime = Number(
-        `${hoursData[today].open.hour}.${hoursData[today].open.min}`
-      );
-      const closingTime = Number(`${closingHour}.${closingMin}`);
-
-      if (openingTime <= currentTime && currentTime < closingTime) {
-        setTextColor(styles.bakeryOpen);
-
-        closingMin === 0
-          ? setOpenOrClosed(
-              t("openStatus.open", {
-                hour: closingHour - 12,
-                minute: "00",
-              })
-            )
-          : setOpenOrClosed(
-              t("openStatus.open", {
-                hour: closingHour - 12,
-                minute: closingMin,
-              })
-            );
-      } else if (currentTime >= closingTime) {
-        setTextColor(styles.bakeryClosed);
-        setOpenOrClosed(t("openStatus.closed"));
-      } else if (currentTime < openingTime) {
-        setTextColor(styles.bakeryClosed);
-        setOpenOrClosed(t("openStatus.notOpenYet"));
-      }
-    }
-
-    if (dayOff) {
-      setTextColor(styles.bakeryClosed);
-      setOpenOrClosed(t("openStatus.closureDay"));
-    }
-  }, [hoursData, today, currentTime, t]);
-
-  return <span className={textColor}>{openOrClosed}</span>;
+  return (
+    <div>
+      {openHour}:{openMin} - {closeHour}:{closeMin}
+    </div>
+  );
 }
 
 export default TradingHours;

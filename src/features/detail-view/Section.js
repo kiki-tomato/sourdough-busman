@@ -1,15 +1,15 @@
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 import Button from "../../ui/Button";
-import styles from "./MiniMap.module.scss";
+import styles from "./Section.module.scss";
 
 import { useBakeryInfo } from "../../hooks/useBakeryInfo";
 import { useMap } from "../../hooks/useMap";
 
 const { naver } = window;
 
-function MiniMap() {
+function Section({ type, heading }) {
   const { t } = useTranslation();
   const { lat, lng, naverMap } = useBakeryInfo();
   const { mapObj, mapElement } = useMap(lat, lng, 13);
@@ -40,14 +40,19 @@ function MiniMap() {
   }, [mapObj, lat, lng]);
 
   return (
-    <div className={styles.locationInfo}>
-      <h3 className={styles.heading}>{t("info.location")}</h3>
-      <Button type="link" url={naverMap}>
-        {t("buttons.link")}
-      </Button>
-      <div ref={mapElement} id="naverMap" className={styles.miniMap}></div>
-    </div>
+    <section>
+      <h3 className={styles.heading}>{heading}</h3>
+      {type === "review" && <p>coming soon!</p>}
+      {type === "mini-map" && (
+        <>
+          <Button type="link" url={naverMap}>
+            {t("buttons.link")}
+          </Button>
+          <div ref={mapElement} id="naverMap" className={styles.miniMap}></div>
+        </>
+      )}
+    </section>
   );
 }
 
-export default MiniMap;
+export default Section;

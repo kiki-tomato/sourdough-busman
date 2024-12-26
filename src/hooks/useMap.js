@@ -7,6 +7,8 @@ export function useMap(lat, lng, zoom = 12) {
   const [mapObj, setMapObj] = useState(null);
 
   useEffect(() => {
+    if (!mapElement.current) return;
+
     const mapContainer = mapElement.current;
     const defaultLocation = new naver.maps.LatLng(lat, lng);
     const mapOptions = {
